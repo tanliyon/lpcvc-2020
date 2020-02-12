@@ -12,7 +12,7 @@ class CRNN(nn.Module):
 
         # '-' is used as a special character to indicate duplicate character
         # Ex: hhheel-looo -> hel-lo -> hello
-        self.outputs = string.digits + string.ascii_lowercase + '-'
+        self.outputs = string.digits + string.ascii_lowercase + string.ascii_uppercase + '-'
         self.num_classes = len(self.outputs)
         self.decode = False
 
@@ -50,8 +50,8 @@ class CRNN(nn.Module):
         features = self.features_to_sequence(features)
         seq, hidden = self.rnn(features, hidden)
         seq = self.linear(seq)
-        seq = self.softmax(seq)
         if self.decode:
+            seq = self.softmax(seq)
             seq = self.decode_seq(seq)
 
         return seq
@@ -67,9 +67,6 @@ class CRNN(nn.Module):
         return h0
 
     def features_to_sequence(self, features):
-    	# Debug
-        print(f"Conv output size: {features.size()}")
-
         batch, channel, height, width = features.size()
         assert height == 1, "the height of features must be 1"
 
