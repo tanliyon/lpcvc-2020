@@ -7,7 +7,6 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms, utils
 import re
 
-# 4. remove non-alpahbets or numbers
 
 def sorted_alphanumeric(data):
     """
@@ -21,12 +20,48 @@ def sorted_alphanumeric(data):
     return sorted(data, key=alphanum_key)
 
 
-class TextLocalizationSet(Dataset):
-    """ Custom dataset class for text localization dataset (Task4.1 of ICDAR 2015)
+def load_coords(filename):
+    """
+    This function loads data from ground truth coordinates data from text files
+    :param filename: name of the file holding the data
+    :return: return extracted data as either a list of list
+    """
+    result = []
+    with open(filename, "r") as infile:
+        file_data = infile.readlines()
+
+    for i in range(len(file_data)):
+        new_item = file_data[i].split(",")[1:]  # first item is always image name so take out
+        result.append(new_item)
+    return result
+
+
+def load_transcription(filename):
+    """
+    This function loads data from ground truth transcription from text files
+    :param filename: name of the file holding the data
+    :return: return extracted transcription as list of strings
+    """
+    result = []
+    with open(filename, "r") as infile:
+        file_data = infile.readlines()
+
+    for i in range(len(file_data)):
+        new_item = file_data[i].split(", ")[1:]  # first item is always image name so take out
+        new_item = new_item[0]
+        new_item = new_item.strip("\"\n")
+        result.append(new_item)
+    return result
+
+
+class WordRecognitionSet(Dataset):
+    """ Custom dataset class for Word Recognition dataset (Task4.1 of ICDAR 2015)
+    :attr self.which_set: boolean indicating if the data to be loaded is train or test set
     :attr self.img_dir: directory name with all the images
     :attr self.gt_dir: directory name with all the ground truth text files (gt stands for ground truth)
     :attr self.img_dirs: list of all the image names
-    :attr self.gt_dirs: list of all the gt text file names
+    :attr self.gt_list: ordered list of ground truths
+    :attr self.coords_list: ordered list of ground truth coordinates
     :attr self.transform: transform performed on the dataset
     """
 
@@ -40,7 +75,8 @@ class TextLocalizationSet(Dataset):
         self.img_dir = self.which_set
         self.gt_dir = self.which_set + "_gt"
         self.img_dirs = sorted_alphanumeric(os.listdir(self.img_dir))
-        self.gt_dirs = sorted_alphanumeric(os.listdir(self.gt_dir))
+        self.gt_list = load_transcription(self.gt_dir + "/gt.txt")
+        self.coords_list = load_coords(self.gt_dir + "/coords.txt")
         self.transform = transform
 
     def __len__(self):
@@ -49,58 +85,36 @@ class TextLocalizationSet(Dataset):
         """
         return len(self.img_dirs)
 
+
     def __getitem__(self, idx):
         """
         Allows indexing of the dataset ==> ex. dataset[0] returns a single sample from the dataset
         :param idx: index value of dataset sample we want to return
         :return: dictionary with two keys: "image" and "gt"
                  value to "image": ndarray of pixel values
-                 value to "gt": list of dictionary with two keys: "coords" and "transcription"
+                 value to "gt": dictionary with two keys: "coords" and "transcription"
                                 value to "coords": 2d array of x, y coordinates (i.e [ [x1, y1]...[x4, y4]])
                                 value to "transcription": string denoting actual word in image
         """
         if torch.is_tensor(idx):
             idx = idx.tolist()
 
-        # read image
+        # path to image
         img_name = os.path.join(self.img_dir, self.img_dirs[idx])
         image = io.imread(img_name)
 
-        # path to ground truth text file
-        gt_dir = os.path.join(self.gt_dir, self.gt_dirs[idx])
+        # arrange coordinates into 2d array form [ [x1, y1] ... [x4, y4] ]
+        size = 4
+        single_coords = [[] for _ in range(size)]
+        for i in range(0, 2*size, 2):
+            single_coords[i//2] = [self.coords_list[idx][i], self.coords_list[idx][i+1]]
 
-        # read the ground truth
-        with open(gt_dir, "r", encoding='utf-8-sig') as infile:
-            gt_from_file = infile.readlines()
-            # U+FEFF is the Byte Order Mark character, which occurs at the start of a document
-            gt_from_file[0] = gt_from_file[0].lstrip("\ufeff")
+        gts = {
+            "coords": np.array(single_coords, dtype=int),
+            "transcription": self.gt_list[idx].rstrip("\n")
+        }
 
-        # initialize empty list for ground truths
-        single_data_gt = []
-
-        # dictionary containing all the ground truths
-        # each word in the image has a ground truth (coordinates and transcription)
-        for i, one_gt in enumerate(gt_from_file):
-            item_dict = {}
-            one_gt = one_gt.split(",")
-            one_gt[-1] = one_gt[-1].rstrip("\n")
-
-            # Remove entries with ### since it is invalid
-            if one_gt[-1] == "###":
-                continue
-
-            # arrange coordinates into 2d array form [ [x1, y1] ... [x4, y4] ]
-            coords = one_gt[:-1]
-            size = 4
-            single_coords = [[] for _ in range(size)]
-            for j in range(0, 2 * size, 2):
-                single_coords[j // 2] = [coords[j], coords[j + 1]]
-
-            item_dict["coords"] = np.array(single_coords)
-            item_dict["transcription"] = one_gt[-1]
-            single_data_gt.append(item_dict)
-
-        sample = {'image': image, 'gt': single_data_gt}
+        sample = {'image': image, 'gt': gts}
 
         # perform transforms
         if self.transform:
@@ -140,10 +154,8 @@ class Rescale(object):
 
         # h and w are swapped for landmarks because for images,
         # x and y axes are axis 1 and 0 respectively
-        for i in range(len(gt)):
-            gt[i]["coords"] = np.array(gt[i]["coords"], dtype=float) * [new_w / w, new_h / h]
-            gt[i]["coords"] = gt[i]["coords"].round(0)
-            gt[i]["coords"] = np.array(gt[i]["coords"], dtype=int)
+        for i in range(len(gt["coords"])):
+            gt["coords"][i] = gt["coords"][i] * [new_w / w, new_h / h]
 
         return {'image': img, 'gt': gt}
 
@@ -159,21 +171,20 @@ class ToTensor(object):
         # torch image: C X H X W
         image = image.transpose((2, 0, 1))
 
-        for i in range(len(gt)):
-            gt[i]["coords"] = torch.from_numpy(gt[i]["coords"])
+        for i in range(len(gt["coords"])):
+            gt["coords"][i] = torch.from_numpy(gt["coords"][i])
 
-        return {'image': torch.from_numpy(image),
-                'gt': gt}
+        return {"image": torch.from_numpy(image),
+                "gt": gt}
 
 
 if __name__ == "__main__":
 
     # example usage
-    dataset = TextLocalizationSet(train=True,
-                                  transform=transforms.Compose([Rescale(256),
-                                                                ToTensor()]))
-
-    print(dataset[0])
+    dataset = WordRecognitionSet(train=True,
+                                 transform=transforms.Compose([Rescale(256),
+                                                               ToTensor()]))
+    print(dataset[1])
 
     # can use DataLoader now with this custom dataset
     data_loader = DataLoader(dataset, batch_size=4,
