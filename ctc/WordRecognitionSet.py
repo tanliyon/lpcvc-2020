@@ -49,9 +49,21 @@ def load_transcription(filename):
     for i in range(len(file_data)):
         new_item = file_data[i].split(", ")[1:]  # first item is always image name so take out
         new_item = new_item[0]
-        new_item = new_item.strip("\"\n")
+        new_item = new_item.strip("\n")
+
+        # remove non-alphanumeric characters
+        pattern = re.compile(r"[^\w\d\s]")
+        new_item = re.sub(pattern, "", new_item)
+
         result.append(new_item)
     return result
+
+
+def collate(batch):
+    image = [item["image"] for item in batch]
+    coords = [item["coords"] for item in batch]
+    transcriptions = [item["transcription"] for item in batch]
+    return [image, coords, transcriptions]
 
 
 class WordRecognitionSet(Dataset):
@@ -109,12 +121,9 @@ class WordRecognitionSet(Dataset):
         for i in range(0, 2*size, 2):
             single_coords[i//2] = [self.coords_list[idx][i], self.coords_list[idx][i+1]]
 
-        gts = {
-            "coords": np.array(single_coords, dtype=int),
-            "transcription": self.gt_list[idx].rstrip("\n")
-        }
-
-        sample = {'image': image, 'gt': gts}
+        sample = {'image': image,
+                  "coords": np.array(single_coords, dtype=int),
+                  "transcription": self.gt_list[idx]}
 
         # perform transforms
         if self.transform:
@@ -137,7 +146,7 @@ class Rescale(object):
         self.output_size = output_size
 
     def __call__(self, sample):
-        image, gt = sample['image'], sample['gt']
+        image, coords = sample['image'], sample['coords']
 
         h, w = image.shape[:2]
         if isinstance(self.output_size, int):
@@ -154,38 +163,44 @@ class Rescale(object):
 
         # h and w are swapped for landmarks because for images,
         # x and y axes are axis 1 and 0 respectively
-        for i in range(len(gt["coords"])):
-            gt["coords"][i] = gt["coords"][i] * [new_w / w, new_h / h]
+        for i in range(len(coords)):
+            coords[i] = coords[i] * [new_w / w, new_h / h]
 
-        return {'image': img, 'gt': gt}
+        sample["image"] = image
+        sample["coords"] = coords
+
+        return sample
 
 
 class ToTensor(object):
     """ Convert ndarrays in sample to Tensors. """
 
     def __call__(self, sample):
-        image, gt = sample['image'], sample['gt']
+        image, coords = sample['image'], sample['coords']
 
         # swap color axis because
         # numpy image: H x W x C
         # torch image: C X H X W
         image = image.transpose((2, 0, 1))
 
-        for i in range(len(gt["coords"])):
-            gt["coords"][i] = torch.from_numpy(gt["coords"][i])
+        coords = torch.from_numpy(coords)
 
-        return {"image": torch.from_numpy(image),
-                "gt": gt}
+        sample["image"] = image
+        sample["coords"] = coords
+
+        return sample
 
 
 if __name__ == "__main__":
-
     # example usage
     dataset = WordRecognitionSet(train=True,
-                                 transform=transforms.Compose([Rescale(256),
-                                                               ToTensor()]))
-    print(dataset[1])
+                                 transform=transforms.Compose([Rescale(256), ToTensor()]))
+
+    #print(dataset[0])
 
     # can use DataLoader now with this custom dataset
     data_loader = DataLoader(dataset, batch_size=4,
-                             shuffle=True, num_workers=4)
+                             shuffle=False, num_workers=4,
+                             collate_fn=collate)
+
+    #print(next(iter(data_loader)))

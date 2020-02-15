@@ -4,10 +4,9 @@ import torch
 from skimage import io, transform
 import numpy as np
 from torch.utils.data import Dataset, DataLoader
-from torchvision import transforms, utils
+from torchvision import transforms
 import re
 
-# 4. remove non-alpahbets or numbers
 
 def sorted_alphanumeric(data):
     """
@@ -19,6 +18,13 @@ def sorted_alphanumeric(data):
     convert = lambda text: int(text) if text.isdigit() else text.lower()
     alphanum_key = lambda key: [convert(c) for c in re.split('([0-9]+)', key)]
     return sorted(data, key=alphanum_key)
+
+
+def collate(batch):
+    image = [item["image"] for item in batch]
+    coords = [item["coords"] for item in batch]
+    transcriptions = [item["transcription"] for item in batch]
+    return [image, coords, transcriptions]
 
 
 class TextLocalizationSet(Dataset):
@@ -75,13 +81,13 @@ class TextLocalizationSet(Dataset):
             # U+FEFF is the Byte Order Mark character, which occurs at the start of a document
             gt_from_file[0] = gt_from_file[0].lstrip("\ufeff")
 
-        # initialize empty list for ground truths
-        single_data_gt = []
+        # initialize empty lists to hold final data
+        total_coords = []
+        transcriptions = []
 
         # dictionary containing all the ground truths
         # each word in the image has a ground truth (coordinates and transcription)
         for i, one_gt in enumerate(gt_from_file):
-            item_dict = {}
             one_gt = one_gt.split(",")
             one_gt[-1] = one_gt[-1].rstrip("\n")
 
@@ -96,11 +102,15 @@ class TextLocalizationSet(Dataset):
             for j in range(0, 2 * size, 2):
                 single_coords[j // 2] = [coords[j], coords[j + 1]]
 
-            item_dict["coords"] = np.array(single_coords)
-            item_dict["transcription"] = one_gt[-1]
-            single_data_gt.append(item_dict)
+            total_coords.append(np.array(single_coords, dtype=int))
 
-        sample = {'image': image, 'gt': single_data_gt}
+            # remove non-alphanumeric characters
+            pattern = re.compile(r"[^\w\d\s]")
+            one_gt[-1] = re.sub(pattern, "", one_gt[-1])
+
+            transcriptions.append(one_gt[-1])
+
+        sample = {'image': image, 'coords': total_coords, 'transcription': transcriptions}
 
         # perform transforms
         if self.transform:
@@ -123,7 +133,7 @@ class Rescale(object):
         self.output_size = output_size
 
     def __call__(self, sample):
-        image, gt = sample['image'], sample['gt']
+        image, coords = sample['image'], sample['coords']
 
         h, w = image.shape[:2]
         if isinstance(self.output_size, int):
@@ -140,30 +150,35 @@ class Rescale(object):
 
         # h and w are swapped for landmarks because for images,
         # x and y axes are axis 1 and 0 respectively
-        for i in range(len(gt)):
-            gt[i]["coords"] = np.array(gt[i]["coords"], dtype=float) * [new_w / w, new_h / h]
-            gt[i]["coords"] = gt[i]["coords"].round(0)
-            gt[i]["coords"] = np.array(gt[i]["coords"], dtype=int)
+        for i in range(len(coords)):
+            coords[i] = np.array(coords[i], dtype=float) * [new_w / w, new_h / h]
+            coords[i] = coords[i].round(0)
+            coords[i] = np.array(coords[i], dtype=int)
 
-        return {'image': img, 'gt': gt}
+        sample["image"] = img
+        sample["coords"] = coords
+
+        return sample
 
 
 class ToTensor(object):
     """ Convert ndarrays in sample to Tensors. """
 
     def __call__(self, sample):
-        image, gt = sample['image'], sample['gt']
+        image, coords = sample['image'], sample['coords']
 
         # swap color axis because
         # numpy image: H x W x C
         # torch image: C X H X W
         image = image.transpose((2, 0, 1))
 
-        for i in range(len(gt)):
-            gt[i]["coords"] = torch.from_numpy(gt[i]["coords"])
+        for i in range(len(coords)):
+            coords[i] = torch.from_numpy(coords[i])
 
-        return {'image': torch.from_numpy(image),
-                'gt': gt}
+        sample["image"] = torch.from_numpy(image)
+        sample["coords"] = coords
+
+        return sample
 
 
 if __name__ == "__main__":
@@ -173,8 +188,11 @@ if __name__ == "__main__":
                                   transform=transforms.Compose([Rescale(256),
                                                                 ToTensor()]))
 
-    print(dataset[0])
+    # print(dataset[0])
 
     # can use DataLoader now with this custom dataset
-    data_loader = DataLoader(dataset, batch_size=4,
-                             shuffle=True, num_workers=4)
+    data_loader = DataLoader(dataset, batch_size=2,
+                             shuffle=False, num_workers=4,
+                             collate_fn=collate)
+
+    #print(next(iter(data_loader)))
