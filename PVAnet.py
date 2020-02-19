@@ -1,7 +1,5 @@
 import torch
 from torch import nn
-import numpy as np
-
 import logging
 
 class CRelu(nn.Module):
@@ -125,8 +123,7 @@ class Inception(nn.Module):
 def PVAnet(inputs):
     crelu = CRelu()
     inception = Inception()
-    logging.info("CRelu\n")
+    logging.info("Feature Extraction Layer\n")
     f4, f3 = crelu.forward(inputs.unsqueeze(0))
-    logging.info("Inception\n")
     f2, f1 = inception.forward(f3)
     return (f1, f2, f3, f4)

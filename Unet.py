@@ -1,7 +1,5 @@
 import torch
 from torch import nn
-import numpy as np
-
 import logging
 
 class Merge(nn.Module):
@@ -38,11 +36,11 @@ class Merge(nn.Module):
 
         h5 = self.Merge_Final(h4, in_channels= 32, out_channels= 32)
         logging.info("\nh5 dimensions after final convolution: [1, channels, height, width] = {}\n".format(h5.size()))
-        
+
         return h5
 
 def Unet(features):
     merge = Merge()
-    logging.info("Merge\n")
+    logging.info("Feature Merging Layer\n")
     h = merge.forward(features[0], features[1], features[2], features[3])
     return h
