@@ -6,6 +6,7 @@ import numpy as np
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms, utils
 import re
+from PIL import Image
 
 
 def sorted_alphanumeric(data):
@@ -113,7 +114,7 @@ class WordRecognitionSet(Dataset):
 
         # path to image
         img_name = os.path.join(self.img_dir, self.img_dirs[idx])
-        image = io.imread(img_name)
+        image = Image.open(img_name)
 
         # arrange coordinates into 2d array form [ [x1, y1] ... [x4, y4] ]
         size = 4
@@ -127,7 +128,7 @@ class WordRecognitionSet(Dataset):
 
         # perform transforms
         if self.transform:
-            sample = self.transform(sample)
+            sample['image'] = self.transform(image)
 
         return sample
 

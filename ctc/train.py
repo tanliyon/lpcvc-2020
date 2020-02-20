@@ -12,22 +12,25 @@ import matplotlib.patches as patches
 from matplotlib.path import Path
 from torchvision import transforms
 from torch.utils.data import DataLoader
+from torch.nn.utils.rnn import pad_sequence
+# from transforms.functional import resize
 
-from TextLocalizationSet import TextLocalizationSet
+from WordRecognitionSet import collate
+from WordRecognitionSet import WordRecognitionSet
 from model import CRNN
 
 parser = argparse.ArgumentParser(description='Train the CTC model.')
-parser.add_argument('--epoch', default=50,
+parser.add_argument('--epoch', default=1,
                     type=int, help='Number of epochs to train the model')
-parser.add_argument('--learning_rate', default=0.01,
+parser.add_argument('--learning_rate', default=0.001,
                     type=int, help='Base learning rate to start training with')
 parser.add_argument('--weight_decay', default=0.001,
-                    type=int, help='Base learning rate to start training with')
+                    type=int, help='Weight decay to train the model on')
 parser.add_argument('--save_dir', default='trained_model',
                     type=str, help='Name of directory to save trained model')
 parser.add_argument('--load_model', default=None,
                     type=str, help='Relative path to load trained model')
-parser.add_argument('--batch_size', default=4,
+parser.add_argument('--batch_size', default=1,
                     type=int, help='Number of images to train in one batch')
 parser.add_argument('--print_iter', default=100,
                     type=int, help='Number of iterations before printing info')
@@ -36,119 +39,133 @@ parser.add_argument('--verbose', default=True,
 parser.add_argument('-debug', action='store_true')
 args = parser.parse_args()
 
-def show_image(img, coords, transcriptions):
-    # img = np.swapaxes(img, 0, 2)
-    # img = img.permute(1, 2, 0)
-    fig, ax = plt.subplots(1)
-    ax.imshow(img)
 
-    for coor in coords:
-        coor = list(coor)
-        coor.append(coor[0])
-        codes = [Path.MOVETO,
-             Path.LINETO,
-             Path.LINETO,
-             Path.LINETO,
-             Path.CLOSEPOLY,]
+# def string_to_index(labels):
+# 	index = []
+# 	max_length = 0
 
-        path = Path(coor, codes)
-        rect = patches.PathPatch(path, lw=0.5, color='red', fill=False)
-        ax.add_patch(rect)
+# 	for label in labels:
+# 		out = []
+# 		for char in label:
+# 			if char >= '0' and char <= '9':
+# 				out.append(ord(char)-ord('0'))
+# 			elif char >= 'a' and char <='z':
+# 				out.append(ord(char)-ord('a') + 10)
+# 			else:
+# 				out.append(ord(char)-ord('A') + 36)
+# 		if len(out) > max_length:
+# 			max_length = len(out)
+# 		index.append(out)
 
-    print(transcriptions)
-    plt.show()
-    return
+# 	for l in index:
+# 		while len(l) < max_length:
+# 			l.append(-1)
 
-def crop_words(img, coords):
-	words = []
-	to_pil = transforms.ToPILImage()
-	to_tensor = transforms.ToTensor()
-	img = to_pil(img)
+# 	return torch.IntTensor(index)
 
-	for coor in coords:
-		top_left, top_right, bot_right, bot_left = coor
-		left_x = min(bot_left[0], top_left[0])
-		right_x = max(bot_right[0], top_right[0])
-		top_y = min(top_left[1], top_right[1])
-		bot_y = max(bot_left[1], bot_right[1])
-		# TODO: Handle case when the box is vertical
-		# TODO: Handle empty list
-		words.append(to_tensor(transforms.functional.resized_crop(img, top_y, left_x, bot_y-top_y, right_x-left_x, (32, 300), interpolation=2)))
+def string_to_index(labels):
+	index = []
 
-	return torch.stack(words)
+	for label in labels:
+		for char in label:
+			if char >= '0' and char <= '9':
+				index.append(ord(char)-ord('0') + 1)
+			elif char >= 'a' and char <='z':
+				index.append(ord(char)-ord('a') + 11)
+			else:
+				index.append(ord(char)-ord('A') + 37)
+	return torch.IntTensor(index)
 
-def collate(batch):
-    data = [item[0] for item in batch]
-    coords = [item[1] for item in batch]
-    transcriptions = [item[2] for item in batch]
-    return [data, coords, transcriptions]
 
 if __name__ == "__main__":
-	device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 	#TODO: Handle input of varying sizes. For now the height needs to be 32
-	net = CRNN()
-	net.to(device)
-	criterion = nn.CTCLoss(reduction="None")
-	optimizer = optim.Adam(net.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay)
+    net = CRNN()
+    net.to(device)
+    criterion = nn.CTCLoss(zero_infinity=True)
+    optimizer = optim.Adam(net.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay)
 
-	if args.load_model:
-	    load_path = os.path.join(os.getcwd(), args.load_model)
+    if args.load_model:
+        load_path = os.path.join(os.getcwd(), args.load_model)
 
 	# TODO: Create directory to save_path if it does not exist
 	# TODO: Check for valid path
-	save_dir = os.path.join(os.getcwd(), args.save_dir)
-	if args.load_model:
-	    net.load_state_dict(torch.load(args.load_path))
+    save_dir = os.path.join(os.getcwd(), args.save_dir)
+    if not os.path.isfile(save_dir):
+    	os.mkdir(save_dir)
 
-	train_data = TextLocalizationSet(img_dir="train", gt_dir="train_gt")
-	train_loader = DataLoader(train_data, batch_size=args.batch_size,
-                          	  shuffle=True, num_workers=1, collate_fn=collate)
-	test_data = TextLocalizationSet(img_dir="test", gt_dir="test_gt")
+    if args.load_model:
+        net.load_state_dict(torch.load(args.load_path))
 
-	for i, data in enumerate(train_loader):
-	    imgs, coords, transcriptions = data
-	    words = []
+    train_data = WordRecognitionSet(train=True,
+                                 transform=None)
+    train_loader = DataLoader(train_data, batch_size=args.batch_size,
+                             shuffle=True, num_workers=1,
+                             collate_fn=collate)
+    # resize = transforms.Resize(32)
+    to_pil = transforms.ToPILImage()
+    to_tensor = transforms.ToTensor()
 
-	    if args.debug:
-	    	show_image(imgs[0], coords[0], transcriptions[0])
+    running_loss=0
 
-	    for i, img in enumerate(imgs):
-	    	if i == 0:
-	    		words = crop_words(img, coords[i])
-	    	else:
-	    		words = torch.cat((words, crop_words(img, coords[i])))
+    for i in range(args.epoch):
+	    for j, data in enumerate(train_loader):
+		    # Zero the parameter gradients
+	        optimizer.zero_grad()
 
-	    if args.debug:
-	    	one_word = words[0].permute(1, 2, 0)
-	    	plt.imshow(one_word)
-	    	plt.show()
-	    	print(words.shape)
-	    	net.decode = True
+	        img, _, labels = data
 
-	    words = words.to(device)
-	    # zero the parameter gradients
-	    optimizer.zero_grad()
+	        # plt.imshow(img[0].permute(1,2,0))
+	        # plt.show()
 
-	    # forward + backward + optimize
-	    preds = net(words)
-	    print(preds)
-	    loss = criterion(outputs, labels)
-	    loss.backward()
-	    optimizer.step()
+	        # img = torch.stack(img)
+	        img = img[0]
 
-	    # print statistics
-	    running_loss += loss.item()
-	    if i % args.print_iter == args.print_iter-1 and args.verbose:
-	        print('[%d, %5d] loss: %.3f' %
-	            (epoch + 1, i + 1, running_loss / 2000))
-	        running_loss = 0.0
+	        # if (img.size[1] < 32):
+	        # 	img = transforms.functional.resize(img, (int(img.size[1]*1.5), int(img.size[0]*1.5)))
+	        while (img.size[0] < len(labels[0])*30):
+	        	img = transforms.functional.resize(img, (int(img.size[1]*1.1), int(img.size[0]*1.1)))
 
-	        # Save model
-	        torch.save(model.state_dict(), args.save_dir)
+	        img = to_tensor(img)
+	        img = img.unsqueeze(0)
+	        img = img.to(device)
 
+	        preds = net(img)
+	        input_length = torch.IntTensor([preds.shape[0]])
+	        target_length = torch.IntTensor([len(label) for label in labels])
+	        labels_ind = string_to_index(labels)
 
+	        try:
+	        	loss = criterion(preds, labels_ind.cpu(), input_length.cpu(), target_length.cpu())
+	        except:
+	        	loss = criterion(preds, labels_ind.cuda(), input_length.cuda(), target_length.cuda())
+	        # loss = criterion(preds, labels_ind.cuda(), input_length.cuda(), target_length.cuda())
+	        loss.backward()
+
+	        nn.utils.clip_grad_norm(net.parameters(), 10.0) #Clip gradient temp
+	        optimizer.step()
+
+	        if args.debug:
+	        	print(net.decode_seq(preds))
+	        	print(labels)
+	        	print(loss)
+	        	if j == 100:
+	        		break
+
+		    # print statistics
+	        running_loss += loss
+	        if j % args.print_iter == args.print_iter-1 and args.verbose:
+	            print('epoch: %d (%d) | loss: %.3f' %
+	                (i+1, j+1, running_loss/args.print_iter))
+	            running_loss = 0
+	            print(net.decode_seq(preds))
+	            print(labels)
+
+        # Save model
+	    torch.save(net.state_dict(), os.path.join(args.save_dir, str(i+1) + ".pth"))
 
 
 # Notes:
 # Number of prediction = width of conv output
+# 1 prediction = 30 pixel wide

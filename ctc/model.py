@@ -12,8 +12,8 @@ class CRNN(nn.Module):
 
         # '-' is used as a special character to indicate duplicate character
         # Ex: hhheel-looo -> hel-lo -> hello
-        self.outputs = string.digits + string.ascii_lowercase + string.ascii_uppercase + '-'
-        self.num_classes = len(self.outputs)
+        self.outputs = string.digits + string.ascii_lowercase + string.ascii_uppercase
+        self.num_classes = len(self.outputs)+1
         self.decode = False
 
         # Create the convolution layers with pretrained weights from resnet18 
@@ -27,12 +27,13 @@ class CRNN(nn.Module):
             self.feature_extractor.layer1,
             self.feature_extractor.layer2,
             self.feature_extractor.layer3,
-            self.feature_extractor.layer4
+            self.feature_extractor.layer4,
+            nn.AdaptiveMaxPool2d((1, None))
         )
 
         # Create the rnn model
         # Set input size = last batch normalization's number of features
-        self.rnn_input_size = self.cnn[-1][-1].bn2.num_features 
+        self.rnn_input_size = self.cnn[-2][-1].bn2.num_features 
         self.rnn_hidden_size = rnn_hidden_size
         self.rnn_num_layers = rnn_num_layers
         self.rnn = nn.GRU(self.rnn_input_size,
@@ -41,7 +42,7 @@ class CRNN(nn.Module):
 
         # Input to linear layer is (num_layers * num_directions)
         self.linear = nn.Linear(rnn_hidden_size * 2, self.num_classes)
-        self.softmax = nn.Softmax(dim=2)
+        self.softmax = nn.LogSoftmax(dim=2)
 
     def forward(self, x):
     	# Initialize the first hidden layer as 0
@@ -50,8 +51,8 @@ class CRNN(nn.Module):
         features = self.features_to_sequence(features)
         seq, hidden = self.rnn(features, hidden)
         seq = self.linear(seq)
+        seq = self.softmax(seq)
         if self.decode:
-            seq = self.softmax(seq)
             seq = self.decode_seq(seq)
 
         return seq
@@ -84,7 +85,7 @@ class CRNN(nn.Module):
         # Find the index where softmax is the maximum
         for i in range(pred.shape[0]):
             label = np.argmax(pred[i])
-            seq.append(label - 1)
+            seq.append(label-1)
 
         # Debug
         print(f"Prediction index: {seq}")
