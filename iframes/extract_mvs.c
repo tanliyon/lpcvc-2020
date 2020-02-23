@@ -22,7 +22,9 @@
 
  *Modified by: Jishnu Jaykumar Padalunkal
  *Modified on: 26 Apr 2018
-
+ 
+ *Modified by: Fischer Bordwell
+ *Modified on: 22 Feb 2020
 */
 
 #include "include/libavutil/motion_vector.h"
