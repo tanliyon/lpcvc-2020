@@ -1,7 +1,7 @@
 import os
 
 import torch
-from skimage import io, transform
+# from skimage import io, transform
 import numpy as np
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms, utils
@@ -62,9 +62,9 @@ def load_transcription(filename):
 
 def collate(batch):
     image = [item["image"] for item in batch]
-    coords = [item["coords"] for item in batch]
+    # coords = [item["coords"] for item in batch]
     transcriptions = [item["transcription"] for item in batch]
-    return [image, coords, transcriptions]
+    return [image, transcriptions]
 
 
 class WordRecognitionSet(Dataset):
@@ -89,7 +89,7 @@ class WordRecognitionSet(Dataset):
         self.gt_dir = self.which_set + "_gt"
         self.img_dirs = sorted_alphanumeric(os.listdir(self.img_dir))
         self.gt_list = load_transcription(self.gt_dir + "/gt.txt")
-        self.coords_list = load_coords(self.gt_dir + "/coords.txt")
+        # self.coords_list = load_coords(self.gt_dir + "/coords.txt")
         self.transform = transform
 
     def __len__(self):
@@ -117,13 +117,13 @@ class WordRecognitionSet(Dataset):
         image = Image.open(img_name)
 
         # arrange coordinates into 2d array form [ [x1, y1] ... [x4, y4] ]
-        size = 4
-        single_coords = [[] for _ in range(size)]
-        for i in range(0, 2*size, 2):
-            single_coords[i//2] = [self.coords_list[idx][i], self.coords_list[idx][i+1]]
+        # size = 4
+        # single_coords = [[] for _ in range(size)]
+        # for i in range(0, 2*size, 2):
+        #     single_coords[i//2] = [self.coords_list[idx][i], self.coords_list[idx][i+1]]
 
         sample = {'image': image,
-                  "coords": np.array(single_coords, dtype=int),
+                  # "coords": np.array(single_coords, dtype=int),
                   "transcription": self.gt_list[idx]}
 
         # perform transforms

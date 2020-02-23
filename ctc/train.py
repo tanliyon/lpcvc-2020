@@ -8,12 +8,9 @@ import argparse
 import torch.nn as nn
 import torch.optim as optim
 import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-from matplotlib.path import Path
 from torchvision import transforms
 from torch.utils.data import DataLoader
 from torch.nn.utils.rnn import pad_sequence
-# from transforms.functional import resize
 
 from WordRecognitionSet import collate
 from WordRecognitionSet import WordRecognitionSet
@@ -39,30 +36,6 @@ parser.add_argument('--verbose', default=True,
 parser.add_argument('-debug', action='store_true')
 args = parser.parse_args()
 
-
-# def string_to_index(labels):
-# 	index = []
-# 	max_length = 0
-
-# 	for label in labels:
-# 		out = []
-# 		for char in label:
-# 			if char >= '0' and char <= '9':
-# 				out.append(ord(char)-ord('0'))
-# 			elif char >= 'a' and char <='z':
-# 				out.append(ord(char)-ord('a') + 10)
-# 			else:
-# 				out.append(ord(char)-ord('A') + 36)
-# 		if len(out) > max_length:
-# 			max_length = len(out)
-# 		index.append(out)
-
-# 	for l in index:
-# 		while len(l) < max_length:
-# 			l.append(-1)
-
-# 	return torch.IntTensor(index)
-
 def string_to_index(labels):
 	index = []
 
@@ -76,6 +49,36 @@ def string_to_index(labels):
 				index.append(ord(char)-ord('A') + 37)
 	return torch.IntTensor(index)
 
+def val_loss(net, loader):
+    net.eval()
+    running_loss = 0
+
+    for i, data in enumerate(loader):
+        img, labels = data
+
+        img = img[0]
+
+        while (img.size[0] < len(labels[0])*30):
+        	img = transforms.functional.resize(img, (int(img.size[1]*1.1), int(img.size[0]*1.1)))
+
+        img = to_tensor(img)
+        img = img.unsqueeze(0)
+        img = img.to(device)
+
+        preds = net(img)
+        input_length = torch.IntTensor([preds.shape[0]])
+        target_length = torch.IntTensor([len(label) for label in labels])
+        labels_ind = string_to_index(labels)
+
+        try:
+        	loss = criterion(preds, labels_ind.cpu(), input_length.cpu(), target_length.cpu())
+        except:
+        	loss = criterion(preds, labels_ind.cuda(), input_length.cuda(), target_length.cuda())
+
+        running_loss += loss
+
+    return running_loss/i
+
 
 if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -88,24 +91,34 @@ if __name__ == "__main__":
 
     if args.load_model:
         load_path = os.path.join(os.getcwd(), args.load_model)
+        net.load_state_dict(torch.load(load_path))
 
 	# TODO: Create directory to save_path if it does not exist
 	# TODO: Check for valid path
     save_dir = os.path.join(os.getcwd(), args.save_dir)
-    if not os.path.isfile(save_dir):
+    if not os.path.isdir(save_dir):
     	os.mkdir(save_dir)
 
     if args.load_model:
-        net.load_state_dict(torch.load(args.load_path))
+        load_path = os.path.join(os.getcwd(), args.load_model)
+        net.load_state_dict(torch.load(load_path))
 
     train_data = WordRecognitionSet(train=True,
                                  transform=None)
     train_loader = DataLoader(train_data, batch_size=args.batch_size,
                              shuffle=True, num_workers=1,
                              collate_fn=collate)
+    test_data = WordRecognitionSet(train=False,
+                                 transform=None)
+    test_loader = DataLoader(test_data, batch_size=args.batch_size,
+                             shuffle=True, num_workers=1,
+                             collate_fn=collate)
     # resize = transforms.Resize(32)
     to_pil = transforms.ToPILImage()
     to_tensor = transforms.ToTensor()
+    prev_epoch = 0
+    if args.load_model:
+        	prev_epoch = int(args.load_model.split('.')[0].split('/')[1])
 
     running_loss=0
 
@@ -114,7 +127,10 @@ if __name__ == "__main__":
 		    # Zero the parameter gradients
 	        optimizer.zero_grad()
 
-	        img, _, labels = data
+	        img, labels = data
+
+	        if labels[0].lower() == "sale":
+        		continue
 
 	        # plt.imshow(img[0].permute(1,2,0))
 	        # plt.show()
@@ -150,7 +166,7 @@ if __name__ == "__main__":
 	        	print(net.decode_seq(preds))
 	        	print(labels)
 	        	print(loss)
-	        	if j == 100:
+	        	if j == 10:
 	        		break
 
 		    # print statistics
@@ -160,10 +176,19 @@ if __name__ == "__main__":
 	                (i+1, j+1, running_loss/args.print_iter))
 	            running_loss = 0
 	            print(net.decode_seq(preds))
-	            print(labels)
+	            print(f"{labels}\n")
+
+	    if args.debug:
+        	break
 
         # Save model
-	    torch.save(net.state_dict(), os.path.join(args.save_dir, str(i+1) + ".pth"))
+	    torch.save(net.state_dict(), os.path.join(args.save_dir, str(i+1+prev_epoch) + ".pth"))
+
+	    # Run validation on test image (FOR NOW)
+	    print(f"Validation Loss: {val_loss(net, test_loader)}\n")
+	    net.train()
+
+
 
 
 # Notes:
