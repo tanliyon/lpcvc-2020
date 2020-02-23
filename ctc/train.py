@@ -38,15 +38,19 @@ args = parser.parse_args()
 
 def string_to_index(labels):
 	index = []
+	prev_char = ''
 
 	for label in labels:
 		for char in label:
+			if (char == prev_char):
+				index.append(0)
 			if char >= '0' and char <= '9':
 				index.append(ord(char)-ord('0') + 1)
 			elif char >= 'a' and char <='z':
 				index.append(ord(char)-ord('a') + 11)
 			else:
 				index.append(ord(char)-ord('A') + 37)
+			prev_char = char
 	return torch.IntTensor(index)
 
 def val_loss(net, loader):
@@ -138,9 +142,12 @@ if __name__ == "__main__":
 	        # img = torch.stack(img)
 	        img = img[0]
 
+	        labels_ind = string_to_index(labels)
+	        target_length = torch.IntTensor([len(labels_ind)])
+
 	        # if (img.size[1] < 32):
 	        # 	img = transforms.functional.resize(img, (int(img.size[1]*1.5), int(img.size[0]*1.5)))
-	        while (img.size[0] < len(labels[0])*30):
+	        while (img.size[0] < (len(labels_ind)*30)):
 	        	img = transforms.functional.resize(img, (int(img.size[1]*1.1), int(img.size[0]*1.1)))
 
 	        img = to_tensor(img)
@@ -149,14 +156,21 @@ if __name__ == "__main__":
 
 	        preds = net(img)
 	        input_length = torch.IntTensor([preds.shape[0]])
-	        target_length = torch.IntTensor([len(label) for label in labels])
-	        labels_ind = string_to_index(labels)
 
 	        try:
 	        	loss = criterion(preds, labels_ind.cpu(), input_length.cpu(), target_length.cpu())
 	        except:
 	        	loss = criterion(preds, labels_ind.cuda(), input_length.cuda(), target_length.cuda())
+	        	print("cuda")
 	        # loss = criterion(preds, labels_ind.cuda(), input_length.cuda(), target_length.cuda())
+
+	        if (loss == 0):
+	        	print("Loss is 0")
+	        	print(net.decode_seq(preds))
+	        	print(input_length)
+	        	print(labels_ind)
+	        	print(labels)
+	        	print(target_length)
 	        loss.backward()
 
 	        nn.utils.clip_grad_norm(net.parameters(), 10.0) #Clip gradient temp
@@ -185,8 +199,8 @@ if __name__ == "__main__":
 	    torch.save(net.state_dict(), os.path.join(args.save_dir, str(i+1+prev_epoch) + ".pth"))
 
 	    # Run validation on test image (FOR NOW)
-	    print(f"Validation Loss: {val_loss(net, test_loader)}\n")
-	    net.train()
+	    # print(f"Validation Loss: {val_loss(net, test_loader)}\n")
+	    # net.train()
 
 
 
