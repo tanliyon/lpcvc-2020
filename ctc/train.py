@@ -36,6 +36,8 @@ parser.add_argument('--verbose', default=True,
 parser.add_argument('-debug', action='store_true')
 args = parser.parse_args()
 
+PIX_P_PRED = 30
+
 def string_to_index(labels):
 	index = []
 	prev_char = ''
@@ -133,21 +135,18 @@ if __name__ == "__main__":
 
 	        img, labels = data
 
+	        # TEMP: don't train when label is 'sale' for now
+	        # to mitigate class imbalance
 	        if labels[0].lower() == "sale":
         		continue
 
-	        # plt.imshow(img[0].permute(1,2,0))
-	        # plt.show()
-
-	        # img = torch.stack(img)
 	        img = img[0]
 
 	        labels_ind = string_to_index(labels)
 	        target_length = torch.IntTensor([len(labels_ind)])
 
-	        # if (img.size[1] < 32):
-	        # 	img = transforms.functional.resize(img, (int(img.size[1]*1.5), int(img.size[0]*1.5)))
-	        while (img.size[0] < (len(labels_ind)*30)):
+	        # Enlarge the image until the number of prediction is at least the length of labels
+	        while (img.size[0] < (len(labels_ind)*PIX_P_PRED)):
 	        	img = transforms.functional.resize(img, (int(img.size[1]*1.1), int(img.size[0]*1.1)))
 
 	        img = to_tensor(img)
@@ -161,16 +160,7 @@ if __name__ == "__main__":
 	        	loss = criterion(preds, labels_ind.cpu(), input_length.cpu(), target_length.cpu())
 	        except:
 	        	loss = criterion(preds, labels_ind.cuda(), input_length.cuda(), target_length.cuda())
-	        	print("cuda")
-	        # loss = criterion(preds, labels_ind.cuda(), input_length.cuda(), target_length.cuda())
 
-	        if (loss == 0):
-	        	print("Loss is 0")
-	        	print(net.decode_seq(preds))
-	        	print(input_length)
-	        	print(labels_ind)
-	        	print(labels)
-	        	print(target_length)
 	        loss.backward()
 
 	        nn.utils.clip_grad_norm(net.parameters(), 10.0) #Clip gradient temp
