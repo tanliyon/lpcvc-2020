@@ -88,7 +88,8 @@ class CRNN(nn.Module):
             seq.append(label-1)
 
         # Debug
-        print(f"Prediction index: {seq}")
+        print("Prediction index: ")
+        print(seq)
 
         # Construct the final string
         for i in range(len(seq)):

@@ -3,8 +3,9 @@
 import os
 import string
 import torch
-import numpy as np
+import math
 import argparse
+import numpy as np
 import torch.nn as nn
 import torch.optim as optim
 import matplotlib.pyplot as plt
@@ -36,7 +37,7 @@ parser.add_argument('--verbose', default=True,
 parser.add_argument('-debug', action='store_true')
 args = parser.parse_args()
 
-PIX_P_PRED = 30
+PIX_P_PRED = 30  # Width of pixels per prediction
 
 def string_to_index(labels):
 	index = []
@@ -92,8 +93,9 @@ if __name__ == "__main__":
 	#TODO: Handle input of varying sizes. For now the height needs to be 32
     net = CRNN()
     net.to(device)
-    criterion = nn.CTCLoss(zero_infinity=True)
+    criterion = nn.CTCLoss()
     optimizer = optim.Adam(net.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay)
+    lr_scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=7, gamma=0.1)
 
     if args.load_model:
         load_path = os.path.join(os.getcwd(), args.load_model)
@@ -119,7 +121,7 @@ if __name__ == "__main__":
     test_loader = DataLoader(test_data, batch_size=args.batch_size,
                              shuffle=True, num_workers=1,
                              collate_fn=collate)
-    # resize = transforms.Resize(32)
+
     to_pil = transforms.ToPILImage()
     to_tensor = transforms.ToTensor()
     prev_epoch = 0
@@ -180,13 +182,22 @@ if __name__ == "__main__":
 	                (i+1, j+1, running_loss/args.print_iter))
 	            running_loss = 0
 	            print(net.decode_seq(preds))
-	            print(f"{labels}\n")
+	            print(labels)
+
+	        if (math.isinf(loss)):
+	        	print(labels)
+	        	print(net.decode_seq(preds))
+	        	print(labels_ind)
+	        	print("\n")
+	        	break
 
 	    if args.debug:
         	break
 
         # Save model
 	    torch.save(net.state_dict(), os.path.join(args.save_dir, str(i+1+prev_epoch) + ".pth"))
+
+	    lr_scheduler.step()
 
 	    # Run validation on test image (FOR NOW)
 	    # print(f"Validation Loss: {val_loss(net, test_loader)}\n")
