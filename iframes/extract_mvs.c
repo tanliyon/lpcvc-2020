@@ -19,20 +19,13 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ *
+ * Modified by Fischer Bordwell on 2/25/2020
+ *
+ */
 
- *Modified by: Jishnu Jaykumar Padalunkal
- *Modified on: 26 Apr 2018
- 
- *Modified by: Fischer Bordwell
- *Modified on: 22 Feb 2020
-*/
-
-#include "include/libavutil/motion_vector.h"
-#include "include/libavformat/avformat.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <sys/stat.h>
+#include <libavutil/motion_vector.h>
+#include <libavformat/avformat.h>
 
 static AVFormatContext *fmt_ctx = NULL;
 static AVCodecContext *video_dec_ctx = NULL;
@@ -43,41 +36,18 @@ static int video_stream_idx = -1;
 static AVFrame *frame = NULL;
 static int video_frame_count = 0;
 
-static int print_motion_vectors_data(AVMotionVector *mv, int video_frame_count){
-  printf("| #:%d | p/f:%2d | %2d x %2d | src:(%4d,%4d) | dst:(%4d,%4d) | dx:%4d | dy:%4d | motion_x:%4d | motion_y:%4d | motion_scale:%4d | 0x%"PRIx64" |\n",
-      video_frame_count,
-      mv->source,
-      mv->w,
-      mv->h,
-      mv->src_x,
-      mv->src_y,
-      mv->dst_x,
-      mv->dst_y,
-      mv->dst_x - mv->src_x,
-      mv->dst_y - mv->src_y,
-      mv->motion_x,
-      mv->motion_y,
-      mv->motion_scale,
-      mv->flags);
-  printf("---------------------------------------------------------------------------------------------------------------------------------------------\n");
-  return 0;
-}
-
-static int print_frame_data(AVFrame * frame){
-  printf("%s\n", frame->data[0]);
-  return 0;
-}
-
 static int decode_packet(const AVPacket *pkt)
 {
-    int ret = avcodec_send_packet(video_dec_ctx, pkt);
+    //printf("decoding packet\n");
+    //fprintf(stderr, "%d\n", video_dec_ctx->width);
     char szFileName[255] = {0};
-    FILE *file=NULL;
+    FILE *file = NULL;
+    int ret = avcodec_send_packet(video_dec_ctx, pkt);
     if (ret < 0) {
         fprintf(stderr, "Error while sending a packet to the decoder: %s\n", av_err2str(ret));
         return ret;
     }
-
+    
     while (ret >= 0)  {
         ret = avcodec_receive_frame(video_dec_ctx, frame);
         if (ret == AVERROR(EAGAIN) || ret == AVERROR_EOF) {
@@ -90,80 +60,26 @@ static int decode_packet(const AVPacket *pkt)
         if (ret >= 0) {
             int i;
             AVFrameSideData *sd;
-	    video_frame_count++;
-            sprintf(szFileName, "./output/mv/%d.json", video_frame_count);
-            file = fopen(szFileName,"w");
-            if (file == NULL)
-            {
-                fprintf(stderr, "Couldn't open file for reading\n");
-                exit(1);
-            }
-            fprintf(file, "[\n");
+            video_frame_count++;
+            sprintf(szFileName, "./mv/frame%d.txt", video_frame_count);
+            file = fopen(szFileName, "w");
             sd = av_frame_get_side_data(frame, AV_FRAME_DATA_MOTION_VECTORS);
             if (sd) {
                 const AVMotionVector *mvs = (const AVMotionVector *)sd->data;
                 for (i = 0; i < sd->size / sizeof(*mvs); i++) {
                     const AVMotionVector *mv = &mvs[i];
-                    // print_motion_vectors_data(mv, video_frame_count);
-                    if(i==(sd->size / sizeof(*mvs))-1){
-                      fprintf(file, "\t{\n");
-                      fprintf(file, "\t\t\"source\" : %d,\n", mv->source);
-                      fprintf(file, "\t\t\"width\" : %d,\n", mv->w);
-                      fprintf(file, "\t\t\"height\" : %d,\n", mv->h);
-                      if(mv->source<0){
-                        fprintf(file, "\t\t\"src_x\" : %d,\n", ((mv->src_x)/abs(mv->source)));
-                        fprintf(file, "\t\t\"src_y\" : %d,\n", (mv->src_y)/abs(mv->source));
-                        fprintf(file, "\t\t\"dst_x\" : %d,\n", (mv->dst_x/abs(mv->source)));
-                        fprintf(file, "\t\t\"dst_y\" : %d,\n", (mv->dst_y/abs(mv->source)));
-                        fprintf(file, "\t\t\"dx\" : %d,\n", ((mv->dst_x - mv->src_x)/abs(mv->source)));
-                        fprintf(file, "\t\t\"dy\" : %d\n", ((mv->dst_y - mv->src_y)/abs(mv->source)));
-                      }else{
-                        fprintf(file, "\t\t\"src_x\" : %d,\n", (mv->dst_x/abs(mv->source)));
-                        fprintf(file, "\t\t\"src_y\" : %d,\n", (mv->dst_y/abs(mv->source)));
-                        fprintf(file, "\t\t\"dst_x\" : %d,\n", (mv->src_x/abs(mv->source)));
-                        fprintf(file, "\t\t\"dst_y\" : %d,\n", (mv->src_y/abs(mv->source)));
-                        fprintf(file, "\t\t\"dx\" : %d,\n", ((mv->src_x - mv->dst_x)/abs(mv->source)));
-                        fprintf(file, "\t\t\"dy\" : %d\n", ((mv->src_y - mv->dst_y)/abs(mv->source)));
-                      }
-                      fprintf(file, "\t}\n");
-                    }else{
-                      fprintf(file, "\t{\n");
-                      fprintf(file, "\t\t\"source\" : %d,\n", mv->source);
-                      fprintf(file, "\t\t\"width\" : %d,\n", mv->w);
-                      fprintf(file, "\t\t\"height\" : %d,\n", mv->h);
-                      fprintf(file, "\t\t\"src_x\" : %d,\n", (mv->src_x/abs(mv->source)));
-                      fprintf(file, "\t\t\"src_y\" : %d,\n", (mv->src_y/abs(mv->source)));
-                      fprintf(file, "\t\t\"dst_x\" : %d,\n", (mv->dst_x/abs(mv->source)));
-                      fprintf(file, "\t\t\"dst_y\" : %d,\n", (mv->dst_y/abs(mv->source)));
-                      if(mv->source<0){
-                        fprintf(file, "\t\t\"src_x\" : %d,\n", (mv->src_x/abs(mv->source)));
-                        fprintf(file, "\t\t\"src_y\" : %d,\n", (mv->src_y/abs(mv->source)));
-                        fprintf(file, "\t\t\"dst_x\" : %d,\n", (mv->dst_x/abs(mv->source)));
-                        fprintf(file, "\t\t\"dst_y\" : %d,\n", (mv->dst_y/abs(mv->source)));
-                        fprintf(file, "\t\t\"dx\" : %d,\n", ((mv->dst_x - mv->src_x)/abs(mv->source)));
-                        fprintf(file, "\t\t\"dy\" : %d\n", ((mv->dst_y - mv->src_y)/abs(mv->source)));
-                      }else{
-                        fprintf(file, "\t\t\"src_x\" : %d,\n", (mv->dst_x/abs(mv->source)));
-                        fprintf(file, "\t\t\"src_y\" : %d,\n", (mv->dst_y/abs(mv->source)));
-                        fprintf(file, "\t\t\"dst_x\" : %d,\n", (mv->src_x/abs(mv->source)));
-                        fprintf(file, "\t\t\"dst_y\" : %d,\n", (mv->src_y/abs(mv->source)));
-                        fprintf(file, "\t\t\"dx\" : %d,\n", ((mv->src_x - mv->dst_x)/abs(mv->source)));
-                        fprintf(file, "\t\t\"dy\" : %d\n", ((mv->src_y - mv->dst_y)/abs(mv->source)));
-                      }
-                      fprintf(file, "\t},\n");
-                    }
+                    fprintf(file, "%4d %4d %4d %4d\n",
+                        abs(mv->motion_x),
+                        abs(mv->motion_y),
+                        abs(mv->src_x - mv->dst_x),
+                        abs(mv->src_y - mv->dst_y));
                 }
-                // printf("%s\n", strcat( "./output/", strcat(video_frame_count, ".json")));
             }
-            fprintf(file, "]\n");
             fclose(file);
-	    printf("\rTotal Processed Frames:%d", video_frame_count);
-	    fflush(stdout);
-            //Print frame data
-            // print_frame_data(frame);
             av_frame_unref(frame);
         }
     }
+
     return 0;
 }
 
@@ -212,24 +128,16 @@ static int open_codec_context(AVFormatContext *fmt_ctx, enum AVMediaType type)
     return 0;
 }
 
-int extract_motion_vectors(char *videopath){
+int main(int argc, char **argv)
+{
     int ret = 0;
     AVPacket pkt = { 0 };
-    struct stat sb;
-    // char command[50];
-    // char output[13]="./output/mv/";
-    // if (!(stat(output, &sb) == 0 && S_ISDIR(sb.st_mode)))
-    // {
-    //     sprintf(command,"mkdir %s", output);
-	  //     system(command);
-    // }
 
-    /*if (argc != 2) {
+    if (argc != 2) {
         fprintf(stderr, "Usage: %s <video>\n", argv[0]);
         exit(1);
-    }*/
-
-    src_filename = videopath;
+    }
+    src_filename = argv[1];
 
     if (avformat_open_input(&fmt_ctx, src_filename, NULL, NULL) < 0) {
         fprintf(stderr, "Could not open source file %s\n", src_filename);
@@ -257,31 +165,54 @@ int extract_motion_vectors(char *videopath){
         ret = AVERROR(ENOMEM);
         goto end;
     }
-    printf("--------------------------------------------------------------------------------------\n");
-    printf("framenum,source,blockw,blockh,srcx,srcy,dstx,dsty,motion_x,motion_y,motion_scale,flags\n");
-    printf("--------------------------------------------------------------------------------------\n");
 
+    //printf("framenum,motion_x,motion_y,dx,dy\n");
+    //exit(1);
+    
     /* read frames from the file */
-    while (av_read_frame(fmt_ctx, &pkt) >= 0) {
+    /*
+    AVRational timeBase = fmt_ctx->streams[video_stream]->time_base;
+    int flags = 0;
+    int64_t seek_pos = (int64_t)(targetPosition.asSeconds() * AV_TIME_BASE); // ::asSeconds() returns a float value
+    int64_t seek_target = av_rescale_q(seek_pos, AV_TIME_BASE_Q, timeBase);
+    
+    while (av_seek_frame(fmt_ctx, video_stream_idx, timestamp, AVSEEK_FLAG_BYTE) >= 0) {
+        av_read_frame(fmt_ctx, &pkt);
+        printf("pkt.stream_index = %d\n", pkt.stream_index);
+        printf("video_stream_idx = %d\n", video_stream_idx);
+        //fprintf(stderr, "%d\n", &pkt.duration);
         if (pkt.stream_index == video_stream_idx)
             ret = decode_packet(&pkt);
         av_packet_unref(&pkt);
         if (ret < 0)
             break;
     }
-
+    */
+    av_read_frame(fmt_ctx, &pkt);
+    if (pkt.stream_index == video_stream_idx)
+        ret = decode_packet(&pkt);
+    av_packet_unref(&pkt);
+    
+    while (av_read_frame(fmt_ctx, &pkt) >= 0) {
+        //fprintf(stderr, "%d\n", &pkt.duration);
+        if (pkt.stream_index == video_stream_idx)
+            ret = decode_packet(&pkt);
+        av_packet_unref(&pkt);
+        if (ret < 0)
+            break;
+        for (int cnt = 0; cnt < 29; cnt++) {
+            av_read_frame(fmt_ctx, &pkt);
+            av_packet_unref(&pkt);
+        }
+    }
+    
     /* flush cached frames */
     decode_packet(NULL);
-    printf("\n--------------------------------------------------------------------------------------\n");
+    fprintf(stderr, "Finished decoding.\n\n");
 
 end:
     avcodec_free_context(&video_dec_ctx);
     avformat_close_input(&fmt_ctx);
     av_frame_free(&frame);
     return ret < 0;
-}
-
-int main(int argc, char **argv)
-{
-	extract_motion_vectors(argv[1]);
 }

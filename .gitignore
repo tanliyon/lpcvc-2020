@@ -1,2 +1,12 @@
 *.pyc
 *.pyo
+/iframes/compile_command.txt
+/iframes/data.txt
+/iframes/extract_mvs_with_frames
+/iframes/extract_mvs
+/iframes/extract_mvs_with_frames.c
+/iframes/mvs.txt
+/videos/
+/iframes/frames/
+/iframes/output/
+/iframes/mv/
