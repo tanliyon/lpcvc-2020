@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2012 Stefano Sabatini
  * Copyright (c) 2014 Clément Bœsch
+ * Modified by Fischer Bordwell on 2/25/2020
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,9 +20,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- *
- * Modified by Fischer Bordwell on 2/25/2020
- *
  */
 
 #include <libavutil/motion_vector.h>
@@ -188,13 +186,13 @@ int main(int argc, char **argv)
             break;
     }
     */
+    
     av_read_frame(fmt_ctx, &pkt);
     if (pkt.stream_index == video_stream_idx)
         ret = decode_packet(&pkt);
     av_packet_unref(&pkt);
     
     while (av_read_frame(fmt_ctx, &pkt) >= 0) {
-        //fprintf(stderr, "%d\n", &pkt.duration);
         if (pkt.stream_index == video_stream_idx)
             ret = decode_packet(&pkt);
         av_packet_unref(&pkt);
