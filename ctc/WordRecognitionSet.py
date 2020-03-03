@@ -45,13 +45,14 @@ def load_transcription(filename):
     with open(filename, "r") as infile:
         file_data = infile.readlines()
 
+    t_pattern = re.compile(r"(?P<transcription>(?<=\")(.)*(?=\"))")
+
     for i in range(len(file_data)):
         new_item = file_data[i].split(", ")[1:]  # first item is always image name so take out
         new_item = new_item[0]
         new_item = new_item.strip("\n")
 
         # get transcription
-        t_pattern = re.compile(r"(?P<transcription>(?<=\")(.)*(?=\"))")
         match = re.search(t_pattern, file_data[i])
         new_item = match["transcription"]
 
