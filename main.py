@@ -11,12 +11,12 @@ from model import *
 import logging
 
 def main():
-    logging.basicConfig(filename="EASTtest.log", level=logging.INFO)
+    logging.basicConfig(filename="OutputSizesTest.log", level=logging.INFO)
     logging.info("\nStarted")
     batch_size = 2
     training_path = "./Samples/"
     transform = transforms.Compose([
-                    transforms.Resize((192, 192)),
+                    transforms.Resize((512, 512)),
                     transforms.ToTensor(),
                     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
                 ])

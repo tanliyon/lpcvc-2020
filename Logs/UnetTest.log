@@ -1,0 +1,88 @@
+INFO:root:
+Started
+INFO:root:Image #0
+
+INFO:root:CRelu
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 192, 192])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 48, 48])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 48, 48])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 24, 24])
+
+INFO:root:Inception
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 12, 12])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 6, 6])
+
+INFO:root:Merge
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 6, 6])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 12, 12])
+
+INFO:root:
+h3 dimensions after second merge: [1, channels, height, width] = torch.Size([1, 64, 24, 24])
+
+INFO:root:
+h4 dimensions after third merge: [1, channels, height, width] = torch.Size([1, 32, 48, 48])
+
+INFO:root:
+h5 dimensions after final convolution: [1, channels, height, width] = torch.Size([1, 32, 48, 48])
+
+INFO:root:-------------------------------------------------
+INFO:root:Image #1
+
+INFO:root:CRelu
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 192, 192])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 48, 48])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 48, 48])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 24, 24])
+
+INFO:root:Inception
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 12, 12])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 6, 6])
+
+INFO:root:Merge
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 6, 6])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 12, 12])
+
+INFO:root:
+h3 dimensions after second merge: [1, channels, height, width] = torch.Size([1, 64, 24, 24])
+
+INFO:root:
+h4 dimensions after third merge: [1, channels, height, width] = torch.Size([1, 32, 48, 48])
+
+INFO:root:
+h5 dimensions after final convolution: [1, channels, height, width] = torch.Size([1, 32, 48, 48])
+
+INFO:root:-------------------------------------------------
+INFO:root:Finished
+
