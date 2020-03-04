@@ -91,8 +91,16 @@ class TextLocalizationSet(Dataset):
             one_gt = one_gt.split(",")
             one_gt[-1] = one_gt[-1].rstrip("\n")
 
-            # Remove entries with ### since it is invalid
+            # Remove entries with ### since they are invalid
             if one_gt[-1] == "###":
+                continue
+
+            # remove non-alphanumeric characters
+            pattern = re.compile(r"[^\w\d\s]")
+            one_gt[-1] = re.sub(pattern, "", one_gt[-1])
+
+            # if transcription is empty after removing non-alphanumerics, skip
+            if one_gt[-1] == "":
                 continue
 
             # arrange coordinates into 2d array form [ [x1, y1] ... [x4, y4] ]
@@ -103,10 +111,6 @@ class TextLocalizationSet(Dataset):
                 single_coords[j // 2] = [coords[j], coords[j + 1]]
 
             total_coords.append(np.array(single_coords, dtype=int))
-
-            # remove non-alphanumeric characters
-            pattern = re.compile(r"[^\w\d\s]")
-            one_gt[-1] = re.sub(pattern, "", one_gt[-1])
 
             transcriptions.append(one_gt[-1])
 
@@ -119,74 +123,10 @@ class TextLocalizationSet(Dataset):
         return sample
 
 
-class Rescale(object):
-    """ Rescale the image in a sample to a given size.
-
-    Args:
-        output_size (tuple or int): Desired output size. If tuple, output is
-        matched to output_size. If int, smaller of image edges is matched
-        to output_size keeping aspect ratio the same.
-    """
-
-    def __init__(self, output_size):
-        assert isinstance(output_size, (int, tuple))
-        self.output_size = output_size
-
-    def __call__(self, sample):
-        image, coords = sample['image'], sample['coords']
-
-        h, w = image.shape[:2]
-        if isinstance(self.output_size, int):
-            if h > w:
-                new_h, new_w = self.output_size * h / w, self.output_size
-            else:
-                new_h, new_w = self.output_size, self.output_size * w / h
-        else:
-            new_h, new_w = self.output_size
-
-        new_h, new_w = int(new_h), int(new_w)
-
-        img = transform.resize(image, (new_h, new_w))
-
-        # h and w are swapped for landmarks because for images,
-        # x and y axes are axis 1 and 0 respectively
-        for i in range(len(coords)):
-            coords[i] = np.array(coords[i], dtype=float) * [new_w / w, new_h / h]
-            coords[i] = coords[i].round(0)
-            coords[i] = np.array(coords[i], dtype=int)
-
-        sample["image"] = img
-        sample["coords"] = coords
-
-        return sample
-
-
-class ToTensor(object):
-    """ Convert ndarrays in sample to Tensors. """
-
-    def __call__(self, sample):
-        image, coords = sample['image'], sample['coords']
-
-        # swap color axis because
-        # numpy image: H x W x C
-        # torch image: C X H X W
-        image = image.transpose((2, 0, 1))
-
-        for i in range(len(coords)):
-            coords[i] = torch.from_numpy(coords[i])
-
-        sample["image"] = torch.from_numpy(image)
-        sample["coords"] = coords
-
-        return sample
-
-
 if __name__ == "__main__":
 
     # example usage
-    dataset = TextLocalizationSet(train=True,
-                                  transform=transforms.Compose([Rescale(256),
-                                                                ToTensor()]))
+    dataset = TextLocalizationSet(train=True)
 
     # print(dataset[0])
 
@@ -195,4 +135,6 @@ if __name__ == "__main__":
                              shuffle=False, num_workers=4,
                              collate_fn=collate)
 
-    #print(next(iter(data_loader)))
+    for data in data_loader:
+        print(data[2])
+        break
