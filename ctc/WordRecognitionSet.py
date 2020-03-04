@@ -35,24 +35,21 @@ def load_coords(filename):
     return result
 
 
-def load_transcription(filename):
+def load_transcription(filename, images):
     """
     This function loads data from ground truth transcription from text files
     :param filename: name of the file holding the data
+    :param images: list of image file names
     :return: return extracted transcription as list of strings
     """
-    result = []
+    transcripts = []
     with open(filename, "r") as infile:
         file_data = infile.readlines()
 
-    t_pattern = re.compile(r"(?P<transcription>(?<=\")(.)*(?=\"))")
-
     for i in range(len(file_data)):
-        new_item = file_data[i].split(", ")[1:]  # first item is always image name so take out
-        new_item = new_item[0]
-        new_item = new_item.strip("\n")
 
-        # get transcription
+        # get transcription: they are formatted to be enclosed with "" quotation marks
+        t_pattern = re.compile(r"(?P<transcription>(?<=\")(.)*(?=\"))")
         match = re.search(t_pattern, file_data[i])
         new_item = match["transcription"]
 
@@ -60,8 +57,13 @@ def load_transcription(filename):
         non_alphanum = re.compile(r"[^\w\d\s]")
         new_item = re.sub(non_alphanum, "", new_item)
 
-        result.append(new_item)
-    return result
+        # remove "" empty transcription
+        if new_item == "":
+            images.pop(i)
+            continue
+
+        transcripts.append(new_item)
+    return images, transcripts
 
 
 def collate(batch):
@@ -91,7 +93,7 @@ class WordRecognitionSet(Dataset):
         self.img_dir = self.which_set
         self.gt_dir = self.which_set + "_gt"
         self.img_dirs = sorted_alphanumeric(os.listdir(self.img_dir))
-        self.gt_list = load_transcription(self.gt_dir + "/gt.txt")
+        self.img_dirs, self.gt_list = load_transcription(self.gt_dir + "/gt.txt", self.img_dirs)
         self.transform = transform
 
     def __len__(self):
@@ -139,5 +141,5 @@ if __name__ == "__main__":
                              collate_fn=collate)
 
     for data in data_loader:
-        print(data)
+        print(data[1])
         break
