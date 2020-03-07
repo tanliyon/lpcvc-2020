@@ -1,8 +1,6 @@
 import os
 
 import torch
-# from skimage import io, transform
-import numpy as np
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms, utils
 import re
@@ -37,32 +35,39 @@ def load_coords(filename):
     return result
 
 
-def load_transcription(filename):
+def load_transcription(filename, images):
     """
     This function loads data from ground truth transcription from text files
     :param filename: name of the file holding the data
+    :param images: list of image file names
     :return: return extracted transcription as list of strings
     """
-    result = []
+    transcripts = []
     with open(filename, "r") as infile:
         file_data = infile.readlines()
 
     for i in range(len(file_data)):
-        new_item = file_data[i].split(", ")[1:]  # first item is always image name so take out
-        new_item = new_item[0]
-        new_item = new_item.strip("\n")
+
+        # get transcription: they are formatted to be enclosed with "" quotation marks
+        t_pattern = re.compile(r"(?P<transcription>(?<=\")(.)*(?=\"))")
+        match = re.search(t_pattern, file_data[i])
+        new_item = match["transcription"]
 
         # remove non-alphanumeric characters
-        pattern = re.compile(r"[^\w\d\s]")
-        new_item = re.sub(pattern, "", new_item)
+        non_alphanum = re.compile(r"[^\w\d\s]")
+        new_item = re.sub(non_alphanum, "", new_item)
 
-        result.append(new_item)
-    return result
+        # remove "" empty transcription
+        if new_item == "":
+            images.pop(i)
+            continue
+
+        transcripts.append(new_item)
+    return images, transcripts
 
 
 def collate(batch):
     image = [item["image"] for item in batch]
-    # coords = [item["coords"] for item in batch]
     transcriptions = [item["transcription"] for item in batch]
     return [image, transcriptions]
 
@@ -88,8 +93,7 @@ class WordRecognitionSet(Dataset):
         self.img_dir = self.which_set
         self.gt_dir = self.which_set + "_gt"
         self.img_dirs = sorted_alphanumeric(os.listdir(self.img_dir))
-        self.gt_list = load_transcription(self.gt_dir + "/gt.txt")
-        # self.coords_list = load_coords(self.gt_dir + "/coords.txt")
+        self.img_dirs, self.gt_list = load_transcription(self.gt_dir + "/gt.txt", self.img_dirs)
         self.transform = transform
 
     def __len__(self):
@@ -97,7 +101,6 @@ class WordRecognitionSet(Dataset):
         :return: size of the dataset (aka number of images)
         """
         return len(self.img_dirs)
-
 
     def __getitem__(self, idx):
         """
@@ -116,14 +119,7 @@ class WordRecognitionSet(Dataset):
         img_name = os.path.join(self.img_dir, self.img_dirs[idx])
         image = Image.open(img_name)
 
-        # arrange coordinates into 2d array form [ [x1, y1] ... [x4, y4] ]
-        # size = 4
-        # single_coords = [[] for _ in range(size)]
-        # for i in range(0, 2*size, 2):
-        #     single_coords[i//2] = [self.coords_list[idx][i], self.coords_list[idx][i+1]]
-
         sample = {'image': image,
-                  # "coords": np.array(single_coords, dtype=int),
                   "transcription": self.gt_list[idx]}
 
         # perform transforms
@@ -133,69 +129,9 @@ class WordRecognitionSet(Dataset):
         return sample
 
 
-class Rescale(object):
-    """ Rescale the image in a sample to a given size.
-
-    Args:
-        output_size (tuple or int): Desired output size. If tuple, output is
-        matched to output_size. If int, smaller of image edges is matched
-        to output_size keeping aspect ratio the same.
-    """
-
-    def __init__(self, output_size):
-        assert isinstance(output_size, (int, tuple))
-        self.output_size = output_size
-
-    def __call__(self, sample):
-        image, coords = sample['image'], sample['coords']
-
-        h, w = image.shape[:2]
-        if isinstance(self.output_size, int):
-            if h > w:
-                new_h, new_w = self.output_size * h / w, self.output_size
-            else:
-                new_h, new_w = self.output_size, self.output_size * w / h
-        else:
-            new_h, new_w = self.output_size
-
-        new_h, new_w = int(new_h), int(new_w)
-
-        img = transform.resize(image, (new_h, new_w))
-
-        # h and w are swapped for landmarks because for images,
-        # x and y axes are axis 1 and 0 respectively
-        for i in range(len(coords)):
-            coords[i] = coords[i] * [new_w / w, new_h / h]
-
-        sample["image"] = image
-        sample["coords"] = coords
-
-        return sample
-
-
-class ToTensor(object):
-    """ Convert ndarrays in sample to Tensors. """
-
-    def __call__(self, sample):
-        image, coords = sample['image'], sample['coords']
-
-        # swap color axis because
-        # numpy image: H x W x C
-        # torch image: C X H X W
-        image = image.transpose((2, 0, 1))
-
-        coords = torch.from_numpy(coords)
-
-        sample["image"] = image
-        sample["coords"] = coords
-
-        return sample
-
-
 if __name__ == "__main__":
     # example usage
-    dataset = WordRecognitionSet(train=True,
-                                 transform=transforms.Compose([Rescale(256), ToTensor()]))
+    dataset = WordRecognitionSet(train=True)
 
     #print(dataset[0])
 
@@ -204,4 +140,6 @@ if __name__ == "__main__":
                              shuffle=False, num_workers=4,
                              collate_fn=collate)
 
-    #print(next(iter(data_loader)))
+    for data in data_loader:
+        print(data[1])
+        break

@@ -59,11 +59,10 @@ class TextLocalizationSet(Dataset):
         """
         Allows indexing of the dataset ==> ex. dataset[0] returns a single sample from the dataset
         :param idx: index value of dataset sample we want to return
-        :return: dictionary with two keys: "image" and "gt"
+        :return: dictionary with three keys: "image", "coords" and "transcription"
                  value to "image": ndarray of pixel values
-                 value to "gt": list of dictionary with two keys: "coords" and "transcription"
-                                value to "coords": 2d array of x, y coordinates (i.e [ [x1, y1]...[x4, y4]])
-                                value to "transcription": string denoting actual word in image
+                 value to "coords": 2d array of x, y coordinates (i.e [ [x1, y1]...[x4, y4]])
+                 value to "transcription": string denoting actual word in image
         """
         if torch.is_tensor(idx):
             idx = idx.tolist()
@@ -91,8 +90,16 @@ class TextLocalizationSet(Dataset):
             one_gt = one_gt.split(",")
             one_gt[-1] = one_gt[-1].rstrip("\n")
 
-            # Remove entries with ### since it is invalid
+            # Remove entries with ### since they are invalid
             if one_gt[-1] == "###":
+                continue
+
+            # remove non-alphanumeric characters
+            pattern = re.compile(r"[^\w\d\s]")
+            one_gt[-1] = re.sub(pattern, "", one_gt[-1])
+
+            # if transcription is empty after removing non-alphanumerics, skip
+            if one_gt[-1] == "":
                 continue
 
             # arrange coordinates into 2d array form [ [x1, y1] ... [x4, y4] ]
@@ -103,10 +110,6 @@ class TextLocalizationSet(Dataset):
                 single_coords[j // 2] = [coords[j], coords[j + 1]]
 
             total_coords.append(np.array(single_coords, dtype=int))
-
-            # remove non-alphanumeric characters
-            pattern = re.compile(r"[^\w\d\s]")
-            one_gt[-1] = re.sub(pattern, "", one_gt[-1])
 
             transcriptions.append(one_gt[-1])
 
@@ -121,7 +124,6 @@ class TextLocalizationSet(Dataset):
 
 class Rescale(object):
     """ Rescale the image in a sample to a given size.
-
     Args:
         output_size (tuple or int): Desired output size. If tuple, output is
         matched to output_size. If int, smaller of image edges is matched
@@ -184,9 +186,7 @@ class ToTensor(object):
 if __name__ == "__main__":
 
     # example usage
-    dataset = TextLocalizationSet(train=True,
-                                  transform=transforms.Compose([Rescale(256),
-                                                                ToTensor()]))
+    dataset = TextLocalizationSet(train=True)
 
     # print(dataset[0])
 
@@ -195,4 +195,6 @@ if __name__ == "__main__":
                              shuffle=False, num_workers=4,
                              collate_fn=collate)
 
-    #print(next(iter(data_loader)))
+    for data in data_loader:
+        print(data[2])
+        break
