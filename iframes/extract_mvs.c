@@ -1,27 +1,3 @@
-/*
- * Copyright (c) 2012 Stefano Sabatini
- * Copyright (c) 2014 Clément Bœsch
- * Modified by Fischer Bordwell on 2/25/2020
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
 #include <libavutil/motion_vector.h>
 #include <libavformat/avformat.h>
 
@@ -36,8 +12,6 @@ static int video_frame_count = 0;
 
 static int decode_packet(const AVPacket *pkt)
 {
-    //printf("decoding packet\n");
-    //fprintf(stderr, "%d\n", video_dec_ctx->width);
     char szFileName[255] = {0};
     FILE *file = NULL;
     int ret = avcodec_send_packet(video_dec_ctx, pkt);
@@ -45,7 +19,7 @@ static int decode_packet(const AVPacket *pkt)
         fprintf(stderr, "Error while sending a packet to the decoder: %s\n", av_err2str(ret));
         return ret;
     }
-    
+
     while (ret >= 0)  {
         ret = avcodec_receive_frame(video_dec_ctx, frame);
         if (ret == AVERROR(EAGAIN) || ret == AVERROR_EOF) {
@@ -67,10 +41,10 @@ static int decode_packet(const AVPacket *pkt)
                 for (i = 0; i < sd->size / sizeof(*mvs); i++) {
                     const AVMotionVector *mv = &mvs[i];
                     fprintf(file, "%4d %4d %4d %4d\n",
-                        abs(mv->motion_x),
-                        abs(mv->motion_y),
-                        abs(mv->src_x - mv->dst_x),
-                        abs(mv->src_y - mv->dst_y));
+                            abs(mv->motion_x),
+                            abs(mv->motion_y),
+                            abs(mv->src_x - mv->dst_x),
+                            abs(mv->src_y - mv->dst_y));
                 }
             }
             fclose(file);
@@ -110,7 +84,7 @@ static int open_codec_context(AVFormatContext *fmt_ctx, enum AVMediaType type)
             return ret;
         }
 
-        /* Init the video decoder */
+        // Initialize video decoder
         av_dict_set(&opts, "flags2", "+export_mvs", 0);
         if ((ret = avcodec_open2(dec_ctx, dec, &opts)) < 0) {
             fprintf(stderr, "Failed to open %s codec\n",
@@ -148,7 +122,6 @@ int main(int argc, char **argv)
     }
 
     open_codec_context(fmt_ctx, AVMEDIA_TYPE_VIDEO);
-
     av_dump_format(fmt_ctx, 0, src_filename, 0);
 
     if (!video_stream) {
@@ -164,51 +137,43 @@ int main(int argc, char **argv)
         goto end;
     }
 
-    //printf("framenum,motion_x,motion_y,dx,dy\n");
-    //exit(1);
-    
-    /* read frames from the file */
-    /*
-    AVRational timeBase = fmt_ctx->streams[video_stream]->time_base;
-    int flags = 0;
-    int64_t seek_pos = (int64_t)(targetPosition.asSeconds() * AV_TIME_BASE); // ::asSeconds() returns a float value
-    int64_t seek_target = av_rescale_q(seek_pos, AV_TIME_BASE_Q, timeBase);
-    
-    while (av_seek_frame(fmt_ctx, video_stream_idx, timestamp, AVSEEK_FLAG_BYTE) >= 0) {
-        av_read_frame(fmt_ctx, &pkt);
-        printf("pkt.stream_index = %d\n", pkt.stream_index);
-        printf("video_stream_idx = %d\n", video_stream_idx);
-        //fprintf(stderr, "%d\n", &pkt.duration);
-        if (pkt.stream_index == video_stream_idx)
-            ret = decode_packet(&pkt);
-        av_packet_unref(&pkt);
-        if (ret < 0)
-            break;
-    }
-    */
-    
+    // Move the video 1 frame
     av_read_frame(fmt_ctx, &pkt);
     if (pkt.stream_index == video_stream_idx)
         ret = decode_packet(&pkt);
     av_packet_unref(&pkt);
-    
+
+    // Read motion vectors until end of video
     while (av_read_frame(fmt_ctx, &pkt) >= 0) {
         if (pkt.stream_index == video_stream_idx)
             ret = decode_packet(&pkt);
+
+        int pcktPts = av_rescale_q(pkt.pts,
+                                   fmt_ctx->streams[video_stream_idx]->time_base,
+                                   fmt_ctx->streams[video_stream_idx]->codec->time_base);
+        pcktPts = (pcktPts/video_dec_ctx->ticks_per_frame);
+
+        int target = (pcktPts+30) *
+                     (fmt_ctx->streams[video_stream_idx]->time_base.den /
+                      fmt_ctx->streams[video_stream_idx]->time_base.num) /
+                     (fmt_ctx->streams[video_stream_idx]->codec->time_base.den /
+                      fmt_ctx->streams[video_stream_idx]->codec->time_base.num )*
+                     video_dec_ctx->ticks_per_frame;
+
+        //printf("\nseeking to frame %d", pcktPts);
+        avformat_seek_file(fmt_ctx, video_stream_idx, 0, target, target, AVSEEK_FLAG_ANY);
+
+        //char c = getchar();
         av_packet_unref(&pkt);
         if (ret < 0)
             break;
-        for (int cnt = 0; cnt < 29; cnt++) {
-            av_read_frame(fmt_ctx, &pkt);
-            av_packet_unref(&pkt);
-        }
     }
-    
-    /* flush cached frames */
+
+    // Flush cached frames
     decode_packet(NULL);
     fprintf(stderr, "Finished decoding.\n\n");
 
-end:
+    end:
     avcodec_free_context(&video_dec_ctx);
     avformat_close_input(&fmt_ctx);
     av_frame_free(&frame);
