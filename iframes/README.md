@@ -3,6 +3,10 @@
 ```bash
 ./compile
 mkdir mv
-python3 iframe.py -i <infile> # entire pipeline
-./extract_mv <infile> # just motion vectors
+
+# entire pipeline
+python3 iframe.py -i <infile>
+
+# just motion vectors
+./extract_mv <infile>
 ```
