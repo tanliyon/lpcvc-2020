@@ -1,14 +1,20 @@
 import os
 import csv
 import glob
+import math
 import logging
 import numpy as np
 from PIL import Image
+import cv2
 from cv2 import fillPoly
 import matplotlib.pyplot as plt
 import torch.utils.data as data
+import torch
+import torchvision
+from torch import nn
 from dataset import *
 from error import *
+from mpl_toolkits.mplot3d import Axes3D
 
 class GroundTruthGeneration:
     def __init__(self, image_name, image):
@@ -24,10 +30,10 @@ class GroundTruthGeneration:
 
         return float(np.sum(edge) / 2)
 
-    def _Calculate_Distance(x1, y1, x2, y2):
-	    return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+    def _Calculate_Distance(self, x1, y1, x2, y2):
+        return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
 
-    def _Move_Points(coordinates, offset1, offset2, reference_length, coefficient):
+    def _Move_Points(self, coordinates, offset1, offset2, reference_length, coefficient):
         x1_index = (offset1 % 4) * 2 + 0
         y1_index = (offset1 % 4) * 2 + 1
         x2_index = (offset2 % 4) * 2 + 0
@@ -45,14 +51,24 @@ class GroundTruthGeneration:
         	coordinates[x1_index] += ratio * (-x_length)
         	coordinates[y1_index] += ratio * (-y_length)
 
-        	ratio = (r2 * coef) / length
+        	ratio = (r2 * coefficient) / length
         	coordinates[x2_index] += ratio * x_length
         	coordinates[y2_index] += ratio * y_length
 
         return coordinates
 
-    def _Shrink_Coordinates(self, coordinates, reference_length, coefficient=0.3):
+    def _Shrink_Coordinates(self, coordinates, coefficient=0.3):
+        # reference_length = [None, None, None, None]
+        # for j in range(4):
+        #     reference_length[j] = min(np.linalg.norm(coordinates[j] - coordinates[(j + 1) % 4]), np.linalg.norm(coordinates[j] - coordinates[(j - 1) % 4]))
+
         x1, y1, x2, y2, x3, y3, x4, y4 = coordinates
+
+        r1 = min(self._Calculate_Distance(x1, y1, x2, y2), self._Calculate_Distance(x1, y1, x4, y4))
+        r2 = min(self._Calculate_Distance(x2, y2, x1, y1), self._Calculate_Distance(x2, y2, x3, y3))
+        r3 = min(self._Calculate_Distance(x3, y3, x2, y2), self._Calculate_Distance(x3, y3, x4, y4))
+        r4 = min(self._Calculate_Distance(x4, y4, x1, y1), self._Calculate_Distance(x4, y4, x3, y3))
+        reference_length = [r1, r2, r3, r4]
 
     	# obtain offset to perform move_points() automatically
         if(self._Calculate_Distance(x1, y1, x2, y2) + self._Calculate_Distance(x3, y3, x4, y4)) > (self._Calculate_Distance(x2, y2, x3, y3) + self._Calculate_Distance(x1, y1, x4, y4)):
@@ -60,18 +76,16 @@ class GroundTruthGeneration:
         else:
     	    offset = 1 # two longer edges are (x2y2-x3y3) & (x4y4-x1y1)
 
-        v = coordinates.copy()
-        v = move_points(v, 0 + offset, 1 + offset, reference_length, coefficient)
-        v = move_points(v, 2 + offset, 3 + offset, reference_length, coefficient)
-        v = move_points(v, 1 + offset, 2 + offset, reference_length, coefficient)
-        v = move_points(v, 3 + offset, 4 + offset, reference_length, coefficient)
+        coordinates = self._Move_Points(coordinates, 0 + offset, 1 + offset, reference_length, coefficient)
+        coordinates = self._Move_Points(coordinates, 2 + offset, 3 + offset, reference_length, coefficient)
+        coordinates = self._Move_Points(coordinates, 1 + offset, 2 + offset, reference_length, coefficient)
+        coordinates = self._Move_Points(coordinates, 3 + offset, 4 + offset, reference_length, coefficient)
 
-        return v
+        return np.reshape(coordinates, (4, 2))
 
     def _Validate_Coordinates(self, quad_coordinates, text_tags):
-        print(type(quad_coordinates))
-        print(type(text_tags), text_tags)
-        return quad_coordinates, text_tags if is_empty_coordinates(quad_coordinates) else None
+        if is_empty_coordinates(quad_coordinates):
+            return quad_coordinates, text_tags
 
         quad_coordinates[:, :, 0] = np.clip(quad_coordinates[:, :, 0], 0,  self.width - 1)
         quad_coordinates[:, :, 1] = np.clip(quad_coordinates[:, :, 1], 0, self.height - 1)
@@ -80,7 +94,8 @@ class GroundTruthGeneration:
         validated_tags = []
 
         for coordinate, tag in zip(quad_coordinates, text_tags):
-            area = _Calculate_Area(coordinate)
+            area = self._Calculate_Area(coordinate)
+
             if abs(area) < 1:
                 logging.info("\nInvalid coordinates {} with area {} for image {}\n".format(coordinate, area, self.image_name))
                 continue
@@ -92,43 +107,61 @@ class GroundTruthGeneration:
 
         return np.array(validated_coordinates), np.array(validated_tags)
 
-    def Get_Score_Map(self, quad_coordinates, text_tags, scale):
+    def Get_Score_Geometry_Map(self, quad_coordinates, text_tags, scale):
         score_map = np.zeros((int(self.height * scale), int(self.width * scale), 1), dtype=np.float32)
         poly_mask = np.zeros((int(self.height * scale), int(self.width * scale), 1), dtype=np.uint8)
         training_mask = np.ones((int(self.height * scale), int(self.width * scale), 1), dtype=np.uint8)  # mask used during traning, to ignore some hard areas
+        geometry_map  = np.zeros((int(self.height * scale), int(self.width * scale), 8), dtype=np.float32)
+
+        polys = []
+        ignored_polys = []
 
         for i, item in enumerate(zip(quad_coordinates, text_tags)):
             coordinate = item[0]
             tag = item[1]
 
-            reference_length = [None, None, None, None]
-            for j in range(4):
-                reference_length[j] = min(np.linalg.norm(coordinate[j] - coordinate[(j + 1) % 4]), np.linalg.norm(coordinate[j] - coordinate[(j - 1) % 4]))
+            if tag:
+                ignored_polys.append(np.around(scale * coordinate).astype(np.int32))
+                continue
 
-            shrink_coordinates = self._Shrink_Coordinates(coordinate.copy(), reference_length).astype(np.int32)[np.newaxis, :, :]
-            fillPoly(score_map, shrink_coordinates, 1)
-            fillPoly(poly_mask, shrink_coordinates, i + 1)
+            #shrink_coordinates = self._Shrink_Coordinates(coordinate.copy().flatten(), reference_length).astype(np.int32)[np.newaxis, :, :]
+            shrink_coordinates = np.around(self._Shrink_Coordinates(scale * coordinate.copy().flatten())).astype(np.int32)
+            polys.append(shrink_coordinates)
+
+            poly_mask = np.zeros(score_map.shape[:-1], np.float32)
+            fillPoly(poly_mask, [shrink_coordinates], 1)
+
+            geometry_map[:, :, 0] += coordinate[0][0] * poly_mask
+            geometry_map[:, :, 1] += coordinate[0][1] * poly_mask
+            geometry_map[:, :, 2] += coordinate[1][0] * poly_mask
+            geometry_map[:, :, 3] += coordinate[1][1] * poly_mask
+            geometry_map[:, :, 4] += coordinate[2][0] * poly_mask
+            geometry_map[:, :, 5] += coordinate[2][1] * poly_mask
+            geometry_map[:, :, 6] += coordinate[3][0] * poly_mask
+            geometry_map[:, :, 7] += coordinate[3][1] * poly_mask
+
+            #fillPoly(poly_mask, shrink_coordinates, i + 1)
 
             # if the poly is too small, then ignore it during training
-            poly_h = min(np.linalg.norm(coordinate[0] - coordinate[3]), np.linalg.norm(coordinate[1] - coordinate[2]))
-            poly_w = min(np.linalg.norm(coordinate[0] - coordinate[1]), np.linalg.norm(coordinate[2] - coordinate[3]))
-            if min(poly_h, poly_w) < FLAGS.min_text_size:
-                fillPoly(training_mask, coordinate.astype(np.int32)[np.newaxis, :, :], 0)
-            if tag:
-                fillPoly(training_mask, coordinate.astype(np.int32)[np.newaxis, :, :], 0)
+            # poly_h = min(np.linalg.norm(coordinate[0] - coordinate[3]), np.linalg.norm(coordinate[1] - coordinate[2]))
+            # poly_w = min(np.linalg.norm(coordinate[0] - coordinate[1]), np.linalg.norm(coordinate[2] - coordinate[3]))
+            # if min(poly_h, poly_w) < FLAGS.min_text_size:
+            #     fillPoly(training_mask, coordinate.astype(np.int32)[np.newaxis, :, :], 0)
+            # if tag:
+            #     fillPoly(training_mask, coordinate.astype(np.int32)[np.newaxis, :, :], 0)
+        #
+        # print(self.image_name)
+        # cv2.imshow("Score", score_map)
+        # cv2.waitKey(0)
+        fillPoly(score_map, polys, 1)
+        fillPoly(training_mask, ignored_polys, 1)
 
-        return score_map, training_mask
-
-    def Get_Geometry_Map(self, quad_coordinates, text_tags, scale):
-        geometry_map  = np.zeros((int(self.height * scale), int(self.width * scale), 8), dtype=np.float32)
-        return geometry_map
+        #return np.moveaxis(score_map, 2, 0), np.moveaxis(training_mask, 2, 0), np.moveaxis(geometry_map, 2, 0)
+        return torch.Tensor(score_map).permute(2, 0, 1), torch.Tensor(training_mask).permute(2, 0, 1), torch.Tensor(geometry_map).permute(2, 0, 1)
 
     def Load_Geometry_Score_Maps(self, quad_coordinates, text_tags, scale=0.25):
-        ### FIX TEXT TAGS - make bool and fix validate coordinate output ### !!!!!!!!!!!!!!!!!
         quad_coordinates, text_tags = self._Validate_Coordinates(quad_coordinates, text_tags)
-
-        score_map, training_mask = self.Get_Score_Map(quad_coordinates, text_tags, scale)
-        geometry_map = self.Get_Geometry_Map(quad_coordinates, text_tags, scale)
+        return self.Get_Score_Geometry_Map(quad_coordinates, text_tags, scale)
 
 # class Dataset(data.Dataset):
 #     """

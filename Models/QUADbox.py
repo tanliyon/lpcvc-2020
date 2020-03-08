@@ -25,8 +25,12 @@ class QUADbox(nn.Module):
 
         return (score_map, geometry_map)
 
-def Output(merged_features):
-    quad = QUADbox()
-    logging.info("Output Layer\n")
-    score_map, geometry_map = quad.forward(merged_features)
-    return (score_map, geometry_map)
+class Output(nn.Module):
+    def __init__(self, trained=False):
+        super(Output, self).__init__()
+        self.quad = QUADbox()
+
+    def forward(self, merged_features):
+        logging.info("Output Layer\n")
+        score_map, geometry_map = self.quad.forward(merged_features)
+        return (score_map, geometry_map)

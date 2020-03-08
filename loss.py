@@ -12,13 +12,6 @@ class Loss(nn.Module):
         self.geometry_map_loss = None
         self.loss = None
 
-    def diceCoefficient(y_truth, y_predicted, training_mask):
-        eps = 1e-5
-        union = torch.sum(y_truth * training_mask) + torch.sum(y_predicted * training_mask) + eps
-        intersection = torch.sum(y_truth * y_predicted * training_mask)
-        loss = 1 - (2 * intersection / union)
-        return loss
-
     def compute_geometry_beta(self, y_truth_vertices):
 
         D = []
@@ -67,8 +60,6 @@ class Loss(nn.Module):
 
         return loss_of_geometry
 
-
-
     def compute_loss(self, Y_true_score, Y_pred_score, Y_true_geometry, Y_pred_geometry, smoothed_l1_loss_beta=1):
         """
         y_true_score, y_pred_score: [m, 1, 128, 128]
@@ -84,15 +75,21 @@ class Loss(nn.Module):
         self.loss = lambda_score * self.loss_of_score + lambda_geometry * self.loss_of_geometry
         return self.loss
 
+    def forward(self, score_map, predicted_score_map, geometry_map, predicted_geometry_map):
+        if torch.sum(geometry_map) < 1:
+            return torch.sum(predicted_score_map + predicted_geometry_map) * 0
+
+        loss = self.compute_loss(score_map, predicted_score_map, geometry_map, predicted_geometry_map)
+        return loss
+
 # test code
-"""
-loss_function = LossFunction()
-Y_true_score = torch.rand([2, 1, 128, 128])
-Y_pred_score = torch.rand([2, 1, 128, 128])
-Y_true_geometry = torch.rand([2, 8, 128, 128])
-Y_pred_geometry = torch.rand([2,8, 128, 128])
-loss = loss_function.compute_loss(Y_true_score, Y_pred_score, Y_true_geometry, Y_pred_geometry)
-print("Score Loss:", loss_function.loss_of_score)
-print("Geometry Loss:", loss_function.loss_of_geometry)
-print("Loss:", loss)
-"""
+if __name__ == '__main__':
+    loss_function = Loss()
+    Y_true_score = torch.rand([1, 128, 128])
+    Y_pred_score = torch.rand([1, 1, 128, 128])
+    Y_true_geometry = torch.rand([8, 128, 128])
+    Y_pred_geometry = torch.rand([1,8, 128, 128])
+    loss = loss_function(Y_true_score, Y_pred_score, Y_true_geometry, Y_pred_geometry)
+    print("Score Loss:", loss_function.loss_of_score)
+    print("Geometry Loss:", loss_function.loss_of_geometry)
+    print("Loss:", loss)

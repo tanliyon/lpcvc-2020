@@ -39,8 +39,12 @@ class Merge(nn.Module):
 
         return h5
 
-def Unet(features):
-    merge = Merge()
-    logging.info("Feature Merging Layer\n")
-    h = merge.forward(features[0], features[1], features[2], features[3])
-    return h
+class Unet(nn.Module):
+    def __init__(self, trained=False):
+        super(Unet, self).__init__()
+        self.merge = Merge()
+
+    def forward(self, features):
+        logging.info("Feature Merging Layer\n")
+        h = self.merge.forward(features[0], features[1], features[2], features[3])
+        return h

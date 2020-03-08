@@ -37,7 +37,7 @@ class TextLocalizationSet(Dataset):
     :attr self.transform: transform performed on the dataset
     """
 
-    def __init__(self, image_directory_path, annotation_directory_path, new_length, transform=None):
+    def __init__(self, image_directory_path, annotation_directory_path, new_length, transform=True):
         """
         :param train: boolean indicating if the data to be loaded is train or test set
         :param transform: transform performed on the dataset (default=None)
@@ -117,18 +117,18 @@ class TextLocalizationSet(Dataset):
 
             transcriptions.append(one_gt[-1])
 
-        sample = {'name': img_name, 'image': image, 'coords': np.array(total_coords, dtype=np.float32), 'transcription': transcriptions, 'bool': np.array(bool_tags, dtype=np.bool)}
+        sample = {'name': img_name, 'image': image, 'coords': np.array(total_coords, dtype=np.float32), 'transcription': transcriptions, 'bool': np.array(bool_tags, dtype=np.bool), 'score': None, 'mask': None, 'geometry': None}
 
         rescale = Rescale((self.new_length, self.new_length))
         sample = rescale.__call__(sample)
 
         groundtruth = GroundTruthGeneration(sample['name'], sample['image'])
-        groundtruth.Load_Geometry_Score_Maps(np.array(sample['coords'], dtype=np.float32), sample['bool'])
+        sample['score'], sample['mask'], sample['geometry'] = groundtruth.Load_Geometry_Score_Maps(np.array(sample['coords'], dtype=np.float32), sample['bool'])
 
         # perform transforms
         if self.transform:
-            transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=(0.5,0.5,0.5),std=(0.5,0.5,0.5))])
-            sample['image'] = self.transform(sample['image'])
+            tf = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=(0.5,0.5,0.5),std=(0.5,0.5,0.5))])
+            sample['image'] = tf(sample['image'])
 
         return sample
 
@@ -200,7 +200,7 @@ if __name__ == "__main__":
 
     # example usage
     dataset = TextLocalizationSet(imagePath, annotationPath, 256)
-
+    dataset.__getitem__(0)
     # print(dataset[0])
 
     # can use DataLoader now with this custom dataset

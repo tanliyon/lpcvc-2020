@@ -120,10 +120,14 @@ class Inception(nn.Module):
 
         return (f2, self.activation(f1))
 
-def PVAnet(inputs):
-    crelu = CRelu()
-    inception = Inception()
-    logging.info("Feature Extraction Layer\n")
-    f4, f3 = crelu.forward(inputs.unsqueeze(0))
-    f2, f1 = inception.forward(f3)
-    return (f1, f2, f3, f4)
+class PVAnet(nn.Module):
+    def __init__(self, trained=False):
+        super(PVAnet, self).__init__()
+        self.crelu = CRelu()
+        self.inception = Inception()
+
+    def forward(self, inputs):
+        logging.info("Feature Extraction Layer\n")
+        f4, f3 = self.crelu.forward(inputs.unsqueeze(0))
+        f2, f1 = self.inception.forward(f3)
+        return (f1, f2, f3, f4)
