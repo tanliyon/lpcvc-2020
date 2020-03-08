@@ -1,26 +1,11 @@
-import getopt
 import os
-import sys
 
 
-def main(argv):
-    in_file = ''
-    out_dir = ''
+def sampler(in_file='', out_dir=''):
 
     # Get program arguments
-    try:
-        opts, args = getopt.getopt(argv, "hi:o:", ["ifile="])
-    except getopt.GetoptError:
-        raise ValueError('usage: python3 iframe.py -i <infile> [-o <outdir>]')
-    for opt, arg in opts:
-        if opt in ("-i", "--ifile"):
-            in_file = arg
-        elif opt in ("-o", "--ofile"):
-            out_dir = arg
-
     if in_file == '':
-        raise ValueError('usage: python3 iframe.py -i <inputfile>')
-
+        raise ValueError('No input file provided.')
     if out_dir == '':
         out_dir = '../frames/frame%03d.png'
     else:
@@ -41,7 +26,3 @@ def main(argv):
     except OSError:
         pass
     return sorted(os.listdir('../frames/'))
-
-
-if __name__ == "__main__":
-    frame_list = main(sys.argv[1:])
