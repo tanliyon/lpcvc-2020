@@ -49,9 +49,6 @@ class Train:
                 state_dict = model.module.state_dict() if data_parallel else model.state_dict()
                 torch.save(state_dict, os.path.join(self.epoch_directory_path, 'model_epoch_{}.pth'.format(epoch + 1)))
 
-        for i, (name, image, _, _, _, score_map, training_mask, geometry_map) in enumerate(train_loader):
-            break
-
 """
 Testing and sample usage of functions
 """
