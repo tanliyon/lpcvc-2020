@@ -10,6 +10,20 @@ def does_file_exist(path):
     if not os.path.isfile(path):
         raise OSError("File path {} provided does not exist".format(path))
 
+def is_valid_text_file(path):
+    for file in path:
+        if file.lower().endswith(".txt"):
+            continue
+        else:
+            raise TypeError("File path {} provided is not a valid annotation file".format(file))
+
+def is_valid_image_file(path):
+    for file in path:
+        if file.lower().endswith((".png", ".jpg", ".jpeg")):
+            continue
+        else:
+            raise TypeError("File path {} provided is not a valid image file".format(file))
+
 def is_empty_coordinates(coordinates):
     if coordinates.shape[0] == 0:
         return True

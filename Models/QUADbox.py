@@ -5,7 +5,7 @@ import logging
 class QUADbox(nn.Module):
     def __init__(self):
         super(QUADbox, self).__init__()
-        self.scope = 512
+        self.scope = 256
         self.activation = nn.Sigmoid()
 
     def Generate_Map(self, h, in_channels, out_channels, stride=1):

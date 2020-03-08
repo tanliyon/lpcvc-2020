@@ -97,19 +97,21 @@ class GroundTruthGeneration:
             area = self._Calculate_Area(coordinate)
 
             if abs(area) < 1:
-                logging.info("\nInvalid coordinates {} with area {} for image {}\n".format(coordinate, area, self.image_name))
+                #logging.info("\nInvalid coordinates {} with area {} for image {}\n".format(coordinate, area, self.image_name))
                 continue
             if area > 0:
-                logging.info("\nCoordinates {} in wrong direction with area {} for image {}\n".format(coordinate, area, self.image_name))
+                #logging.info("\nCoordinates {} in wrong direction with area {} for image {}\n".format(coordinate, area, self.image_name))
                 coordinate = coordinate[(0, 3, 2, 1), :]
             validated_coordinates.append(coordinate)
             validated_tags.append(tag)
 
         return np.array(validated_coordinates), np.array(validated_tags)
 
-    def Get_Score_Geometry_Map(self, quad_coordinates, text_tags, scale):
+    def Load_Geometry_Score_Maps(self, quad_coordinates, text_tags, scale=0.25):
+        quad_coordinates, text_tags = self._Validate_Coordinates(quad_coordinates, text_tags)
+
         score_map = np.zeros((int(self.height * scale), int(self.width * scale), 1), dtype=np.float32)
-        poly_mask = np.zeros((int(self.height * scale), int(self.width * scale), 1), dtype=np.uint8)
+        #poly_mask = np.zeros((int(self.height * scale), int(self.width * scale), 1), dtype=np.uint8)
         training_mask = np.ones((int(self.height * scale), int(self.width * scale), 1), dtype=np.uint8)  # mask used during traning, to ignore some hard areas
         geometry_map  = np.zeros((int(self.height * scale), int(self.width * scale), 8), dtype=np.float32)
 
@@ -124,7 +126,6 @@ class GroundTruthGeneration:
                 ignored_polys.append(np.around(scale * coordinate).astype(np.int32))
                 continue
 
-            #shrink_coordinates = self._Shrink_Coordinates(coordinate.copy().flatten(), reference_length).astype(np.int32)[np.newaxis, :, :]
             shrink_coordinates = np.around(self._Shrink_Coordinates(scale * coordinate.copy().flatten())).astype(np.int32)
             polys.append(shrink_coordinates)
 
@@ -153,122 +154,11 @@ class GroundTruthGeneration:
         # print(self.image_name)
         # cv2.imshow("Score", score_map)
         # cv2.waitKey(0)
+
         fillPoly(score_map, polys, 1)
         fillPoly(training_mask, ignored_polys, 1)
 
-        #return np.moveaxis(score_map, 2, 0), np.moveaxis(training_mask, 2, 0), np.moveaxis(geometry_map, 2, 0)
         return torch.Tensor(score_map).permute(2, 0, 1), torch.Tensor(training_mask).permute(2, 0, 1), torch.Tensor(geometry_map).permute(2, 0, 1)
-
-    def Load_Geometry_Score_Maps(self, quad_coordinates, text_tags, scale=0.25):
-        quad_coordinates, text_tags = self._Validate_Coordinates(quad_coordinates, text_tags)
-        return self.Get_Score_Geometry_Map(quad_coordinates, text_tags, scale)
-
-# class Dataset(data.Dataset):
-#     """
-#     :description: Custom dataset class
-#
-#     :attr:        image_directory_path (str): path to image directory in train or test directory
-#                   annotation_directory_path (str): path to ground truth annotation directory in train or test directory
-#                   image_paths (list): list of all images in image directory
-#                   image_names (list): list of all image names in image directory
-#     """
-#     def __init__(self, image_directory_path, annotation_directory_path):
-#         """
-#         :param:       image_directory_path (str): path to image directory in train or test directory
-#                       annotation_directory_path (str): path to ground truth annotation directory in train or test directory
-#         """
-#         self.image_directory_path = image_directory_path
-#         self.annotation_directory_path = annotation_directory_path
-#         self.image_paths, self.image_names = self.Get_Images_Path_Name()
-#
-#
-#     def __getitem__(self, i):
-#         """
-#         :description: Gets the ground truth score map and geometry map of the image in question
-#
-#         :param:       i (int): index of image in question in the list of image paths
-#
-#         :return:      image (uint8 numpy array): image data (channel, height, width)
-#                       score_map (): ground truth score map of image
-#                       geometry_map (): ground truth geometry map of image
-#                       training_mask ():
-#         """
-#
-#         image = self.Load_Image(self.image_paths[i])
-#         quad_coordinates, text_tags = self.Load_Annotation(self.image_names[i])
-#         gt = GroundTruthGeneration(self.image_names[i], image)
-#         score_map, geometry_map, training_mask = gt.Load_Geometry_Score_Maps(quad_coordinates, text_tags)
-#         return image, score_map, geometry_map, training_mask
-#
-#
-#     def __len__(self):
-#         """
-#         :description: Gets number of images in train or test directory
-#
-#         :return:      (int): number of images in directory
-#         """
-#         return len(self.image_names)
-#
-#
-#     def Get_Images_Path_Name(self, mode="training"):
-#         """
-#         :description: Gets all image paths and image names from train or test directory
-#
-#         :return:      image_paths (list): sorted image paths in directory
-#                       image_names (list): sorted image names in directory
-#         """
-#         does_directory_exist(self.image_directory_path)
-#
-#         image_paths = []
-#         image_names = []
-#
-#         for extension in ["jpg", "png", "jpeg", "JPG"]:
-#             image_paths.extend(glob.glob(os.path.join(self.image_directory_path, "*.{}".format(extension))))
-#
-#         for i in range(0, len(image_paths)):
-#             image_names.append(image_paths[i].split("/")[-1])
-#
-#         logging.info("\nPreparing {} images for {}\n".format(len(image_paths), mode))
-#         return sorted(image_paths), sorted(image_names)
-#
-#
-#     def Load_Image(self, image_path):
-#         """
-#         :description: Loads the image from image file and makes it a numpy array
-#
-#         :param:       image_path (str): path of the image file in question
-#
-#         :return:      image (uint8 numpy array): image data (channel, height, width)
-#         """
-#         image = np.array(Image.open(image_path))    # type -> uint8
-#         return np.moveaxis(image, 2, 0)             # reverses order -> channel x height x width
-#
-#
-#     def Load_Annotation(self, image_name):
-#         """
-#         :description: Loads the ground truth coordinates of the text box and text labels from annotation file of image
-#
-#         :param:       image_name (str): name of the image in question
-#
-#         :return:      quad_coordinates (float32 numpy array): 8 coordinates of ground truth box
-#                       text_tags (bool numpy array): ground truth text labels
-#         """
-#         annotation_file = os.path.join(self.annotation_directory_path, "gt_" + image_name.split(".")[0] + ".txt")
-#         does_file_exist(annotation_file)
-#
-#         quad_coordinates = []
-#         text_tags = []
-#
-#         with open(annotation_file, "r") as annotation:
-#             reader = csv.reader(annotation)
-#             for line in reader:
-#                 line = [i.strip("\ufeff").strip("\xef\xbb\xbf") for i in line]
-#                 x1, y1, x2, y2, x3, y3, x4, y4 = list(map(int, line[:8]))
-#                 quad_coordinates.append([[x1, y1], [x2, y2], [x3, y3], [x4, y4]])
-#                 text_tags.append(True) if line[-1] == "*" or line[-1] == "###" else text_tags.append(False)
-#
-#         return np.array(quad_coordinates, dtype=np.float32), np.array(text_tags, dtype=np.bool)
-
 
 """
 Testing and sample usage of functions
