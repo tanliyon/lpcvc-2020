@@ -51,8 +51,11 @@ def string_to_index(labels):
 				index.append(ord(char)-ord('0') + 1)
 			elif char >= 'a' and char <='z':
 				index.append(ord(char)-ord('a') + 11)
-			else:
+			elif char >= 'A' and char <='Z':
 				index.append(ord(char)-ord('A') + 37)
+			else:
+				# Insert blank if the character is space
+				index.append(0)
 			prev_char = char
 	return torch.IntTensor(index)
 
@@ -64,8 +67,10 @@ def val_loss(net, loader):
         img, labels = data
 
         img = img[0]
+        labels_ind = string_to_index(labels)
+        target_length = torch.IntTensor([len(labels_ind)])
 
-        while (img.size[0] < len(labels[0])*30):
+        while (img.size[0] < (len(labels_ind)*PIX_P_PRED)):
         	img = transforms.functional.resize(img, (int(img.size[1]*1.1), int(img.size[0]*1.1)))
 
         img = to_tensor(img)
@@ -74,14 +79,8 @@ def val_loss(net, loader):
 
         preds = net(img)
         input_length = torch.IntTensor([preds.shape[0]])
-        target_length = torch.IntTensor([len(label) for label in labels])
-        labels_ind = string_to_index(labels)
 
-        try:
-        	loss = criterion(preds, labels_ind.cpu(), input_length.cpu(), target_length.cpu())
-        except:
-        	loss = criterion(preds, labels_ind.cuda(), input_length.cuda(), target_length.cuda())
-
+        loss = criterion(preds.cpu(), labels_ind.cpu(), input_length.cpu(), target_length.cpu())
         running_loss += loss
 
     return running_loss/i
@@ -129,6 +128,7 @@ if __name__ == "__main__":
         	prev_epoch = int(args.load_model.split('.')[0].split('/')[1])
 
     running_loss=0
+    print(val_loss(net, test_loader))
 
     for i in range(args.epoch):
 	    for j, data in enumerate(train_loader):
@@ -158,11 +158,7 @@ if __name__ == "__main__":
 	        preds = net(img)
 	        input_length = torch.IntTensor([preds.shape[0]])
 
-	        try:
-	        	loss = criterion(preds, labels_ind.cpu(), input_length.cpu(), target_length.cpu())
-	        except:
-	        	loss = criterion(preds, labels_ind.cuda(), input_length.cuda(), target_length.cuda())
-
+	        loss = criterion(preds.cpu(), labels_ind.cpu(), input_length.cpu(), target_length.cpu())
 	        loss.backward()
 
 	        nn.utils.clip_grad_norm(net.parameters(), 10.0) #Clip gradient temp
@@ -184,13 +180,6 @@ if __name__ == "__main__":
 	            print(net.decode_seq(preds))
 	            print(labels)
 
-	        if (math.isinf(loss)):
-	        	print(labels)
-	        	print(net.decode_seq(preds))
-	        	print(labels_ind)
-	        	print("\n")
-	        	break
-
 	    if args.debug:
         	break
 
@@ -200,12 +189,7 @@ if __name__ == "__main__":
 	    lr_scheduler.step()
 
 	    # Run validation on test image (FOR NOW)
-	    # print(f"Validation Loss: {val_loss(net, test_loader)}\n")
-	    # net.train()
+	    print("Validation Loss: ")
+	    print(val_loss(net, test_loader))
+	    net.train()
 
-
-
-
-# Notes:
-# Number of prediction = width of conv output
-# 1 prediction = 30 pixel wide

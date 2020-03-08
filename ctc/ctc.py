@@ -15,14 +15,32 @@ from WordRecognitionSet import collate
 from WordRecognitionSet import WordRecognitionSet
 from model import CRNN
 
-if __name__ == "__main__":
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# Model's weights file relative path
+MODEL_PATH = "228.pth"
 
-	#TODO: Handle input of varying sizes. For now the height needs to be 32
-    net = CRNN()
-    net.to(device)
+def ctc_recognition(frames, bboxes):
+	device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+	transform = transforms.compose([
+		transforms.Resize((32, 300)),
+		transforms.ToTensor()])
+	load_path = os.path.join(os.getcwd(), MODEL_PATH)
 
-    cap = cv2.VideoCapture(0)
+	net = CRNN()
+	net.decode = True
+	net.to(device)
+	net.load_state_dict(torch.load(load_path))
+	preds = []
 
-	if cap.isOpened():
-		cv2.namedWindow("Word Recognize", cv2.WINDOW_AUTOSIZE)
+	for frame in frames:
+		words = []
+		for box in bboxes:
+			tl_x, tl_y, tr_x, tr_y, br_x, br_y, bl_x, bl_y = box
+			top = min(tl_y, tr_y)
+			left = min(tl_x, bl_x)
+			height = max(bl_y, br_y) - min(tl_y, tr_y)
+			width = max(tr_x, br_x) - min(tl_x, bl_x)
+			words.append(transforms.functional.crop(frame, top, left, height, width))
+		transform(words)
+		preds.append(net(img))
+
+	return preds
