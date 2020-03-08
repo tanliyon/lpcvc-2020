@@ -38,7 +38,6 @@ def main(argv):
     except OSError:
         pass
     frame_count = sum([len(files) for r, d, files in os.walk('./mv/')]) - 1
-    print(frame_count)
     for i in range(frame_count):
         os.system(f'awk \'{{print $1}}\' mv/frame{i+1}.txt | ./calculate_motion >> motion_per_frame.txt')
         os.system(f'awk \'{{print $2}}\' mv/frame{i+1}.txt | ./calculate_motion >> motion_per_frame.txt')
