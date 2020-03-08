@@ -40,9 +40,8 @@ def main(argv):
         os.remove('frames/.DS_Store')
     except OSError:
         pass
-    return list(range(1, len(os.listdir('frames/')) + 1))
+    return sorted(os.listdir('../frames/'))
 
 
 if __name__ == "__main__":
     frame_list = main(sys.argv[1:])
-    print(frame_list)
