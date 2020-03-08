@@ -7,6 +7,9 @@ mkdir mv
 # entire pipeline
 python3 iframe.py -i <infile>
 
+# just iframes
+python3 iframes_no_mv.py -i <infile>
+
 # just motion vectors
 ./extract_mv <infile>
 ```
