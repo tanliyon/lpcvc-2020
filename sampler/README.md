@@ -4,11 +4,11 @@
 ./compile
 mkdir mv
 
-# entire pipeline
+# entire pipeline, command line
 python3 iframe.py -i <infile>
 
-# just iframes
-python3 iframes_no_mv.py -i <infile>
+# just iframes, import iframes_no_mv.py
+frames = sampler(infile)
 
 # just motion vectors
 ./extract_mv <infile>
