@@ -40,6 +40,7 @@ static int decode_packet(const AVPacket *pkt)
                 const AVMotionVector *mvs = (const AVMotionVector *)sd->data;
                 for (i = 0; i < sd->size / sizeof(*mvs); i++) {
                     const AVMotionVector *mv = &mvs[i];
+                    //printf("\nExtracting frame %d", video_frame_count);
                     fprintf(file, "%4d %4d %4d %4d\n",
                             abs(mv->motion_x),
                             abs(mv->motion_y),
@@ -160,10 +161,14 @@ int main(int argc, char **argv)
                       fmt_ctx->streams[video_stream_idx]->codec->time_base.num )*
                      video_dec_ctx->ticks_per_frame;
 
-        //printf("\nseeking to frame %d", pcktPts);
+        printf("\nLast frame extracted = %d", video_frame_count);
+        printf("\nSeeking to frame %d", pcktPts);
+        printf("\nTarget timestamp = %d", target);
+
         avformat_seek_file(fmt_ctx, video_stream_idx, 0, target, target, AVSEEK_FLAG_ANY);
 
-        //char c = getchar();
+        char c = getchar();
+
         av_packet_unref(&pkt);
         if (ret < 0)
             break;
