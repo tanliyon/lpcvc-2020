@@ -39,6 +39,7 @@
 - After running these scripts, manually copy/cut paste the reformatted files to original base dataset directory for merging :(
 ### COCO Text Words Dataset
 - Almost identical to the Word Recognition Set of ICDAR 2015 but larger and more balanced
+- https://rrc.cvc.uab.es/?ch=5 -> Download Menu Tab -> Under 'Cropped words dataset' section
 - Train: 42,618 images with ground truth
 - Val: 9,896 images with ground truth
 - test: 9,837 images but no ground truth (no good so don't use test set)
