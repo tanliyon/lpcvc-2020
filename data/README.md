@@ -41,4 +41,4 @@
 - Almost identical to the Word Recognition Set of ICDAR 2015 but larger and more balanced
 - Train: 42,618 images with ground truth
 - Val: 9,896 images with ground truth
-- test: 9, images but no ground truth (no good so don't use test set)
+- test: 9,837 images but no ground truth (no good so don't use test set)
