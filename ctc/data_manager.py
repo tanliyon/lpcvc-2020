@@ -64,6 +64,17 @@ class syn_text(Dataset):
             print(e)
             print("error loading image or text loading error")
             img, text = self.__getitem__(random.randint(1, len(self.gt) - 1))
+
+        count = 0
+        prev = ""
+        for c in text:
+        	if c == prev:
+        		count += 1
+        	prev = c
+
+        if len(text) + count > 19:
+        	print(text)
+        	return self.__getitem__(random.randint(1, len(self.gt) - 1))
         return (img, text)
 
 
