@@ -19,22 +19,6 @@ def sorted_alphanumeric(data):
     return sorted(data, key=alphanum_key)
 
 
-def load_coords(filename):
-    """
-    This function loads data from ground truth coordinates data from text files
-    :param filename: name of the file holding the data
-    :return: return extracted data as either a list of list
-    """
-    result = []
-    with open(filename, "r") as infile:
-        file_data = infile.readlines()
-
-    for i in range(len(file_data)):
-        new_item = file_data[i].split(",")[1:]  # first item is always image name so take out
-        result.append(new_item)
-    return result
-
-
 def load_transcription(filename, images):
     """
     This function loads data from ground truth transcription from text files
