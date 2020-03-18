@@ -16,7 +16,7 @@ from WordRecognitionSet import WordRecognitionSet
 from model import CRNN
 
 # Model's weights file relative path
-MODEL_PATH = "228.pth"
+MODEL_PATH = "ctc.pth"
 
 def ctc_recognition(frames, bboxes):
 	device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

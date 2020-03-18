@@ -20,7 +20,7 @@ class CRNN(nn.Module):
         # except final avgpool and fc layers
         self.feature_extractor = getattr(models, backend)(pretrained=True)
         self.cnn = nn.Sequential(
-            self.feature_extractor.conv1,
+            nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3, bias=False), # Modification to accept grayscale img
             self.feature_extractor.bn1,
             self.feature_extractor.relu,
             self.feature_extractor.maxpool,
@@ -28,7 +28,7 @@ class CRNN(nn.Module):
             self.feature_extractor.layer2,
             self.feature_extractor.layer3,
             self.feature_extractor.layer4,
-            nn.AdaptiveMaxPool2d((1, None))
+            nn.AdaptiveMaxPool2d((1, None)) # Make sure the height has dimension 1 before RNN
         )
 
         # Create the rnn model
