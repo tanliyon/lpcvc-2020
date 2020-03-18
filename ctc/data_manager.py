@@ -73,7 +73,6 @@ class syn_text(Dataset):
         	prev = c
 
         if len(text) + count > 19:
-        	print(text)
         	return self.__getitem__(random.randint(1, len(self.gt) - 1))
         return (img, text)
 

@@ -117,12 +117,12 @@ if __name__ == "__main__":
     if not os.path.isdir(save_dir):
     	os.mkdir(save_dir)
 
-    train_data = syn_text("annotation_train.txt", "/local/b/cam2/data/MKSynth/mnt/ramdisk/max/90kDICT32px", transform)
+    train_data = syn_text("annotation_train.txt", "E:\\cam2\\lpcvc-2020\\ctc\\mnt\\ramdisk\\max\\90kDICT32px", transform)
     train_loader = DataLoader(train_data, batch_size=args.batch_size,
-                             shuffle=False, num_workers=1
+                             shuffle=True, num_workers=1
                              )
 
-    val_data = syn_text("annotation_val.txt", "/local/b/cam2/data/MKSynth/mnt/ramdisk/max/90kDICT32px", transform)
+    val_data = syn_text("annotation_val.txt", "E:\\cam2\\lpcvc-2020\\ctc\\mnt\\ramdisk\\max\\90kDICT32px", transform)
     val_loader = DataLoader(val_data, batch_size=args.batch_size,
                              shuffle=True, num_workers=1
                              )
@@ -144,6 +144,9 @@ if __name__ == "__main__":
 
 	        loss = criterion(preds.cpu(), labels_ind.cpu(), input_length.cpu(), target_length.cpu())
 	        loss.backward()
+
+	        print(loss)
+	        print(labels)
 
 	        nn.utils.clip_grad_norm(net.parameters(), 10.0) #Clip gradient temp
 	        optimizer.step()
