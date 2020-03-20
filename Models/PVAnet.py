@@ -128,6 +128,6 @@ class PVAnet(nn.Module):
 
     def forward(self, inputs):
         logging.info("Feature Extraction Layer\n")
-        f4, f3 = self.crelu.forward(inputs.unsqueeze(0))
-        f2, f1 = self.inception.forward(f3)
+        f4, f3 = self.crelu(inputs.unsqueeze(0))
+        f2, f1 = self.inception(f3)
         return (f1, f2, f3, f4)

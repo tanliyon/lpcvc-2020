@@ -32,5 +32,5 @@ class Output(nn.Module):
 
     def forward(self, merged_features):
         logging.info("Output Layer\n")
-        score_map, geometry_map = self.quad.forward(merged_features)
+        score_map, geometry_map = self.quad(merged_features)
         return (score_map, geometry_map)

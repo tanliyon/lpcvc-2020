@@ -23,10 +23,10 @@ def detection(frames_path):
         box = detect(score_map, geometry_map)
         frames.append(frame)
         boxes.append(box)
-        # plot_img = plot_boxes(torchvision.transforms.ToPILImage()(inputs), boxes)
+        # plot_img = plot_boxes(torchvision.transforms.ToPILImage()(input), boxes)
         # plot_img.show()
 
     return frames, boxes
 
 if __name__ == '__main__':
-    detection("./Samples")
+    detection("./Samples/")

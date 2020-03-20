@@ -20,7 +20,7 @@ class GroundTruthGeneration:
     def __init__(self, image_name, image):
         self.image_name = image_name
         self.image = image
-        self.height, self.width, _ = image.shape
+        self.height, self.width = image.shape
 
     def _Calculate_Area(self, quad_coordinates):
         edge = [(quad_coordinates[1][0] - quad_coordinates[0][0]) * (quad_coordinates[1][1] + quad_coordinates[0][1]),
@@ -166,7 +166,7 @@ Testing and sample usage of functions
 if __name__ == '__main__':
     imagePath = "./Dataset/Train/TrainImages/"
     annotationPath = "./Dataset/Train/TrainTruth/"
-    dataset = Dataset(imagePath, annotationPath)
+    dataset = GroundTruthGeneration(imagePath, annotationPath)
     dataset.__getitem__(0)
 
     # imagePaths, imageNames = dataset.getImagesPathName()

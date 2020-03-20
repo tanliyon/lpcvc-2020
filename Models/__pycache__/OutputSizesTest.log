@@ -1,0 +1,1532 @@
+INFO:root:
+Started
+INFO:root:Image #0
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 180, 320])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 45, 80])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 45, 80])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 23, 40])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 12, 20])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 6, 10])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 6, 10])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 12, 20])
+
+INFO:root:
+Started
+INFO:root:Image #0
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 320, 180])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 80, 45])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 80, 45])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 40, 23])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 20, 12])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 10, 6])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 10, 6])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 20, 12])
+
+INFO:root:
+Started
+INFO:root:Image #0
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 180, 320])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 45, 80])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 45, 80])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 23, 40])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 12, 20])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 6, 10])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 6, 10])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 12, 20])
+
+INFO:root:
+Started
+INFO:root:Image #0
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 180, 320])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 45, 80])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 45, 80])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 23, 40])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 12, 20])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 6, 10])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 6, 10])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 12, 20])
+
+INFO:root:
+Started
+INFO:root:Image #0
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 192, 320])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 48, 80])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 48, 80])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 24, 40])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 12, 20])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 6, 10])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 6, 10])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 12, 20])
+
+INFO:root:
+h3 dimensions after second merge: [1, channels, height, width] = torch.Size([1, 64, 24, 40])
+
+INFO:root:
+h4 dimensions after third merge: [1, channels, height, width] = torch.Size([1, 32, 48, 80])
+
+INFO:root:
+h5 dimensions after final convolution: [1, channels, height, width] = torch.Size([1, 32, 48, 80])
+
+INFO:root:Output Layer
+
+INFO:root:
+Input h5 dimensions: [1, channels, height, width] = torch.Size([1, 32, 48, 80])
+
+INFO:root:
+Score map dimensions: [1, channels, height, width] = torch.Size([1, 1, 48, 80])
+
+INFO:root:Score map: tensor([[[[0.5874, 0.6834, 0.6990,  ..., 0.6233, 0.6325, 0.6328],
+          [0.5237, 0.5626, 0.5759,  ..., 0.5792, 0.5914, 0.6421],
+          [0.5991, 0.5669, 0.5570,  ..., 0.6059, 0.6119, 0.6464],
+          ...,
+          [0.6034, 0.6017, 0.5415,  ..., 0.6026, 0.7129, 0.7468],
+          [0.5947, 0.5598, 0.4802,  ..., 0.5914, 0.6683, 0.7301],
+          [0.6430, 0.5390, 0.4940,  ..., 0.6183, 0.6443, 0.6330]]]],
+       grad_fn=<SigmoidBackward>)
+INFO:root:
+Geometry map dimensions: [1, channels, height, width] = torch.Size([1, 8, 48, 80])
+
+INFO:root:Geometry map: tensor([[[[124.9436, 137.1774, 143.2014,  ..., 140.8205, 139.3072, 140.3956],
+          [132.3041, 137.1753, 139.3583,  ..., 147.0101, 141.7353, 144.6076],
+          [138.2225, 121.4241, 125.4396,  ..., 148.1532, 143.5621, 143.3035],
+          ...,
+          [139.6760, 141.6150, 138.7730,  ..., 127.3057, 144.4181, 161.9003],
+          [137.6285, 145.9022, 144.2321,  ..., 146.4081, 144.3389, 168.1859],
+          [136.3319, 142.2960, 136.3107,  ..., 107.8661, 135.0074, 147.9391]],
+
+         [[120.8130, 132.3331, 128.5318,  ..., 124.5563, 123.8592, 117.1916],
+          [123.4321, 134.9509, 120.7701,  ..., 117.2071, 124.5198, 127.4864],
+          [119.8899, 138.1367, 120.1369,  ..., 116.0055, 121.6292, 126.9719],
+          ...,
+          [132.3625, 138.5757, 129.6953,  ..., 158.2399, 177.3966, 168.8274],
+          [116.4814, 135.7967, 125.9928,  ..., 119.0619, 133.3569, 153.5890],
+          [112.3545, 115.8206, 119.4820,  ..., 116.2821, 126.2301, 118.2797]],
+
+         [[113.0922, 131.8643, 144.4158,  ..., 127.2558, 123.7054, 133.5205],
+          [117.4384, 137.1135, 141.3558,  ..., 127.8609, 112.9148, 123.5105],
+          [132.6746, 133.5153, 138.1643,  ..., 123.2062, 117.2677, 123.1114],
+          ...,
+          [133.8233, 127.9188, 120.9031,  ..., 109.7799, 105.7044, 111.6922],
+          [141.2501, 129.9874, 125.5696,  ..., 124.2381, 127.4315, 106.2908],
+          [124.8931, 137.9179, 123.6209,  ..., 116.6483, 139.5794, 137.1334]],
+
+         ...,
+
+         [[138.5337, 142.4955, 156.9817,  ..., 131.4213, 131.8763, 135.2441],
+          [133.3443, 131.1816, 132.2522,  ..., 125.3941, 140.6000, 138.3381],
+          [133.7601, 145.7344, 143.6172,  ..., 121.9566, 131.3038, 139.6689],
+          ...,
+          [134.5865, 127.2403, 136.7641,  ..., 150.2528, 142.0680, 142.1303],
+          [133.0187, 131.6723, 133.7758,  ..., 141.0213, 125.4745, 133.4151],
+          [120.4204, 121.2660, 124.5434,  ..., 144.8575, 131.8381, 132.3470]],
+
+         [[125.2842, 131.4513, 134.7901,  ..., 135.1071, 125.7382, 124.9379],
+          [122.7408, 134.1189, 136.2769,  ..., 138.1988, 122.9163, 128.7257],
+          [127.4347, 135.3801, 133.6272,  ..., 136.8907, 132.5168, 133.8088],
+          ...,
+          [134.2969, 135.5480, 133.7475,  ...,  96.9249, 104.8063,  97.4523],
+          [126.2074, 130.2776, 142.6988,  ...,  89.0658, 104.6236, 102.3483],
+          [121.6656, 137.8051, 138.1206,  ...,  98.1350, 114.6491, 115.9095]],
+
+         [[146.0181, 148.8438, 157.6788,  ..., 145.0535, 149.8846, 147.4867],
+          [141.1829, 148.3327, 152.3835,  ..., 147.1453, 162.0275, 154.2337],
+          [141.1687, 142.5759, 147.1461,  ..., 154.2990, 161.2574, 155.6501],
+          ...,
+          [144.3849, 149.7882, 142.5131,  ..., 165.7912, 145.1937, 171.8250],
+          [144.5739, 136.0867, 133.5308,  ..., 149.5421, 141.8987, 145.8670],
+          [160.6933, 144.3780, 132.3171,  ..., 176.5996, 164.2630, 159.4737]]]],
+       grad_fn=<MulBackward0>)
+INFO:root:-------------------------------------------------
+INFO:root:Image #1
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 192, 320])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 48, 80])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 48, 80])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 24, 40])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 12, 20])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 6, 10])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 6, 10])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 12, 20])
+
+INFO:root:
+h3 dimensions after second merge: [1, channels, height, width] = torch.Size([1, 64, 24, 40])
+
+INFO:root:
+h4 dimensions after third merge: [1, channels, height, width] = torch.Size([1, 32, 48, 80])
+
+INFO:root:
+h5 dimensions after final convolution: [1, channels, height, width] = torch.Size([1, 32, 48, 80])
+
+INFO:root:Output Layer
+
+INFO:root:
+Input h5 dimensions: [1, channels, height, width] = torch.Size([1, 32, 48, 80])
+
+INFO:root:
+Score map dimensions: [1, channels, height, width] = torch.Size([1, 1, 48, 80])
+
+INFO:root:Score map: tensor([[[[0.4732, 0.3771, 0.3778,  ..., 0.5736, 0.5595, 0.4919],
+          [0.4616, 0.4538, 0.4886,  ..., 0.4650, 0.4361, 0.5071],
+          [0.4896, 0.5130, 0.5639,  ..., 0.4268, 0.4971, 0.4912],
+          ...,
+          [0.4467, 0.4395, 0.4422,  ..., 0.4944, 0.5466, 0.5388],
+          [0.4717, 0.4367, 0.4812,  ..., 0.4581, 0.5278, 0.5089],
+          [0.4791, 0.4634, 0.4882,  ..., 0.4555, 0.5029, 0.4750]]]],
+       grad_fn=<SigmoidBackward>)
+INFO:root:
+Geometry map dimensions: [1, channels, height, width] = torch.Size([1, 8, 48, 80])
+
+INFO:root:Geometry map: tensor([[[[139.4012, 148.1692, 142.8048,  ..., 129.1709, 122.8097, 128.4276],
+          [128.2909, 139.7286, 141.9678,  ..., 112.0791, 104.7409, 131.5463],
+          [130.1464, 143.3463, 146.4051,  ..., 124.3379, 113.2147, 115.9237],
+          ...,
+          [122.2311, 113.8582, 111.3041,  ..., 120.5602, 117.5321, 139.1561],
+          [119.1869, 112.4999, 115.0046,  ..., 124.7951, 128.8287, 131.7532],
+          [130.0695, 132.5975, 128.9013,  ..., 120.5444, 121.5067, 131.6967]],
+
+         [[137.9521, 139.1591, 125.3636,  ..., 127.6047, 121.7321, 151.8994],
+          [143.3879, 132.5485, 139.7297,  ..., 125.4544, 137.3584, 159.8812],
+          [137.9133, 138.9922, 132.1468,  ..., 118.9141, 120.4673, 146.9900],
+          ...,
+          [130.5642, 128.6724, 134.5703,  ..., 124.8912, 106.1771, 148.0246],
+          [126.7846, 124.9157, 136.4378,  ..., 118.3119, 113.9690, 141.9994],
+          [127.7384, 131.3194, 130.1815,  ..., 128.0311, 121.5500, 144.7195]],
+
+         [[117.4283, 119.6816, 100.3668,  ..., 111.7646, 102.4066, 112.6367],
+          [119.3810, 114.9347, 106.9285,  ..., 134.0433, 117.4812, 118.2868],
+          [128.8576, 127.2241, 133.0965,  ..., 128.0060, 112.7310, 119.3076],
+          ...,
+          [118.7174, 124.7099, 123.8241,  ..., 108.2998, 117.7241, 125.3745],
+          [118.2597, 131.9500, 139.3684,  ..., 115.1967, 119.4403, 125.3594],
+          [123.8851, 115.0925, 102.9054,  ..., 101.3414, 109.1671, 112.8946]],
+
+         ...,
+
+         [[140.7898, 144.2614, 167.6656,  ..., 144.7611, 156.0114, 118.3007],
+          [120.9557, 133.0198, 137.3252,  ..., 127.4721, 112.7287, 118.3648],
+          [110.8832, 101.4904, 142.0121,  ..., 139.0254, 127.9637, 134.7998],
+          ...,
+          [114.2226, 116.6998, 124.0714,  ..., 121.3682, 143.8137, 113.1928],
+          [133.6729, 129.0742, 118.3921,  ..., 122.1956, 131.1199, 115.4383],
+          [119.7556, 131.6425, 109.2456,  ..., 116.9752, 124.0775, 112.9677]],
+
+         [[ 96.5829,  86.9731, 104.0399,  ..., 100.1065,  94.7583, 117.6740],
+          [114.5686, 106.6296, 124.6634,  ...,  94.1350, 100.2612, 110.7632],
+          [118.4125, 116.6723, 110.6254,  ..., 104.6754, 106.8237, 125.8324],
+          ...,
+          [120.4569, 114.9379,  98.6010,  ...,  98.5536,  83.0030, 114.9062],
+          [108.8009,  97.5638, 100.7718,  ..., 111.8613,  91.4316, 107.0308],
+          [107.9895, 109.7647,  94.2309,  ..., 109.5412, 112.5890,  91.8011]],
+
+         [[128.8732, 142.2633, 172.5825,  ..., 133.9304, 138.0687, 131.6363],
+          [138.7952, 130.9066, 160.0784,  ..., 132.3120, 150.2660, 140.6445],
+          [129.1556, 130.9064, 141.7768,  ..., 142.5024, 139.0139, 126.2868],
+          ...,
+          [124.8669, 141.0189, 144.9447,  ..., 131.1521, 123.5736, 135.9973],
+          [117.9984, 133.7890, 134.3246,  ..., 128.5371, 123.6117, 133.8763],
+          [125.9703, 128.2491, 126.6138,  ..., 114.7394, 111.5937, 128.8459]]]],
+       grad_fn=<MulBackward0>)
+INFO:root:-------------------------------------------------
+INFO:root:Finished
+
+INFO:root:
+Started
+INFO:root:Image #0
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 126, 224])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 32, 56])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 16, 28])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 8, 14])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 8, 14])
+
+INFO:root:
+h3 dimensions after second merge: [1, channels, height, width] = torch.Size([1, 64, 16, 28])
+
+INFO:root:
+h4 dimensions after third merge: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+h5 dimensions after final convolution: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:Output Layer
+
+INFO:root:
+Input h5 dimensions: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+Score map dimensions: [1, channels, height, width] = torch.Size([1, 1, 32, 56])
+
+INFO:root:Score map: tensor([[[[0.5855, 0.6028, 0.6069,  ..., 0.5210, 0.5381, 0.5122],
+          [0.5695, 0.5550, 0.5116,  ..., 0.5131, 0.5318, 0.5115],
+          [0.5821, 0.5893, 0.5314,  ..., 0.5319, 0.5258, 0.5333],
+          ...,
+          [0.5414, 0.5459, 0.5392,  ..., 0.6812, 0.6043, 0.5854],
+          [0.5351, 0.5774, 0.5708,  ..., 0.8040, 0.7892, 0.7049],
+          [0.5219, 0.5600, 0.5120,  ..., 0.6833, 0.6354, 0.5941]]]],
+       grad_fn=<SigmoidBackward>)
+INFO:root:
+Geometry map dimensions: [1, channels, height, width] = torch.Size([1, 8, 32, 56])
+
+INFO:root:Geometry map: tensor([[[[165.5193, 184.1052, 184.1262,  ..., 141.4371, 144.8522, 148.0619],
+          [152.5566, 138.2076, 142.6711,  ..., 143.5523, 144.6856, 146.7232],
+          [149.8988, 130.4739, 150.4551,  ..., 140.8079, 139.4327, 149.3662],
+          ...,
+          [132.3427, 137.9914, 147.5220,  ..., 184.9067, 174.3085, 140.6241],
+          [135.5412, 135.6931, 134.5744,  ..., 144.7336, 148.7591, 143.7771],
+          [140.3258, 146.9519, 152.7413,  ..., 155.2209, 142.8231, 166.5805]],
+
+         [[127.0956, 137.9723, 123.6159,  ..., 133.4915, 127.4434, 134.6413],
+          [106.3957, 110.7069, 104.3862,  ..., 120.2994, 128.2744, 129.6183],
+          [102.4029, 113.4169, 117.9188,  ..., 130.1085, 132.5264, 128.9548],
+          ...,
+          [121.5448, 141.6433, 155.8427,  ..., 182.8196, 151.5437, 105.5622],
+          [119.6885, 141.1424, 154.3228,  ..., 184.1268, 186.9376, 168.2650],
+          [136.4046, 144.7450, 141.5354,  ..., 151.5571, 140.5879, 134.9940]],
+
+         [[154.8021, 157.6154, 147.9134,  ..., 149.9854, 146.1597, 151.2926],
+          [167.9663, 149.9375, 159.6938,  ..., 151.4152, 148.9061, 152.6172],
+          [158.9135, 153.0961, 153.0028,  ..., 140.9738, 146.6017, 148.0032],
+          ...,
+          [167.1821, 157.8480, 155.7170,  ..., 158.5013, 173.5725, 162.3374],
+          [160.6080, 156.0483, 150.5893,  ..., 168.6497, 174.6213, 193.3507],
+          [143.6545, 145.8970, 148.7526,  ..., 132.9264, 149.9892, 173.1892]],
+
+         ...,
+
+         [[124.1119, 130.9432, 124.9173,  ..., 113.0982, 119.9867, 119.5094],
+          [129.6458, 126.8642, 133.5411,  ..., 119.9944, 118.4062, 130.7316],
+          [143.8282, 137.1413, 141.0317,  ..., 121.2124, 128.1682, 128.3618],
+          ...,
+          [115.9285, 126.8951, 132.8964,  ...,  93.9537, 111.2474, 108.9960],
+          [125.5344, 128.8317, 130.1222,  ..., 102.5432,  87.4385, 112.0263],
+          [125.4671, 139.4289, 130.4008,  ..., 112.1465, 122.2367, 107.3091]],
+
+         [[103.1579,  95.7755, 103.1665,  ..., 125.9346, 119.9820, 122.3909],
+          [ 92.7385, 105.5769,  96.5864,  ..., 125.2162, 115.0323, 120.4731],
+          [104.5657, 115.6328, 119.3259,  ..., 129.9714, 115.1310, 117.7343],
+          ...,
+          [131.0358, 107.6643, 106.3488,  ..., 148.4749, 142.4823,  99.7625],
+          [127.7675, 109.2134, 112.2321,  ..., 169.2246, 158.3026, 139.9368],
+          [129.7745, 121.9696, 117.9148,  ..., 139.5931, 117.2356,  99.6300]],
+
+         [[116.5632, 115.9762, 115.5182,  ..., 114.5330, 101.4920, 115.4548],
+          [128.1333, 121.6145, 135.2058,  ..., 116.7205, 108.1280, 123.9853],
+          [121.8906, 127.9020, 132.3003,  ..., 115.7226, 105.7030, 115.1307],
+          ...,
+          [111.3439, 103.8517, 123.3847,  ...,  88.1768,  95.5934,  90.2997],
+          [112.1256, 113.0451, 119.0607,  ...,  74.3982,  70.0117,  77.3567],
+          [110.1122, 122.2604, 129.1100,  ...,  70.4952,  89.5727,  79.5625]]]],
+       grad_fn=<MulBackward0>)
+INFO:root:-------------------------------------------------
+INFO:root:Image #1
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 126, 224])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 32, 56])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 16, 28])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 8, 14])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 8, 14])
+
+INFO:root:
+h3 dimensions after second merge: [1, channels, height, width] = torch.Size([1, 64, 16, 28])
+
+INFO:root:
+h4 dimensions after third merge: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+h5 dimensions after final convolution: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:Output Layer
+
+INFO:root:
+Input h5 dimensions: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+Score map dimensions: [1, channels, height, width] = torch.Size([1, 1, 32, 56])
+
+INFO:root:Score map: tensor([[[[0.4769, 0.5175, 0.4574,  ..., 0.3752, 0.3696, 0.3801],
+          [0.5307, 0.4940, 0.3652,  ..., 0.4430, 0.3809, 0.4304],
+          [0.5521, 0.5064, 0.4198,  ..., 0.4176, 0.4005, 0.4283],
+          ...,
+          [0.4043, 0.4198, 0.5131,  ..., 0.5994, 0.5055, 0.4678],
+          [0.4071, 0.4579, 0.4926,  ..., 0.4886, 0.4669, 0.4675],
+          [0.3968, 0.4576, 0.4951,  ..., 0.4700, 0.4893, 0.5386]]]],
+       grad_fn=<SigmoidBackward>)
+INFO:root:
+Geometry map dimensions: [1, channels, height, width] = torch.Size([1, 8, 32, 56])
+
+INFO:root:Geometry map: tensor([[[[135.3333, 121.3987, 155.0262,  ..., 146.3776, 151.5084, 156.4441],
+          [145.1980, 113.7064, 154.3511,  ..., 158.6611, 170.5329, 161.6600],
+          [132.4118, 151.3685, 141.5554,  ..., 169.1400, 166.7970, 156.7037],
+          ...,
+          [127.0725, 106.1472, 100.8859,  ..., 137.0585, 134.8143, 136.6868],
+          [143.1061, 132.2069, 119.8837,  ..., 158.2743, 140.0980, 142.3187],
+          [169.3205, 135.4529, 120.2815,  ..., 146.0917, 145.4026, 145.1502]],
+
+         [[149.5761, 143.1454, 137.6254,  ..., 125.3359, 111.4009, 128.8652],
+          [140.5959, 150.4458, 128.8213,  ..., 135.9685, 131.4453, 128.8573],
+          [128.1531, 155.2101, 139.6757,  ..., 138.4223, 138.7146, 129.8173],
+          ...,
+          [142.2219, 142.0788, 139.6407,  ..., 122.8580, 133.8905, 123.2232],
+          [142.0645, 133.6192, 132.2674,  ..., 148.3465, 142.0123, 139.3496],
+          [117.1571, 110.2328, 108.4951,  ..., 137.8090, 127.7685, 122.2927]],
+
+         [[121.1314, 108.1903, 118.4223,  ..., 107.5681, 104.8317,  98.8270],
+          [127.6578,  87.9896, 121.5004,  ..., 115.3749, 111.4150, 110.2934],
+          [124.8041,  83.9924, 108.4746,  ..., 117.5043, 116.8198, 115.0899],
+          ...,
+          [123.8966, 122.2283, 111.0224,  ..., 115.6124, 140.0437, 122.7635],
+          [125.0806, 121.1932, 109.9130,  ..., 107.6989, 114.4703, 115.5628],
+          [117.6350, 115.6959, 117.7045,  ..., 107.2661, 115.4653, 118.5868]],
+
+         ...,
+
+         [[126.2863, 108.0495, 132.1168,  ..., 138.4064, 128.0213, 125.1168],
+          [118.7329,  94.7638, 126.5069,  ..., 135.7689, 132.0352, 135.9544],
+          [104.9795,  98.6056, 124.4802,  ..., 139.9241, 142.6188, 136.9458],
+          ...,
+          [127.4213, 122.8316, 107.5357,  ..., 103.6322, 102.7193, 108.6745],
+          [126.6207, 124.5542, 115.0817,  ..., 116.7584, 112.2431, 115.0294],
+          [116.2257, 120.6629, 126.9929,  ..., 112.3783, 109.7449, 117.4425]],
+
+         [[117.9307, 131.9586, 126.7123,  ..., 130.3181, 138.5211, 129.0074],
+          [120.6221, 134.4622, 104.7176,  ..., 131.4962, 132.4587, 123.8640],
+          [129.2517, 126.5552, 108.3179,  ..., 128.8691, 120.5475, 115.5025],
+          ...,
+          [116.0620, 105.6986, 116.0110,  ..., 131.1536, 116.2387, 134.8043],
+          [119.6104, 116.1557, 121.1749,  ..., 128.2740, 119.9046, 130.4940],
+          [129.9717, 132.8511, 133.6578,  ..., 124.1376, 127.2964, 135.2716]],
+
+         [[127.9289, 148.3311, 163.9485,  ..., 130.4075, 131.3699, 139.4354],
+          [136.4572, 148.8983, 119.6925,  ..., 131.2252, 128.8431, 139.5234],
+          [132.8860, 143.2322, 135.0146,  ..., 136.4485, 150.7503, 150.7468],
+          ...,
+          [135.6484, 130.8738, 138.2822,  ..., 132.8897, 131.9314, 137.9462],
+          [131.7884, 126.2959, 140.4540,  ..., 142.5574, 143.9675, 144.4691],
+          [122.7927, 121.1642, 128.2451,  ..., 131.1520, 134.3260, 128.7399]]]],
+       grad_fn=<MulBackward0>)
+INFO:root:-------------------------------------------------
+INFO:root:Finished
+
+INFO:root:
+Started
+INFO:root:Image #0
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 126, 224])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 32, 56])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 16, 28])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 8, 14])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 8, 14])
+
+INFO:root:
+h3 dimensions after second merge: [1, channels, height, width] = torch.Size([1, 64, 16, 28])
+
+INFO:root:
+h4 dimensions after third merge: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+h5 dimensions after final convolution: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:Output Layer
+
+INFO:root:
+Input h5 dimensions: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+Score map dimensions: [1, channels, height, width] = torch.Size([1, 1, 32, 56])
+
+INFO:root:Score map: tensor([[[[0.5974, 0.6120, 0.6021,  ..., 0.5357, 0.5522, 0.5555],
+          [0.5907, 0.5797, 0.5557,  ..., 0.5097, 0.5645, 0.5692],
+          [0.5740, 0.5284, 0.4630,  ..., 0.4745, 0.5259, 0.5086],
+          ...,
+          [0.5219, 0.5003, 0.5070,  ..., 0.4989, 0.5333, 0.5083],
+          [0.5337, 0.4738, 0.4764,  ..., 0.5743, 0.5362, 0.5276],
+          [0.4898, 0.4807, 0.4960,  ..., 0.4716, 0.4011, 0.4668]]]],
+       grad_fn=<SigmoidBackward>)
+INFO:root:
+Geometry map dimensions: [1, channels, height, width] = torch.Size([1, 8, 32, 56])
+
+INFO:root:Geometry map: tensor([[[[121.5997, 133.5715, 134.5023,  ..., 128.7765, 118.5107, 130.3248],
+          [124.8332, 133.6305, 124.4575,  ..., 108.7169, 113.4422, 130.1044],
+          [127.0167, 144.1973, 122.4914,  ..., 114.7439, 110.9132, 121.4976],
+          ...,
+          [109.2821, 115.9394, 121.1856,  ..., 136.3071, 127.0341, 127.2932],
+          [110.8867, 118.2554, 102.1200,  ..., 140.8686, 131.6471, 120.0649],
+          [109.0265, 120.0988, 111.7603,  ..., 125.7260, 133.7523, 124.8045]],
+
+         [[121.1226, 123.1830, 128.5611,  ..., 127.5910, 124.8738, 123.5129],
+          [122.3343, 128.9233, 116.1874,  ..., 122.2111, 110.4883, 125.9815],
+          [113.9608, 132.2197, 110.3443,  ..., 121.7213, 109.4589, 118.8365],
+          ...,
+          [120.1288, 122.3292, 113.9921,  ..., 124.8381, 125.8949, 127.7071],
+          [114.4912, 124.0387, 108.0813,  ..., 135.5960, 126.8995, 117.3634],
+          [117.8903, 130.3113, 122.3571,  ..., 119.4451, 131.5262, 120.8348]],
+
+         [[136.8335, 140.6249, 158.6769,  ..., 134.4283, 140.4933, 129.8386],
+          [127.0198, 128.9793, 143.0642,  ..., 106.5246, 127.4725, 126.6195],
+          [125.7258, 125.0343, 148.1600,  ..., 106.5250, 121.6749, 126.2989],
+          ...,
+          [137.3103, 131.0918, 124.3333,  ...,  76.4032,  92.0283, 110.9562],
+          [131.9296, 125.0610, 129.4119,  ...,  81.2166, 105.7747, 106.9428],
+          [131.2409, 123.4645, 137.7956,  ..., 124.3449, 126.0253, 119.6358]],
+
+         ...,
+
+         [[100.6093, 100.7073, 101.5359,  ..., 130.7729, 122.7235, 117.3563],
+          [114.9250, 126.1285, 118.2523,  ..., 150.0957, 129.6219, 122.5388],
+          [ 99.2978, 103.3959, 101.0673,  ..., 146.0228, 114.3371, 120.1005],
+          ...,
+          [112.3842, 124.9175, 125.5296,  ..., 133.4659, 139.6331, 109.4939],
+          [108.8703, 111.9575, 106.5724,  ...,  84.3867,  85.1512,  86.1577],
+          [ 98.8284, 116.1184, 102.5394,  ..., 102.7164,  99.4834,  93.3576]],
+
+         [[134.2142, 129.9323, 121.2080,  ..., 125.5124, 128.3914, 129.4820],
+          [140.1206, 144.7287, 116.8651,  ..., 134.3493, 121.7535, 135.3014],
+          [128.9265, 139.2574, 110.7167,  ..., 129.7105, 117.4685, 132.8197],
+          ...,
+          [135.6165, 134.7777, 138.7049,  ..., 132.2184, 133.2103, 132.7041],
+          [134.0232, 140.2144, 138.1573,  ..., 126.2462, 121.4220, 117.0822],
+          [135.7598, 147.8704, 136.0007,  ..., 122.8391, 146.3860, 113.6977]],
+
+         [[115.9874, 117.5672, 122.4646,  ..., 136.0579, 137.5651, 140.6307],
+          [129.3890, 143.7439, 135.7506,  ..., 147.0449, 139.3198, 149.8581],
+          [121.7529, 122.6090, 141.2196,  ..., 143.1320, 146.5824, 151.0025],
+          ...,
+          [136.0722, 138.6365, 136.3326,  ..., 133.0791, 151.7825, 123.0881],
+          [128.6228, 129.4696, 131.7239,  ..., 101.6882, 110.0380, 112.7099],
+          [128.5863, 122.5173, 125.3577,  ..., 144.8060, 140.4522, 134.5390]]]],
+       grad_fn=<MulBackward0>)
+INFO:root:
+Started
+INFO:root:Image #0
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 126, 224])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 32, 56])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 16, 28])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 8, 14])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 8, 14])
+
+INFO:root:
+h3 dimensions after second merge: [1, channels, height, width] = torch.Size([1, 64, 16, 28])
+
+INFO:root:
+h4 dimensions after third merge: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+h5 dimensions after final convolution: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:Output Layer
+
+INFO:root:
+Input h5 dimensions: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+Score map dimensions: [1, channels, height, width] = torch.Size([1, 1, 32, 56])
+
+INFO:root:Score map: tensor([[[[0.3956, 0.4311, 0.4241,  ..., 0.4070, 0.3796, 0.3571],
+          [0.3806, 0.3537, 0.3934,  ..., 0.4974, 0.4532, 0.3960],
+          [0.3822, 0.3276, 0.3930,  ..., 0.4982, 0.4626, 0.3638],
+          ...,
+          [0.4050, 0.4194, 0.4534,  ..., 0.3731, 0.2952, 0.3575],
+          [0.4228, 0.4494, 0.4768,  ..., 0.4978, 0.3560, 0.3973],
+          [0.4215, 0.4449, 0.4259,  ..., 0.4936, 0.4448, 0.4055]]]],
+       grad_fn=<SigmoidBackward>)
+INFO:root:
+Geometry map dimensions: [1, channels, height, width] = torch.Size([1, 8, 32, 56])
+
+INFO:root:Geometry map: tensor([[[[ 97.1572,  87.8178,  84.3352,  ..., 113.5707, 108.5528, 115.8267],
+          [ 99.2150, 104.2865, 104.4267,  ..., 111.8281, 105.8659, 108.4634],
+          [ 99.2087,  96.2106,  94.4641,  ..., 107.7094, 114.5034, 105.5856],
+          ...,
+          [122.3829, 116.9953, 117.1558,  ..., 107.4420, 128.2517, 109.4781],
+          [114.7363, 107.3040, 109.9752,  ..., 114.7082, 132.8113, 142.2654],
+          [110.4574, 109.4578, 107.4902,  ..., 102.7586, 121.5011, 142.2489]],
+
+         [[142.7645, 136.0947, 128.3944,  ..., 144.9841, 143.5300, 143.3181],
+          [137.4770, 142.0256, 135.8420,  ..., 146.5418, 147.0531, 139.7942],
+          [131.9585, 139.7915, 138.0685,  ..., 134.0413, 136.0418, 126.1594],
+          ...,
+          [133.7441, 132.9158, 124.6469,  ...,  92.2072, 104.6595, 150.2952],
+          [126.3057, 124.6395, 115.2407,  ...,  81.2326,  86.7975, 137.5907],
+          [132.5151, 122.3216, 116.2426,  ..., 111.0138, 130.1963, 141.3840]],
+
+         [[147.9152, 135.4388, 142.5403,  ..., 136.5677, 133.9602, 132.9370],
+          [132.0356, 127.7170, 126.5042,  ..., 114.0177, 125.5748, 129.8926],
+          [137.5996, 126.1896, 124.8561,  ..., 138.0878, 144.4658, 133.3819],
+          ...,
+          [141.1324, 136.3979, 126.5599,  ..., 108.1420, 148.5075, 141.2430],
+          [142.4376, 140.6715, 137.8742,  ..., 141.3376, 143.9784, 142.5840],
+          [137.8932, 143.0503, 148.8618,  ..., 157.8306, 154.5842, 159.0087]],
+
+         ...,
+
+         [[128.5215, 126.3866, 124.9597,  ..., 125.9528, 123.6384, 123.1167],
+          [111.7595, 115.3198, 119.1716,  ..., 142.3339, 142.5921, 127.3792],
+          [111.3972, 113.9171, 108.3669,  ..., 138.4894, 145.8366, 115.6542],
+          ...,
+          [137.9444, 131.8990, 133.1479,  ..., 101.4951, 109.8857, 169.4355],
+          [127.2886, 122.6038, 116.6611,  ..., 120.0087, 105.6614, 148.3482],
+          [129.7644, 121.7441, 115.4688,  ...,  99.2463, 115.1174, 122.1900]],
+
+         [[126.1625, 138.5136, 128.8194,  ..., 143.2955, 137.3959, 140.0434],
+          [107.7066, 120.0195, 117.6908,  ..., 135.2237, 143.1702, 130.3236],
+          [111.0896, 114.1456, 116.6702,  ..., 136.7325, 146.5320, 125.6763],
+          ...,
+          [133.8110, 131.1390, 145.9928,  ..., 139.5059, 146.6271, 150.7881],
+          [135.3831, 125.7051, 130.8987,  ..., 147.9513, 156.8561, 148.8290],
+          [134.0520, 128.7123, 124.9037,  ..., 136.7921, 148.0891, 149.3884]],
+
+         [[130.8685, 134.3120, 142.4827,  ..., 139.6198, 132.0131, 144.5763],
+          [127.1641, 125.7525, 130.0424,  ..., 138.2388, 137.7930, 140.9617],
+          [122.1559, 122.7755, 138.3813,  ..., 124.3223, 132.7891, 141.6523],
+          ...,
+          [121.0463, 121.4203, 142.7127,  ..., 106.4521, 127.8277, 156.5569],
+          [129.6857, 118.1353, 140.7913,  ..., 163.4606, 145.7413, 174.5010],
+          [142.4635, 131.9158, 152.3481,  ..., 185.8812, 179.0138, 178.6727]]]],
+       grad_fn=<MulBackward0>)
+INFO:root:
+Started
+INFO:root:Image #0
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 126, 224])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 32, 56])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 16, 28])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 8, 14])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 8, 14])
+
+INFO:root:
+h3 dimensions after second merge: [1, channels, height, width] = torch.Size([1, 64, 16, 28])
+
+INFO:root:
+h4 dimensions after third merge: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+h5 dimensions after final convolution: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:Output Layer
+
+INFO:root:
+Input h5 dimensions: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+Score map dimensions: [1, channels, height, width] = torch.Size([1, 1, 32, 56])
+
+INFO:root:Score map: tensor([[[[0.5217, 0.5535, 0.5942,  ..., 0.4216, 0.4534, 0.4765],
+          [0.4291, 0.5220, 0.5514,  ..., 0.5195, 0.4922, 0.5635],
+          [0.4622, 0.5114, 0.5094,  ..., 0.5414, 0.5686, 0.5768],
+          ...,
+          [0.4513, 0.5424, 0.4838,  ..., 0.7417, 0.7273, 0.5409],
+          [0.4058, 0.5316, 0.4993,  ..., 0.6250, 0.6426, 0.6073],
+          [0.4852, 0.5361, 0.5091,  ..., 0.7587, 0.6735, 0.5969]]]],
+       grad_fn=<SigmoidBackward>)
+INFO:root:
+Geometry map dimensions: [1, channels, height, width] = torch.Size([1, 8, 32, 56])
+
+INFO:root:Geometry map: tensor([[[[146.1784, 121.7787, 122.8159,  ..., 159.5601, 138.1209, 136.7880],
+          [150.8150, 137.8410, 136.4282,  ..., 139.9357, 133.5654, 150.8717],
+          [148.7935, 139.4717, 148.3608,  ..., 145.1111, 136.6028, 145.6654],
+          ...,
+          [139.4599, 128.5866, 118.7135,  ..., 104.6269, 111.4944, 124.9278],
+          [134.0737, 117.0634, 106.3922,  ..., 124.6459, 122.6569, 120.0328],
+          [130.4023, 119.2957, 128.1680,  ...,  99.4944, 122.4371, 131.6055]],
+
+         [[117.1353, 130.2231, 120.8716,  ..., 118.5842, 129.7137, 114.8797],
+          [124.6231, 129.4635, 119.9790,  ..., 115.1103, 126.5892, 116.6398],
+          [113.5441, 135.8184, 117.6010,  ..., 125.1988, 136.6983, 133.7276],
+          ...,
+          [119.2948, 136.0686, 120.2647,  ..., 137.9312, 134.7196, 136.5124],
+          [120.1848, 123.9522, 117.6597,  ..., 109.0480, 126.0219, 110.7652],
+          [113.4155, 117.9571, 100.7179,  ..., 126.0666, 102.5328, 109.4394]],
+
+         [[141.8845, 135.9584, 145.5443,  ..., 114.4888, 115.9307, 132.6031],
+          [125.3586, 131.1127, 135.1289,  ..., 107.3391, 114.9814, 136.5083],
+          [130.9577, 124.9680, 131.8233,  ..., 101.6907, 116.7378, 127.5271],
+          ...,
+          [111.2873, 114.4174, 120.5854,  ...,  72.4179,  88.4373, 114.5279],
+          [114.9892, 134.8568, 137.8819,  ..., 130.0436, 112.7184, 121.7160],
+          [123.4768, 140.4694, 143.2555,  ..., 146.3835, 142.4509, 143.4030]],
+
+         ...,
+
+         [[153.6518, 154.2379, 158.1628,  ..., 148.8091, 161.4890, 162.7026],
+          [158.7750, 160.0623, 182.7945,  ..., 136.0885, 162.1385, 153.4562],
+          [154.6812, 163.3859, 172.8398,  ..., 154.1340, 178.7339, 159.5335],
+          ...,
+          [150.0164, 139.5055, 153.1340,  ..., 181.2458, 175.4409, 151.6268],
+          [148.6402, 140.1621, 141.4908,  ..., 171.4724, 164.3518, 143.6969],
+          [152.6871, 149.2721, 158.5781,  ..., 167.2322, 187.9674, 152.8921]],
+
+         [[114.3562, 123.6423, 129.0228,  ...,  94.5553, 100.4414, 100.4031],
+          [122.8421, 109.0416, 113.3103,  ..., 114.2639, 114.3395, 126.4035],
+          [121.5561, 102.0703, 114.4333,  ..., 127.0371, 134.7166, 127.2144],
+          ...,
+          [114.3693, 116.8586, 125.4200,  ..., 148.1383, 155.2747, 132.1520],
+          [104.4736, 113.6622, 116.2692,  ..., 107.2943, 118.4098, 122.1461],
+          [109.0848, 115.2736, 135.6279,  ..., 161.3215, 143.7194, 124.6146]],
+
+         [[104.1104, 107.8607, 105.9079,  ..., 110.8259, 103.0576, 102.7842],
+          [113.7464,  90.7580,  97.5657,  ..., 136.9396, 117.6669, 115.0361],
+          [112.0874, 104.3335, 110.5061,  ..., 146.9129, 127.7336, 121.8126],
+          ...,
+          [115.5674, 126.4748, 131.7851,  ..., 174.8377, 168.0819, 156.4781],
+          [113.1858, 121.8190, 124.9670,  ..., 124.8635, 135.0377, 128.4262],
+          [110.0847, 110.0950, 118.4446,  ...,  96.7223, 139.5648, 108.9793]]]],
+       grad_fn=<MulBackward0>)
+INFO:root:-------------------------------------------------
+INFO:root:Image #1
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 126, 224])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 32, 56])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 16, 28])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 8, 14])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 8, 14])
+
+INFO:root:
+h3 dimensions after second merge: [1, channels, height, width] = torch.Size([1, 64, 16, 28])
+
+INFO:root:
+h4 dimensions after third merge: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+h5 dimensions after final convolution: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:Output Layer
+
+INFO:root:
+Input h5 dimensions: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+Score map dimensions: [1, channels, height, width] = torch.Size([1, 1, 32, 56])
+
+INFO:root:Score map: tensor([[[[0.4820, 0.4698, 0.4073,  ..., 0.3901, 0.4098, 0.4180],
+          [0.5321, 0.4465, 0.4030,  ..., 0.4569, 0.4622, 0.4162],
+          [0.5063, 0.4412, 0.3752,  ..., 0.5334, 0.5145, 0.4818],
+          ...,
+          [0.4001, 0.3784, 0.3650,  ..., 0.3690, 0.3759, 0.3538],
+          [0.4681, 0.4121, 0.4314,  ..., 0.4125, 0.3826, 0.3482],
+          [0.4571, 0.4323, 0.4294,  ..., 0.4146, 0.4244, 0.3955]]]],
+       grad_fn=<SigmoidBackward>)
+INFO:root:
+Geometry map dimensions: [1, channels, height, width] = torch.Size([1, 8, 32, 56])
+
+INFO:root:Geometry map: tensor([[[[155.9965, 147.9846, 140.3764,  ..., 152.3962, 168.1405, 164.3269],
+          [156.8039, 151.2929, 155.1554,  ..., 145.4635, 147.9375, 155.0509],
+          [161.2267, 145.0495, 166.0928,  ..., 151.4099, 146.7175, 148.6323],
+          ...,
+          [150.0331, 153.3099, 159.3754,  ..., 144.2781, 147.3237, 168.3238],
+          [149.5663, 155.3705, 160.5578,  ..., 152.0642, 156.7217, 163.5193],
+          [161.4948, 166.2787, 170.9465,  ..., 163.9062, 167.1893, 167.1871]],
+
+         [[124.0967, 114.2823, 109.9492,  ..., 134.5580, 146.5516, 140.2068],
+          [128.8727, 129.0240, 132.9385,  ..., 134.5812, 131.8181, 127.8286],
+          [134.2956, 132.9376, 137.4321,  ..., 142.0445, 136.5808, 130.7982],
+          ...,
+          [129.2183, 127.3509, 138.8222,  ..., 133.1022, 133.0148, 138.1493],
+          [132.8231, 130.7424, 139.7159,  ..., 140.3846, 138.9765, 135.9646],
+          [140.0275, 133.1395, 141.4888,  ..., 144.4707, 147.9712, 141.6403]],
+
+         [[112.8897, 119.3609, 126.2464,  ..., 137.7742, 133.5056, 122.4166],
+          [113.5131, 125.8611, 127.3630,  ..., 128.5084, 122.3658, 123.4862],
+          [134.6744, 114.7390, 111.9502,  ..., 120.3935, 129.6243, 127.1727],
+          ...,
+          [123.1171, 140.4932, 158.0556,  ..., 124.5011, 135.2814, 117.0379],
+          [124.6461, 133.3016, 158.7747,  ..., 132.4352, 131.6205, 123.7056],
+          [125.9820, 116.1236, 134.4586,  ..., 138.7542, 134.8560, 130.7414]],
+
+         ...,
+
+         [[118.1176, 112.4729, 103.1384,  ..., 109.9099, 117.2474, 121.5001],
+          [114.7666, 119.9912, 127.0229,  ..., 122.9499, 117.4468, 122.0690],
+          [115.3850, 124.4746, 130.9283,  ..., 139.2188, 133.0611, 126.2811],
+          ...,
+          [125.6358, 123.0671, 128.0058,  ..., 149.5327, 135.2481, 130.0305],
+          [128.6430, 123.4015, 126.5829,  ..., 136.6273, 130.4098, 131.7963],
+          [128.2200, 118.1850, 129.6822,  ..., 129.3061, 128.1360, 125.6292]],
+
+         [[120.5409, 125.6893, 149.3653,  ..., 140.1775, 128.8808, 116.7636],
+          [136.0788, 135.2629, 108.6525,  ..., 128.5075, 134.1738, 123.1757],
+          [133.4240, 128.5971,  92.9581,  ..., 128.1328, 142.0396, 137.0832],
+          ...,
+          [129.1836, 100.5717,  90.2215,  ..., 122.6617, 114.9889, 110.8585],
+          [130.8576, 107.0604,  92.6649,  ..., 115.4031, 108.7321, 109.9901],
+          [138.2103, 134.6443, 120.6681,  ..., 130.0754, 122.6394, 115.6373]],
+
+         [[122.9990, 122.7867,  96.3949,  ..., 108.0743, 109.6901, 114.6188],
+          [128.3603, 113.0169, 121.0992,  ..., 115.7248, 110.4140, 117.8209],
+          [125.7186, 121.0986, 130.8921,  ..., 119.6561, 112.1569, 115.3824],
+          ...,
+          [140.0287, 160.4850, 169.3266,  ..., 148.6512, 149.3318, 129.8589],
+          [133.4028, 151.8515, 160.2588,  ..., 139.1012, 136.8291, 122.1850],
+          [108.7998, 120.9094, 121.5482,  ..., 116.4152, 116.9093, 112.2406]]]],
+       grad_fn=<MulBackward0>)
+INFO:root:-------------------------------------------------
+INFO:root:Finished
+
+INFO:root:
+Started
+INFO:root:Image #0
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 126, 224])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 32, 56])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 16, 28])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 8, 14])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 8, 14])
+
+INFO:root:
+h3 dimensions after second merge: [1, channels, height, width] = torch.Size([1, 64, 16, 28])
+
+INFO:root:
+h4 dimensions after third merge: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+h5 dimensions after final convolution: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:Output Layer
+
+INFO:root:
+Input h5 dimensions: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+Score map dimensions: [1, channels, height, width] = torch.Size([1, 1, 32, 56])
+
+INFO:root:Score map: tensor([[[[0.5382, 0.5930, 0.5574,  ..., 0.5701, 0.6010, 0.5272],
+          [0.5043, 0.5920, 0.6195,  ..., 0.5178, 0.6141, 0.5531],
+          [0.5385, 0.5520, 0.5426,  ..., 0.5568, 0.6199, 0.5110],
+          ...,
+          [0.5044, 0.4849, 0.4948,  ..., 0.5446, 0.5273, 0.5039],
+          [0.5224, 0.4874, 0.5080,  ..., 0.5624, 0.6587, 0.5823],
+          [0.5415, 0.4896, 0.5089,  ..., 0.5416, 0.5069, 0.6424]]]],
+       grad_fn=<SigmoidBackward>)
+INFO:root:
+Geometry map dimensions: [1, channels, height, width] = torch.Size([1, 8, 32, 56])
+
+INFO:root:Geometry map: tensor([[[[140.7303, 140.6769, 147.5127,  ..., 132.8490, 133.3935, 137.6870],
+          [130.2899, 114.7847, 131.0444,  ..., 134.2275, 132.2493, 124.3148],
+          [129.7613, 129.9699, 109.8917,  ..., 146.8257, 138.4652, 136.3156],
+          ...,
+          [143.5235, 146.8621, 128.5490,  ..., 117.9193, 155.8738, 130.7388],
+          [135.9776, 134.2724, 124.8757,  ..., 153.4452, 145.6044, 141.3399],
+          [139.7615, 146.4512, 136.8638,  ..., 179.5180, 162.8798, 173.1896]],
+
+         [[111.9128, 116.1928, 106.6408,  ..., 124.3351, 114.5786, 116.2172],
+          [127.3900, 139.4888, 115.4959,  ..., 125.4652, 114.7629, 109.8729],
+          [118.4368, 115.7293, 134.9646,  ..., 117.2603, 116.7145, 104.9845],
+          ...,
+          [110.1301,  98.0196, 117.0679,  ..., 139.5108, 124.7311, 130.5177],
+          [113.9989, 115.7828, 120.4168,  ..., 126.1843, 120.9257, 122.2960],
+          [103.6928,  99.9708, 109.0992,  ...,  71.4940,  83.0554,  63.5046]],
+
+         [[131.1339, 147.8620, 136.7574,  ..., 135.3366, 147.7435, 143.2623],
+          [130.4363, 148.2952, 141.7742,  ..., 134.9909, 143.6616, 142.0688],
+          [132.9327, 140.8092, 153.8352,  ..., 120.6155, 138.7442, 137.0440],
+          ...,
+          [129.1255, 131.3214, 126.0557,  ..., 107.6212,  99.6793, 134.8771],
+          [123.6833, 131.0146, 124.1996,  ..., 120.9584, 138.8557, 155.5907],
+          [131.4516, 133.6308, 124.7741,  ..., 132.4814, 129.5590, 157.8592]],
+
+         ...,
+
+         [[135.4273, 159.6887, 146.5902,  ..., 138.0883, 150.7584, 143.4419],
+          [133.1314, 143.1615, 127.9544,  ..., 133.1503, 148.2926, 135.7382],
+          [137.7234, 144.5154, 133.0538,  ..., 129.6952, 150.7115, 131.6727],
+          ...,
+          [135.1920, 138.8346, 126.0296,  ..., 100.0860, 109.3371, 110.3251],
+          [129.6855, 129.8203, 125.3215,  ..., 128.0723, 120.9578,  97.6333],
+          [129.8597, 136.0909, 128.9698,  ..., 150.5976, 147.7618, 150.2688]],
+
+         [[133.4687, 126.9691, 141.5864,  ..., 141.6399, 137.6482, 139.5383],
+          [131.4457, 119.1084, 132.8792,  ..., 121.9471, 129.8268, 146.8885],
+          [145.0213, 119.2347, 130.1270,  ..., 139.8854, 130.3237, 144.1956],
+          ...,
+          [137.0114, 144.7492, 141.9919,  ..., 146.0830, 123.1754, 153.2776],
+          [145.0149, 147.3145, 144.0989,  ..., 155.8756, 138.6364, 138.5533],
+          [151.9281, 144.4483, 139.3893,  ..., 144.0097, 171.3485, 161.0666]],
+
+         [[121.4632, 120.5526, 127.2613,  ..., 137.4903, 146.6211, 134.0459],
+          [113.6004, 105.5020, 127.2586,  ..., 130.0364, 125.3116, 133.9271],
+          [129.6246, 118.6931, 115.4624,  ..., 140.8811, 129.4153, 136.5375],
+          ...,
+          [138.6829, 150.7177, 135.4257,  ..., 129.2504, 128.1217, 113.9225],
+          [138.9050, 131.8035, 130.3721,  ..., 127.3241, 145.2790, 137.9438],
+          [139.5747, 137.9703, 124.3751,  ..., 144.1202, 141.5736, 159.7326]]]],
+       grad_fn=<MulBackward0>)
+INFO:root:-------------------------------------------------
+INFO:root:Image #1
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 126, 224])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 32, 56])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 16, 28])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 8, 14])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 8, 14])
+
+INFO:root:
+h3 dimensions after second merge: [1, channels, height, width] = torch.Size([1, 64, 16, 28])
+
+INFO:root:
+h4 dimensions after third merge: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+h5 dimensions after final convolution: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:Output Layer
+
+INFO:root:
+Input h5 dimensions: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+Score map dimensions: [1, channels, height, width] = torch.Size([1, 1, 32, 56])
+
+INFO:root:Score map: tensor([[[[0.4485, 0.5472, 0.5992,  ..., 0.4737, 0.5219, 0.5243],
+          [0.4571, 0.5244, 0.5861,  ..., 0.5077, 0.5821, 0.5631],
+          [0.4865, 0.5712, 0.6226,  ..., 0.5635, 0.5993, 0.5945],
+          ...,
+          [0.4459, 0.4107, 0.4310,  ..., 0.4785, 0.5122, 0.5167],
+          [0.4394, 0.4528, 0.4607,  ..., 0.4624, 0.5205, 0.4790],
+          [0.4674, 0.4445, 0.4769,  ..., 0.5131, 0.5299, 0.4694]]]],
+       grad_fn=<SigmoidBackward>)
+INFO:root:
+Geometry map dimensions: [1, channels, height, width] = torch.Size([1, 8, 32, 56])
+
+INFO:root:Geometry map: tensor([[[[133.5004, 108.3531, 117.4422,  ..., 109.8417, 122.5038, 121.5107],
+          [137.6447, 106.6529, 119.8280,  ..., 114.9013, 113.1077, 110.2764],
+          [133.9072,  96.5648, 106.8075,  ..., 109.7285, 105.0051, 110.3856],
+          ...,
+          [106.1399,  85.8447,  89.5167,  ..., 115.4042, 107.8874, 121.4965],
+          [103.1987,  90.4189,  85.1166,  ..., 127.4888, 120.5378, 124.4648],
+          [110.4402, 103.7896, 104.3568,  ..., 124.7034, 117.6085, 118.6318]],
+
+         [[119.8191, 125.9925, 135.8848,  ..., 125.1237, 115.3442, 125.2735],
+          [130.3876, 138.5242, 135.7299,  ..., 170.9113, 155.9914, 145.5072],
+          [134.9287, 167.1386, 122.9738,  ..., 185.3462, 166.9627, 154.6276],
+          ...,
+          [122.4988, 133.1595, 136.4287,  ..., 144.2508, 124.8995, 124.5620],
+          [123.1656, 120.5362, 138.6888,  ..., 155.7087, 130.1151, 125.1508],
+          [124.5095, 127.2745, 132.1033,  ..., 149.7509, 129.7020, 130.0835]],
+
+         [[146.7625, 144.2591, 133.3065,  ..., 124.5163, 136.7892, 146.0986],
+          [156.5829, 136.7763, 148.7077,  ..., 141.5500, 149.2183, 158.9272],
+          [151.2930, 126.8443, 147.8306,  ..., 153.4835, 153.2044, 158.6354],
+          ...,
+          [132.6500, 164.9775, 172.0737,  ..., 158.7264, 144.6537, 140.9258],
+          [121.3934, 143.5339, 167.2457,  ..., 152.2586, 141.6693, 155.4017],
+          [124.0509, 140.4900, 150.0882,  ..., 138.1228, 138.3498, 142.2330]],
+
+         ...,
+
+         [[105.6855, 108.6249, 108.6824,  ..., 117.0468, 115.8164, 116.8110],
+          [113.1163, 105.0249, 116.7777,  ..., 133.7482, 126.1469, 130.8685],
+          [113.7273, 126.4193, 106.5251,  ..., 132.1620, 130.0100, 128.3431],
+          ...,
+          [112.7402, 109.0177, 110.4887,  ..., 123.6093, 130.1347, 115.9769],
+          [113.8169, 115.0274, 107.5132,  ..., 122.8400, 122.2788, 112.9765],
+          [108.4962, 112.8077, 122.0264,  ..., 114.1564, 113.7780, 109.5871]],
+
+         [[160.7115, 151.5987, 135.5804,  ..., 144.8403, 145.0808, 145.0035],
+          [151.3713, 155.8854, 174.3097,  ..., 116.2205, 117.0357, 129.3340],
+          [139.9062, 140.7675, 170.9119,  ..., 115.7367, 119.8827, 126.4186],
+          ...,
+          [141.6381, 152.9483, 153.9780,  ..., 126.9110, 130.4007, 135.1539],
+          [137.0303, 146.8121, 155.8379,  ..., 135.8454, 139.6912, 146.0439],
+          [141.6346, 149.5922, 143.9867,  ..., 132.3618, 134.6840, 138.7464]],
+
+         [[125.6596, 110.6756, 100.5418,  ..., 101.7475, 123.7843, 121.9463],
+          [134.4387, 111.7968,  96.2243,  ..., 130.1360, 125.2934, 112.2028],
+          [128.1480, 109.1906,  92.6815,  ..., 129.7923, 127.6819, 115.2267],
+          ...,
+          [128.6221,  90.3772,  86.4673,  ..., 110.7572, 111.3412, 130.5347],
+          [128.3287, 100.7700,  77.5240,  ..., 112.6232, 124.9378, 123.5377],
+          [127.9197, 104.7098,  97.6842,  ..., 117.2453, 113.0950, 114.6280]]]],
+       grad_fn=<MulBackward0>)
+INFO:root:-------------------------------------------------
+INFO:root:Finished
+
+INFO:root:
+Started
+INFO:root:Image #0
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 126, 224])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 32, 56])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 16, 28])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 8, 14])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:
+Started
+INFO:root:
+Started
+INFO:root:Image #0
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 126, 224])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 32, 56])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 16, 28])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 8, 14])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:
+Started
+INFO:root:Image #0
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 126, 224])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 32, 56])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 16, 28])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 8, 14])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:
+Started
+INFO:root:Image #0
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 126, 224])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 32, 56])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 16, 28])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 8, 14])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 8, 14])
+
+INFO:root:
+h3 dimensions after second merge: [1, channels, height, width] = torch.Size([1, 64, 16, 28])
+
+INFO:root:
+h4 dimensions after third merge: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+h5 dimensions after final convolution: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:Output Layer
+
+INFO:root:
+Input h5 dimensions: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+Score map dimensions: [1, channels, height, width] = torch.Size([1, 1, 32, 56])
+
+INFO:root:Score map: tensor([[[[0.6301, 0.6136, 0.5699,  ..., 0.5458, 0.5362, 0.5610],
+          [0.6031, 0.6141, 0.5458,  ..., 0.5331, 0.5365, 0.5309],
+          [0.6017, 0.5783, 0.5989,  ..., 0.4916, 0.5173, 0.5290],
+          ...,
+          [0.5885, 0.6089, 0.5900,  ..., 0.6360, 0.5660, 0.6888],
+          [0.6000, 0.5821, 0.5357,  ..., 0.6163, 0.7151, 0.7362],
+          [0.5638, 0.5336, 0.5434,  ..., 0.4165, 0.4731, 0.5692]]]],
+       grad_fn=<SigmoidBackward>)
+INFO:root:
+Geometry map dimensions: [1, channels, height, width] = torch.Size([1, 8, 32, 56])
+
+INFO:root:Geometry map: tensor([[[[107.9891, 103.5530, 106.0402,  ..., 106.3094,  98.4247,  96.4514],
+          [ 99.7773, 113.6991, 112.2686,  ..., 106.0924,  97.3519,  98.0943],
+          [113.3263, 124.6229, 114.7841,  ..., 107.2639, 103.0342, 102.7084],
+          ...,
+          [105.7381,  98.1031, 101.9436,  ..., 133.8438, 109.2464, 130.0215],
+          [115.2618, 103.4131, 109.3912,  ..., 145.1280, 114.5416, 132.3121],
+          [117.9150, 105.8871, 108.8953,  ..., 145.4576, 141.9555, 139.5186]],
+
+         [[146.1944, 148.3082, 157.6523,  ..., 150.0042, 148.3404, 150.3493],
+          [152.3392, 143.0575, 143.2359,  ..., 148.5152, 139.3420, 152.4301],
+          [137.5080, 125.6273, 125.5226,  ..., 142.3183, 138.8921, 148.3349],
+          ...,
+          [133.0933, 133.8295, 125.9015,  ..., 190.4430, 138.6619, 168.9988],
+          [133.6624, 133.3220, 134.3531,  ..., 171.3666, 146.8554, 144.4495],
+          [121.9145, 126.2598, 137.8185,  ..., 134.6065, 135.8524, 124.9887]],
+
+         [[ 99.4487,  97.6114, 104.2979,  ..., 101.6967, 106.5527,  97.6895],
+          [ 91.4397,  96.9121, 104.9580,  ..., 108.5390, 115.5947, 102.6347],
+          [110.3096, 124.0978, 131.5557,  ..., 120.3568, 118.4014, 112.6571],
+          ...,
+          [117.6267, 106.0559, 116.3718,  ...,  91.8717, 128.6733,  89.5852],
+          [109.8417, 113.2803, 104.3566,  ...,  87.8634,  99.9274,  83.3070],
+          [124.2494, 112.7237, 105.2969,  ..., 137.6811, 140.0260, 113.9205]],
+
+         ...,
+
+         [[127.8623, 118.3056, 114.2591,  ..., 116.4279, 118.3549, 121.5007],
+          [139.9570, 165.3782, 151.2867,  ..., 107.5610, 117.3257, 127.3783],
+          [128.9983, 142.4010, 134.7443,  ...,  95.1019, 118.1726, 124.8811],
+          ...,
+          [133.8685, 130.3917, 131.4236,  ...,  74.8997,  97.6161, 116.6300],
+          [130.3260, 121.4498, 126.6662,  ...,  69.4498,  85.4424, 122.5441],
+          [113.1977, 123.8585, 135.9441,  ..., 116.3340, 111.4122, 130.4676]],
+
+         [[101.9981,  91.3194, 109.3721,  ..., 114.9740, 117.9085, 110.8531],
+          [109.4790, 116.8475, 148.5354,  ..., 121.8003, 123.4695, 119.4646],
+          [120.2950, 124.6238, 126.0953,  ..., 130.7013, 129.2208, 128.8575],
+          ...,
+          [126.8217, 123.4359, 141.5057,  ..., 126.6064, 125.9203,  77.7380],
+          [114.8937, 139.4851, 151.5197,  ..., 123.3249, 120.0927,  82.5708],
+          [118.9169, 143.7020, 141.5914,  ..., 143.4867, 142.8381, 143.5160]],
+
+         [[136.7727, 138.1085, 138.1196,  ..., 134.4197, 124.5463, 121.2712],
+          [132.4671, 159.4984, 142.1281,  ..., 147.8337, 129.7496, 122.3446],
+          [153.6445, 170.1525, 155.9081,  ..., 148.5329, 130.1599, 127.7399],
+          ...,
+          [132.9512, 149.7879, 152.0932,  ..., 176.1230, 163.1268, 142.7600],
+          [131.1074, 156.0075, 145.6674,  ..., 161.1803, 162.3890, 131.6812],
+          [113.4120, 138.7250, 139.0821,  ..., 144.2701, 150.8636, 151.3513]]]],
+       grad_fn=<MulBackward0>)
+INFO:root:-------------------------------------------------
+INFO:root:Image #1
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+Input x dimensions before crelu: [1, channels, height, width] = torch.Size([1, 3, 126, 224])
+
+INFO:root:
+x1 dimensions after crelu base: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+f4 dimensions after crelu residual1: [1, channels, height, width] = torch.Size([1, 64, 32, 56])
+
+INFO:root:
+f3 dimensions after crelu residual2: [1, channels, height, width] = torch.Size([1, 128, 16, 28])
+
+INFO:root:
+f2 dimensions after inception residual1: [1, channels, height, width] = torch.Size([1, 256, 8, 14])
+
+INFO:root:
+f1 dimensions after inception residual2: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions before first merge: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:
+h2 dimensions after first merge: [1, channels, height, width] = torch.Size([1, 128, 8, 14])
+
+INFO:root:
+h3 dimensions after second merge: [1, channels, height, width] = torch.Size([1, 64, 16, 28])
+
+INFO:root:
+h4 dimensions after third merge: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+h5 dimensions after final convolution: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:Output Layer
+
+INFO:root:
+Input h5 dimensions: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+Score map dimensions: [1, channels, height, width] = torch.Size([1, 1, 32, 56])
+
+INFO:root:Score map: tensor([[[[0.5369, 0.4657, 0.4518,  ..., 0.4590, 0.4893, 0.4147],
+          [0.5031, 0.3837, 0.3729,  ..., 0.5595, 0.5341, 0.3979],
+          [0.5404, 0.4137, 0.3679,  ..., 0.4558, 0.4195, 0.3858],
+          ...,
+          [0.5555, 0.4871, 0.4813,  ..., 0.5152, 0.5143, 0.4390],
+          [0.5342, 0.4774, 0.4432,  ..., 0.4997, 0.5284, 0.4821],
+          [0.4463, 0.4225, 0.4543,  ..., 0.4391, 0.4970, 0.4655]]]],
+       grad_fn=<SigmoidBackward>)
+INFO:root:
+Geometry map dimensions: [1, channels, height, width] = torch.Size([1, 8, 32, 56])
+
+INFO:root:Geometry map: tensor([[[[120.1138, 113.7998, 114.0101,  ..., 112.8319, 117.3555, 118.8665],
+          [136.0874, 120.0213, 118.3390,  ..., 131.7786, 143.6072, 119.7660],
+          [141.8443, 129.0570, 137.8706,  ..., 164.3260, 160.2043, 132.1575],
+          ...,
+          [143.1109, 125.6726, 105.4765,  ..., 149.4155, 156.1508, 154.2516],
+          [140.4198, 123.9364, 109.5856,  ..., 153.9687, 149.3527, 142.5690],
+          [140.5377, 142.0870, 135.6159,  ..., 153.6127, 153.1407, 146.2949]],
+
+         [[137.8419, 160.2989, 131.9107,  ..., 183.7353, 186.9998, 162.5913],
+          [128.1695, 176.0925, 145.8438,  ..., 151.6834, 152.5818, 137.7691],
+          [134.1845, 180.0905, 155.4036,  ..., 160.8546, 153.9160, 134.2559],
+          ...,
+          [133.8224, 150.6770, 141.0544,  ..., 144.6955, 154.4598, 152.5743],
+          [144.1460, 140.0979, 123.0498,  ..., 130.8593, 139.3289, 140.8926],
+          [138.8704, 139.7617, 132.3076,  ..., 142.9909, 137.8881, 141.7717]],
+
+         [[123.5597,  95.4388, 123.8401,  ..., 129.5233, 136.0704, 113.0413],
+          [137.9644, 117.4421, 135.7435,  ..., 124.8008, 135.8900, 114.4532],
+          [130.6447, 125.6717, 147.8790,  ..., 129.3260, 118.8458, 102.7512],
+          ...,
+          [141.4535, 137.4363, 135.9795,  ..., 140.4421, 134.8867, 102.4073],
+          [140.5860, 124.8616, 105.6055,  ..., 124.6579, 121.3888, 106.2898],
+          [125.3246, 108.3598, 106.2322,  ..., 111.3537, 115.8760, 101.9352]],
+
+         ...,
+
+         [[111.6565, 132.7884, 101.2088,  ..., 116.9840, 122.2591, 110.7755],
+          [109.6187, 143.0880, 101.5990,  ..., 116.8490, 116.2406, 107.1024],
+          [113.0172, 130.9915,  99.2882,  ..., 109.6969, 109.9266, 109.1122],
+          ...,
+          [108.1581,  95.4157,  97.2240,  ..., 103.5468, 110.8374, 112.0285],
+          [102.1362,  92.2648,  88.6934,  ...,  98.9620, 108.6840, 106.8739],
+          [100.4453,  99.6975, 105.2865,  ...,  97.7564, 106.2924, 113.7308]],
+
+         [[107.4317, 113.3496, 123.9510,  ..., 128.7495, 146.7250, 129.2227],
+          [116.6248, 140.8175, 159.1991,  ..., 150.8524, 159.1956, 128.1458],
+          [125.4439, 147.5105, 167.2204,  ..., 139.5552, 144.8661, 126.6579],
+          ...,
+          [129.3370, 134.4118, 141.4823,  ..., 125.5378, 132.8643, 128.5337],
+          [123.2462, 117.9826, 112.2830,  ..., 117.8896, 124.3763, 119.3402],
+          [121.1878, 108.9799, 102.4782,  ..., 114.8289, 125.5316, 122.0884]],
+
+         [[116.7286, 140.4182, 122.6898,  ..., 102.8032, 110.1439, 110.2626],
+          [149.9632, 165.5807, 121.0890,  ..., 142.5151, 116.1522, 112.2387],
+          [128.6487, 157.8586, 145.4104,  ..., 139.5052, 131.7867, 115.0556],
+          ...,
+          [113.0368, 124.6804, 114.0312,  ..., 121.2784, 117.5078, 124.8098],
+          [117.9868, 122.7741, 115.4128,  ..., 115.0584, 117.4120, 128.2668],
+          [132.1815, 134.4179, 133.0897,  ..., 130.2608, 118.9433, 127.6042]]]],
+       grad_fn=<MulBackward0>)
+INFO:root:-------------------------------------------------
+INFO:root:Finished
+

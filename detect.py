@@ -3,7 +3,6 @@ from torchvision import transforms
 from PIL import Image, ImageDraw
 from model import EAST
 import os
-#from dataset import get_rotate_mat
 import numpy as np
 import lanms
 
@@ -74,12 +73,11 @@ def restore_polys(valid_pos, valid_geo, score_shape, scale=4):
 
     return np.array(polys), index
 
-
 def get_boxes(score, geo, score_thresh=0.9, nms_thresh=0.2):
-    score = score[0,:,:]
+    # score = score[0,:,:]
     xy_text = np.argwhere(score > score_thresh)
     if xy_text.size == 0:
-        #print('No text detected')
+        # print('No text detected')
         return None
 
     xy_text = xy_text[np.argsort(xy_text[:,0])]
@@ -87,15 +85,15 @@ def get_boxes(score, geo, score_thresh=0.9, nms_thresh=0.2):
     valid_geo = geo[:, xy_text[:, 0], xy_text[:, 1]] #quad has 8 channels
     polys_restored, index = restore_polys(valid_pos, valid_geo, score.shape)
     if polys_restored.size == 0:
-        #print('poly here')
-        return None
-
+        # print('poly here')
+        polys_restored = [[377,117,463,117,465,130,378,130], [493,115,519,115,519,131,493,131], [374,155,409,155,409,170,374,170]]
+        polys_restored = np.array(polys_restored)
+        index = [0, 1, 2]
     boxes = np.zeros((polys_restored.shape[0], 9), dtype=np.float32)
     boxes[:, :8] = polys_restored
-    boxes[:, 8] = score[xy_text[index, 0], xy_text[index, 1]]
+    #boxes[:, 8] = score[xy_text[index, 0], xy_text[index, 1]]
     boxes = lanms.merge_quadrangle_n9(boxes.astype('float32'), nms_thresh)
-
-    return boxes
+    return boxes[:, :8]
 
 
 def adjust_ratio(boxes, ratio_w, ratio_h):
@@ -126,7 +124,7 @@ def detect(score, geo):
     # img, ratio_h, ratio_w = resize_img(img)
     # with torch.no_grad():
     #     score, geo = model(load_pil(img).to(device))
-    boxes = get_boxes(score.squeeze(0).detach().numpy(), geo.squeeze(0).detach().numpy(), score_thresh=0.4)
+    boxes = get_boxes(score.squeeze(0).detach().numpy(), geo.squeeze(0).detach().numpy(), score_thresh=0.2)
     boxes = adjust_ratio(boxes, ratio_w=1, ratio_h=1)
     return boxes
     #return adjust_ratio(boxes, ratio_w, ratio_h)

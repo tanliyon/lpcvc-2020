@@ -46,5 +46,5 @@ class Unet(nn.Module):
 
     def forward(self, features):
         logging.info("Feature Merging Layer\n")
-        h = self.merge.forward(features[0], features[1], features[2], features[3])
+        h = self.merge(features[0], features[1], features[2], features[3])
         return h
