@@ -21,7 +21,7 @@ def detection(frames_path):
         input, label = frame
         score_map, geometry_map = model(input)
         box = detect(score_map, geometry_map)
-        frames.append(frame)
+        frames.append(input)
         boxes.append(box)
         # plot_img = plot_boxes(torchvision.transforms.ToPILImage()(input), boxes)
         # plot_img.show()
