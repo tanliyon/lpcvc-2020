@@ -2,9 +2,12 @@ import os
 import re
 import torch
 import numpy as np
+from PIL import Image
+from skimage import io, transform
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from groundtruth import *
+from detect import *
 
 def sorted_alphanumeric(data):
     """
@@ -20,18 +23,22 @@ def sorted_alphanumeric(data):
 
 def collate(batch):
     name = [item["name"] for item in batch]
+    path = [item["path"] for item in batch]
     image = [item["image"] for item in batch]
     coords = [item["coords"] for item in batch]
     transcriptions = [item["transcription"] for item in batch]
-    return [name, image, coords, transcriptions]
+    score = [item["score"] for item in batch]
+    mask = [item["mask"] for item in batch]
+    geometry = [item["geometry"] for item in batch]
+    return [name, path, image, coords, transcriptions, score, mask, geometry]
 
 
 class TextLocalizationSet(Dataset):
-    def __init__(self, image_directory_path, annotation_directory_path, new_length, transform=True):
+    def __init__(self, image_directory_path, annotation_directory_path, new_dimensions, transform=True):
         self.image_directory_path = image_directory_path
         self.annotation_directory_path = annotation_directory_path
         self.image_paths, self.image_names, self.annotation_paths = self.Get_Images_Path_Name_Annotation()
-        self.new_length = new_length
+        self.new_dimensions = new_dimensions
         self.transform = transform
 
     def __len__(self):
@@ -41,21 +48,24 @@ class TextLocalizationSet(Dataset):
         if torch.is_tensor(idx):
             idx = idx.tolist()
 
-        image = self.Load_Image(os.path.join(self.image_directory_path, self.image_paths[idx]))
+        tf = transforms.Compose([transforms.ToTensor(),
+                                 transforms.Normalize((0.5,), (0.5,))])
+
+        image_path = os.path.join(self.image_directory_path, self.image_paths[idx])
+        image = self.Load_Image(image_path)
         quad_coordinates, text_tags, bool_tags = self.Load_Annotation(os.path.join(self.annotation_directory_path, self.annotation_paths[idx]))
 
-        sample = {'name': img_name, 'image': image, 'coords': np.array(quad_coordinates, dtype=np.float32), 'transcription': text_tags, 'score': None, 'mask': None, 'geometry': None}
+        sample = {'name': self.image_names[idx], 'path': image_path, 'image': tf(Image.fromarray(image)), 'coords': np.array(quad_coordinates, dtype=np.float32), 'transcription': text_tags, 'score': None, 'mask': None, 'geometry': None}
 
-        rescale = Rescale((self.new_length, self.new_length))
+        rescale = Rescale(self.new_dimensions)
         sample = rescale.__call__(sample)
 
         groundtruth = GroundTruthGeneration(sample['name'], sample['image'])
         sample['score'], sample['mask'], sample['geometry'] = groundtruth.Load_Geometry_Score_Maps(sample['coords'], bool_tags)
 
-        if self.transform:
-            tf = transforms.Compose([transforms.ToTensor(),
-                                     transforms.Normalize(mean=(0.5,0.5,0.5),std=(0.5,0.5,0.5))])
-            sample['image'] = tf(sample['image'])
+        #if self.transform:
+        #
+        # sample['image'] = tf(image)
 
         return sample
 
@@ -89,8 +99,10 @@ class TextLocalizationSet(Dataset):
 
         :return:      image (uint8 numpy array): image data (channel, height, width)
         """
-        image = np.array(Image.open(image_path))    # type -> uint8
-        return np.moveaxis(image, 2, 0)             # reverses order -> channel x height x width
+        #image = np.array(Image.open(image_path))    # type -> uint8
+        #return np.moveaxis(image, 2, 0)             # reverses order -> channel x height x width
+        image = io.imread(image_path, as_gray=True)
+        return image
 
     def Load_Annotation(self, annotation_file):
         """
@@ -165,7 +177,6 @@ class Rescale(object):
             new_h, new_w = self.output_size
 
         new_h, new_w = int(new_h), int(new_w)
-
         img = transform.resize(image, (new_h, new_w))
 
         # h and w are swapped for landmarks because for images,
@@ -186,15 +197,13 @@ if __name__ == "__main__":
     annotationPath = "./Dataset/Train/TrainTruth/"
 
     # example usage
-    dataset = TextLocalizationSet(imagePath, annotationPath, 256)
-    dataset.__getitem__(0)
+    dataset = TextLocalizationSet(imagePath, annotationPath, (126, 224))
+    sample = dataset.__getitem__(0)
+    image = Image.open(sample['path'])
+    box = detect(sample['score'], sample['geometry'])
+    plot_img = plot_boxes(image, box)
+    plot_img.show()
     # print(dataset[0])
 
     # can use DataLoader now with this custom dataset
-    data_loader = DataLoader(dataset, batch_size=1,
-                             shuffle=False, num_workers=4,
-                             collate_fn=collate)
-
-    for data in data_loader:
-        print(data[2])
-        break
+    data_loader = DataLoader(dataset, batch_size=1, shuffle=False, num_workers=4, collate_fn=collate)
