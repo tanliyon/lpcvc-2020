@@ -63,10 +63,6 @@ class TextLocalizationSet(Dataset):
         groundtruth = GroundTruthGeneration(sample['name'], sample['image'])
         sample['score'], sample['mask'], sample['geometry'] = groundtruth.Load_Geometry_Score_Maps(sample['coords'], bool_tags)
 
-        #if self.transform:
-        #
-        # sample['image'] = tf(image)
-
         return sample
 
     def Get_Images_Path_Name_Annotation(self, mode="training"):

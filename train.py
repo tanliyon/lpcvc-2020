@@ -18,8 +18,7 @@ class Train:
         train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers, drop_last=drop_last, collate_fn=collate)
 
         criterion = Loss()
-        #device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        device = torch.device("cpu")
+        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
         model = EAST()
 
@@ -31,26 +30,26 @@ class Train:
         model.to(device)
 
         optimizer = optim.Adam(model.parameters(), lr=learning_rate)
-        scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=[epochs // 2], gamma=0.1)
+        scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=2, gamma=0.1)
 
         for epoch in range(epochs):
             model.train()
-            scheduler.step()
             epoch_loss = 0
             epoch_score_loss = 0
             epoch_geometry_loss = 0
             epoch_time = time.time()
-
             for i, (name, path, image, coordinates, transcriptions, score_map, training_mask, geometry_map) in enumerate(train_loader):
                 start_time = time.time()
+                optimizer.zero_grad()
                 image, score_map, training_mask, geometry_map = image.to(device), score_map.to(device), training_mask.to(device), geometry_map.to(device)
                 predicted_score_map, predicted_geometry_map = model(image)
                 loss = criterion(score_map, predicted_score_map, geometry_map, predicted_geometry_map)
                 epoch_loss += loss.item()
-                optimizer.zero_grad()
                 loss.backward()
                 optimizer.step()
+                print("Epoch {}, Batch {}, Batch Loss {:.6f}".format(epoch + 1, i + 1, loss.item()))
 
+            scheduler.step()
             if (epoch + 1) % save_interval == 0:
                 state_dict = model.module.state_dict() if data_parallel else model.state_dict()
                 torch.save(state_dict, os.path.join(self.epoch_directory_path, 'model_epoch_{}.pth'.format(epoch + 1)))
@@ -64,4 +63,4 @@ if __name__ == '__main__':
     trainingPath = "./Dataset/Train/TrainEpoch/"
     train = Train(imagePath, annotationPath, trainingPath)
     # batch = 24, epochs = 600
-    train.train(new_length=256, learning_rate=1e-3, epochs=1, batch_size=2, num_workers=4, save_interval=5)
+    train.train(new_length=256, learning_rate=1e-3, epochs=5, batch_size=2, num_workers=0, save_interval=5)
