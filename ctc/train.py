@@ -37,7 +37,6 @@ parser.add_argument('--model_name', default="model",
                     type=str, help='Name of model')
 parser.add_argument('--verbose', default=True,
                     type=bool, help='Tooggle to print info while tranining')
-parser.add_argument('-debug', action='store_true')
 args = parser.parse_args()
 
 PIX_P_PRED = 30  # Width of pixels per prediction
@@ -91,6 +90,10 @@ def val_loss(net, loader):
         loss = criterion(preds.cpu(), labels_ind.cpu(), input_length.cpu(), target_length.cpu())
         running_loss += loss
 
+        if i == 1000:
+        	break
+
+    net.train()
     return running_loss/i
 
 
@@ -145,19 +148,8 @@ if __name__ == "__main__":
 	        loss = criterion(preds.cpu(), labels_ind.cpu(), input_length.cpu(), target_length.cpu())
 	        loss.backward()
 
-	        print(loss)
-	        print(labels)
-
 	        nn.utils.clip_grad_norm(net.parameters(), 10.0) #Clip gradient temp
 	        optimizer.step()
-
-	        if args.debug:
-	        	print(net.decode_seq(preds))
-	        	print(labels)
-	        	print(loss)
-	        	print(labels_ind)
-	        	if j == 10:
-	        		break
 
 		    # print statistics
 	        running_loss += loss
@@ -166,11 +158,10 @@ if __name__ == "__main__":
 	                (i+1, j+1, running_loss/args.print_iter))
 	            print(net.decode_seq(preds))
 	            print(labels)
+	            print("Validation Loss: ")
+	            print(val_loss(net, val_loader))
 	            running_loss = 0
 	            torch.save(net.state_dict(), os.path.join(args.save_dir, args.model_name + ".pth"))
-	            break
 
+	        # Update step size
 	        lr_scheduler.step()
-
-	    if args.debug:
-        	break
