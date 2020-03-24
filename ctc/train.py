@@ -72,26 +72,18 @@ def val_loss(net, loader):
 
     for i, data in enumerate(loader):
         img, labels = data
+        labels_ind, target_length = string_to_index(labels)
 
-        img = img[0]
-        labels_ind = string_to_index(labels)
-        target_length = torch.IntTensor([len(labels_ind)])
-
-        while (img.size[0] < (len(labels_ind)*PIX_P_PRED)):
-        	img = transforms.functional.resize(img, (int(img.size[1]*1.1), int(img.size[0]*1.1)))
-
-        img = to_tensor(img)
-        img = img.unsqueeze(0)
         img = img.to(device)
-
         preds = net(img)
-        input_length = torch.IntTensor([preds.shape[0]])
+        input_length = torch.IntTensor(preds.shape[1])
+        input_length = input_length.fill_(preds.shape[0])
 
         loss = criterion(preds.cpu(), labels_ind.cpu(), input_length.cpu(), target_length.cpu())
         running_loss += loss
 
         if i == 1000:
-        	break
+            break
 
     net.train()
     return running_loss/i
@@ -151,7 +143,7 @@ if __name__ == "__main__":
 	        nn.utils.clip_grad_norm(net.parameters(), 10.0) #Clip gradient temp
 	        optimizer.step()
 
-		    # print statistics
+	        # print statistics
 	        running_loss += loss
 	        if j % args.print_iter == args.print_iter-1 and args.verbose:
 	            print('epoch: %d (%d) | loss: %.3f' %
@@ -165,3 +157,5 @@ if __name__ == "__main__":
 
 	        # Update step size
 	        lr_scheduler.step()
+
+
