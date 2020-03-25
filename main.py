@@ -37,7 +37,6 @@ def main():
     for i, train in enumerate(training_data, 0):
         logging.info("Image #{}\n".format(i))
         inputs, labels = train
-        print(type(inputs))
         # features = extractor(inputs)
         # h = merger(features)
         # score_map, geometry_map = output(h)

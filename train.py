@@ -14,7 +14,7 @@ class Train:
         self.epoch_directory_path = epoch_directory_path
 
     def train(self, new_length, learning_rate, epochs, batch_size, num_workers, save_interval, shuffle=True, drop_last=False):
-        train_dataset = TextLocalizationSet(self.image_directory_path, self.annotation_directory_path, new_length)
+        train_dataset = TextLocalizationSet(self.image_directory_path, self.annotation_directory_path, (126, 224))
         train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers, drop_last=drop_last, collate_fn=collate)
 
         criterion = Loss()
@@ -41,13 +41,14 @@ class Train:
             for i, (name, path, image, coordinates, transcriptions, score_map, training_mask, geometry_map) in enumerate(train_loader):
                 start_time = time.time()
                 optimizer.zero_grad()
-                image, score_map, training_mask, geometry_map = image.to(device), score_map.to(device), training_mask.to(device), geometry_map.to(device)
-                predicted_score_map, predicted_geometry_map = model(image)
-                loss = criterion(score_map, predicted_score_map, geometry_map, predicted_geometry_map)
-                epoch_loss += loss.item()
-                loss.backward()
+                for j in range(len(image)):
+                    img, score, mask, geometry = image[j].to(device), score_map[j].to(device), training_mask[j].to(device), geometry_map[j].to(device)
+                    predicted_score_map, predicted_geometry_map = model(img)
+                    loss = criterion(score, predicted_score_map, geometry, predicted_geometry_map)
+                    epoch_loss += loss.item()
+                    print("Epoch {}, Batch {}, Item {}, Batch Loss {:.6f}".format(epoch + 1, i + 1, j + 1, loss.item()))
+                    loss.backward()
                 optimizer.step()
-                print("Epoch {}, Batch {}, Batch Loss {:.6f}".format(epoch + 1, i + 1, loss.item()))
 
             scheduler.step()
             if (epoch + 1) % save_interval == 0:
@@ -58,9 +59,13 @@ class Train:
 Testing and sample usage of functions
 """
 if __name__ == '__main__':
-    imagePath = "./Dataset/Train/TrainImages/"
-    annotationPath = "./Dataset/Train/TrainTruth/"
-    trainingPath = "./Dataset/Train/TrainEpoch/"
-    train = Train(imagePath, annotationPath, trainingPath)
+    image_directory_path = "./Dataset/Train/TrainImages/"
+    annotation_directory_path = "./Dataset/Train/TrainTruth/"
+    training_path = "./Dataset/Train/TrainEpoch/"
+    # train_dataset = TextLocalizationSet(image_directory_path, annotation_directory_path, (126, 224))
+    # train_loader = DataLoader(train_dataset, batch_size=5, shuffle=True, num_workers=0, drop_last=False, collate_fn=collate)
+    # for i, (name, path, image, coordinates, transcriptions, score_map, training_mask, geometry_map) in enumerate(train_loader):
+    #     print("Here")
+    train = Train(image_directory_path, annotation_directory_path, training_path)
     # batch = 24, epochs = 600
-    train.train(new_length=256, learning_rate=1e-3, epochs=5, batch_size=2, num_workers=0, save_interval=5)
+    train.train(new_length=256, learning_rate=1e-3, epochs=2, batch_size=24, num_workers=2, save_interval=5)

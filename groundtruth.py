@@ -20,7 +20,7 @@ class GroundTruthGeneration:
     def __init__(self, image_name, image):
         self.image_name = image_name
         self.image = image
-        self.height, self.width = image.shape
+        _, self.height, self.width = image.shape
 
     def _Calculate_Area(self, quad_coordinates):
         edge = [(quad_coordinates[1][0] - quad_coordinates[0][0]) * (quad_coordinates[1][1] + quad_coordinates[0][1]),
@@ -110,10 +110,10 @@ class GroundTruthGeneration:
     def Load_Geometry_Score_Maps(self, quad_coordinates, text_tags, scale=0.25):
         quad_coordinates, text_tags = self._Validate_Coordinates(quad_coordinates, text_tags)
 
-        score_map = np.zeros((int(self.height * scale), int(self.width * scale), 1), dtype=np.float32)
+        score_map = np.zeros((int(math.ceil(self.height * scale)), int(self.width * scale), 1), dtype=np.float32)
         #poly_mask = np.zeros((int(self.height * scale), int(self.width * scale), 1), dtype=np.uint8)
-        training_mask = np.ones((int(self.height * scale), int(self.width * scale), 1), dtype=np.uint8)  # mask used during traning, to ignore some hard areas
-        geometry_map  = np.zeros((int(self.height * scale), int(self.width * scale), 8), dtype=np.float32)
+        training_mask = np.ones((int(math.ceil(self.height * scale)), int(self.width * scale), 1), dtype=np.uint8)  # mask used during traning, to ignore some hard areas
+        geometry_map  = np.zeros((int(math.ceil(self.height * scale)), int(self.width * scale), 8), dtype=np.float32)
 
         polys = []
         ignored_polys = []

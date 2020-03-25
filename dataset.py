@@ -39,7 +39,9 @@ class TextLocalizationSet(Dataset):
         self.annotation_directory_path = annotation_directory_path
         self.image_paths, self.image_names, self.annotation_paths = self.Get_Images_Path_Name_Annotation()
         self.new_dimensions = new_dimensions
-        self.transform = transform
+        self.transform = transforms.Compose([transforms.Resize((126, 224)),
+                                             transforms.ToTensor(),
+                                             transforms.Normalize((0.5,), (0.5,))])
 
     def __len__(self):
         return len(self.image_paths)
@@ -48,19 +50,18 @@ class TextLocalizationSet(Dataset):
         if torch.is_tensor(idx):
             idx = idx.tolist()
 
-        tf = transforms.Compose([transforms.ToTensor(),
-                                 transforms.Normalize((0.5,), (0.5,))])
-
         image_path = os.path.join(self.image_directory_path, self.image_paths[idx])
         image = self.Load_Image(image_path)
+
+        dimensions = image.shape
         quad_coordinates, text_tags, bool_tags = self.Load_Annotation(os.path.join(self.annotation_directory_path, self.annotation_paths[idx]))
 
-        sample = {'name': self.image_names[idx], 'path': image_path, 'image': tf(Image.fromarray(image)), 'coords': np.array(quad_coordinates, dtype=np.float32), 'transcription': text_tags, 'score': None, 'mask': None, 'geometry': None}
+        sample = {'name': self.image_names[idx], 'path': image_path, 'image': self.transform(Image.fromarray(image)), 'coords': np.array(quad_coordinates, dtype=np.float32), 'transcription': text_tags, 'score': None, 'mask': None, 'geometry': None}
 
-        rescale = Rescale(self.new_dimensions)
+        rescale = Rescale(dimensions, self.new_dimensions)
         sample = rescale.__call__(sample)
 
-        groundtruth = GroundTruthGeneration(sample['name'], sample['image'])
+        groundtruth = GroundTruthGeneration(sample['name'], sample['image'].permute(0, 1, 2).numpy())
         sample['score'], sample['mask'], sample['geometry'] = groundtruth.Load_Geometry_Score_Maps(sample['coords'], bool_tags)
 
         return sample
@@ -156,24 +157,25 @@ class Rescale(object):
         to output_size keeping aspect ratio the same.
     """
 
-    def __init__(self, output_size):
+    def __init__(self, input_size, output_size):
         assert isinstance(output_size, (int, tuple))
+        self.input_size = input_size
         self.output_size = output_size
 
     def __call__(self, sample):
-        image, coords = sample['image'], sample['coords']
+        coords = sample['coords']
 
-        h, w = image.shape[:2]
-        if isinstance(self.output_size, int):
-            if h > w:
-                new_h, new_w = self.output_size * h / w, self.output_size
-            else:
-                new_h, new_w = self.output_size, self.output_size * w / h
-        else:
-            new_h, new_w = self.output_size
-
-        new_h, new_w = int(new_h), int(new_w)
-        img = transform.resize(image, (new_h, new_w))
+        h, w = self.input_size
+        # if isinstance(self.output_size, int):
+        #     if h > w:
+        #         new_h, new_w = self.output_size * h / w, self.output_size
+        #     else:
+        #         new_h, new_w = self.output_size, self.output_size * w / h
+        # else:
+        new_h, new_w = self.output_size
+        #
+        # new_h, new_w = int(new_h), int(new_w)
+        # img = transform.resize(image, (new_h, new_w))
 
         # h and w are swapped for landmarks because for images,
         # x and y axes are axis 1 and 0 respectively
@@ -182,7 +184,7 @@ class Rescale(object):
             coords[i] = coords[i].round(0)
             coords[i] = np.array(coords[i], dtype=int)
 
-        sample["image"] = img
+        # sample["image"] = img
         sample["coords"] = coords
 
         return sample
