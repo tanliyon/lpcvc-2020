@@ -1,7 +1,7 @@
 from torch import nn
 from Models.PVAnet import *
 from Models.Unet import *
-from Models.QUADbox import *
+from Models.Output import *
 
 class EAST(nn.Module):
     def __init__(self):

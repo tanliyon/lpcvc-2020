@@ -1,0 +1,90 @@
+INFO:root:
+Started
+INFO:root:Image #0
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+x dimensions: [1, channels, height, width] = torch.Size([1, 126, 224])
+
+INFO:root:
+x1 dimensions: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+f4 dimensions: [1, channels, height, width] = torch.Size([1, 64, 32, 56])
+
+INFO:root:
+f3 dimensions: [1, channels, height, width] = torch.Size([1, 128, 16, 28])
+
+INFO:root:
+f2 dimensions: [1, channels, height, width] = torch.Size([1, 256, 8, 14])
+
+INFO:root:
+f1 dimensions: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:torch.Size([1, 640, 8, 14])
+INFO:root:
+Input h2 dimensions: [1, channels, height, width] = torch.Size([1, 128, 8, 14])
+
+INFO:root:torch.Size([1, 256, 16, 28])
+INFO:root:
+Input h3 dimensions: [1, channels, height, width] = torch.Size([1, 64, 16, 28])
+
+INFO:root:torch.Size([1, 128, 32, 56])
+INFO:root:
+Input h4 dimensions: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+Input h5 dimensions: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:-------------------------------------------------
+INFO:root:Image #1
+
+INFO:root:Feature Extraction Layer
+
+INFO:root:
+x dimensions: [1, channels, height, width] = torch.Size([1, 126, 224])
+
+INFO:root:
+x1 dimensions: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+f4 dimensions: [1, channels, height, width] = torch.Size([1, 64, 32, 56])
+
+INFO:root:
+f3 dimensions: [1, channels, height, width] = torch.Size([1, 128, 16, 28])
+
+INFO:root:
+f2 dimensions: [1, channels, height, width] = torch.Size([1, 256, 8, 14])
+
+INFO:root:
+f1 dimensions: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:Feature Merging Layer
+
+INFO:root:
+Input h1 dimensions: [1, channels, height, width] = torch.Size([1, 384, 4, 7])
+
+INFO:root:torch.Size([1, 640, 8, 14])
+INFO:root:
+Input h2 dimensions: [1, channels, height, width] = torch.Size([1, 128, 8, 14])
+
+INFO:root:torch.Size([1, 256, 16, 28])
+INFO:root:
+Input h3 dimensions: [1, channels, height, width] = torch.Size([1, 64, 16, 28])
+
+INFO:root:torch.Size([1, 128, 32, 56])
+INFO:root:
+Input h4 dimensions: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:
+Input h5 dimensions: [1, channels, height, width] = torch.Size([1, 32, 32, 56])
+
+INFO:root:-------------------------------------------------
+INFO:root:Finished
+

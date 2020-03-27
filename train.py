@@ -35,16 +35,22 @@ class Train:
         for epoch in range(epochs):
             model.train()
             epoch_loss = 0
-            epoch_score_loss = 0
-            epoch_geometry_loss = 0
+            # epoch_score_loss = 0
+            # epoch_geometry_loss = 0
             epoch_time = time.time()
-            for i, (name, path, image, coordinates, transcriptions, score_map, training_mask, geometry_map) in enumerate(train_loader):
+            for i, (path, image, score_map, training_mask, geometry_map) in enumerate(train_loader):
                 start_time = time.time()
                 optimizer.zero_grad()
                 for j in range(len(image)):
                     img, score, mask, geometry = image[j].to(device), score_map[j].to(device), training_mask[j].to(device), geometry_map[j].to(device)
                     predicted_score_map, predicted_geometry_map = model(img)
-                    loss = criterion(score, predicted_score_map, geometry, predicted_geometry_map)
+                    # p = predicted_geometry_map.squeeze(0)
+                    # print(predicted_score_map.size())
+                    # print("Predicted Score {}".format(predicted_score_map))
+                    # print("True Score {}".format(score_map[j]))
+                    # print("Predicted Geometry {}".format(predicted_geometry_map))
+                    # print("True Geometry {}".format(geometry_map[j]))
+                    loss = criterion(score, predicted_score_map.squeeze(0), geometry, predicted_geometry_map.squeeze(0), mask)
                     epoch_loss += loss.item()
                     print("Epoch {}, Batch {}, Item {}, Batch Loss {:.6f}".format(epoch + 1, i + 1, j + 1, loss.item()))
                     loss.backward()
@@ -68,4 +74,4 @@ if __name__ == '__main__':
     #     print("Here")
     train = Train(image_directory_path, annotation_directory_path, training_path)
     # batch = 24, epochs = 600
-    train.train(new_length=256, learning_rate=1e-3, epochs=2, batch_size=24, num_workers=2, save_interval=5)
+    train.train(new_length=256, learning_rate=1e-3, epochs=2, batch_size=5, num_workers=2, save_interval=5, shuffle=False)

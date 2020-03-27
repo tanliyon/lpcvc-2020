@@ -27,3 +27,13 @@ def is_valid_image_file(path):
 def is_empty_coordinates(coordinates):
     if coordinates.shape[0] == 0:
         return True
+
+def is_valid_ratio(ratios):
+    for ratio in ratios:
+        if ratio < 1:
+            raise ValueError("Ratio {} cannot be less than 1".format(ratio))
+
+def check_number_of_channels(image):
+    channels = len(image.getbands())
+    if channels != 1:
+        raise TypeError("Image must have only 1 channel instead of {} channels".format(channels))
