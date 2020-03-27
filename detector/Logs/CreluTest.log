@@ -1,0 +1,148 @@
+INFO:root:Started
+INFO:root:Image #0
+INFO:root:
+Input x dimensions: [1, channels, height, width] = torch.Size([1, 3, 192, 341])
+
+INFO:root:
+CRelu_Base
+INFO:root:Input x dimensions after 3x3: [1, channels, height, width] = torch.Size([1, 16, 96, 171])
+INFO:root:Input x dimensions after concatenation: [1, channels, height, width] = torch.Size([1, 32, 96, 171])
+INFO:root:Input x dimensions after normalization: [1, channels, height, width] = torch.Size([1, 32, 96, 171])
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 32, 96, 171])
+INFO:root:Input x dimensions after maxpool: [1, channels, height, width] = torch.Size([1, 32, 47, 85])
+INFO:root:
+x1 dimensions after base: [1, channels, height, width] = torch.Size([1, 32, 47, 85])
+
+INFO:root:
+CRelu_Residual
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 24, 47, 85])
+INFO:root:Input x dimensions after 3x3: [1, channels, height, width] = torch.Size([1, 24, 47, 85])
+INFO:root:Input x dimensions after concatenation: [1, channels, height, width] = torch.Size([1, 48, 47, 85])
+INFO:root:Input x dimensions after normalization: [1, channels, height, width] = torch.Size([1, 48, 47, 85])
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 64, 47, 85])
+INFO:root:Input x dimensions after projection: [1, channels, height, width] = torch.Size([1, 64, 47, 85])
+INFO:root:
+CRelu_Residual
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 24, 47, 85])
+INFO:root:Input x dimensions after 3x3: [1, channels, height, width] = torch.Size([1, 24, 47, 85])
+INFO:root:Input x dimensions after concatenation: [1, channels, height, width] = torch.Size([1, 48, 47, 85])
+INFO:root:Input x dimensions after normalization: [1, channels, height, width] = torch.Size([1, 48, 47, 85])
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 64, 47, 85])
+INFO:root:
+CRelu_Residual
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 24, 47, 85])
+INFO:root:Input x dimensions after 3x3: [1, channels, height, width] = torch.Size([1, 24, 47, 85])
+INFO:root:Input x dimensions after concatenation: [1, channels, height, width] = torch.Size([1, 48, 47, 85])
+INFO:root:Input x dimensions after normalization: [1, channels, height, width] = torch.Size([1, 48, 47, 85])
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 64, 47, 85])
+INFO:root:
+x2 dimensions after residual1: [1, channels, height, width] = torch.Size([1, 64, 47, 85])
+
+INFO:root:
+CRelu_Residual
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 48, 24, 43])
+INFO:root:Input x dimensions after 3x3: [1, channels, height, width] = torch.Size([1, 48, 24, 43])
+INFO:root:Input x dimensions after concatenation: [1, channels, height, width] = torch.Size([1, 96, 24, 43])
+INFO:root:Input x dimensions after normalization: [1, channels, height, width] = torch.Size([1, 96, 24, 43])
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 128, 24, 43])
+INFO:root:Input x dimensions after projection: [1, channels, height, width] = torch.Size([1, 128, 24, 43])
+INFO:root:
+CRelu_Residual
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 48, 24, 43])
+INFO:root:Input x dimensions after 3x3: [1, channels, height, width] = torch.Size([1, 48, 24, 43])
+INFO:root:Input x dimensions after concatenation: [1, channels, height, width] = torch.Size([1, 96, 24, 43])
+INFO:root:Input x dimensions after normalization: [1, channels, height, width] = torch.Size([1, 96, 24, 43])
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 128, 24, 43])
+INFO:root:
+CRelu_Residual
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 48, 24, 43])
+INFO:root:Input x dimensions after 3x3: [1, channels, height, width] = torch.Size([1, 48, 24, 43])
+INFO:root:Input x dimensions after concatenation: [1, channels, height, width] = torch.Size([1, 96, 24, 43])
+INFO:root:Input x dimensions after normalization: [1, channels, height, width] = torch.Size([1, 96, 24, 43])
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 128, 24, 43])
+INFO:root:
+CRelu_Residual
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 48, 24, 43])
+INFO:root:Input x dimensions after 3x3: [1, channels, height, width] = torch.Size([1, 48, 24, 43])
+INFO:root:Input x dimensions after concatenation: [1, channels, height, width] = torch.Size([1, 96, 24, 43])
+INFO:root:Input x dimensions after normalization: [1, channels, height, width] = torch.Size([1, 96, 24, 43])
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 128, 24, 43])
+INFO:root:
+x3 dimensions after residual2: [1, channels, height, width] = torch.Size([1, 128, 24, 43])
+
+INFO:root:
+
+INFO:root:Image #1
+INFO:root:
+Input x dimensions: [1, channels, height, width] = torch.Size([1, 3, 192, 341])
+
+INFO:root:
+CRelu_Base
+INFO:root:Input x dimensions after 3x3: [1, channels, height, width] = torch.Size([1, 16, 96, 171])
+INFO:root:Input x dimensions after concatenation: [1, channels, height, width] = torch.Size([1, 32, 96, 171])
+INFO:root:Input x dimensions after normalization: [1, channels, height, width] = torch.Size([1, 32, 96, 171])
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 32, 96, 171])
+INFO:root:Input x dimensions after maxpool: [1, channels, height, width] = torch.Size([1, 32, 47, 85])
+INFO:root:
+x1 dimensions after base: [1, channels, height, width] = torch.Size([1, 32, 47, 85])
+
+INFO:root:
+CRelu_Residual
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 24, 47, 85])
+INFO:root:Input x dimensions after 3x3: [1, channels, height, width] = torch.Size([1, 24, 47, 85])
+INFO:root:Input x dimensions after concatenation: [1, channels, height, width] = torch.Size([1, 48, 47, 85])
+INFO:root:Input x dimensions after normalization: [1, channels, height, width] = torch.Size([1, 48, 47, 85])
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 64, 47, 85])
+INFO:root:Input x dimensions after projection: [1, channels, height, width] = torch.Size([1, 64, 47, 85])
+INFO:root:
+CRelu_Residual
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 24, 47, 85])
+INFO:root:Input x dimensions after 3x3: [1, channels, height, width] = torch.Size([1, 24, 47, 85])
+INFO:root:Input x dimensions after concatenation: [1, channels, height, width] = torch.Size([1, 48, 47, 85])
+INFO:root:Input x dimensions after normalization: [1, channels, height, width] = torch.Size([1, 48, 47, 85])
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 64, 47, 85])
+INFO:root:
+CRelu_Residual
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 24, 47, 85])
+INFO:root:Input x dimensions after 3x3: [1, channels, height, width] = torch.Size([1, 24, 47, 85])
+INFO:root:Input x dimensions after concatenation: [1, channels, height, width] = torch.Size([1, 48, 47, 85])
+INFO:root:Input x dimensions after normalization: [1, channels, height, width] = torch.Size([1, 48, 47, 85])
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 64, 47, 85])
+INFO:root:
+x2 dimensions after residual1: [1, channels, height, width] = torch.Size([1, 64, 47, 85])
+
+INFO:root:
+CRelu_Residual
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 48, 24, 43])
+INFO:root:Input x dimensions after 3x3: [1, channels, height, width] = torch.Size([1, 48, 24, 43])
+INFO:root:Input x dimensions after concatenation: [1, channels, height, width] = torch.Size([1, 96, 24, 43])
+INFO:root:Input x dimensions after normalization: [1, channels, height, width] = torch.Size([1, 96, 24, 43])
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 128, 24, 43])
+INFO:root:Input x dimensions after projection: [1, channels, height, width] = torch.Size([1, 128, 24, 43])
+INFO:root:
+CRelu_Residual
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 48, 24, 43])
+INFO:root:Input x dimensions after 3x3: [1, channels, height, width] = torch.Size([1, 48, 24, 43])
+INFO:root:Input x dimensions after concatenation: [1, channels, height, width] = torch.Size([1, 96, 24, 43])
+INFO:root:Input x dimensions after normalization: [1, channels, height, width] = torch.Size([1, 96, 24, 43])
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 128, 24, 43])
+INFO:root:
+CRelu_Residual
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 48, 24, 43])
+INFO:root:Input x dimensions after 3x3: [1, channels, height, width] = torch.Size([1, 48, 24, 43])
+INFO:root:Input x dimensions after concatenation: [1, channels, height, width] = torch.Size([1, 96, 24, 43])
+INFO:root:Input x dimensions after normalization: [1, channels, height, width] = torch.Size([1, 96, 24, 43])
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 128, 24, 43])
+INFO:root:
+CRelu_Residual
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 48, 24, 43])
+INFO:root:Input x dimensions after 3x3: [1, channels, height, width] = torch.Size([1, 48, 24, 43])
+INFO:root:Input x dimensions after concatenation: [1, channels, height, width] = torch.Size([1, 96, 24, 43])
+INFO:root:Input x dimensions after normalization: [1, channels, height, width] = torch.Size([1, 96, 24, 43])
+INFO:root:Input x dimensions after 1x1: [1, channels, height, width] = torch.Size([1, 128, 24, 43])
+INFO:root:
+x3 dimensions after residual2: [1, channels, height, width] = torch.Size([1, 128, 24, 43])
+
+INFO:root:
+
+INFO:root:Finished
