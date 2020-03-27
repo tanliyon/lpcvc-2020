@@ -21,6 +21,7 @@ def ctc_recognition(frames, bboxes):
 	transform = transforms.compose([
 		transforms.Resize((50, 600)),
 		transforms.ToTensor()])
+	to_pil = transforms.ToPilImage()
 	load_path = os.path.join(os.getcwd(), MODEL_PATH)
 
 	net = CRNN()
@@ -31,6 +32,7 @@ def ctc_recognition(frames, bboxes):
 
 	for frame in frames:
 		words = []
+		frame = to_pil(frame)
 		for box in bboxes:
 			tl_x, tl_y, tr_x, tr_y, br_x, br_y, bl_x, bl_y = box
 			top = min(tl_y, tr_y)
