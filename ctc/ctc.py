@@ -11,8 +11,6 @@ from torchvision import transforms
 from torch.utils.data import DataLoader
 from torch.nn.utils.rnn import pad_sequence
 
-from WordRecognitionSet import collate
-from WordRecognitionSet import WordRecognitionSet
 from model import CRNN
 
 # Model's weights file relative path
@@ -21,7 +19,7 @@ MODEL_PATH = "ctc.pth"
 def ctc_recognition(frames, bboxes):
 	device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 	transform = transforms.compose([
-		transforms.Resize((32, 300)),
+		transforms.Resize((50, 600)),
 		transforms.ToTensor()])
 	load_path = os.path.join(os.getcwd(), MODEL_PATH)
 
@@ -41,6 +39,7 @@ def ctc_recognition(frames, bboxes):
 			width = max(tr_x, br_x) - min(tl_x, bl_x)
 			words.append(transforms.functional.crop(frame, top, left, height, width))
 		transform(words)
-		preds.append(net(img))
+		words.to(device)
+		preds.append(net(words))
 
 	return preds
