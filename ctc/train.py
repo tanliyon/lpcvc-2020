@@ -71,16 +71,17 @@ def val_loss(net, loader):
     running_loss = 0
 
     for i, data in enumerate(loader):
-        img, labels = data
-        labels_ind, target_length = string_to_index(labels)
+    	with torch.no_grad():
+        	img, labels = data
+        	labels_ind, target_length = string_to_index(labels)
 
-        img = img.to(device)
-        preds = net(img)
-        input_length = torch.IntTensor(preds.shape[1])
-        input_length = input_length.fill_(preds.shape[0])
+        	img = img.to(device)
+        	preds = net(img)
+        	input_length = torch.IntTensor(preds.shape[1])
+        	input_length = input_length.fill_(preds.shape[0])
 
-        loss = criterion(preds.cpu(), labels_ind.cpu(), input_length.cpu(), target_length.cpu())
-        running_loss += loss
+        	loss = criterion(preds.cpu(), labels_ind.cpu(), input_length.cpu(), target_length.cpu())
+        	running_loss += loss
 
         if i == 1000:
             break
@@ -99,7 +100,7 @@ if __name__ == "__main__":
     ])
 
     net = CRNN()
-    net.to(device)
+    net = net.to(device)
     criterion = nn.CTCLoss()
     optimizer = optim.Adam(net.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay)
     lr_scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=5000, gamma=0.5)
@@ -140,7 +141,7 @@ if __name__ == "__main__":
 	        loss = criterion(preds.cpu(), labels_ind.cpu(), input_length.cpu(), target_length.cpu())
 	        loss.backward()
 
-	        nn.utils.clip_grad_norm(net.parameters(), 10.0) #Clip gradient temp
+	        nn.utils.clip_grad_norm_(net.parameters(), 10.0) #Clip gradient temp
 	        optimizer.step()
 
 	        # print statistics

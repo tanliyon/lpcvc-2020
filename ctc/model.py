@@ -87,10 +87,6 @@ class CRNN(nn.Module):
             label = np.argmax(pred[i])
             seq.append(label-1)
 
-        # Debug
-        print("Prediction index: ")
-        print(seq)
-
         # Construct the final string
         for i in range(len(seq)):
             if len(out) == 0:
