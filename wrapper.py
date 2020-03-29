@@ -23,7 +23,7 @@ def main(argv):
     except:
         raise ValueError("Error obtaining questions from input file")
     questions = questions[:-1]
-    print(questions)
+    
     # get relevant frames from video
     # list of frames
     # frames_list = iFRAMES(video_path)
@@ -40,7 +40,7 @@ def main(argv):
     text_list = CTC(frames_list, bboxes)
     if len(text_list) == 0:
         raise ValueError('No text recognised')
-    print(text_list)
+
     # Answers the questions
     # text_list format: [[string, string, string], [string, string, string, string],....]
     text_dict = dict()   
@@ -51,6 +51,10 @@ def main(argv):
                     text_dict[word] = text_dict[word] + [x for x in words_in_frame if x != word]
                 else:
                     text_dict[word] = [x for x in words if x != word]
+    
+    for question in questions:
+        if question not in text_dict.keys():
+            text_dict[question] = '-'
 
     # Write answers to questions from text_dict dictionary                
     try:
