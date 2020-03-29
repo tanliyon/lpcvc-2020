@@ -25,7 +25,7 @@ def sampler(in_file='', out_dir=''):
         os.remove('frames/.DS_Store')
     except OSError:
         pass
-    return sorted(os.listdir('./frames/'))
+    return './frames/sub'
 
 
 if __name__ == '__main__':
