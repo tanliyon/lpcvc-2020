@@ -26,16 +26,18 @@ def main(argv):
     
     # get relevant frames from video
     # list of frames
-    # frames_list = iFRAMES(video_path)
+    frames_list = iFRAMES(video_path)
     #print(frames_list)
     #if len(frames_list) == 0:
         #raise ValueError('No frames received')
+
     # get bounding box coordinates for all frames
     frames_list, bboxes = DETECTOR('./frames')
     #print(bboxes[10])
     #if len(frames_id_dict) == 0:
         #raise ValueError('No Bounding Boxes received')
     #print(frames_id_dict)
+    
     # get list of recognised strings from frames
     text_list = CTC(frames_list, bboxes)
     if len(text_list) == 0:
