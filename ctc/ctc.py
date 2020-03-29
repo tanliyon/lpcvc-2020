@@ -6,7 +6,7 @@ import numpy as np
 import argparse
 import torch.nn as nn
 import torch.optim as optim
-from matplotlib.path import Path
+# from matplotlib.path import Path
 from torchvision import transforms
 from torch.utils.data import DataLoader
 from torch.nn.utils.rnn import pad_sequence
@@ -27,7 +27,7 @@ def ctc_recognition(frames, bboxes):
 	net = CRNN()
 	net.decode = True
 	net = net.to(device)
-	net.load_state_dict(torch.load(load_path))
+	net.load_state_dict(torch.load(load_path, map_location=device))
 	preds = []
 
 	for frame, frame_bboxes in zip(frames, bboxes):
