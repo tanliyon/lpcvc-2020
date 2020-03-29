@@ -18,11 +18,12 @@ def main(argv):
     # Open question text file and create a list of questions
     try:
         with open(question_path, 'r') as question_file:
-            questions = question_file.split(";")
+            for line in question_file:
+                questions = line.split(";")
     except:
-        pass
-        #raise ValueError("Error obtaining questions from input file")
-
+        raise ValueError("Error obtaining questions from input file")
+    questions = questions[:-1]
+    print(questions)
     # get relevant frames from video
     # list of frames
     # frames_list = iFRAMES(video_path)
@@ -39,7 +40,7 @@ def main(argv):
     text_list = CTC(frames_list, bboxes)
     if len(text_list) == 0:
         raise ValueError('No text recognised')
-
+    print(text_list)
     # Answers the questions
     # text_list format: [[string, string, string], [string, string, string, string],....]
     text_dict = dict()   
