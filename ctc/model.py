@@ -7,7 +7,7 @@ import numpy as np
 import string
 
 class CRNN(nn.Module):
-    def __init__(self, backend='resnet18', rnn_hidden_size=128, rnn_num_layers=2, rnn_dropout=0):
+    def __init__(self, backend='resnet18', rnn_hidden_size=128, rnn_num_layers=2, rnn_dropout=0, pretrained=True):
         super(CRNN, self).__init__()
 
         # '-' is used as a special character to indicate duplicate character
@@ -18,7 +18,7 @@ class CRNN(nn.Module):
 
         # Create the convolution layers with pretrained weights from resnet18 
         # except final avgpool and fc layers
-        self.feature_extractor = getattr(models, backend)(pretrained=True)
+        self.feature_extractor = getattr(models, backend)(pretrained=pretrained)
         self.cnn = nn.Sequential(
             nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3, bias=False), # Modification to accept grayscale img
             self.feature_extractor.bn1,

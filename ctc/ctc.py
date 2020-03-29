@@ -24,7 +24,7 @@ to_pil = transforms.ToPILImage()
 load_path = os.path.join(os.getcwd(), MODEL_PATH)
 
 def ctc_recognition(frames, bboxes):
-	net = CRNN()
+	net = CRNN(pretrained=False)
 	net.decode = True
 	net = net.to(device)
 	net.load_state_dict(torch.load(load_path, map_location=device))
