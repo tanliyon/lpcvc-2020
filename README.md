@@ -39,3 +39,4 @@ python wrapper.py video_file_path.MP4 question_file_path.txt answer_file_path.tx
 ## Notes
 1. Currently, the first block of the code is taking really long. If you want to test only a portion of it, run the code for a set amount of time, then comment out the line `frames_list = iFRAMES(video_path)` in wrapper.py. Then run the code again.
 2. Since the current detector is not trained, the output will rarely match any questions. Hence, the answer file will most likely be empty.
+3. Currently, the recognition block uses CTC to do OCR. We are experimenting with using attention mechanism and that will most likely be the one we use instead since the performance is probably better.
