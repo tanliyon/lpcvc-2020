@@ -213,7 +213,7 @@ class PVAnet(nn.Module):
 
         # CRelu Base Layer
         x1 = self.convolution1(x.unsqueeze(0))
-        print(x1.shape)
+        # print(x1.shape)
         x1 = torch.cat((x1, -x1), 1)
         x1 = self.activation(self.normalization1(x1))
         x1 = self.pool1(x1)
