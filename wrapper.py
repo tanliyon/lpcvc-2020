@@ -1,20 +1,22 @@
 import sys
-import os
-from sampler.iframes_no_mv import sampler as iFRAMES
-from ctc.ctc import ctc_recognition as CTC
-from detector.inference import detection as DETECTOR
+
 from PIL import Image
 import numpy as np
 import time
 
-def main(argv):
+from sampler.iframes_no_mv import sampler as iFRAMES
+from ctc.ctc import ctc_recognition as CTC
+from detector.inference import detection as DETECTOR
+
+
+def main():
     
-    if len(argv) != 3:
+    if len(sys.argv) != 4:
         raise ValueError('Incorrect number of input arguements.\nExpected: Video path, Question file, Answer File')
     
-    video_path = argv[0]
-    question_path = argv[1]
-    answer_path = argv[2]
+    video_path = sys.argv[1]
+    question_path = sys.argv[2]
+    answer_path = sys.argv[3]
 
     # Open question text file and create a list of questions
     try:
@@ -24,7 +26,7 @@ def main(argv):
     except:
         raise ValueError("Error obtaining questions from input file")
     questions = questions[:-1]
-    
+
     # get relevant frames from video
     # list of frames
     start = time.time()
@@ -50,29 +52,37 @@ def main(argv):
 
     # Answers the questions
     # text_list format: [[string, string, string], [string, string, string, string],....]
-    text_dict = dict()   
-    for words_in_frame in text_list:
-        if [words for words in words_in_frame if words in questions]:
-            for word in words:
-                if word in text_dict:
-                    text_dict[word] = text_dict[word] + [x for x in words_in_frame if x != word]
-                else:
-                    text_dict[word] = [x for x in words if x != word]
-    
-    for question in questions:
-        if question not in text_dict.keys():
-            text_dict[question] = '-'
+    ans_dict = {question: "" for question in questions}
 
-    # Write answers to questions from text_dict dictionary                
+    """ Uncomment if want to print predicted words from all frames
+    for text in text_list:
+        print(text)
+    """
+
+    # Brute force way to go through all the questions and write corresponding answers
+    # (Can be improved I believe but for now)
+    for question in questions:
+        for words_in_frame in text_list:
+
+            if question in words_in_frame:
+                for word in words_in_frame:
+                    if word != question:
+                        ans_dict[question] += " " + word
+
+        if ans_dict[question] == "":
+            ans_dict[question] = " -"
+
+    # Write answers to questions from ans_dict dictionary
     try:
         with open(answer_path, "w") as answer_file:
-            for question in text_dict.keys():
-                answer_file.write(question + ": ")
-                answer_file.writelines(text_dict[question]) #is space between words included here
-                answer_file.write("; ")
+            for question in ans_dict.keys():
+                answer_file.write(question + ":")
+                answer_file.writelines(ans_dict[question]) #is space between words included here: Yes
+                answer_file.write(";")
 
     except:
         raise ValueError('Error writing answers to output file')
 
+
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main()
