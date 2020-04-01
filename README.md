@@ -17,7 +17,7 @@ The proposed solution is made up of 3 blocks. The first block (sampling block) t
   ```
   
 2. Download model file for both EAST-Detector and CTC.\
-  EAST-Detector: Not ready\
+  EAST-Detector: https://drive.google.com/open?id=1g6mRhhrpOfCPrM9fEEmMS52IY72w8nbi
   CTC: https://drive.google.com/open?id=1Hq484_MHM4wE7SY-d67HKbX52WbFD4To
   
 3. Install dependencies.\
