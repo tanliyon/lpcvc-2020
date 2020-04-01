@@ -5,6 +5,7 @@ from model import *
 from detect import *
 
 MODEL_PATH = "detector.pth"
+# MODEL_PATH = "./Dataset/Train/TrainEpoch/model_epoch_580.pth"
 
 def detection(frames_path):
     transform = transforms.Compose([
@@ -27,11 +28,13 @@ def detection(frames_path):
 
     for i, frame in enumerate(frames_data, 0):
         input, label = frame
-        score_map, geometry_map = model(input)
+        with torch.no_grad():
+            score_map, geometry_map = model(input.to(device))
+        box = get_boxes(score_map.squeeze(0).cpu().numpy(), geometry_map.squeeze(0).cpu().numpy())
         # box = detect(score_map, geometry_map)
-        # frames.append(input)
-        # boxes.append(box)
-        # plot_img = plot_boxes(torchvision.transforms.ToPILImage()(input), boxes)
+        frames.append(input)
+        boxes.append(box)
+        # plot_img = plot_boxes(torchvision.transforms.ToPILImage()(input), box)
         # plot_img.show()
 
     return frames, boxes

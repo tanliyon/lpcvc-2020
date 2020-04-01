@@ -74,10 +74,5 @@ if __name__ == '__main__':
     image_directory_path = "./Dataset/Train/TrainImages/"
     annotation_directory_path = "./Dataset/Train/TrainTruth/"
     training_path = "./Dataset/Train/TrainEpoch/"
-    # train_dataset = TextLocalizationSet(image_directory_path, annotation_directory_path, (126, 224))
-    # train_loader = DataLoader(train_dataset, batch_size=5, shuffle=True, num_workers=0, drop_last=False, collate_fn=collate)
-    # for i, (name, path, image, coordinates, transcriptions, score_map, training_mask, geometry_map) in enumerate(train_loader):
-    #     print("Here")
     train = Train(image_directory_path, annotation_directory_path, training_path)
-    # batch = 24, epochs = 600
     train.train(new_dimensions=(126, 224), learning_rate=1e-5, epochs=600, batch_size=24, num_workers=4, save_interval=5, shuffle=True)

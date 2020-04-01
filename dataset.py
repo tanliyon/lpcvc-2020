@@ -52,8 +52,8 @@ class TextLocalizationSet(Dataset):
 
         image, quad_coordinates = self.Resize_Data(image, quad_coordinates)
 
-        utils = Utils(image.height, image.width)
-        score_map, training_mask, geometry_map = utils.Load_Geometry_Score_Maps(quad_coordinates, bool_tags)
+        # utils = Utils(image.height, image.width)
+        score_map, training_mask, geometry_map = Load_Geometry_Score_Maps(quad_coordinates, bool_tags, self.new_dimensions)
 
         # image, quad_coordinates = utils.Rotate_Data(image, quad_coordinates)
         # image, quad_coordinates = utils.Crop_Data(image, quad_coordinates)

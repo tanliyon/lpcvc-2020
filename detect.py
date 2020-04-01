@@ -119,7 +119,7 @@ def restore_polys(valid_pos, valid_geo, score_shape, scale=4):
 		y_max = y + d[1, i]
 		x_min = x - d[2, i]
 		x_max = x + d[3, i]
-		rotate_mat = Util.Get_Rotation_Matrix(-angle[i])
+		rotate_mat = Get_Rotation_Matrix(-angle[i])
 
 		temp_x = np.array([[x_min, x_max, x_max, x_min]]) - x
 		temp_y = np.array([[y_min, y_min, y_max, y_max]]) - y
