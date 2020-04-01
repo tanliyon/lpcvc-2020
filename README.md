@@ -3,7 +3,7 @@
 ## Overview
 This is the sample solution for [low Power Computer Vision Challenge (LPCVC) 2020 Video Track](https://lpcv.ai/2020CVPR/video-track). This solution serves only as the baseline solution and a lot of improvements can be made on top of this to further optimize the performance of the solution.
 
-The proposed solution is made up of 3 blocks. The first block (sampling block) takes in a video file and determine which frames are worth doing detection and recognition on. This sample solution does so by dissecting the motion vector from the H.264 encoding of the video to pick out stationary i-frames. The second block (detection block) does word recognition on the frames selected from the sampling block. This sample solution uses [EAST Detector](https://arxiv.org/abs/1704.03155). Lastly, the third block (recognition block) does optical character recognition (OCR) on the cropped words. The sample solution uses Connectionist Temporal Classification (CTC) for now.
+The proposed solution is made up of 3 blocks. The first block (sampling block) takes in a video file and determine which frames are worth doing detection and recognition on. This sample solution does so by dissecting the motion vector from the H.264 encoding of the video to pick out stationary i-frames. The second block (detection block) does word recognition on the frames selected from the sampling block. This sample solution uses [EAST Detector](https://arxiv.org/abs/1704.03155). Lastly, the third block (recognition block) does optical character recognition (OCR) on the cropped words. The sample solution uses [Connectionist Temporal Classification (CTC)](https://arxiv.org/pdf/1507.05717.pdf) for now.
 
 ## Contents
 1. [Setup](#setup)
@@ -21,7 +21,8 @@ The proposed solution is made up of 3 blocks. The first block (sampling block) t
   CTC: https://drive.google.com/open?id=1Hq484_MHM4wE7SY-d67HKbX52WbFD4To
   
 3. Install dependencies.\
-  i. lanms - `pip install lanms`
+  `pip install -r requirements.txt`\
+  Note that lanms might not work with Windows.
   
 4. Check directory structure. It should be:\
 lpcvc-2020\
