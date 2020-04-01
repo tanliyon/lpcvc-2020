@@ -4,15 +4,23 @@ from torchvision import transforms
 from model import *
 from detect import *
 
+MODEL_PATH = "detector.pth"
+
 def detection(frames_path):
     transform = transforms.Compose([
-                    transforms.Resize((256, 256)),
+                    transforms.Grayscale(num_output_channels=1),
+                    transforms.Resize((126, 224)),
                     transforms.ToTensor(),
-                    transforms.Normalize(mean=(0.5,0.5,0.5), std=(0.5,0.5,0.5))
+                    transforms.Normalize(mean=(0.5,), std=(0.5,))
                 ])
     frames_data = torchvision.datasets.ImageFolder(root=frames_path, transform=transform)
 
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    checkpoint = torch.load(MODEL_PATH, map_location=device)
+
     model = EAST()
+    model.load_state_dict(checkpoint["model_state_dict"])
+    model = model.to(device)
 
     frames = []
     boxes = []
@@ -20,9 +28,9 @@ def detection(frames_path):
     for i, frame in enumerate(frames_data, 0):
         input, label = frame
         score_map, geometry_map = model(input)
-        box = detect(score_map, geometry_map)
-        frames.append(input)
-        boxes.append(box)
+        # box = detect(score_map, geometry_map)
+        # frames.append(input)
+        # boxes.append(box)
         # plot_img = plot_boxes(torchvision.transforms.ToPILImage()(input), boxes)
         # plot_img.show()
 
