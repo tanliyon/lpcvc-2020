@@ -31,9 +31,13 @@ def ctc_recognition(frames, bboxes):
 	preds = []
 
 	for frame, frame_bboxes in zip(frames, bboxes):
+		if type(frame_bboxes).__module__ != np.__name__ or len(frame_bboxes) == 0:
+                    continue
+                
 		words = []
 		pred_frame = []
 		frame = to_pil(frame)
+                
 		for box in frame_bboxes:
 			tl_x, tl_y, tr_x, tr_y, br_x, br_y, bl_x, bl_y = box
 			top = min(tl_y, tr_y)
@@ -42,13 +46,10 @@ def ctc_recognition(frames, bboxes):
 			width = max(tr_x, br_x) - min(tl_x, bl_x)
 			words.append(transform(transforms.functional.crop(frame, top, left, height, width)))
 
-		if not words:
-			continue
-
 		words = torch.stack(words)
 		words = words.to(device)
 		preds.append(net(words))
-
+		
 	return preds
 
 

@@ -45,8 +45,6 @@ def main():
     # get list of recognised strings from frames
     start = time.time()
     text_list = CTC(frames_list, bboxes)
-    if len(text_list) == 0:
-        raise ValueError('No text recognised')
     interval = time.time() - start
     print("Recognition Block took %d minutes %.3f seconds" % (interval//60, interval%60))
 
