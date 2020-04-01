@@ -21,7 +21,8 @@ The proposed solution is made up of 3 blocks. The first block (sampling block) t
   CTC: https://drive.google.com/open?id=1Hq484_MHM4wE7SY-d67HKbX52WbFD4To
   
 3. Install dependencies.\
-  i. lanms - `pip install lanms`
+  `pip install -r requirements.txt`\
+  Note that lanms might not work with Windows.
   
 4. Check directory structure. It should be:\
 lpcvc-2020\
