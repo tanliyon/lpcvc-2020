@@ -4,8 +4,8 @@ from torchvision import transforms
 from model import *
 from detect import *
 
-MODEL_PATH = "detector.pth"
-# MODEL_PATH = "./Dataset/Train/TrainEpoch/model_epoch_580.pth"
+# MODEL_PATH = "detector.pth"
+MODEL_PATH = "./Dataset/Train/TrainEpoch/model_epoch_600.pth"
 
 def detection(frames_path):
     transform = transforms.Compose([
@@ -31,6 +31,9 @@ def detection(frames_path):
         with torch.no_grad():
             score_map, geometry_map = model(input.to(device))
         box = get_boxes(score_map.squeeze(0).cpu().numpy(), geometry_map.squeeze(0).cpu().numpy())
+
+        if not box:
+            continue
         # box = detect(score_map, geometry_map)
         frames.append(input)
         boxes.append(box)
