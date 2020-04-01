@@ -1,8 +1,8 @@
 import torch
 import torchvision
 from torchvision import transforms
-from model import *
-from detect import *
+from detector.model import *
+from detector.detect import *
 
 MODEL_PATH = "detector.pth"
 
