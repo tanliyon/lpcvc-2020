@@ -22,10 +22,8 @@ def sorted_alphanumeric(data):
 
 
 def collate(batch):
-    #name = [item["name"] for item in batch]
     path = [item["path"] for item in batch]
     image = [item["image"] for item in batch]
-    #coords = [item["coords"] for item in batch]
     score = [item["score"] for item in batch]
     geometry = [item["geometry"] for item in batch]
     mask = [item["mask"] for item in batch]
@@ -53,7 +51,6 @@ class TextLocalizationSet(Dataset):
         quad_coordinates, bool_tags = self.Load_Annotation(os.path.join(self.annotation_directory_path, self.annotation_paths[idx]))
 
         image, quad_coordinates = self.Resize_Data(image, quad_coordinates)
-        # print(self.image_names[idx])
 
         utils = Utils(image.height, image.width)
         score_map, training_mask, geometry_map = utils.Load_Geometry_Score_Maps(quad_coordinates, bool_tags)
@@ -128,12 +125,10 @@ class TextLocalizationSet(Dataset):
                       text_tags (bool numpy array): ground truth text labels
         """
         quad_coordinates = []
-        #text_tags = []
         bool_tags = []
 
         with open(annotation_file, "r", encoding='utf-8-sig') as infile:
             lines = infile.readlines()
-            #lines[0] = lines[0].lstrip("\ufeff")
 
         for i, line in enumerate(lines):
             quad_coordinates.append(list(map(int, line.rstrip('\n').lstrip('\ufeff').split(',')[:8])))

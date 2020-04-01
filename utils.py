@@ -103,7 +103,7 @@ class Utils:
         if anchor is None:
             anchor = v[:, :1]
 
-        rotated_angle = np.array([[math.cos(angle), -math.sin(angle)], [math.sin(angle), math.cos(angle)]])
+        rotated_angle = self.Get_Rotation_Matrix(angle)
         rotated_coordinate = np.dot(rotated_angle, v - anchor)
         return (rotated_coordinate + anchor).T.reshape(-1)
 
@@ -161,6 +161,9 @@ class Utils:
                 best_index = i
 
         return angles[best_index] / 180 * math.pi
+
+    def Get_Rotation_Matrix(self, angle):
+        return np.array([[math.cos(angle), -math.sin(angle)], [math.sin(angle), math.cos(angle)]])
 
     def Rotate_Pixels(self, rotated_angle, anchor_x, anchor_y):
         x = np.arange(self.width)
@@ -234,7 +237,7 @@ class Utils:
             fillPoly(poly_mask, [shrink_coordinates], 1)
 
             angle = self.Get_Rotation_Angle(coordinate)
-            rotated_angle = np.array([[math.cos(angle), -math.sin(angle)], [math.sin(angle), math.cos(angle)]])
+            rotated_angle = self.Get_Rotation_Matrix(angle)
 
             rotated_coordinates = self.Rotate_Coordinates(coordinate, angle)
             x_min, x_max, y_min, y_max = self.Get_Boundary_Values(rotated_coordinates)
