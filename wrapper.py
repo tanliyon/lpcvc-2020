@@ -30,9 +30,9 @@ def main():
     # get relevant frames from video
     # list of frames
     start = time.time()
-    frames_list = iFRAMES(video_path)
-    if len(frames_list) == 0:
-        raise ValueError('No frames received')
+    #frames_list = iFRAMES(video_path)
+    #if len(frames_list) == 0:
+    #    raise ValueError('No frames received')
     interval = time.time() - start
     print("Sampling Block took %d minutes %.3f seconds" % (interval//60, interval%60))
 
