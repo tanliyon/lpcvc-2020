@@ -34,7 +34,7 @@ lpcvc-2020\
 ## Usage
 The call syntax is:
 ```shell
-python wrapper.py video_file_path.MP4 question_file_path.txt answer_file_path.txt
+python wrapper.py video_file_path.mp4 question_file_path.txt answer_file_path.txt
 ```
 
 ## Notes
