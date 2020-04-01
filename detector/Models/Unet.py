@@ -67,33 +67,33 @@ class Unet(nn.Module):
                 nn.init.constant_(m.bias, 0)
 
     def forward(self, features):
-        logging.info("Feature Merging Layer\n")
+        # logging.info("Feature Merging Layer\n")
         h1, f2, f3, f4 = features
-        logging.info("\nInput h1 dimensions: [1, channels, height, width] = {}\n".format(h1.size()))
+        # logging.info("\nInput h1 dimensions: [1, channels, height, width] = {}\n".format(h1.size()))
 
         h2 = self.unpool1(h1)
         h2 = torch.cat((h2, f2), 1)
-        logging.info(h2.size())
+        # logging.info(h2.size())
         h2 = self.normalization9(self.convolution9_1(h2))
         h2 = self.activation(self.normalization9(self.convolution9_2(h2)))
-        logging.info("\nInput h2 dimensions: [1, channels, height, width] = {}\n".format(h2.size()))
+        # logging.info("\nInput h2 dimensions: [1, channels, height, width] = {}\n".format(h2.size()))
 
         h3 = self.unpool1(h2)
         h3 = torch.cat((h3, f3), 1)
-        logging.info(h3.size())
+        # logging.info(h3.size())
         h3 = self.normalization10(self.convolution10_1(h3))
         h3 = self.activation(self.normalization10(self.convolution10_2(h3)))
-        logging.info("\nInput h3 dimensions: [1, channels, height, width] = {}\n".format(h3.size()))
+        # logging.info("\nInput h3 dimensions: [1, channels, height, width] = {}\n".format(h3.size()))
 
         h4 = self.unpool1(h3)
         h4 = torch.cat((h4, f4), 1)
-        logging.info(h4.size())
+        # logging.info(h4.size())
         h4 = self.normalization11(self.convolution11_1(h4))
         h4 = self.activation(self.normalization11(self.convolution11_2(h4)))
-        logging.info("\nInput h4 dimensions: [1, channels, height, width] = {}\n".format(h4.size()))
+        # logging.info("\nInput h4 dimensions: [1, channels, height, width] = {}\n".format(h4.size()))
 
         h5 = self.activation(self.normalization11(self.convolution11_2(h4)))
-        logging.info("\nInput h5 dimensions: [1, channels, height, width] = {}\n".format(h5.size()))
+        # logging.info("\nInput h5 dimensions: [1, channels, height, width] = {}\n".format(h5.size()))
 
         return h5
 
