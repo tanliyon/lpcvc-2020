@@ -1,5 +1,7 @@
 *.pyc
 *.pyo
 *.pth
+*.mp4
+frames
 frames/*
 venv
