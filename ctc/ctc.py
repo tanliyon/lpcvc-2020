@@ -42,11 +42,15 @@ def ctc_recognition(frames, bboxes):
 			width = max(tr_x, br_x) - min(tl_x, bl_x)
 			words.append(transform(transforms.functional.crop(frame, top, left, height, width)))
 
+		if not words:
+			continue
+
 		words = torch.stack(words)
 		words = words.to(device)
 		preds.append(net(words))
 
 	return preds
+
 
 if __name__ == "__main__":
 	from TextLocalizationSet import collate
@@ -54,7 +58,7 @@ if __name__ == "__main__":
 
 	infer_set = TextLocalizationSet(train=True, transform=None)
 	infer_loader = DataLoader(infer_set, batch_size=4,
-                             shuffle=True, num_workers=1,
+							  shuffle=True, num_workers=1,
                              collate_fn=collate)
 
 	for i, data in enumerate(infer_loader):
