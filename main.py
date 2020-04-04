@@ -10,7 +10,6 @@ from detector.inference import detection as DETECTOR
 
 
 def main():
-    
     if len(sys.argv) != 4:
         raise ValueError('Incorrect number of input arguements.\nExpected: Video path, Question file, Answer File')
     
@@ -30,9 +29,7 @@ def main():
     # get relevant frames from video
     # list of frames
     start = time.time()
-    #frames_list = iFRAMES(video_path)
-    #if len(frames_list) == 0:
-    #    raise ValueError('No frames received')
+    # frames_list = iFRAMES(video_path)
     interval = time.time() - start
     print("Sampling Block took %d minutes %.3f seconds" % (interval//60, interval%60))
 
@@ -52,10 +49,9 @@ def main():
     # text_list format: [[string, string, string], [string, string, string, string],....]
     ans_dict = {question: "" for question in questions}
 
-    """ Uncomment if want to print predicted words from all frames
-    for text in text_list:
-        print(text)
-    """
+    # Uncomment if want to print predicted words from all frames
+    # for text in text_list:
+    #    print(text)
 
     # Brute force way to go through all the questions and write corresponding answers
     # (Can be improved I believe but for now)
