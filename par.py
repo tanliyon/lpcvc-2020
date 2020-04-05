@@ -24,8 +24,9 @@ def crop(img, box):
 def detect(model, dataset, data_conn, signal):
 	for i, frame in enumerate(dataset):
 		img, _ = frame
+		img = img[0]
 		with torch.no_grad():
-			score_map, geometry_map =model(img)
+			score_map, geometry_map = model(img)
 		boxes = get_boxes(score_map.squeeze(0).cpu().numpy(), geometry_map.squeeze(0).cpu().numpy())
 		data_conn.send((img, boxes))
 	print("Detection done")
@@ -53,6 +54,7 @@ def recognize(model, text_q, data_conn, signal):
 	signal.set()
 
 if __name__ == '__main__':
+	mp.set_start_method('spawn', force=True)
 	transform = transforms.Compose([
 		transforms.Resize((126, 224)),
 		transforms.Grayscale(num_output_channels=1),
@@ -77,9 +79,10 @@ if __name__ == '__main__':
 	text_q = mp.Queue()
 	
 	frames_data = torchvision.datasets.ImageFolder(root='./frames', transform=transform)
+	frames_loader = torch.utils.data.DataLoader(frames_data, batch_size=1, shuffle=False)
 	
 	recog_p = mp.Process(target=recognize, args=(ctc, text_q, parent_d_conn, signal))
-	detect_p = mp.Process(target=detect, args=(detector, frames_data, child_d_conn, signal))
+	detect_p = mp.Process(target=detect, args=(detector, frames_loader, child_d_conn, signal))
 	
 	detect_p.start()
 	recog_p.start()
