@@ -7,6 +7,12 @@ from detector.model import EAST
 from ctc.model import CRNN
 from detector.detect import get_boxes
 
+def list_2_lists(lst, count):
+    idx = 0
+    for c in count:
+        yield lst[idx : idx + c]
+        idx += c
+
 def crop(img, box):
 	transform = transforms.Compose([
 		transforms.Resize((50, 600)),
@@ -53,7 +59,6 @@ def recognize(model, text_q, data_conn, signal):
 	signal.set()
 
 if __name__ == '__main__':
-	mp.set_start_method('spawn', force=True)
 	transform = transforms.Compose([
 		transforms.Resize((126, 224)),
 		transforms.Grayscale(num_output_channels=1),
@@ -65,36 +70,44 @@ if __name__ == '__main__':
 	model_wgt = torch.load('detector.pth', map_location='cpu')
 	detector.load_state_dict(model_wgt["model_state_dict"])
 	detector.eval()
-	detector.share_memory()
+
 	
 	ctc = CRNN(pretrained=False)
 	ctc.decode = True
 	ctc.load_state_dict(torch.load('ctc.pth', map_location='cpu'))
 	ctc.eval()
-	ctc.share_memory()
-	
-	parent_d_conn, child_d_conn = mp.Pipe(duplex=False)
-	signal = mp.Event()
-	text_q = mp.Queue()
-	
+
 	frames_data = torchvision.datasets.ImageFolder(root='./frames', transform=transform)
-	frames_loader = torch.utils.data.DataLoader(frames_data, batch_size=1, shuffle=False)
-	
-	recog_p = mp.Process(target=recognize, args=(ctc, text_q, parent_d_conn, signal))
-	detect_p = mp.Process(target=detect, args=(detector, frames_loader, child_d_conn, signal))
-	
-	detect_p.start()
-	recog_p.start()
-	
-	recog_p.join()
-	detect_p.join()
+	frames_loader = torch.utils.data.DataLoader(frames_data, batch_size=32, shuffle=False)
+	to_pil = transforms.ToPILImage()
 	
 	text_list = []
-	text_q.put(None)
-	for i in iter(text_q.get, None):
-		text_list.append(i)
+	for data in frames_loader:
+            img, _ = data
+            with torch.no_grad():
+                score_map, geometry_map = detector(img)
+                
+            boxes = []
+            for i in range(score_map.shape[0]):
+                    boxes.append(get_boxes(score_map[i].cpu().numpy(), geometry_map[i].cpu().numpy()))
+            
+            pil_img = []
+            for im in img:
+                pil_img.append(to_pil(im))
+                
+            words = []
+            count = []
+	
+            for i, box in enumerate(boxes):
+                count.append(len(box))
+                for b in box:
+                    words.append(crop(pil_img[i], b))
+	
+            words = torch.stack(words)
+            with torch.no_grad():
+                predictions = ctc(words)
+	    
+            for lst in list(list_2_lists(predictions, count)):
+                text_list.append(lst)
+	
 	print(text_list)
-		
-		
-	
-	

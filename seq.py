@@ -80,7 +80,6 @@ if __name__ == '__main__':
 	text_list = []
 	for data in frames_loader:
             img, _ = data
-            img = img[0]
             with torch.no_grad():
                 score_map, geometry_map = detector(img)
             boxes = get_boxes(score_map.squeeze(0).cpu().numpy(), geometry_map.squeeze(0).cpu().numpy())
