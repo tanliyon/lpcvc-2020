@@ -2,6 +2,7 @@ import sys
 import os
 from sampler.iframes_no_mv import sampler as iFRAMES
 from ctc.ctc import ctc_recognition as CTC
+from test import OCR_att
 from detector.inference import detection as DETECTOR
 from PIL import Image
 import numpy as np
@@ -42,7 +43,7 @@ def main(argv):
     
     # get list of recognised strings from frames
     start = time.time()
-    text_list = CTC(frames_list, bboxes)
+    text_list = OCR_att(frames_list, bboxes)
     if len(text_list) == 0:
         raise ValueError('No text recognised')
     interval = time.time() - start
