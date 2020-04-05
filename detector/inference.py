@@ -1,11 +1,11 @@
 import torch
 import torchvision
+import numpy as np
 from torchvision import transforms
 from detector.model import *
 from detector.detect import *
 
-MODEL_PATH = "detector.pth"
-# MODEL_PATH = "./Dataset/Train/TrainEpoch/model_epoch_580.pth"
+MODEL_PATH = "./detector.pth"
 
 def detection(frames_path):
     transform = transforms.Compose([
@@ -21,17 +21,21 @@ def detection(frames_path):
 
     model = EAST()
     #model.load_state_dict(checkpoint["model_state_dict"])
-    #model = model.to(device)
+    # model = model.to(device)
 
     frames = []
     boxes = []
 
-    for i, frame in enumerate(frames_data, 0):
+    for i, frame in enumerate(frames_data):
         input, label = frame
         with torch.no_grad():
             score_map, geometry_map = model(input.to(device))
         box = get_boxes(score_map.squeeze(0).cpu().numpy(), geometry_map.squeeze(0).cpu().numpy())
-        # box = detect(score_map, geometry_map)
+        # box = detect(score_map, geometry_map, device)
+        
+        if type(box).__module__ != np.__name__ or len(box) == 0:
+            continue
+        
         frames.append(input)
         boxes.append(box)
         # plot_img = plot_boxes(torchvision.transforms.ToPILImage()(input), box)

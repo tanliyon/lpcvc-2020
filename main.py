@@ -6,6 +6,7 @@ import time
 
 from sampler.iframes_no_mv import sampler as iFRAMES
 from ctc.ctc import ctc_recognition as CTC
+from OCR.test import OCR_att
 from detector.inference import detection as DETECTOR
 
 
@@ -29,7 +30,7 @@ def main():
     # get relevant frames from video
     # list of frames
     start = time.time()
-    # frames_list = iFRAMES(video_path)
+    #frames_list = iFRAMES(video_path)
     interval = time.time() - start
     print("Sampling Block took %d minutes %.3f seconds" % (interval//60, interval%60))
 
@@ -41,7 +42,8 @@ def main():
     
     # get list of recognised strings from frames
     start = time.time()
-    text_list = CTC(frames_list, bboxes)
+    text_list = OCR_att(frames_list, bboxes)
+    # text_list = CTC(frames_list, bboxes)
     interval = time.time() - start
     print("Recognition Block took %d minutes %.3f seconds" % (interval//60, interval%60))
 
@@ -50,8 +52,8 @@ def main():
     ans_dict = {question: "" for question in questions}
 
     # Uncomment if want to print predicted words from all frames
-    # for text in text_list:
-    #    print(text)
+    for text in text_list:
+        print(text)
 
     # Brute force way to go through all the questions and write corresponding answers
     # (Can be improved I believe but for now)
