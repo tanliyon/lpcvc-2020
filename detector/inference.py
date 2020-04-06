@@ -5,43 +5,21 @@ from torchvision import transforms
 from detector.model import *
 from detector.detect import *
 
-MODEL_PATH = "./detector.pth"
+def init_EAST():
+    detector = EAST()
+    model_weights = torch.load('detector.pth', map_location='cpu')
+    detector.load_state_dict(model_weights['model_state_dict'])
+    return detector.eval()
 
-def detection(frames_path):
-    transform = transforms.Compose([
-                    transforms.Grayscale(num_output_channels=1),
-                    transforms.Resize((126, 224)),
-                    transforms.ToTensor(),
-                    transforms.Normalize(mean=(0.5,), std=(0.5,))
-                ])
-    frames_data = torchvision.datasets.ImageFolder(root=frames_path, transform=transform)
-
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    checkpoint = torch.load(MODEL_PATH, map_location=device)
-
-    model = EAST()
-    #model.load_state_dict(checkpoint["model_state_dict"])
-    # model = model.to(device)
-
-    frames = []
+def detect(detector, img):
+    with torch.no_grad():
+        score_map, geometry_map = detector(img.unqueeze(0) if len(img.shape) == 3 else img)
+    
     boxes = []
-
-    for i, frame in enumerate(frames_data):
-        input, label = frame
-        with torch.no_grad():
-            score_map, geometry_map = model(input.to(device))
-        box = get_boxes(score_map.squeeze(0).cpu().numpy(), geometry_map.squeeze(0).cpu().numpy())
-        # box = detect(score_map, geometry_map, device)
-        
-        if type(box).__module__ != np.__name__ or len(box) == 0:
-            continue
-        
-        frames.append(input)
-        boxes.append(box)
-        # plot_img = plot_boxes(torchvision.transforms.ToPILImage()(input), box)
-        # plot_img.show()
-
-    return frames, boxes
+    for i in range(score_map.shape[0]):
+        boxes.append(get_boxes(score_map[i].numpy(), geometry_map[i].numpy()))
+    
+    return boxes
 
 if __name__ == '__main__':
     detection("./Samples/")

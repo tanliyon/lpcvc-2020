@@ -1,22 +1,32 @@
 import sys
-
 from PIL import Image
+from torchvision import transforms
+import torchvision
+import torch
 import numpy as np
 import time
 
 from sampler.iframes_no_mv import sampler as iFRAMES
-from ctc.ctc import ctc_recognition as CTC
-from OCR.test import OCR_att
-from detector.inference import detection as DETECTOR
+from detector.inference import init_EAST, detect
+from OCR.test import init_attn, attn_OCR
+from ctc.ctc import init_CTC, CTC_OCR
 
+USE_ATTN_OCR = False
+
+# Helper Functions
+def list_2_2dlist(lst, count):
+    idx = 0
+    for c in count:
+        yield(lst[idx:idx+c])
+        idx += c
 
 def main():
-    if len(sys.argv) != 4:
-        raise ValueError('Incorrect number of input arguements.\nExpected: Video path, Question file, Answer File')
+    if len(sys.argv) != 3:
+        raise ValueError('Incorrect number of input arguements.\nExpected: Video path, Question file')
     
     video_path = sys.argv[1]
     question_path = sys.argv[2]
-    answer_path = sys.argv[3]
+    answer_path = 'answers.txt'
 
     # Open question text file and create a list of questions
     try:
@@ -33,19 +43,35 @@ def main():
     #frames_list = iFRAMES(video_path)
     interval = time.time() - start
     print("Sampling Block took %d minutes %.3f seconds" % (interval//60, interval%60))
-
-    # get bounding box coordinates for all frames
-    start = time.time()
-    frames_list, bboxes = DETECTOR('./frames')
-    interval = time.time() - start
-    print("Detection Block took %d minutes %.3f seconds" % (interval//60, interval%60))
     
-    # get list of recognised strings from frames
-    start = time.time()
-    text_list = OCR_att(frames_list, bboxes)
-    # text_list = CTC(frames_list, bboxes)
-    interval = time.time() - start
-    print("Recognition Block took %d minutes %.3f seconds" % (interval//60, interval%60))
+    # List transforms
+    detector_transform = transforms.Compose([
+        transforms.Resize((126, 224)),
+        transforms.Grayscale(num_output_channels=1),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=(0.5,), std=(0.5,))
+    ])
+    
+    # Init models
+    detector = init_EAST()
+    if USE_ATTN_OCR:
+        encoder, decoder = init_attn()
+    else:
+        OCR = init_CTC()
+    
+    # Initlialize dataset and dataloader
+    frames_data = torchvision.datasets.ImageFolder(root='./frames', transform=detector_transform)
+    frames_loader = torch.utils.data.DataLoader(frames_data, batch_size=32, shuffle=False)
+    
+    # Loop through dataloader
+    text_list = []
+    for data in frames_loader:
+        img, _ = data
+        boxes = detect(detector, img)
+        predictions, count = attn_OCR(encoder, decoder, img, boxes) if USE_ATTN_OCR else CTC_OCR(OCR, img, boxes)
+        
+        for lst in list(list_2_2dlist(predictions, count)):
+            text_list.append(lst)
 
     # Answers the questions
     # text_list format: [[string, string, string], [string, string, string, string],....]
