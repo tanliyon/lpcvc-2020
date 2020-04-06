@@ -5,11 +5,13 @@ import torchvision
 import torch
 import numpy as np
 import time
+import matplotlib.pyplot as plt
 
 from sampler.iframes_no_mv import sampler as iFRAMES
 from detector.inference import init_EAST, detect
 from OCR.test import init_attn, attn_OCR
 from ctc.ctc import init_CTC, CTC_OCR
+from detector.detect import plot_boxes
 
 USE_ATTN_OCR = False
 
@@ -21,12 +23,16 @@ def list_2_2dlist(lst, count):
         idx += c
 
 def main():
-    if len(sys.argv) != 3:
+    if len(sys.argv) != 4:
         raise ValueError('Incorrect number of input arguements.\nExpected: Video path, Question file')
     
     video_path = sys.argv[1]
     question_path = sys.argv[2]
     answer_path = 'answers.txt'
+    
+    box_plot = False
+    if (sys.argv[3] == 'True'):
+        box_plot = True
 
     # Open question text file and create a list of questions
     try:
@@ -63,12 +69,25 @@ def main():
     frames_data = torchvision.datasets.ImageFolder(root='./frames', transform=detector_transform)
     frames_loader = torch.utils.data.DataLoader(frames_data, batch_size=32, shuffle=False)
     
+    to_pil = transforms.ToPILImage(mode='L')
     # Loop through dataloader
     text_list = []
     for data in frames_loader:
         img, _ = data
         boxes = detect(detector, img)
         predictions, count = attn_OCR(encoder, decoder, img, boxes) if USE_ATTN_OCR else CTC_OCR(OCR, img, boxes)
+        
+        if (box_plot):
+            i = 0
+            for im in img:
+                #print(img.shape)
+                unnorm_img = im * torch.tensor((0.5,)).view(1, 1, 1)
+                unnorm_img = im + torch.tensor((0.5,)).view(1, 1, 1)
+                unnorm_img = to_pil(unnorm_img)            
+                box_img = plot_boxes(unnorm_img, boxes[i])
+                #plt.imshow(img1)
+                plt.imsave('img{}.jpg'.format(i), box_img,  cmap=plt.cm.gray)
+                i = i + 1
         
         for lst in list(list_2_2dlist(predictions, count)):
             text_list.append(lst)
@@ -104,7 +123,6 @@ def main():
 
     except:
         raise ValueError('Error writing answers to output file')
-
 
 if __name__ == "__main__":
     main()
