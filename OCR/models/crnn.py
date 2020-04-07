@@ -163,6 +163,6 @@ def __test_atten_crnn__():
 
     atten_crnn = AttendCRNN(1, 256, 27, False)
 
-    images = Variable(torch.randn((2, 1, 32, 100)))
+    images = Variable(torch.randn((3, 1, 32, 100)))
 
     atten_crnn(images)

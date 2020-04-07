@@ -6,6 +6,27 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 from torch.nn.parameter import Parameter
 import torchvision.models as models
+from torch.quantization import QuantStub, DeQuantStub
+
+def _make_divisible(v, divisor, min_value=None):
+    """
+    This function is taken from the original tf repo.
+    It ensures that all layers have a channel number that is divisible by 8
+    It can be seen here:
+    https://github.com/tensorflow/models/blob/master/research/slim/nets/mobilenet/mobilenet.py
+    :param v:
+    :param divisor:
+    :param min_value:
+    :return:
+    """
+    if min_value is None:
+        min_value = divisor
+    new_v = max(min_value, int(v + divisor / 2) // divisor * divisor)
+    # Make sure that round down does not go down by more than 10%.
+    if new_v < 0.9 * v:
+        new_v += divisor
+    return new_v
+
 
 class BidirectionalLSTM(nn.Module):
 
@@ -137,6 +158,26 @@ class Attentiondecoder(nn.Module):
 
         return result
 
+
+class ConvBNReLU(nn.Sequential):
+    def __init__(self, in_planes, out_planes, kernel_size=3, stride=1, groups=1):
+        padding = (kernel_size - 1) // 2
+        super(ConvBNReLU, self).__init__(
+            nn.Conv2d(in_planes, out_planes, kernel_size, stride, padding, groups=groups, bias=False),
+            nn.BatchNorm2d(out_planes, momentum=0.1),
+            # Replace with ReLU
+            nn.ReLU(inplace=False)
+        )
+
+class ConvReLU(nn.Sequential):
+    def __init__(self, in_planes, out_planes, kernel_size=3, stride=1, groups=1):
+        padding = (kernel_size - 1) // 2
+        super(ConvReLU, self).__init__(
+            nn.Conv2d(in_planes, out_planes, kernel_size, stride, padding, groups=groups, bias=False),
+            # Replace with ReLU
+            nn.ReLU(inplace=False)
+        )
+
 class CNN(nn.Module):
     '''
         CNN+BiLstm做特征提取
@@ -145,15 +186,30 @@ class CNN(nn.Module):
     def __init__(self, imgH, nc, nh):
         super(CNN, self).__init__()
         assert imgH % 16 == 0, 'imgH has to be a multiple of 16'
+        width_mult = 1.0
+        round_nearest = 8
+        self.quant = QuantStub()
+        self.dequant = DeQuantStub()
+        imgH = _make_divisible(imgH * width_mult, round_nearest)
+        # self.cnn = nn.Sequential(
+        #     nn.Conv2d(nc, 64, 3, 1, 1), nn.ReLU(True), nn.MaxPool2d(2, 2),  # 64x16x50
+        #     nn.Conv2d(64, 128, 3, 1, 1), nn.ReLU(True), nn.MaxPool2d(2, 2),  # 128x8x25
+        #     nn.Conv2d(128, 256, 3, 1, 1), nn.BatchNorm2d(256), nn.ReLU(True),  # 256x8x25
+        #     nn.Conv2d(256, 256, 3, 1, 1), nn.ReLU(True), nn.MaxPool2d((2, 2), (2, 1), (0, 1)),  # 256x4x25
+        #     nn.Conv2d(256, 512, 3, 1, 1), nn.BatchNorm2d(512), nn.ReLU(True),  # 512x4x25
+        #     nn.Conv2d(512, 512, 3, 1, 1), nn.ReLU(True), nn.MaxPool2d((2, 2), (2, 1), (0, 1)),  # 512x2x25
+        #     nn.Conv2d(512, 512, 2, 1, 0), nn.BatchNorm2d(512), nn.ReLU(True))  # 512x1x25
 
         self.cnn = nn.Sequential(
-            nn.Conv2d(nc, 64, 3, 1, 1), nn.ReLU(True), nn.MaxPool2d(2, 2),  # 64x16x50
-            nn.Conv2d(64, 128, 3, 1, 1), nn.ReLU(True), nn.MaxPool2d(2, 2),  # 128x8x25
-            nn.Conv2d(128, 256, 3, 1, 1), nn.BatchNorm2d(256), nn.ReLU(True),  # 256x8x25
-            nn.Conv2d(256, 256, 3, 1, 1), nn.ReLU(True), nn.MaxPool2d((2, 2), (2, 1), (0, 1)),  # 256x4x25
-            nn.Conv2d(256, 512, 3, 1, 1), nn.BatchNorm2d(512), nn.ReLU(True),  # 512x4x25
-            nn.Conv2d(512, 512, 3, 1, 1), nn.ReLU(True), nn.MaxPool2d((2, 2), (2, 1), (0, 1)),  # 512x2x25
-            nn.Conv2d(512, 512, 2, 1, 0), nn.BatchNorm2d(512), nn.ReLU(True))  # 512x1x25
+            ConvReLU(nc, 64), nn.MaxPool2d(2, 2),
+            ConvReLU(64, 128), nn.MaxPool2d(2, 2),
+            ConvBNReLU(128,256),
+            ConvReLU(256, 256),  nn.MaxPool2d((2, 2), (2, 1), (0, 1)),
+            ConvBNReLU(256, 512),
+            ConvReLU(512, 512), nn.MaxPool2d((2, 2), (2, 1), (0, 1)),
+            ConvBNReLU(512, 512, 2, 1, 0)
+        )
+
         # self.inception = models.inception_v3(pretrained=True)
         self.rnn = nn.Sequential(
             BidirectionalLSTM(512, nh, nh),
@@ -161,16 +217,20 @@ class CNN(nn.Module):
 
     def forward(self, input):
         # conv features
+        input = self.quant(input)
         conv = self.cnn(input)
         b, c, h, w = conv.size()
         assert h == 1, "the height of conv must be 1"
         conv = conv.squeeze(2)
         conv = conv.permute(2, 0, 1)  # [w, b, c]
-
         # rnn features calculate
         encoder_outputs = self.rnn(conv)  # seq * batch * n_classes// 25 × batchsize × 256（隐藏节点个数）
-
+        self.dequant(encoder_outputs)
         return encoder_outputs
+
+    # def fuse_model(self):
+    #     for m in self.modules():
+    #         if()
 
 
 class decoder(nn.Module):

@@ -133,7 +133,7 @@ if __name__ == "__main__":
     t0 = time.time()
     fix_width  = True
     # transform = transforms.Compose([transforms.Grayscale(num_output_channels=1),
-    transform = transforms.Compose([transforms.Resize((32, 280), interpolation=Image.NEAREST), transforms.ToTensor()])
+    transform = transforms.Compose([transforms.Grayscale(num_output_channels=1), transforms.Resize((32, 280), interpolation=Image.NEAREST), transforms.ToTensor()])
     dataset = textDataset("gt_new.txt", "/home/damini/Documents/icdar_2015/train","data", "train", transform)
     dataset = syn_text("annotation_train.txt", "/home/damini/Downloads/mnt/ramdisk/max/90kDICT32px/",transform)
     # val_dataset = textDataset("gt_new.txt", "/home/damini/Documents/icdar_2015/val","data", "val", transform)
@@ -142,11 +142,9 @@ if __name__ == "__main__":
     train_loader = DataLoader(dataset, batch_size= CONFIG.BATCH_SIZE, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size= 1, shuffle=True)
     writer = SummaryWriter()
-    # criterion = torch.nn.NLLLoss()
     criterion = torch.nn.CrossEntropyLoss()
     converter = strLabelConverterForAttention(CONFIG.ALPHABETS, ":")
-    # encoder = test_model(32, 1, 530)
-    encoder = crnn.CNN(32,3,256)
+    encoder = crnn.CNN(32,1,256)
     number_classes = len(CONFIG.ALPHABETS.split(":")) + 3
     decoder = crnn.decoderV2(256, number_classes, dropout_p=0.1)
     encoder.apply(weights_init)
@@ -166,10 +164,9 @@ if __name__ == "__main__":
     loss_avg = Averager()
     for epoch in range(100):
         train_iter = iter(train_loader)
-        min_iter = 100000
-        max_iter = min(min_iter, len(train_loader))
+        min_iter = 10000
         i = 0
-        while i < max_iter - 1:
+        while i < 10000:
             for e, d in zip(encoder.parameters(), decoder.parameters()):
                 e.requires_grad = True
                 d.requires_grad = True
@@ -180,7 +177,7 @@ if __name__ == "__main__":
             loss_avg.add(cost)
             i += 1
 
-            if i % 10000 == 0:
+            if i % 5000 == 0:
                 print('[%d/%d][%d/%d] Loss: %f' %
                       (epoch, 300, i, len(train_loader), loss_avg.val()), end=' ')
                 loss_avg.reset()
@@ -188,13 +185,12 @@ if __name__ == "__main__":
                 print('time elapsed s%d' % (t1 - t0))
                 t0 = time.time()
             # break
-        model_paths = "OUTPUT_SYNTH2_DATA"
-        if epoch % 2 == 0:
-            val(encoder, decoder, criterion, 1, val_loader, teach_forcing=False)
-            torch.save(
-                encoder.state_dict(), '{0}/encoder_{1}.pth'.format(model_paths, epoch))
-            torch.save(
-                decoder.state_dict(), '{0}/decoder_{1}.pth'.format(model_paths, epoch))
+        model_paths = "OUTPUT_SYNTH3_DATA"
+        val(encoder, decoder, criterion, 1, val_loader, teach_forcing=False)
+        torch.save(
+            encoder.state_dict(), '{0}/encoder_{1}.pth'.format(model_paths, epoch))
+        torch.save(
+            decoder.state_dict(), '{0}/decoder_{1}.pth'.format(model_paths, epoch))
 
         writer.add_scalar('Loss/train', loss_avg.val(), epoch)
         # writer.close()
