@@ -52,19 +52,7 @@ class TextLocalizationSet(Dataset):
 
         image, quad_coordinates = self.Resize_Data(image, quad_coordinates)
 
-        # utils = Utils(image.height, image.width)
-        score_map, training_mask, geometry_map = Load_Geometry_Score_Maps(quad_coordinates, bool_tags, self.new_dimensions)
-
-        # image, quad_coordinates = utils.Rotate_Data(image, quad_coordinates)
-        # image, quad_coordinates = utils.Crop_Data(image, quad_coordinates)
-
-        # sample = {'name': self.image_names[idx], 'path': image_path, 'image': self.transform(Image.fromarray(image)), 'coords': quad_coordinates, 'score': None, 'mask': None, 'geometry': None}
-
-        # rescale = Rescale(old_dimensions, self.new_dimensions)
-        # sample = rescale.__call__(sample)
-
-        # groundtruth = GroundTruthGeneration(sample['name'], sample['image'].permute(0, 1, 2).numpy())
-        # quad_coordinates = groundtruth.Rescale_Coordinates(quad_coordinates, old_dimensions, self.new_dimensions)
+        score_map, training_mask, geometry_map = Load_Geometry_Score_Maps(quad_coordinates, bool_tags, self.new_dimensions[0], self.new_dimensions[1])
 
         sample = {
             "path": image_path,
@@ -106,9 +94,6 @@ class TextLocalizationSet(Dataset):
 
         :return:      image (PIL Image): image data
         """
-        #image = np.array(Image.open(image_path))    # type -> uint8
-        #return np.moveaxis(image, 2, 0)             # reverses order -> channel x height x width
-        #image = io.imread(image_path, as_gray=True)
         image = Image.open(image_path)
         image = image.convert("L")
         check_number_of_channels(image)
@@ -132,13 +117,6 @@ class TextLocalizationSet(Dataset):
 
         for i, line in enumerate(lines):
             quad_coordinates.append(list(map(int, line.rstrip('\n').lstrip('\ufeff').split(',')[:8])))
-            # arrange coordinates into 2d array form [ [x1, y1] ... [x4, y4] ]
-            # size = 4
-            # coordinates = line[:-1]
-            # single_coordinates = [[] for _ in range(size)]
-            # for j in range(0, 2 * size, 2):
-            #     single_coordinates[j // 2] = [coordinates[j], coordinates[j + 1]]
-            # quad_coordinates.append(np.array(single_coordinates, dtype=int))
             line = line.split(",")
             label = line[-1].rstrip("\n")
             # Remove entries with ### since they are invalid
@@ -173,60 +151,18 @@ class TextLocalizationSet(Dataset):
 
         return resized_image, resized_coordinates
 
-# class Rescale(object):
-#     """ Rescale the image in a sample to a given size.
-#     Args:
-#         output_size (tuple or int): Desired output size. If tuple, output is
-#         matched to output_size. If int, smaller of image edges is matched
-#         to output_size keeping aspect ratio the same.
-#     """
-#
-#     def __init__(self, input_size, output_size):
-#         assert isinstance(output_size, (int, tuple))
-#         self.input_size = input_size
-#         self.output_size = output_size
-#
-#     def __call__(self, sample):
-#         coords = sample['coords']
-#
-#         h, w = self.input_size
-#         # if isinstance(self.output_size, int):
-#         #     if h > w:
-#         #         new_h, new_w = self.output_size * h / w, self.output_size
-#         #     else:
-#         #         new_h, new_w = self.output_size, self.output_size * w / h
-#         # else:
-#         new_h, new_w = self.output_size
-#         #
-#         # new_h, new_w = int(new_h), int(new_w)
-#         # img = transform.resize(image, (new_h, new_w))
-#
-#         # h and w are swapped for landmarks because for images,
-#         # x and y axes are axis 1 and 0 respectively
-#         for i in range(len(coords)):
-#             coords[i] = np.array(coords[i], dtype=float) * [new_w / w, new_h / h]
-#             coords[i] = coords[i].round(0)
-#             coords[i] = np.array(coords[i], dtype=int)
-#
-#         print(coords, type(coords))
-#         # sample["image"] = img
-#         sample["coords"] = coords
-#
-#         return sample
-
-
 if __name__ == "__main__":
     imagePath = "./Dataset/Train/TrainImages/"
     annotationPath = "./Dataset/Train/TrainTruth/"
 
     # example usage
     dataset = TextLocalizationSet(imagePath, annotationPath, (126, 224))
-    sample = dataset.__getitem__(0)
+    sample = dataset.__getitem__(99)
     image = Image.open(sample['path'])
-    box = detect(sample['score'], sample['geometry'])
-    plot_img = plot_boxes(image, box)
+    box = get_boxes(sample['score'].cpu().numpy(), sample['geometry'].cpu().numpy())
+    # box = get_boxes(sample['score'], sample['geometry'])
+    plot_img = plot_boxes(sample['image'], box)
     plot_img.show()
-    # print(dataset[0])
 
     # can use DataLoader now with this custom dataset
-    data_loader = DataLoader(dataset, batch_size=1, shuffle=False, num_workers=4, collate_fn=collate)
+    # data_loader = DataLoader(dataset, batch_size=1, shuffle=False, num_workers=4, collate_fn=collate)

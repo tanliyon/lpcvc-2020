@@ -42,8 +42,6 @@ def main(image_directory_path, model_path):
         plot_image.show()
         # score_map, geometry_map = model(image.to(device))
         # box = detect(score_map, geometry_map)
-        # plot_img = plot_boxes(torchvision.transforms.ToPILImage()(inputs), box)
-        # plot_img.show()
         logging.info("-------------------------------------------------")
         break
 

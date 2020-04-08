@@ -13,15 +13,18 @@ class Train:
         self.image_directory_path = image_directory_path
         self.annotation_directory_path = annotation_directory_path
         self.epoch_directory_path = epoch_directory_path
+        self.model_path = "/model3.pth"
 
     def train(self, new_dimensions, learning_rate, epochs, batch_size, num_workers, save_interval, shuffle=True, drop_last=False):
-        logging.basicConfig(filename="training_2.log", level=logging.INFO)
+        logging.basicConfig(filename="training_5.log", level=logging.INFO)
         logging.info("\nStarted")
         train_dataset = TextLocalizationSet(self.image_directory_path, self.annotation_directory_path, new_dimensions)
         train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers, drop_last=drop_last, collate_fn=collate)
 
         criterion = Loss()
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
+        checkpoint = torch.load(training_path + self.model_path)
 
         model = EAST()
 
@@ -31,13 +34,15 @@ class Train:
             data_parallel = True
 
         model.to(device)
-        model.load_state_dict(torch.load(training_path + "/model_epoch_400.pth"))
+        model.load_state_dict(checkpoint["model_state_dict"])
 
         optimizer = optim.Adam(model.parameters(), lr=learning_rate)
-        #scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=2, gamma=0.1)
-        scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=[600//2], gamma=0.1)
+        optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
 
-        for epoch in range(400, epochs):
+        #scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=2, gamma=0.1)
+        scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=[epochs//2], gamma=0.1)
+
+        for epoch in range(epochs):
             model.train()
             epoch_loss = 0
             epoch_time = time.time()
@@ -74,5 +79,8 @@ if __name__ == '__main__':
     image_directory_path = "./Dataset/Train/TrainImages/"
     annotation_directory_path = "./Dataset/Train/TrainTruth/"
     training_path = "./Dataset/Train/TrainEpoch/"
+    # image_directory_path = "./Samples/TrainImages/"
+    # annotation_directory_path = "./Samples/TrainTruth/"
+    # training_path = "./Samples/TrainModel/"
     train = Train(image_directory_path, annotation_directory_path, training_path)
-    train.train(new_dimensions=(126, 224), learning_rate=1e-5, epochs=600, batch_size=24, num_workers=4, save_interval=5, shuffle=True)
+    train.train(new_dimensions=(126, 224), learning_rate=1e-5, epochs=600, batch_size=24, num_workers=4, save_interval=10, shuffle=True)

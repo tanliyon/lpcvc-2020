@@ -1,0 +1,1404 @@
+INFO:root:
+Started
+INFO:root:Batch 1, Batch Loss 2.344520
+
+INFO:root:
+
+Epoch 1, Time 0.198567, Epoch Loss 2.344520
+
+
+INFO:root:Batch 1, Batch Loss 2.924232
+
+INFO:root:
+
+Epoch 2, Time 0.149358, Epoch Loss 2.924232
+
+
+INFO:root:Batch 1, Batch Loss 2.389090
+
+INFO:root:
+
+Epoch 3, Time 0.147774, Epoch Loss 2.389090
+
+
+INFO:root:Batch 1, Batch Loss 2.762526
+
+INFO:root:
+
+Epoch 4, Time 0.149890, Epoch Loss 2.762526
+
+
+INFO:root:Batch 1, Batch Loss 2.517416
+
+INFO:root:
+
+Epoch 5, Time 0.147812, Epoch Loss 2.517416
+
+
+INFO:root:Batch 1, Batch Loss 2.317528
+
+INFO:root:
+
+Epoch 6, Time 0.148501, Epoch Loss 2.317528
+
+
+INFO:root:Batch 1, Batch Loss 2.457558
+
+INFO:root:
+
+Epoch 7, Time 0.149314, Epoch Loss 2.457558
+
+
+INFO:root:Batch 1, Batch Loss 2.521309
+
+INFO:root:
+
+Epoch 8, Time 0.148226, Epoch Loss 2.521309
+
+
+INFO:root:Batch 1, Batch Loss 2.395777
+
+INFO:root:
+
+Epoch 9, Time 0.147459, Epoch Loss 2.395777
+
+
+INFO:root:Batch 1, Batch Loss 2.304259
+
+INFO:root:
+
+Epoch 10, Time 0.148060, Epoch Loss 2.304259
+
+
+INFO:root:Batch 1, Batch Loss 2.353686
+
+INFO:root:
+
+Epoch 11, Time 0.150503, Epoch Loss 2.353686
+
+
+INFO:root:Batch 1, Batch Loss 2.415578
+
+INFO:root:
+
+Epoch 12, Time 0.148356, Epoch Loss 2.415578
+
+
+INFO:root:Batch 1, Batch Loss 2.381561
+
+INFO:root:
+
+Epoch 13, Time 0.149892, Epoch Loss 2.381561
+
+
+INFO:root:Batch 1, Batch Loss 2.305645
+
+INFO:root:
+
+Epoch 14, Time 0.150258, Epoch Loss 2.305645
+
+
+INFO:root:Batch 1, Batch Loss 2.286753
+
+INFO:root:
+
+Epoch 15, Time 0.149700, Epoch Loss 2.286753
+
+
+INFO:root:Batch 1, Batch Loss 2.325761
+
+INFO:root:
+
+Epoch 16, Time 0.148453, Epoch Loss 2.325761
+
+
+INFO:root:Batch 1, Batch Loss 2.346088
+
+INFO:root:
+
+Epoch 17, Time 0.149496, Epoch Loss 2.346088
+
+
+INFO:root:Batch 1, Batch Loss 2.313116
+
+INFO:root:
+
+Epoch 18, Time 0.150228, Epoch Loss 2.313116
+
+
+INFO:root:Batch 1, Batch Loss 2.272033
+
+INFO:root:
+
+Epoch 19, Time 0.149365, Epoch Loss 2.272033
+
+
+INFO:root:Batch 1, Batch Loss 2.270683
+
+INFO:root:
+
+Epoch 20, Time 0.149836, Epoch Loss 2.270683
+
+
+INFO:root:Batch 1, Batch Loss 2.292602
+
+INFO:root:
+
+Epoch 21, Time 0.149444, Epoch Loss 2.292602
+
+
+INFO:root:Batch 1, Batch Loss 2.297839
+
+INFO:root:
+
+Epoch 22, Time 0.150024, Epoch Loss 2.297839
+
+
+INFO:root:Batch 1, Batch Loss 2.275702
+
+INFO:root:
+
+Epoch 23, Time 0.149670, Epoch Loss 2.275702
+
+
+INFO:root:Batch 1, Batch Loss 2.251439
+
+INFO:root:
+
+Epoch 24, Time 0.149534, Epoch Loss 2.251439
+
+
+INFO:root:Batch 1, Batch Loss 2.248963
+
+INFO:root:
+
+Epoch 25, Time 0.151314, Epoch Loss 2.248963
+
+
+INFO:root:Batch 1, Batch Loss 2.261765
+
+INFO:root:
+
+Epoch 26, Time 0.149512, Epoch Loss 2.261765
+
+
+INFO:root:Batch 1, Batch Loss 2.261310
+
+INFO:root:
+
+Epoch 27, Time 0.148981, Epoch Loss 2.261310
+
+
+INFO:root:Batch 1, Batch Loss 2.242917
+
+INFO:root:
+
+Epoch 28, Time 0.149533, Epoch Loss 2.242917
+
+
+INFO:root:Batch 1, Batch Loss 2.229982
+
+INFO:root:
+
+Epoch 29, Time 0.150053, Epoch Loss 2.229982
+
+
+INFO:root:Batch 1, Batch Loss 2.232050
+
+INFO:root:
+
+Epoch 30, Time 0.149868, Epoch Loss 2.232050
+
+
+INFO:root:Batch 1, Batch Loss 2.236625
+
+INFO:root:
+
+Epoch 31, Time 0.147394, Epoch Loss 2.236625
+
+
+INFO:root:Batch 1, Batch Loss 2.229989
+
+INFO:root:
+
+Epoch 32, Time 0.150594, Epoch Loss 2.229989
+
+
+INFO:root:Batch 1, Batch Loss 2.218288
+
+INFO:root:
+
+Epoch 33, Time 0.148256, Epoch Loss 2.218288
+
+
+INFO:root:Batch 1, Batch Loss 2.213544
+
+INFO:root:
+
+Epoch 34, Time 0.147648, Epoch Loss 2.213544
+
+
+INFO:root:Batch 1, Batch Loss 2.215545
+
+INFO:root:
+
+Epoch 35, Time 0.148804, Epoch Loss 2.215545
+
+
+INFO:root:Batch 1, Batch Loss 2.215632
+
+INFO:root:
+
+Epoch 36, Time 0.148801, Epoch Loss 2.215632
+
+
+INFO:root:Batch 1, Batch Loss 2.209986
+
+INFO:root:
+
+Epoch 37, Time 0.147532, Epoch Loss 2.209986
+
+
+INFO:root:Batch 1, Batch Loss 2.203371
+
+INFO:root:
+
+Epoch 38, Time 0.148233, Epoch Loss 2.203371
+
+
+INFO:root:Batch 1, Batch Loss 2.201328
+
+INFO:root:
+
+Epoch 39, Time 0.161605, Epoch Loss 2.201328
+
+
+INFO:root:Batch 1, Batch Loss 2.200560
+
+INFO:root:
+
+Epoch 40, Time 0.149832, Epoch Loss 2.200560
+
+
+INFO:root:Batch 1, Batch Loss 2.197309
+
+INFO:root:
+
+Epoch 41, Time 0.147541, Epoch Loss 2.197309
+
+
+INFO:root:Batch 1, Batch Loss 2.192365
+
+INFO:root:
+
+Epoch 42, Time 0.147878, Epoch Loss 2.192365
+
+
+INFO:root:Batch 1, Batch Loss 2.189666
+
+INFO:root:
+
+Epoch 43, Time 0.150213, Epoch Loss 2.189666
+
+
+INFO:root:Batch 1, Batch Loss 2.189141
+
+INFO:root:
+
+Epoch 44, Time 0.149341, Epoch Loss 2.189141
+
+
+INFO:root:Batch 1, Batch Loss 2.187036
+
+INFO:root:
+
+Epoch 45, Time 0.147687, Epoch Loss 2.187036
+
+
+INFO:root:Batch 1, Batch Loss 2.182891
+
+INFO:root:
+
+Epoch 46, Time 0.147718, Epoch Loss 2.182891
+
+
+INFO:root:Batch 1, Batch Loss 2.178369
+
+INFO:root:
+
+Epoch 47, Time 0.149108, Epoch Loss 2.178369
+
+
+INFO:root:Batch 1, Batch Loss 2.175258
+
+INFO:root:
+
+Epoch 48, Time 0.147233, Epoch Loss 2.175258
+
+
+INFO:root:Batch 1, Batch Loss 2.173612
+
+INFO:root:
+
+Epoch 49, Time 0.153360, Epoch Loss 2.173612
+
+
+INFO:root:Batch 1, Batch Loss 2.171255
+
+INFO:root:
+
+Epoch 50, Time 0.148575, Epoch Loss 2.171255
+
+
+INFO:root:Batch 1, Batch Loss 2.168848
+
+INFO:root:
+
+Epoch 51, Time 0.157624, Epoch Loss 2.168848
+
+
+INFO:root:Batch 1, Batch Loss 2.166466
+
+INFO:root:
+
+Epoch 52, Time 0.150828, Epoch Loss 2.166466
+
+
+INFO:root:Batch 1, Batch Loss 2.164166
+
+INFO:root:
+
+Epoch 53, Time 0.151311, Epoch Loss 2.164166
+
+
+INFO:root:Batch 1, Batch Loss 2.162445
+
+INFO:root:
+
+Epoch 54, Time 0.148656, Epoch Loss 2.162445
+
+
+INFO:root:Batch 1, Batch Loss 2.160605
+
+INFO:root:
+
+Epoch 55, Time 0.148334, Epoch Loss 2.160605
+
+
+INFO:root:Batch 1, Batch Loss 2.157523
+
+INFO:root:
+
+Epoch 56, Time 0.148628, Epoch Loss 2.157523
+
+
+INFO:root:Batch 1, Batch Loss 2.155181
+
+INFO:root:
+
+Epoch 57, Time 0.150012, Epoch Loss 2.155181
+
+
+INFO:root:Batch 1, Batch Loss 2.153161
+
+INFO:root:
+
+Epoch 58, Time 0.149485, Epoch Loss 2.153161
+
+
+INFO:root:Batch 1, Batch Loss 2.151001
+
+INFO:root:
+
+Epoch 59, Time 0.147946, Epoch Loss 2.151001
+
+
+INFO:root:Batch 1, Batch Loss 2.148681
+
+INFO:root:
+
+Epoch 60, Time 0.153370, Epoch Loss 2.148681
+
+
+INFO:root:Batch 1, Batch Loss 2.146169
+
+INFO:root:
+
+Epoch 61, Time 0.148532, Epoch Loss 2.146169
+
+
+INFO:root:Batch 1, Batch Loss 2.143728
+
+INFO:root:
+
+Epoch 62, Time 0.147931, Epoch Loss 2.143728
+
+
+INFO:root:Batch 1, Batch Loss 2.141807
+
+INFO:root:
+
+Epoch 63, Time 0.147995, Epoch Loss 2.141807
+
+
+INFO:root:Batch 1, Batch Loss 2.139673
+
+INFO:root:
+
+Epoch 64, Time 0.149200, Epoch Loss 2.139673
+
+
+INFO:root:Batch 1, Batch Loss 2.137394
+
+INFO:root:
+
+Epoch 65, Time 0.148521, Epoch Loss 2.137394
+
+
+INFO:root:Batch 1, Batch Loss 2.135477
+
+INFO:root:
+
+Epoch 66, Time 0.148823, Epoch Loss 2.135477
+
+
+INFO:root:Batch 1, Batch Loss 2.133075
+
+INFO:root:
+
+Epoch 67, Time 0.151611, Epoch Loss 2.133075
+
+
+INFO:root:Batch 1, Batch Loss 2.130789
+
+INFO:root:
+
+Epoch 68, Time 0.149741, Epoch Loss 2.130789
+
+
+INFO:root:Batch 1, Batch Loss 2.128009
+
+INFO:root:
+
+Epoch 69, Time 0.149484, Epoch Loss 2.128009
+
+
+INFO:root:Batch 1, Batch Loss 2.126140
+
+INFO:root:
+
+Epoch 70, Time 0.149847, Epoch Loss 2.126140
+
+
+INFO:root:Batch 1, Batch Loss 2.124023
+
+INFO:root:
+
+Epoch 71, Time 0.148182, Epoch Loss 2.124023
+
+
+INFO:root:Batch 1, Batch Loss 2.121738
+
+INFO:root:
+
+Epoch 72, Time 0.228473, Epoch Loss 2.121738
+
+
+INFO:root:Batch 1, Batch Loss 2.119382
+
+INFO:root:
+
+Epoch 73, Time 0.148035, Epoch Loss 2.119382
+
+
+INFO:root:Batch 1, Batch Loss 2.116979
+
+INFO:root:
+
+Epoch 74, Time 0.148278, Epoch Loss 2.116979
+
+
+INFO:root:Batch 1, Batch Loss 2.114710
+
+INFO:root:
+
+Epoch 75, Time 0.149705, Epoch Loss 2.114710
+
+
+INFO:root:Batch 1, Batch Loss 2.112740
+
+INFO:root:
+
+Epoch 76, Time 0.148752, Epoch Loss 2.112740
+
+
+INFO:root:Batch 1, Batch Loss 2.110625
+
+INFO:root:
+
+Epoch 77, Time 0.150445, Epoch Loss 2.110625
+
+
+INFO:root:Batch 1, Batch Loss 2.108705
+
+INFO:root:
+
+Epoch 78, Time 0.149710, Epoch Loss 2.108705
+
+
+INFO:root:Batch 1, Batch Loss 2.106593
+
+INFO:root:
+
+Epoch 79, Time 0.151113, Epoch Loss 2.106593
+
+
+INFO:root:Batch 1, Batch Loss 2.104962
+
+INFO:root:
+
+Epoch 80, Time 0.147928, Epoch Loss 2.104962
+
+
+INFO:root:Batch 1, Batch Loss 2.102514
+
+INFO:root:
+
+Epoch 81, Time 0.147438, Epoch Loss 2.102514
+
+
+INFO:root:Batch 1, Batch Loss 2.100767
+
+INFO:root:
+
+Epoch 82, Time 0.147610, Epoch Loss 2.100767
+
+
+INFO:root:Batch 1, Batch Loss 2.098478
+
+INFO:root:
+
+Epoch 83, Time 0.148407, Epoch Loss 2.098478
+
+
+INFO:root:Batch 1, Batch Loss 2.096484
+
+INFO:root:
+
+Epoch 84, Time 0.149477, Epoch Loss 2.096484
+
+
+INFO:root:Batch 1, Batch Loss 2.094810
+
+INFO:root:
+
+Epoch 85, Time 0.149640, Epoch Loss 2.094810
+
+
+INFO:root:Batch 1, Batch Loss 2.092024
+
+INFO:root:
+
+Epoch 86, Time 0.149506, Epoch Loss 2.092024
+
+
+INFO:root:Batch 1, Batch Loss 2.091046
+
+INFO:root:
+
+Epoch 87, Time 0.148398, Epoch Loss 2.091046
+
+
+INFO:root:Batch 1, Batch Loss 2.088795
+
+INFO:root:
+
+Epoch 88, Time 0.149049, Epoch Loss 2.088795
+
+
+INFO:root:Batch 1, Batch Loss 2.087053
+
+INFO:root:
+
+Epoch 89, Time 0.149675, Epoch Loss 2.087053
+
+
+INFO:root:Batch 1, Batch Loss 2.084477
+
+INFO:root:
+
+Epoch 90, Time 0.155427, Epoch Loss 2.084477
+
+
+INFO:root:Batch 1, Batch Loss 2.082729
+
+INFO:root:
+
+Epoch 91, Time 0.149388, Epoch Loss 2.082729
+
+
+INFO:root:Batch 1, Batch Loss 2.081423
+
+INFO:root:
+
+Epoch 92, Time 0.150286, Epoch Loss 2.081423
+
+
+INFO:root:Batch 1, Batch Loss 2.079142
+
+INFO:root:
+
+Epoch 93, Time 0.148876, Epoch Loss 2.079142
+
+
+INFO:root:Batch 1, Batch Loss 2.077097
+
+INFO:root:
+
+Epoch 94, Time 0.147368, Epoch Loss 2.077097
+
+
+INFO:root:Batch 1, Batch Loss 2.075690
+
+INFO:root:
+
+Epoch 95, Time 0.146387, Epoch Loss 2.075690
+
+
+INFO:root:Batch 1, Batch Loss 2.072906
+
+INFO:root:
+
+Epoch 96, Time 0.147176, Epoch Loss 2.072906
+
+
+INFO:root:Batch 1, Batch Loss 2.071685
+
+INFO:root:
+
+Epoch 97, Time 0.146889, Epoch Loss 2.071685
+
+
+INFO:root:Batch 1, Batch Loss 2.070592
+
+INFO:root:
+
+Epoch 98, Time 0.149180, Epoch Loss 2.070592
+
+
+INFO:root:Batch 1, Batch Loss 2.068408
+
+INFO:root:
+
+Epoch 99, Time 0.147593, Epoch Loss 2.068408
+
+
+INFO:root:Batch 1, Batch Loss 2.067700
+
+INFO:root:
+
+Epoch 100, Time 0.148763, Epoch Loss 2.067700
+
+
+INFO:root:Batch 1, Batch Loss 2.065616
+
+INFO:root:
+
+Epoch 101, Time 0.150765, Epoch Loss 2.065616
+
+
+INFO:root:Batch 1, Batch Loss 2.063182
+
+INFO:root:
+
+Epoch 102, Time 0.148530, Epoch Loss 2.063182
+
+
+INFO:root:Batch 1, Batch Loss 2.061579
+
+INFO:root:
+
+Epoch 103, Time 0.149555, Epoch Loss 2.061579
+
+
+INFO:root:Batch 1, Batch Loss 2.060060
+
+INFO:root:
+
+Epoch 104, Time 0.146915, Epoch Loss 2.060060
+
+
+INFO:root:Batch 1, Batch Loss 2.058630
+
+INFO:root:
+
+Epoch 105, Time 0.228854, Epoch Loss 2.058630
+
+
+INFO:root:Batch 1, Batch Loss 2.056859
+
+INFO:root:
+
+Epoch 106, Time 0.148766, Epoch Loss 2.056859
+
+
+INFO:root:Batch 1, Batch Loss 2.055753
+
+INFO:root:
+
+Epoch 107, Time 0.147903, Epoch Loss 2.055753
+
+
+INFO:root:Batch 1, Batch Loss 2.054262
+
+INFO:root:
+
+Epoch 108, Time 0.149097, Epoch Loss 2.054262
+
+
+INFO:root:Batch 1, Batch Loss 2.052155
+
+INFO:root:
+
+Epoch 109, Time 0.148293, Epoch Loss 2.052155
+
+
+INFO:root:Batch 1, Batch Loss 2.051268
+
+INFO:root:
+
+Epoch 110, Time 0.148122, Epoch Loss 2.051268
+
+
+INFO:root:Batch 1, Batch Loss 2.049683
+
+INFO:root:
+
+Epoch 111, Time 0.147685, Epoch Loss 2.049683
+
+
+INFO:root:Batch 1, Batch Loss 2.047991
+
+INFO:root:
+
+Epoch 112, Time 0.148165, Epoch Loss 2.047991
+
+
+INFO:root:Batch 1, Batch Loss 2.047001
+
+INFO:root:
+
+Epoch 113, Time 0.150073, Epoch Loss 2.047001
+
+
+INFO:root:Batch 1, Batch Loss 2.045095
+
+INFO:root:
+
+Epoch 114, Time 0.149434, Epoch Loss 2.045095
+
+
+INFO:root:Batch 1, Batch Loss 2.043743
+
+INFO:root:
+
+Epoch 115, Time 0.148495, Epoch Loss 2.043743
+
+
+INFO:root:Batch 1, Batch Loss 2.042416
+
+INFO:root:
+
+Epoch 116, Time 0.150153, Epoch Loss 2.042416
+
+
+INFO:root:Batch 1, Batch Loss 2.040566
+
+INFO:root:
+
+Epoch 117, Time 0.149128, Epoch Loss 2.040566
+
+
+INFO:root:Batch 1, Batch Loss 2.040048
+
+INFO:root:
+
+Epoch 118, Time 0.148033, Epoch Loss 2.040048
+
+
+INFO:root:Batch 1, Batch Loss 2.038071
+
+INFO:root:
+
+Epoch 119, Time 0.147855, Epoch Loss 2.038071
+
+
+INFO:root:Batch 1, Batch Loss 2.036667
+
+INFO:root:
+
+Epoch 120, Time 0.148205, Epoch Loss 2.036667
+
+
+INFO:root:Batch 1, Batch Loss 2.035551
+
+INFO:root:
+
+Epoch 121, Time 0.147970, Epoch Loss 2.035551
+
+
+INFO:root:Batch 1, Batch Loss 2.033525
+
+INFO:root:
+
+Epoch 122, Time 0.150346, Epoch Loss 2.033525
+
+
+INFO:root:Batch 1, Batch Loss 2.032588
+
+INFO:root:
+
+Epoch 123, Time 0.148468, Epoch Loss 2.032588
+
+
+INFO:root:Batch 1, Batch Loss 2.030673
+
+INFO:root:
+
+Epoch 124, Time 0.149214, Epoch Loss 2.030673
+
+
+INFO:root:Batch 1, Batch Loss 2.029721
+
+INFO:root:
+
+Epoch 125, Time 0.147950, Epoch Loss 2.029721
+
+
+INFO:root:Batch 1, Batch Loss 2.029037
+
+INFO:root:
+
+Epoch 126, Time 0.147476, Epoch Loss 2.029037
+
+
+INFO:root:Batch 1, Batch Loss 2.026348
+
+INFO:root:
+
+Epoch 127, Time 0.147866, Epoch Loss 2.026348
+
+
+INFO:root:Batch 1, Batch Loss 2.025292
+
+INFO:root:
+
+Epoch 128, Time 0.147487, Epoch Loss 2.025292
+
+
+INFO:root:Batch 1, Batch Loss 2.023284
+
+INFO:root:
+
+Epoch 129, Time 0.148849, Epoch Loss 2.023284
+
+
+INFO:root:Batch 1, Batch Loss 2.024164
+
+INFO:root:
+
+Epoch 130, Time 0.150395, Epoch Loss 2.024164
+
+
+INFO:root:Batch 1, Batch Loss 2.021231
+
+INFO:root:
+
+Epoch 131, Time 0.146941, Epoch Loss 2.021231
+
+
+INFO:root:Batch 1, Batch Loss 2.021810
+
+INFO:root:
+
+Epoch 132, Time 0.149338, Epoch Loss 2.021810
+
+
+INFO:root:Batch 1, Batch Loss 2.021592
+
+INFO:root:
+
+Epoch 133, Time 0.148164, Epoch Loss 2.021592
+
+
+INFO:root:Batch 1, Batch Loss 2.018721
+
+INFO:root:
+
+Epoch 134, Time 0.149449, Epoch Loss 2.018721
+
+
+INFO:root:Batch 1, Batch Loss 2.016576
+
+INFO:root:
+
+Epoch 135, Time 0.148698, Epoch Loss 2.016576
+
+
+INFO:root:Batch 1, Batch Loss 2.016108
+
+INFO:root:
+
+Epoch 136, Time 0.152922, Epoch Loss 2.016108
+
+
+INFO:root:Batch 1, Batch Loss 2.014195
+
+INFO:root:
+
+Epoch 137, Time 0.150273, Epoch Loss 2.014195
+
+
+INFO:root:Batch 1, Batch Loss 2.013203
+
+INFO:root:
+
+Epoch 138, Time 0.203091, Epoch Loss 2.013203
+
+
+INFO:root:Batch 1, Batch Loss 2.012928
+
+INFO:root:
+
+Epoch 139, Time 0.148633, Epoch Loss 2.012928
+
+
+INFO:root:Batch 1, Batch Loss 2.008252
+
+INFO:root:
+
+Epoch 140, Time 0.148911, Epoch Loss 2.008252
+
+
+INFO:root:Batch 1, Batch Loss 2.011489
+
+INFO:root:
+
+Epoch 141, Time 0.148770, Epoch Loss 2.011489
+
+
+INFO:root:Batch 1, Batch Loss 2.010354
+
+INFO:root:
+
+Epoch 142, Time 0.148642, Epoch Loss 2.010354
+
+
+INFO:root:Batch 1, Batch Loss 2.005253
+
+INFO:root:
+
+Epoch 143, Time 0.149328, Epoch Loss 2.005253
+
+
+INFO:root:Batch 1, Batch Loss 2.006471
+
+INFO:root:
+
+Epoch 144, Time 0.147526, Epoch Loss 2.006471
+
+
+INFO:root:Batch 1, Batch Loss 2.005822
+
+INFO:root:
+
+Epoch 145, Time 0.148937, Epoch Loss 2.005822
+
+
+INFO:root:Batch 1, Batch Loss 2.000618
+
+INFO:root:
+
+Epoch 146, Time 0.147606, Epoch Loss 2.000618
+
+
+INFO:root:Batch 1, Batch Loss 2.000936
+
+INFO:root:
+
+Epoch 147, Time 0.149313, Epoch Loss 2.000936
+
+
+INFO:root:Batch 1, Batch Loss 2.001067
+
+INFO:root:
+
+Epoch 148, Time 0.150350, Epoch Loss 2.001067
+
+
+INFO:root:Batch 1, Batch Loss 1.997656
+
+INFO:root:
+
+Epoch 149, Time 0.148611, Epoch Loss 1.997656
+
+
+INFO:root:Batch 1, Batch Loss 1.997101
+
+INFO:root:
+
+Epoch 150, Time 0.149478, Epoch Loss 1.997101
+
+
+INFO:root:Batch 1, Batch Loss 1.996514
+
+INFO:root:
+
+Epoch 151, Time 0.148716, Epoch Loss 1.996514
+
+
+INFO:root:Batch 1, Batch Loss 1.994920
+
+INFO:root:
+
+Epoch 152, Time 0.147351, Epoch Loss 1.994920
+
+
+INFO:root:Batch 1, Batch Loss 1.993470
+
+INFO:root:
+
+Epoch 153, Time 0.149356, Epoch Loss 1.993470
+
+
+INFO:root:Batch 1, Batch Loss 1.992792
+
+INFO:root:
+
+Epoch 154, Time 0.153212, Epoch Loss 1.992792
+
+
+INFO:root:Batch 1, Batch Loss 1.991082
+
+INFO:root:
+
+Epoch 155, Time 0.148259, Epoch Loss 1.991082
+
+
+INFO:root:Batch 1, Batch Loss 1.988956
+
+INFO:root:
+
+Epoch 156, Time 0.160914, Epoch Loss 1.988956
+
+
+INFO:root:Batch 1, Batch Loss 1.986641
+
+INFO:root:
+
+Epoch 157, Time 0.148124, Epoch Loss 1.986641
+
+
+INFO:root:Batch 1, Batch Loss 1.983965
+
+INFO:root:
+
+Epoch 158, Time 0.149594, Epoch Loss 1.983965
+
+
+INFO:root:Batch 1, Batch Loss 1.984090
+
+INFO:root:
+
+Epoch 159, Time 0.147835, Epoch Loss 1.984090
+
+
+INFO:root:Batch 1, Batch Loss 1.982474
+
+INFO:root:
+
+Epoch 160, Time 0.148800, Epoch Loss 1.982474
+
+
+INFO:root:Batch 1, Batch Loss 1.979513
+
+INFO:root:
+
+Epoch 161, Time 0.156252, Epoch Loss 1.979513
+
+
+INFO:root:Batch 1, Batch Loss 1.978676
+
+INFO:root:
+
+Epoch 162, Time 0.151631, Epoch Loss 1.978676
+
+
+INFO:root:Batch 1, Batch Loss 1.978620
+
+INFO:root:
+
+Epoch 163, Time 0.148017, Epoch Loss 1.978620
+
+
+INFO:root:Batch 1, Batch Loss 1.976496
+
+INFO:root:
+
+Epoch 164, Time 0.148608, Epoch Loss 1.976496
+
+
+INFO:root:Batch 1, Batch Loss 1.975184
+
+INFO:root:
+
+Epoch 165, Time 0.149918, Epoch Loss 1.975184
+
+
+INFO:root:Batch 1, Batch Loss 1.973306
+
+INFO:root:
+
+Epoch 166, Time 0.148788, Epoch Loss 1.973306
+
+
+INFO:root:Batch 1, Batch Loss 1.971069
+
+INFO:root:
+
+Epoch 167, Time 0.148900, Epoch Loss 1.971069
+
+
+INFO:root:Batch 1, Batch Loss 1.969756
+
+INFO:root:
+
+Epoch 168, Time 0.148757, Epoch Loss 1.969756
+
+
+INFO:root:Batch 1, Batch Loss 1.968996
+
+INFO:root:
+
+Epoch 169, Time 0.147804, Epoch Loss 1.968996
+
+
+INFO:root:Batch 1, Batch Loss 1.965856
+
+INFO:root:
+
+Epoch 170, Time 0.148117, Epoch Loss 1.965856
+
+
+INFO:root:Batch 1, Batch Loss 1.963670
+
+INFO:root:
+
+Epoch 171, Time 0.152688, Epoch Loss 1.963670
+
+
+INFO:root:Batch 1, Batch Loss 1.962628
+
+INFO:root:
+
+Epoch 172, Time 0.147494, Epoch Loss 1.962628
+
+
+INFO:root:Batch 1, Batch Loss 1.961978
+
+INFO:root:
+
+Epoch 173, Time 0.147696, Epoch Loss 1.961978
+
+
+INFO:root:Batch 1, Batch Loss 1.960294
+
+INFO:root:
+
+Epoch 174, Time 0.152052, Epoch Loss 1.960294
+
+
+INFO:root:Batch 1, Batch Loss 1.957849
+
+INFO:root:
+
+Epoch 175, Time 0.148238, Epoch Loss 1.957849
+
+
+INFO:root:Batch 1, Batch Loss 1.956591
+
+INFO:root:
+
+Epoch 176, Time 0.147023, Epoch Loss 1.956591
+
+
+INFO:root:Batch 1, Batch Loss 1.955275
+
+INFO:root:
+
+Epoch 177, Time 0.148685, Epoch Loss 1.955275
+
+
+INFO:root:Batch 1, Batch Loss 1.953858
+
+INFO:root:
+
+Epoch 178, Time 0.149167, Epoch Loss 1.953858
+
+
+INFO:root:Batch 1, Batch Loss 1.952801
+
+INFO:root:
+
+Epoch 179, Time 0.151060, Epoch Loss 1.952801
+
+
+INFO:root:Batch 1, Batch Loss 1.950720
+
+INFO:root:
+
+Epoch 180, Time 0.150556, Epoch Loss 1.950720
+
+
+INFO:root:Batch 1, Batch Loss 1.949146
+
+INFO:root:
+
+Epoch 181, Time 0.148808, Epoch Loss 1.949146
+
+
+INFO:root:Batch 1, Batch Loss 1.947059
+
+INFO:root:
+
+Epoch 182, Time 0.149590, Epoch Loss 1.947059
+
+
+INFO:root:Batch 1, Batch Loss 1.945161
+
+INFO:root:
+
+Epoch 183, Time 0.148278, Epoch Loss 1.945161
+
+
+INFO:root:Batch 1, Batch Loss 1.943473
+
+INFO:root:
+
+Epoch 184, Time 0.152211, Epoch Loss 1.943473
+
+
+INFO:root:Batch 1, Batch Loss 1.942059
+
+INFO:root:
+
+Epoch 185, Time 0.148531, Epoch Loss 1.942059
+
+
+INFO:root:Batch 1, Batch Loss 1.940056
+
+INFO:root:
+
+Epoch 186, Time 0.148694, Epoch Loss 1.940056
+
+
+INFO:root:Batch 1, Batch Loss 1.940057
+
+INFO:root:
+
+Epoch 187, Time 0.147672, Epoch Loss 1.940057
+
+
+INFO:root:Batch 1, Batch Loss 1.936793
+
+INFO:root:
+
+Epoch 188, Time 0.150713, Epoch Loss 1.936793
+
+
+INFO:root:Batch 1, Batch Loss 1.937343
+
+INFO:root:
+
+Epoch 189, Time 0.148236, Epoch Loss 1.937343
+
+
+INFO:root:Batch 1, Batch Loss 1.933417
+
+INFO:root:
+
+Epoch 190, Time 0.149849, Epoch Loss 1.933417
+
+
+INFO:root:Batch 1, Batch Loss 1.934801
+
+INFO:root:
+
+Epoch 191, Time 0.147510, Epoch Loss 1.934801
+
+
+INFO:root:Batch 1, Batch Loss 1.929948
+
+INFO:root:
+
+Epoch 192, Time 0.148991, Epoch Loss 1.929948
+
+
+INFO:root:Batch 1, Batch Loss 1.930828
+
+INFO:root:
+
+Epoch 193, Time 0.148841, Epoch Loss 1.930828
+
+
+INFO:root:Batch 1, Batch Loss 1.927221
+
+INFO:root:
+
+Epoch 194, Time 0.154996, Epoch Loss 1.927221
+
+
+INFO:root:Batch 1, Batch Loss 1.927834
+
+INFO:root:
+
+Epoch 195, Time 0.147897, Epoch Loss 1.927834
+
+
+INFO:root:Batch 1, Batch Loss 1.924731
+
+INFO:root:
+
+Epoch 196, Time 0.148105, Epoch Loss 1.924731
+
+
+INFO:root:Batch 1, Batch Loss 1.923000
+
+INFO:root:
+
+Epoch 197, Time 0.149617, Epoch Loss 1.923000
+
+
+INFO:root:Batch 1, Batch Loss 1.921843
+
+INFO:root:
+
+Epoch 198, Time 0.149616, Epoch Loss 1.921843
+
+
+INFO:root:Batch 1, Batch Loss 1.920398
+
+INFO:root:
+
+Epoch 199, Time 0.148550, Epoch Loss 1.920398
+
+
+INFO:root:Batch 1, Batch Loss 1.917746
+
+INFO:root:
+
+Epoch 200, Time 0.149654, Epoch Loss 1.917746
+
+
+INFO:root:
+Ended

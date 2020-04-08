@@ -95,6 +95,8 @@ def is_valid_poly(res, score_shape, scale):
 #             polys.append(coordinates)
 #
 #     return np.array(polys), index
+def Get_Rotation_Matrix(angle):
+    return np.array([[math.cos(angle), -math.sin(angle)], [math.sin(angle), math.cos(angle)]])
 
 def restore_polys(valid_pos, valid_geo, score_shape, scale=4):
 	'''restore polys from feature maps in given positions
@@ -181,7 +183,8 @@ def get_boxes(score, geo, score_thresh=0.9, nms_thresh=0.2):
 	boxes[:, :8] = polys_restored
 	boxes[:, 8] = score[xy_text[index, 0], xy_text[index, 1]]
 	boxes = lanms.merge_quadrangle_n9(boxes.astype('float32'), nms_thresh)
-	return boxes
+    # return boxes
+	return boxes[:, :8]
 
 
 def adjust_ratio(boxes, ratio_w, ratio_h):
@@ -240,7 +243,7 @@ def plot_boxes(img, boxes):
 
     draw = ImageDraw.Draw(img)
     for box in boxes:
-        draw.polygon([box[0], box[1], box[2], box[3], box[4], box[5], box[6], box[7]], outline=(0, 255, 0))
+        draw.polygon([box[0], box[1], box[2], box[3], box[4], box[5], box[6], box[7]], outline=(255))
     return img
 
 

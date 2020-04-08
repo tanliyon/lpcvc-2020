@@ -1,33 +1,13 @@
-import os
-import csv
-import glob
 import math
-import logging
 import numpy as np
 from PIL import Image
-import cv2
 from cv2 import fillPoly
-import matplotlib.pyplot as plt
-import torch.utils.data as data
 import torch
 import torchvision
 from torch import nn
 from dataset import *
 from error import *
 from mpl_toolkits.mplot3d import Axes3D
-
-# class Utils:
-#     def __init__(self, height, width):
-#         self.height = height
-#         self.width = width
-
-    # def _Calculate_Area(self, quad_coordinates):
-    #     edge = [(quad_coordinates[1][0] - quad_coordinates[0][0]) * (quad_coordinates[1][1] + quad_coordinates[0][1]),
-    #             (quad_coordinates[2][0] - quad_coordinates[1][0]) * (quad_coordinates[2][1] + quad_coordinates[1][1]),
-    #             (quad_coordinates[3][0] - quad_coordinates[2][0]) * (quad_coordinates[3][1] + quad_coordinates[2][1]),
-    #             (quad_coordinates[0][0] - quad_coordinates[3][0]) * (quad_coordinates[0][1] + quad_coordinates[3][1])]
-    #
-    #     return float(np.sum(edge) / 2)
 
 def Get_Boundary_Values(coordinates):
     x1, y1, x2, y2, x3, y3, x4, y4 = coordinates
@@ -41,7 +21,7 @@ def Calculate_Distance(x1, y1, x2, y2):
     return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
 
 def Calculate_Area(coordinates):
-    x_min, x_max, y_min, y_max = self.Get_Boundary_Values(coordinates)
+    x_min, x_max, y_min, y_max = Get_Boundary_Values(coordinates)
     area = (x_max - x_min) * (y_max - y_min)
     return area
 
@@ -70,10 +50,6 @@ def Move_Points(coordinates, offset1, offset2, reference_length, coefficient):
     return coordinates
 
 def Shrink_Coordinates(coordinates, coefficient=0.3):
-    # reference_length = [None, None, None, None]
-    # for j in range(4):
-    #     reference_length[j] = min(np.linalg.norm(coordinates[j] - coordinates[(j + 1) % 4]), np.linalg.norm(coordinates[j] - coordinates[(j - 1) % 4]))
-
     x1, y1, x2, y2, x3, y3, x4, y4 = coordinates
 
     r1 = min(Calculate_Distance(x1, y1, x2, y2), Calculate_Distance(x1, y1, x4, y4))
@@ -208,8 +184,6 @@ def Rotate_Data(image, quad_coordinates, range=10):
     return rotated_image, rotated_coordinates
 
 def Load_Geometry_Score_Maps(quad_coordinates, text_tags, height, width, scale=0.25):
-    # quad_coordinates, text_tags = self._Validate_Coordinates(quad_coordinates, text_tags)
-
     score_map     = np.zeros((int(math.ceil(height * scale)), int(width * scale), 1), dtype=np.float32)
     training_mask = np.zeros((int(math.ceil(height * scale)), int(width * scale), 1), dtype=np.float32)  # mask used during traning, to ignore some hard areas
     geometry_map  = np.zeros((int(math.ceil(height * scale)), int(width * scale), 5), dtype=np.float32)
@@ -258,50 +232,14 @@ def Load_Geometry_Score_Maps(quad_coordinates, text_tags, height, width, scale=0
         geometry_map[:, :, 3] += d4[index_y, index_x] * poly_mask
         geometry_map[:, :, 4] += angle * poly_mask
 
-        # geometry_map[:, :, 0] += coordinate[0][0] * poly_mask
-        # geometry_map[:, :, 1] += coordinate[0][1] * poly_mask
-        # geometry_map[:, :, 2] += coordinate[1][0] * poly_mask
-        # geometry_map[:, :, 3] += coordinate[1][1] * poly_mask
-        # geometry_map[:, :, 4] += coordinate[2][0] * poly_mask
-        # geometry_map[:, :, 5] += coordinate[2][1] * poly_mask
-        # geometry_map[:, :, 6] += coordinate[3][0] * poly_mask
-        # geometry_map[:, :, 7] += coordinate[3][1] * poly_mask
-
-        #fillPoly(poly_mask, shrink_coordinates, i + 1)
-
-        # if the poly is too small, then ignore it during training
-        # poly_h = min(np.linalg.norm(coordinate[0] - coordinate[3]), np.linalg.norm(coordinate[1] - coordinate[2]))
-        # poly_w = min(np.linalg.norm(coordinate[0] - coordinate[1]), np.linalg.norm(coordinate[2] - coordinate[3]))
-        # if min(poly_h, poly_w) < FLAGS.min_text_size:
-        #     fillPoly(training_mask, coordinate.astype(np.int32)[np.newaxis, :, :], 0)
-        # if tag:
-        #     fillPoly(training_mask, coordinate.astype(np.int32)[np.newaxis, :, :], 0)
-    #
-    # print(self.image_name)
-    # cv2.imshow("Score", score_map)
-    # cv2.waitKey(0)
-
     fillPoly(score_map, polys, 1)
+    fillPoly(training_mask, ignored_polys, 1)
     # print("True Score {}".format(score_map))
     # print("True Geometry {}".format(geometry_map))
     # cv2.imshow("Score", score_map)
     # cv2.waitKey(0)
-    fillPoly(training_mask, ignored_polys, 1)
 
     return torch.Tensor(score_map).permute(2, 0, 1), torch.Tensor(training_mask).permute(2, 0, 1), torch.Tensor(geometry_map).permute(2, 0, 1)
-
-    # def Rescale_Coordinates(self, quad_coordinates, input_size, output_size):
-    #     h, w = input_size
-    #     new_h, new_w = output_size
-    #
-    #     # h and w are swapped for landmarks because for images,
-    #     # x and y axes are axis 1 and 0 respectively
-    #     for i in range(len(quad_coordinates)):
-    #         quad_coordinates[i] = np.array(quad_coordinates[i], dtype=float) * [new_w / w, new_h / h]
-    #         quad_coordinates[i] = quad_coordinates[i].round(0)
-    #         quad_coordinates[i] = np.array(quad_coordinates[i], dtype=int)
-    #
-    #     return quad_coordinates
 
 """
 Testing and sample usage of functions
