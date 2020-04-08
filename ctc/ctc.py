@@ -36,10 +36,15 @@ def CTC_OCR(OCR, img, boxes):
     count = []
     
     for i, box in enumerate(boxes):
+        if type(box).__module__ != np.__name__ or len(box) == 0:
+        	continue	
         count.append(len(box))
         for b in box:
             words.append(crop(pil_img[i], b, ctc_transform))
     
+    if not words:
+    	return ([], [])
+    	
     words = torch.stack(words)
     with torch.no_grad():
         predictions = OCR(words.unsqueeze(0) if len(words.shape) == 3 else words)

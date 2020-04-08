@@ -2,6 +2,7 @@ from torchvision import transforms
 from OCR.utils.config import CONFIG
 from OCR.utils.util import *
 import OCR.models.crnn_lang_chenjun as crnn
+import numpy as np
 
 
 def crop(img, box, transform):
@@ -39,37 +40,39 @@ def attn_OCR(encoder, decoder, img, boxes):
     count = []
     
     for i, box in enumerate(boxes):
+        if type(box).__module__ != np.__name__ or len(box) == 0:
+                continue
         count.append(len(box))
         for b in box:
             words.append(crop(pil_img[i], b, attn_transform))
     
-    decoded_words = []
+    words = torch.stack(words)
+    word_list = []
+    prob = [1] * sum(count)
     
-    for word in words:
-        decoded_word = []
+    decoded_word = list()
+    with torch.no_grad():
+        encoder_outputs = encoder(words)
+    decoder_input = torch.zeros(words.shape[0]).long()
+    decoder_hidden = decoder.initHidden(words.shape[0])
+    
+    for di in range(max_length):
         with torch.no_grad():
-            encoder_outputs = encoder(word.unsqueeze(0) if len(word.shape) == 3 else word)
-            
-        decoder_input = torch.zeros(1).long()
-        decoder_input = decoder_input
-        decoder_hidden = decoder.initHidden(1)
-        decoder_attentions = torch.zeros(max_length, 71)
+            decoder_output, decoder_hidden, decoder_attention = decoder(decoder_input, decoder_hidden, encoder_outputs)
+        probs = torch.exp(decoder_output)
+        topv, topi = decoder_output.data.topk(1)
+        ni = topi.squeeze(1)
+        decoder_input = ni
+        temp = [converter.decode(item) for item in ni]
+        prob = [p * float(probs[i, item]) for i, (item, p) in enumerate(zip(ni, prob))]
+        decoded_word.append(temp)
         
-        for di in range(max_length):
-            with torch.no_grad():
-                decoder_output, decoder_hidden, decoder_attention = decoder(decoder_input, decoder_hidden, encoder_outputs)
-            probs = torch.exp(decoder_output)
-            decoder_attentions[di-1] = decoder_attention.data
-            topv, topi = decoder_output.data.topk(1)
-            ni = topi.squeeze(1)
-            decoder_input = ni
-            if ni == EOS_TOKEN:
-                break
-            else:
-                decoded_word.append(converter.decode(ni))
-        decoded_words.append("".join(decoded_word).replace("$", ""))
+    decoded_word = list(map(list, zip(*decoded_word)))
+    decoded_word = [word for i, word in enumerate(decoded_word) if prob[i] > 0.6]
+    decoded_word = ["".join(item).replace("$", "") for item in decoded_word]
+    word_list.append(decoded_word)
     
-    return decoded_words, count
+    return word_list, count
 
 
 

@@ -155,7 +155,7 @@ def restore_polys(valid_pos, valid_geo, score_shape, scale=4):
 #     boxes = lanms.merge_quadrangle_n9(boxes.astype('float32'), nms_thresh)
 #     return boxes[:, :8]
 
-def get_boxes(score, geo, score_thresh=0.9, nms_thresh=0.2):
+def get_boxes(score, geo, score_thresh=0.1, nms_thresh=0.2):
 	'''get boxes from feature map
 	Input:
 		score       : score map from model <numpy.ndarray, (1,row,col)>
@@ -240,7 +240,7 @@ def plot_boxes(img, boxes):
 
     draw = ImageDraw.Draw(img)
     for box in boxes:
-        draw.polygon([box[0], box[1], box[2], box[3], box[4], box[5], box[6], box[7]], outline=(0, 255, 0))
+        draw.polygon([box[0], box[1], box[2], box[3], box[4], box[5], box[6], box[7]], outline=(255))
     return img
 
 

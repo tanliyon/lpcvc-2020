@@ -2,5 +2,6 @@
 *.pyo
 *.pth
 *.mp4
+detected_imgs/*
 frames/*
 venv
