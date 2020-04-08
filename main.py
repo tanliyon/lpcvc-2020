@@ -6,7 +6,7 @@ import torch
 import numpy as np
 import time
 
-from sampler.iframes_no_mv import sampler as iFRAMES
+from sampler.iframes import sampler as iFRAMES
 from detector.inference import init_EAST, detect
 from OCR.test import init_attn, attn_OCR
 from ctc.ctc import init_CTC, CTC_OCR
