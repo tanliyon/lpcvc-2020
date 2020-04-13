@@ -48,6 +48,6 @@ To toggle between the two recognition option, you can toggle the `USE_ATTN_OCR` 
 
 ## References
 1. [Low Power Computer Vision Challenge (LPCVC) 2020 Video Track](https://lpcv.ai/2020CVPR/video-track)
-2.[EAST Detector](https://arxiv.org/abs/1704.03155)
+2. [EAST Detector](https://arxiv.org/abs/1704.03155)
 3. [Connectionist Temporal Classification (CTC)](https://arxiv.org/pdf/1507.05717.pdf)
 4. [Attention OCR](https://arxiv.org/pdf/1704.03549.pdf)
