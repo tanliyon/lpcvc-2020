@@ -1,7 +1,7 @@
 # LPCVC-2020 Sample Solution
 
 ## Overview
-This is the sample solution for [low Power Computer Vision Challenge (LPCVC) 2020 Video Track](https://lpcv.ai/2020CVPR/video-track). This solution serves only as the baseline solution and a lot of improvements can be made on top of this to further optimize the performance of the solution.
+This is the sample solution for [Low Power Computer Vision Challenge (LPCVC) 2020 Video Track](https://lpcv.ai/2020CVPR/video-track). This solution serves only as the baseline solution and a lot of improvements can be made on top of this to further optimize the performance of the solution.
 
 The proposed solution is made up of 3 blocks. The first block (sampling block) takes in a video file and determine which frames are worth doing detection and recognition on. This sample solution does so by dissecting the motion vector from the H.264 encoding of the video to pick out stationary i-frames. The second block (detection block) does word detection on the frames selected from the sampling block. This sample solution uses [EAST Detector](https://arxiv.org/abs/1704.03155). Lastly, the third block (recognition block) does optical character recognition (OCR) on the cropped words. The sample solution provides two choices: [Connectionist Temporal Classification (CTC)](https://arxiv.org/pdf/1507.05717.pdf) or [Attention OCR](https://arxiv.org/pdf/1704.03549.pdf).
 
@@ -47,4 +47,7 @@ To toggle between the two recognition option, you can toggle the `USE_ATTN_OCR` 
 1. Currently, the solution takes a long time because of the number of frames it run inference on. If you want to test only a portion of it, run the code for a set amount of time, then comment out the line `frames_list = iFRAMES(video_path)` in wrapper.py. Then run the code again.
 
 ## References
-
+1. [Low Power Computer Vision Challenge (LPCVC) 2020 Video Track](https://lpcv.ai/2020CVPR/video-track)
+2.[EAST Detector](https://arxiv.org/abs/1704.03155)
+3. [Connectionist Temporal Classification (CTC)](https://arxiv.org/pdf/1507.05717.pdf)
+4. [Attention OCR](https://arxiv.org/pdf/1704.03549.pdf)
