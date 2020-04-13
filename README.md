@@ -45,3 +45,6 @@ To toggle between the two recognition option, you can toggle the `USE_ATTN_OCR` 
 
 ## Notes
 1. Currently, the solution takes a long time because of the number of frames it run inference on. If you want to test only a portion of it, run the code for a set amount of time, then comment out the line `frames_list = iFRAMES(video_path)` in wrapper.py. Then run the code again.
+
+## References
+
