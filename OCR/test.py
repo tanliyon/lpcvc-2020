@@ -76,7 +76,7 @@ def OCR_att(frames, bboxes):
 
         decoded_word = list(map(list, zip(*decoded_word)))
         decoded_word = [word for i, word in enumerate(decoded_word) if prob[i] > 0.6]
-        decoded_word = ["".join(item).replace("$", "")  for item in decoded_word]
+        decoded_word = ["".join(item).replace("$", "").replace("EOS", "")  for item in decoded_word]
         word_list.append(decoded_word)
     return word_list
 
