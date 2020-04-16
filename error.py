@@ -37,3 +37,16 @@ def check_number_of_channels(image):
     channels = len(image.getbands())
     if channels != 1:
         raise TypeError("Image must have only 1 channel instead of {} channels".format(channels))
+
+def out_of_memory(exception, model):
+    if "out of memory" in str(exception):
+        print("| WARNING: Ran out of memory, retrying batch", sys.stdout)
+        sys.stdout.flush()
+
+        for parameter in model.parameters:
+            if parameter.grad is not None:
+                del parameter.grad
+        torch.cuda.empty_cache()
+        return True
+    else:
+        raise exception

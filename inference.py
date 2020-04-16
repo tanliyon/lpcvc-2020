@@ -5,7 +5,7 @@ from model import *
 from detect import *
 
 # MODEL_PATH = "detector.pth"
-MODEL_PATH = "./Dataset/Train/TrainEpoch/model_epoch_600.pth"
+MODEL_PATH = "./Dataset/Train/TrainEpoch/model_epoch_5.pth"
 
 def detection(frames_path):
     transform = transforms.Compose([
@@ -48,10 +48,12 @@ def detection(frames_path):
         resized_image = image.resize((new_width, new_height), Image.BILINEAR)
         plot_img = plot_boxes(resized_image, box)
         #plot_img = plot_boxes(torchvision.transforms.ToPILImage()(input), box)
-        plot_img.show()
+        #plot_img.show()
+        plot_img.save("img" + str(i + 1), "JPEG")
     print(boxes)
 
     return frames, boxes
 
 if __name__ == '__main__':
     detection("./Samples/")
+    # detection("./Dataset/Test")

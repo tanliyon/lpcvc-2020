@@ -8,10 +8,7 @@ class Loss(nn.Module):
         super(Loss, self).__init__()
         self.weight_angle = weight_angle
 
-    # def get_dice_loss(self, gt_score, pred_score):
     def get_dice_loss(self, gt_score, pred_score, ignored_map):
-    	# inter = torch.sum(gt_score * pred_score)
-    	# union = torch.sum(gt_score) + torch.sum(pred_score) + 1e-5
         inter = torch.sum(gt_score * pred_score * ignored_map)
         union = torch.sum(gt_score * ignored_map) + torch.sum(pred_score * ignored_map) + 1e-5
         return 1. - (2 * inter / union)
@@ -38,6 +35,7 @@ class Loss(nn.Module):
 
         # classify_loss = self.get_dice_loss(gt_score, pred_score*(1-ignored_map))
         classify_loss = self.get_dice_loss(gt_score, pred_score, 1 - ignored_map)
+        classify_loss *= 0.01
         iou_loss_map, angle_loss_map = self.get_geo_loss(gt_geo, pred_geo)
 
         # angle_loss = torch.sum(angle_loss_map * gt_score) / torch.sum(gt_score)
@@ -47,7 +45,7 @@ class Loss(nn.Module):
         # return geo_loss + classify_loss
         return torch.mean(geo_loss * (1 - ignored_map) * gt_score) + classify_loss
 
-# test code
+# Test Code
 if __name__ == '__main__':
     loss_function = Loss()
     Y_true_score = torch.rand([1, 128, 128])

@@ -8,6 +8,7 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from utils import *
 from detect import *
+from error import *
 
 def sorted_alphanumeric(data):
     """
@@ -129,11 +130,10 @@ class TextLocalizationSet(Dataset):
 
                 # if transcription is empty after removing non-alphanumerics, skip
                 if label == "":
+                    bool_tags.append(True)
                     continue
 
                 bool_tags.append(False)
-
-            #text_tags.append(label)
 
         return np.array(quad_coordinates), np.array(bool_tags, dtype=np.bool) #,text_tags
 
@@ -157,7 +157,7 @@ if __name__ == "__main__":
 
     # example usage
     dataset = TextLocalizationSet(imagePath, annotationPath, (126, 224))
-    sample = dataset.__getitem__(99)
+    sample = dataset.__getitem__(0)
     image = Image.open(sample['path'])
     box = get_boxes(sample['score'].cpu().numpy(), sample['geometry'].cpu().numpy())
     # box = get_boxes(sample['score'], sample['geometry'])

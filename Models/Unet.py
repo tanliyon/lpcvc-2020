@@ -57,14 +57,14 @@ class Unet(nn.Module):
         self.convolution11_2 = nn.Conv2d(in_channels= 32, out_channels=32, kernel_size=3, padding=1)
         self.normalization11 = nn.BatchNorm2d(num_features=32)
 
-        for m in self.modules():
-            if isinstance(m, nn.Conv2d):
-                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
-                if m.bias is not None:
-                    nn.init.constant_(m.bias, 0)
-            elif isinstance(m, nn.BatchNorm2d):
-                nn.init.constant_(m.weight, 1)
-                nn.init.constant_(m.bias, 0)
+        # for m in self.modules():
+        #     if isinstance(m, nn.Conv2d):
+        #         nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+        #         if m.bias is not None:
+        #             nn.init.constant_(m.bias, 0)
+        #     elif isinstance(m, nn.BatchNorm2d):
+        #         nn.init.constant_(m.weight, 1)
+        #         nn.init.constant_(m.bias, 0)
 
     def forward(self, features):
         # logging.info("Feature Merging Layer\n")

@@ -1,6 +1,7 @@
 import math
 import numpy as np
 from PIL import Image
+import cv2
 from cv2 import fillPoly
 import torch
 import torchvision
@@ -89,30 +90,6 @@ def Calculate_Angle_Error(coordinates):
 
     error = Calculate_Distance(x1, y1, x_min, y_min) + Calculate_Distance(x2, y2, x_max, y_max) + Calculate_Distance(x3, y3, x_min, y_min) + Calculate_Distance(x4, y4, x_max, y_max)
     return error
-
-# def _Validate_Coordinates(self, quad_coordinates, text_tags):
-#     if is_empty_coordinates(quad_coordinates):
-#         return quad_coordinates, text_tags
-#
-#     quad_coordinates[:, :, 0] = np.clip(quad_coordinates[:, :, 0], 0,  self.width - 1)
-#     quad_coordinates[:, :, 1] = np.clip(quad_coordinates[:, :, 1], 0, self.height - 1)
-#
-#     validated_coordinates = []
-#     validated_tags = []
-#
-#     for coordinate, tag in zip(quad_coordinates, text_tags):
-#         area = self._Calculate_Area(coordinate)
-#
-#         if abs(area) < 1:
-#             #logging.info("\nInvalid coordinates {} with area {} for image {}\n".format(coordinate, area, self.image_name))
-#             continue
-#         if area > 0:
-#             #logging.info("\nCoordinates {} in wrong direction with area {} for image {}\n".format(coordinate, area, self.image_name))
-#             coordinate = coordinate[(0, 3, 2, 1), :]
-#         validated_coordinates.append(coordinate)
-#         validated_tags.append(tag)
-#
-#     return np.array(validated_coordinates), np.array(validated_tags)
 
 def Get_Rotation_Angle(coordinates):
     angle_interval = 1
@@ -237,6 +214,7 @@ def Load_Geometry_Score_Maps(quad_coordinates, text_tags, height, width, scale=0
     # print("True Score {}".format(score_map))
     # print("True Geometry {}".format(geometry_map))
     # cv2.imshow("Score", score_map)
+    # cv2.imshow("Mask", training_mask)
     # cv2.waitKey(0)
 
     return torch.Tensor(score_map).permute(2, 0, 1), torch.Tensor(training_mask).permute(2, 0, 1), torch.Tensor(geometry_map).permute(2, 0, 1)

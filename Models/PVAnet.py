@@ -198,14 +198,14 @@ class PVAnet(nn.Module):
 
         self.projectionConvolution4 = nn.Conv2d(in_channels=256, out_channels=384, kernel_size=1, stride=2)
 
-        for m in self.modules():
-            if isinstance(m, nn.Conv2d):
-                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
-                if m.bias is not None:
-                    nn.init.constant_(m.bias, 0)
-            elif isinstance(m, nn.BatchNorm2d):
-                nn.init.constant_(m.weight, 1)
-                nn.init.constant_(m.bias, 0)
+        # for m in self.modules():
+        #     if isinstance(m, nn.Conv2d):
+        #         nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+        #         if m.bias is not None:
+        #             nn.init.constant_(m.bias, 0)
+        #     elif isinstance(m, nn.BatchNorm2d):
+        #         nn.init.constant_(m.weight, 1)
+        #         nn.init.constant_(m.bias, 0)
 
     def forward(self, x, projection=False):
         # logging.info("Feature Extraction Layer\n")

@@ -1,0 +1,3125 @@
+INFO:root:
+Started
+INFO:root:Batch 1, Batch Loss 0.309329
+
+INFO:root:Batch 2, Batch Loss 0.368270
+
+INFO:root:Batch 3, Batch Loss 0.257351
+
+INFO:root:Batch 4, Batch Loss 0.384045
+
+INFO:root:Batch 5, Batch Loss 0.244237
+
+INFO:root:Batch 6, Batch Loss 0.369708
+
+INFO:root:Batch 7, Batch Loss 0.483914
+
+INFO:root:Batch 8, Batch Loss 0.408211
+
+INFO:root:Batch 9, Batch Loss 0.350688
+
+INFO:root:Batch 10, Batch Loss 0.177584
+
+INFO:root:Batch 11, Batch Loss 0.516099
+
+INFO:root:Batch 12, Batch Loss 0.296086
+
+INFO:root:Batch 13, Batch Loss 0.287830
+
+INFO:root:Batch 14, Batch Loss 0.521278
+
+INFO:root:Batch 15, Batch Loss 0.242199
+
+INFO:root:Batch 16, Batch Loss 0.267713
+
+INFO:root:Batch 17, Batch Loss 0.175901
+
+INFO:root:Batch 18, Batch Loss 0.391964
+
+INFO:root:Batch 19, Batch Loss 0.404787
+
+INFO:root:Batch 20, Batch Loss 0.219498
+
+INFO:root:Batch 21, Batch Loss 0.261757
+
+INFO:root:Batch 22, Batch Loss 0.202444
+
+INFO:root:Batch 23, Batch Loss 0.528495
+
+INFO:root:Batch 24, Batch Loss 0.217773
+
+INFO:root:Batch 25, Batch Loss 0.213813
+
+INFO:root:Batch 26, Batch Loss 0.347138
+
+INFO:root:Batch 27, Batch Loss 0.311807
+
+INFO:root:Batch 28, Batch Loss 0.248657
+
+INFO:root:Batch 29, Batch Loss 0.351463
+
+INFO:root:Batch 30, Batch Loss 0.177941
+
+INFO:root:Batch 31, Batch Loss 0.195336
+
+INFO:root:Batch 32, Batch Loss 0.282459
+
+INFO:root:Batch 33, Batch Loss 0.352430
+
+INFO:root:Batch 34, Batch Loss 0.252058
+
+INFO:root:Batch 35, Batch Loss 0.264604
+
+INFO:root:Batch 36, Batch Loss 0.285997
+
+INFO:root:Batch 37, Batch Loss 0.315692
+
+INFO:root:Batch 38, Batch Loss 0.284665
+
+INFO:root:Batch 39, Batch Loss 0.254330
+
+INFO:root:Batch 40, Batch Loss 0.321802
+
+INFO:root:Batch 41, Batch Loss 0.403527
+
+INFO:root:Batch 42, Batch Loss 0.214886
+
+INFO:root:
+
+Epoch 1, Time 54.296655, Epoch Loss 12.965767
+
+
+INFO:root:Batch 1, Batch Loss 0.222960
+
+INFO:root:Batch 2, Batch Loss 0.222151
+
+INFO:root:Batch 3, Batch Loss 0.365935
+
+INFO:root:Batch 4, Batch Loss 0.507688
+
+INFO:root:Batch 5, Batch Loss 0.218978
+
+INFO:root:Batch 6, Batch Loss 0.216946
+
+INFO:root:Batch 7, Batch Loss 0.341053
+
+INFO:root:Batch 8, Batch Loss 0.308816
+
+INFO:root:Batch 9, Batch Loss 0.221714
+
+INFO:root:Batch 10, Batch Loss 0.360501
+
+INFO:root:Batch 11, Batch Loss 0.261419
+
+INFO:root:Batch 12, Batch Loss 0.355947
+
+INFO:root:Batch 13, Batch Loss 0.353005
+
+INFO:root:Batch 14, Batch Loss 0.305287
+
+INFO:root:Batch 15, Batch Loss 0.337777
+
+INFO:root:Batch 16, Batch Loss 0.356693
+
+INFO:root:Batch 17, Batch Loss 0.242402
+
+INFO:root:Batch 18, Batch Loss 0.237184
+
+INFO:root:Batch 19, Batch Loss 0.364329
+
+INFO:root:Batch 20, Batch Loss 0.340732
+
+INFO:root:Batch 21, Batch Loss 0.304388
+
+INFO:root:Batch 22, Batch Loss 0.248135
+
+INFO:root:Batch 23, Batch Loss 0.232000
+
+INFO:root:Batch 24, Batch Loss 0.307605
+
+INFO:root:Batch 25, Batch Loss 0.531502
+
+INFO:root:Batch 26, Batch Loss 0.208972
+
+INFO:root:Batch 27, Batch Loss 0.317379
+
+INFO:root:Batch 28, Batch Loss 0.375297
+
+INFO:root:Batch 29, Batch Loss 0.383126
+
+INFO:root:Batch 30, Batch Loss 0.164597
+
+INFO:root:Batch 31, Batch Loss 0.481853
+
+INFO:root:Batch 32, Batch Loss 0.204707
+
+INFO:root:Batch 33, Batch Loss 0.312470
+
+INFO:root:Batch 34, Batch Loss 0.310367
+
+INFO:root:Batch 35, Batch Loss 0.318667
+
+INFO:root:Batch 36, Batch Loss 0.226758
+
+INFO:root:Batch 37, Batch Loss 0.392346
+
+INFO:root:Batch 38, Batch Loss 0.293472
+
+INFO:root:Batch 39, Batch Loss 0.338963
+
+INFO:root:Batch 40, Batch Loss 0.339827
+
+INFO:root:Batch 41, Batch Loss 0.316609
+
+INFO:root:Batch 42, Batch Loss 0.215076
+
+INFO:root:
+
+Epoch 2, Time 53.946073, Epoch Loss 12.965633
+
+
+INFO:root:Batch 1, Batch Loss 0.285704
+
+INFO:root:Batch 2, Batch Loss 0.323590
+
+INFO:root:Batch 3, Batch Loss 0.492891
+
+INFO:root:Batch 4, Batch Loss 0.332490
+
+INFO:root:Batch 5, Batch Loss 0.340645
+
+INFO:root:Batch 6, Batch Loss 0.306064
+
+INFO:root:Batch 7, Batch Loss 0.347252
+
+INFO:root:Batch 8, Batch Loss 0.237373
+
+INFO:root:Batch 9, Batch Loss 0.361952
+
+INFO:root:Batch 10, Batch Loss 0.215062
+
+INFO:root:Batch 11, Batch Loss 0.354588
+
+INFO:root:Batch 12, Batch Loss 0.258970
+
+INFO:root:Batch 13, Batch Loss 0.176859
+
+INFO:root:Batch 14, Batch Loss 0.418090
+
+INFO:root:Batch 15, Batch Loss 0.380333
+
+INFO:root:Batch 16, Batch Loss 0.256793
+
+INFO:root:Batch 17, Batch Loss 0.253841
+
+INFO:root:Batch 18, Batch Loss 0.376538
+
+INFO:root:Batch 19, Batch Loss 0.194056
+
+INFO:root:Batch 20, Batch Loss 0.259463
+
+INFO:root:Batch 21, Batch Loss 0.350422
+
+INFO:root:Batch 22, Batch Loss 0.234201
+
+INFO:root:Batch 23, Batch Loss 0.487640
+
+INFO:root:Batch 24, Batch Loss 0.222073
+
+INFO:root:Batch 25, Batch Loss 0.379620
+
+INFO:root:Batch 26, Batch Loss 0.352203
+
+INFO:root:Batch 27, Batch Loss 0.279803
+
+INFO:root:Batch 28, Batch Loss 0.277841
+
+INFO:root:Batch 29, Batch Loss 0.280339
+
+INFO:root:Batch 30, Batch Loss 0.329513
+
+INFO:root:Batch 31, Batch Loss 0.263314
+
+INFO:root:Batch 32, Batch Loss 0.272622
+
+INFO:root:Batch 33, Batch Loss 0.531466
+
+INFO:root:Batch 34, Batch Loss 0.197313
+
+INFO:root:Batch 35, Batch Loss 0.265320
+
+INFO:root:Batch 36, Batch Loss 0.246119
+
+INFO:root:Batch 37, Batch Loss 0.353764
+
+INFO:root:Batch 38, Batch Loss 0.291970
+
+INFO:root:Batch 39, Batch Loss 0.252235
+
+INFO:root:Batch 40, Batch Loss 0.316625
+
+INFO:root:Batch 41, Batch Loss 0.361765
+
+INFO:root:Batch 42, Batch Loss 0.246791
+
+INFO:root:
+
+Epoch 3, Time 54.768136, Epoch Loss 12.965513
+
+
+INFO:root:Batch 1, Batch Loss 0.251537
+
+INFO:root:Batch 2, Batch Loss 0.180824
+
+INFO:root:Batch 3, Batch Loss 0.325541
+
+INFO:root:Batch 4, Batch Loss 0.406399
+
+INFO:root:Batch 5, Batch Loss 0.333296
+
+INFO:root:Batch 6, Batch Loss 0.275989
+
+INFO:root:Batch 7, Batch Loss 0.185426
+
+INFO:root:Batch 8, Batch Loss 0.319734
+
+INFO:root:Batch 9, Batch Loss 0.482482
+
+INFO:root:Batch 10, Batch Loss 0.500837
+
+INFO:root:Batch 11, Batch Loss 0.231636
+
+INFO:root:Batch 12, Batch Loss 0.487236
+
+INFO:root:Batch 13, Batch Loss 0.241311
+
+INFO:root:Batch 14, Batch Loss 0.245476
+
+INFO:root:Batch 15, Batch Loss 0.259949
+
+INFO:root:Batch 16, Batch Loss 0.242352
+
+INFO:root:Batch 17, Batch Loss 0.384279
+
+INFO:root:Batch 18, Batch Loss 0.194901
+
+INFO:root:Batch 19, Batch Loss 0.276571
+
+INFO:root:Batch 20, Batch Loss 0.342378
+
+INFO:root:Batch 21, Batch Loss 0.452600
+
+INFO:root:Batch 22, Batch Loss 0.174594
+
+INFO:root:Batch 23, Batch Loss 0.508918
+
+INFO:root:Batch 24, Batch Loss 0.231998
+
+INFO:root:Batch 25, Batch Loss 0.278117
+
+INFO:root:Batch 26, Batch Loss 0.332996
+
+INFO:root:Batch 27, Batch Loss 0.418681
+
+INFO:root:Batch 28, Batch Loss 0.225248
+
+INFO:root:Batch 29, Batch Loss 0.267559
+
+INFO:root:Batch 30, Batch Loss 0.240656
+
+INFO:root:Batch 31, Batch Loss 0.247035
+
+INFO:root:Batch 32, Batch Loss 0.349460
+
+INFO:root:Batch 33, Batch Loss 0.310454
+
+INFO:root:Batch 34, Batch Loss 0.444574
+
+INFO:root:Batch 35, Batch Loss 0.328159
+
+INFO:root:Batch 36, Batch Loss 0.525593
+
+INFO:root:Batch 37, Batch Loss 0.295632
+
+INFO:root:Batch 38, Batch Loss 0.213072
+
+INFO:root:Batch 39, Batch Loss 0.283820
+
+INFO:root:Batch 40, Batch Loss 0.291657
+
+INFO:root:Batch 41, Batch Loss 0.267820
+
+INFO:root:Batch 42, Batch Loss 0.108589
+
+INFO:root:
+
+Epoch 4, Time 53.521428, Epoch Loss 12.965384
+
+
+INFO:root:Batch 1, Batch Loss 0.483732
+
+INFO:root:Batch 2, Batch Loss 0.325439
+
+INFO:root:Batch 3, Batch Loss 0.418542
+
+INFO:root:Batch 4, Batch Loss 0.245571
+
+INFO:root:Batch 5, Batch Loss 0.183214
+
+INFO:root:Batch 6, Batch Loss 0.565146
+
+INFO:root:Batch 7, Batch Loss 0.241708
+
+INFO:root:Batch 8, Batch Loss 0.263715
+
+INFO:root:Batch 9, Batch Loss 0.237604
+
+INFO:root:Batch 10, Batch Loss 0.175959
+
+INFO:root:Batch 11, Batch Loss 0.217365
+
+INFO:root:Batch 12, Batch Loss 0.275338
+
+INFO:root:Batch 13, Batch Loss 0.305135
+
+INFO:root:Batch 14, Batch Loss 0.476899
+
+INFO:root:Batch 15, Batch Loss 0.301568
+
+INFO:root:Batch 16, Batch Loss 0.291268
+
+INFO:root:Batch 17, Batch Loss 0.227887
+
+INFO:root:Batch 18, Batch Loss 0.223753
+
+INFO:root:Batch 19, Batch Loss 0.271635
+
+INFO:root:Batch 20, Batch Loss 0.451391
+
+INFO:root:Batch 21, Batch Loss 0.420324
+
+INFO:root:Batch 22, Batch Loss 0.298767
+
+INFO:root:Batch 23, Batch Loss 0.403416
+
+INFO:root:Batch 24, Batch Loss 0.183416
+
+INFO:root:Batch 25, Batch Loss 0.376296
+
+INFO:root:Batch 26, Batch Loss 0.302529
+
+INFO:root:Batch 27, Batch Loss 0.401173
+
+INFO:root:Batch 28, Batch Loss 0.186955
+
+INFO:root:Batch 29, Batch Loss 0.564544
+
+INFO:root:Batch 30, Batch Loss 0.199245
+
+INFO:root:Batch 31, Batch Loss 0.194716
+
+INFO:root:Batch 32, Batch Loss 0.316093
+
+INFO:root:Batch 33, Batch Loss 0.293493
+
+INFO:root:Batch 34, Batch Loss 0.337505
+
+INFO:root:Batch 35, Batch Loss 0.282181
+
+INFO:root:Batch 36, Batch Loss 0.271634
+
+INFO:root:Batch 37, Batch Loss 0.395092
+
+INFO:root:Batch 38, Batch Loss 0.272593
+
+INFO:root:Batch 39, Batch Loss 0.222470
+
+INFO:root:Batch 40, Batch Loss 0.345945
+
+INFO:root:Batch 41, Batch Loss 0.275965
+
+INFO:root:Batch 42, Batch Loss 0.238031
+
+INFO:root:
+
+Epoch 5, Time 53.786352, Epoch Loss 12.965254
+
+
+INFO:root:Batch 1, Batch Loss 0.302097
+
+INFO:root:Batch 2, Batch Loss 0.317018
+
+INFO:root:Batch 3, Batch Loss 0.435092
+
+INFO:root:Batch 4, Batch Loss 0.442752
+
+INFO:root:Batch 5, Batch Loss 0.313766
+
+INFO:root:Batch 6, Batch Loss 0.310148
+
+INFO:root:Batch 7, Batch Loss 0.309333
+
+INFO:root:Batch 8, Batch Loss 0.337939
+
+INFO:root:Batch 9, Batch Loss 0.273895
+
+INFO:root:Batch 10, Batch Loss 0.365065
+
+INFO:root:Batch 11, Batch Loss 0.240860
+
+INFO:root:Batch 12, Batch Loss 0.179532
+
+INFO:root:Batch 13, Batch Loss 0.356133
+
+INFO:root:Batch 14, Batch Loss 0.264564
+
+INFO:root:Batch 15, Batch Loss 0.370754
+
+INFO:root:Batch 16, Batch Loss 0.366281
+
+INFO:root:Batch 17, Batch Loss 0.223984
+
+INFO:root:Batch 18, Batch Loss 0.100537
+
+INFO:root:Batch 19, Batch Loss 0.237819
+
+INFO:root:Batch 20, Batch Loss 0.293839
+
+INFO:root:Batch 21, Batch Loss 0.347655
+
+INFO:root:Batch 22, Batch Loss 0.230383
+
+INFO:root:Batch 23, Batch Loss 0.392943
+
+INFO:root:Batch 24, Batch Loss 0.229412
+
+INFO:root:Batch 25, Batch Loss 0.491746
+
+INFO:root:Batch 26, Batch Loss 0.245896
+
+INFO:root:Batch 27, Batch Loss 0.249234
+
+INFO:root:Batch 28, Batch Loss 0.334328
+
+INFO:root:Batch 29, Batch Loss 0.213069
+
+INFO:root:Batch 30, Batch Loss 0.312262
+
+INFO:root:Batch 31, Batch Loss 0.279107
+
+INFO:root:Batch 32, Batch Loss 0.370340
+
+INFO:root:Batch 33, Batch Loss 0.331865
+
+INFO:root:Batch 34, Batch Loss 0.230193
+
+INFO:root:Batch 35, Batch Loss 0.313695
+
+INFO:root:Batch 36, Batch Loss 0.406436
+
+INFO:root:Batch 37, Batch Loss 0.341582
+
+INFO:root:Batch 38, Batch Loss 0.373034
+
+INFO:root:Batch 39, Batch Loss 0.500242
+
+INFO:root:Batch 40, Batch Loss 0.378192
+
+INFO:root:Batch 41, Batch Loss 0.132337
+
+INFO:root:Batch 42, Batch Loss 0.219761
+
+INFO:root:
+
+Epoch 6, Time 53.355334, Epoch Loss 12.965120
+
+
+INFO:root:Batch 1, Batch Loss 0.229947
+
+INFO:root:Batch 2, Batch Loss 0.166638
+
+INFO:root:Batch 3, Batch Loss 0.387037
+
+INFO:root:Batch 4, Batch Loss 0.372555
+
+INFO:root:Batch 5, Batch Loss 0.238721
+
+INFO:root:Batch 6, Batch Loss 0.245595
+
+INFO:root:Batch 7, Batch Loss 0.272312
+
+INFO:root:Batch 8, Batch Loss 0.282578
+
+INFO:root:Batch 9, Batch Loss 0.204983
+
+INFO:root:Batch 10, Batch Loss 0.390713
+
+INFO:root:Batch 11, Batch Loss 0.228168
+
+INFO:root:Batch 12, Batch Loss 0.351613
+
+INFO:root:Batch 13, Batch Loss 0.368420
+
+INFO:root:Batch 14, Batch Loss 0.267850
+
+INFO:root:Batch 15, Batch Loss 0.435168
+
+INFO:root:Batch 16, Batch Loss 0.275457
+
+INFO:root:Batch 17, Batch Loss 0.172329
+
+INFO:root:Batch 18, Batch Loss 0.242437
+
+INFO:root:Batch 19, Batch Loss 0.313879
+
+INFO:root:Batch 20, Batch Loss 0.333518
+
+INFO:root:Batch 21, Batch Loss 0.415172
+
+INFO:root:Batch 22, Batch Loss 0.247432
+
+INFO:root:Batch 23, Batch Loss 0.411184
+
+INFO:root:Batch 24, Batch Loss 0.255646
+
+INFO:root:Batch 25, Batch Loss 0.328240
+
+INFO:root:Batch 26, Batch Loss 0.369816
+
+INFO:root:Batch 27, Batch Loss 0.281978
+
+INFO:root:Batch 28, Batch Loss 0.253923
+
+INFO:root:Batch 29, Batch Loss 0.265758
+
+INFO:root:Batch 30, Batch Loss 0.385254
+
+INFO:root:Batch 31, Batch Loss 0.342399
+
+INFO:root:Batch 32, Batch Loss 0.345923
+
+INFO:root:Batch 33, Batch Loss 0.481843
+
+INFO:root:Batch 34, Batch Loss 0.520090
+
+INFO:root:Batch 35, Batch Loss 0.270382
+
+INFO:root:Batch 36, Batch Loss 0.384023
+
+INFO:root:Batch 37, Batch Loss 0.480805
+
+INFO:root:Batch 38, Batch Loss 0.303429
+
+INFO:root:Batch 39, Batch Loss 0.323577
+
+INFO:root:Batch 40, Batch Loss 0.154317
+
+INFO:root:Batch 41, Batch Loss 0.241122
+
+INFO:root:Batch 42, Batch Loss 0.122751
+
+INFO:root:
+
+Epoch 7, Time 52.617280, Epoch Loss 12.964981
+
+
+INFO:root:Batch 1, Batch Loss 0.328295
+
+INFO:root:Batch 2, Batch Loss 0.625123
+
+INFO:root:Batch 3, Batch Loss 0.308283
+
+INFO:root:Batch 4, Batch Loss 0.215649
+
+INFO:root:Batch 5, Batch Loss 0.243496
+
+INFO:root:Batch 6, Batch Loss 0.302029
+
+INFO:root:Batch 7, Batch Loss 0.273492
+
+INFO:root:Batch 8, Batch Loss 0.233797
+
+INFO:root:Batch 9, Batch Loss 0.522634
+
+INFO:root:Batch 10, Batch Loss 0.286875
+
+INFO:root:Batch 11, Batch Loss 0.223572
+
+INFO:root:Batch 12, Batch Loss 0.231478
+
+INFO:root:Batch 13, Batch Loss 0.316246
+
+INFO:root:Batch 14, Batch Loss 0.335893
+
+INFO:root:Batch 15, Batch Loss 0.281244
+
+INFO:root:Batch 16, Batch Loss 0.239854
+
+INFO:root:Batch 17, Batch Loss 0.331267
+
+INFO:root:Batch 18, Batch Loss 0.245634
+
+INFO:root:Batch 19, Batch Loss 0.286059
+
+INFO:root:Batch 20, Batch Loss 0.424715
+
+INFO:root:Batch 21, Batch Loss 0.197364
+
+INFO:root:Batch 22, Batch Loss 0.251705
+
+INFO:root:Batch 23, Batch Loss 0.141252
+
+INFO:root:Batch 24, Batch Loss 0.200667
+
+INFO:root:Batch 25, Batch Loss 0.391178
+
+INFO:root:Batch 26, Batch Loss 0.477550
+
+INFO:root:Batch 27, Batch Loss 0.261023
+
+INFO:root:Batch 28, Batch Loss 0.319265
+
+INFO:root:Batch 29, Batch Loss 0.177883
+
+INFO:root:Batch 30, Batch Loss 0.293407
+
+INFO:root:Batch 31, Batch Loss 0.367947
+
+INFO:root:Batch 32, Batch Loss 0.365734
+
+INFO:root:Batch 33, Batch Loss 0.247838
+
+INFO:root:Batch 34, Batch Loss 0.374852
+
+INFO:root:Batch 35, Batch Loss 0.313617
+
+INFO:root:Batch 36, Batch Loss 0.287697
+
+INFO:root:Batch 37, Batch Loss 0.335816
+
+INFO:root:Batch 38, Batch Loss 0.397389
+
+INFO:root:Batch 39, Batch Loss 0.316034
+
+INFO:root:Batch 40, Batch Loss 0.337109
+
+INFO:root:Batch 41, Batch Loss 0.306572
+
+INFO:root:Batch 42, Batch Loss 0.347303
+
+INFO:root:
+
+Epoch 8, Time 54.178031, Epoch Loss 12.964837
+
+
+INFO:root:Batch 1, Batch Loss 0.178043
+
+INFO:root:Batch 2, Batch Loss 0.385257
+
+INFO:root:Batch 3, Batch Loss 0.309548
+
+INFO:root:Batch 4, Batch Loss 0.266585
+
+INFO:root:Batch 5, Batch Loss 0.291851
+
+INFO:root:Batch 6, Batch Loss 0.414915
+
+INFO:root:Batch 7, Batch Loss 0.270331
+
+INFO:root:Batch 8, Batch Loss 0.480391
+
+INFO:root:Batch 9, Batch Loss 0.409975
+
+INFO:root:Batch 10, Batch Loss 0.430701
+
+INFO:root:Batch 11, Batch Loss 0.274628
+
+INFO:root:Batch 12, Batch Loss 0.290956
+
+INFO:root:Batch 13, Batch Loss 0.293725
+
+INFO:root:Batch 14, Batch Loss 0.315700
+
+INFO:root:Batch 15, Batch Loss 0.259311
+
+INFO:root:Batch 16, Batch Loss 0.223276
+
+INFO:root:Batch 17, Batch Loss 0.339050
+
+INFO:root:Batch 18, Batch Loss 0.249182
+
+INFO:root:Batch 19, Batch Loss 0.468568
+
+INFO:root:Batch 20, Batch Loss 0.234521
+
+INFO:root:Batch 21, Batch Loss 0.240556
+
+INFO:root:Batch 22, Batch Loss 0.263783
+
+INFO:root:Batch 23, Batch Loss 0.416716
+
+INFO:root:Batch 24, Batch Loss 0.204442
+
+INFO:root:Batch 25, Batch Loss 0.219731
+
+INFO:root:Batch 26, Batch Loss 0.484182
+
+INFO:root:Batch 27, Batch Loss 0.248374
+
+INFO:root:Batch 28, Batch Loss 0.236849
+
+INFO:root:Batch 29, Batch Loss 0.287813
+
+INFO:root:Batch 30, Batch Loss 0.290186
+
+INFO:root:Batch 31, Batch Loss 0.255142
+
+INFO:root:Batch 32, Batch Loss 0.161695
+
+INFO:root:Batch 33, Batch Loss 0.378718
+
+INFO:root:Batch 34, Batch Loss 0.266947
+
+INFO:root:Batch 35, Batch Loss 0.410871
+
+INFO:root:Batch 36, Batch Loss 0.150522
+
+INFO:root:Batch 37, Batch Loss 0.490867
+
+INFO:root:Batch 38, Batch Loss 0.280808
+
+INFO:root:Batch 39, Batch Loss 0.414612
+
+INFO:root:Batch 40, Batch Loss 0.269840
+
+INFO:root:Batch 41, Batch Loss 0.394309
+
+INFO:root:Batch 42, Batch Loss 0.211213
+
+INFO:root:
+
+Epoch 9, Time 53.598042, Epoch Loss 12.964689
+
+
+INFO:root:Batch 1, Batch Loss 0.338208
+
+INFO:root:Batch 2, Batch Loss 0.327291
+
+INFO:root:Batch 3, Batch Loss 0.221954
+
+INFO:root:Batch 4, Batch Loss 0.250396
+
+INFO:root:Batch 5, Batch Loss 0.215662
+
+INFO:root:Batch 6, Batch Loss 0.196756
+
+INFO:root:Batch 7, Batch Loss 0.369357
+
+INFO:root:Batch 8, Batch Loss 0.350013
+
+INFO:root:Batch 9, Batch Loss 0.482442
+
+INFO:root:Batch 10, Batch Loss 0.337671
+
+INFO:root:Batch 11, Batch Loss 0.359253
+
+INFO:root:Batch 12, Batch Loss 0.348521
+
+INFO:root:Batch 13, Batch Loss 0.337620
+
+INFO:root:Batch 14, Batch Loss 0.189368
+
+INFO:root:Batch 15, Batch Loss 0.288081
+
+INFO:root:Batch 16, Batch Loss 0.256265
+
+INFO:root:Batch 17, Batch Loss 0.196530
+
+INFO:root:Batch 18, Batch Loss 0.545269
+
+INFO:root:Batch 19, Batch Loss 0.178797
+
+INFO:root:Batch 20, Batch Loss 0.279965
+
+INFO:root:Batch 21, Batch Loss 0.434735
+
+INFO:root:Batch 22, Batch Loss 0.424430
+
+INFO:root:Batch 23, Batch Loss 0.338473
+
+INFO:root:Batch 24, Batch Loss 0.214693
+
+INFO:root:Batch 25, Batch Loss 0.375921
+
+INFO:root:Batch 26, Batch Loss 0.390036
+
+INFO:root:Batch 27, Batch Loss 0.372374
+
+INFO:root:Batch 28, Batch Loss 0.460670
+
+INFO:root:Batch 29, Batch Loss 0.182751
+
+INFO:root:Batch 30, Batch Loss 0.308750
+
+INFO:root:Batch 31, Batch Loss 0.288944
+
+INFO:root:Batch 32, Batch Loss 0.227300
+
+INFO:root:Batch 33, Batch Loss 0.168591
+
+INFO:root:Batch 34, Batch Loss 0.381430
+
+INFO:root:Batch 35, Batch Loss 0.383605
+
+INFO:root:Batch 36, Batch Loss 0.284323
+
+INFO:root:Batch 37, Batch Loss 0.327915
+
+INFO:root:Batch 38, Batch Loss 0.254512
+
+INFO:root:Batch 39, Batch Loss 0.406481
+
+INFO:root:Batch 40, Batch Loss 0.152887
+
+INFO:root:Batch 41, Batch Loss 0.313812
+
+INFO:root:Batch 42, Batch Loss 0.202483
+
+INFO:root:
+
+Epoch 10, Time 54.499983, Epoch Loss 12.964536
+
+
+INFO:root:Batch 1, Batch Loss 0.263929
+
+INFO:root:Batch 2, Batch Loss 0.213965
+
+INFO:root:Batch 3, Batch Loss 0.158580
+
+INFO:root:Batch 4, Batch Loss 0.181018
+
+INFO:root:Batch 5, Batch Loss 0.299195
+
+INFO:root:Batch 6, Batch Loss 0.329979
+
+INFO:root:Batch 7, Batch Loss 0.163577
+
+INFO:root:Batch 8, Batch Loss 0.378975
+
+INFO:root:Batch 9, Batch Loss 0.278419
+
+INFO:root:Batch 10, Batch Loss 0.184489
+
+INFO:root:Batch 11, Batch Loss 0.437631
+
+INFO:root:Batch 12, Batch Loss 0.310367
+
+INFO:root:Batch 13, Batch Loss 0.338105
+
+INFO:root:Batch 14, Batch Loss 0.262185
+
+INFO:root:Batch 15, Batch Loss 0.201587
+
+INFO:root:Batch 16, Batch Loss 0.235228
+
+INFO:root:Batch 17, Batch Loss 0.272246
+
+INFO:root:Batch 18, Batch Loss 0.377686
+
+INFO:root:Batch 19, Batch Loss 0.571498
+
+INFO:root:Batch 20, Batch Loss 0.346954
+
+INFO:root:Batch 21, Batch Loss 0.377632
+
+INFO:root:Batch 22, Batch Loss 0.454240
+
+INFO:root:Batch 23, Batch Loss 0.492662
+
+INFO:root:Batch 24, Batch Loss 0.195977
+
+INFO:root:Batch 25, Batch Loss 0.337974
+
+INFO:root:Batch 26, Batch Loss 0.459354
+
+INFO:root:Batch 27, Batch Loss 0.314928
+
+INFO:root:Batch 28, Batch Loss 0.273481
+
+INFO:root:Batch 29, Batch Loss 0.281017
+
+INFO:root:Batch 30, Batch Loss 0.275556
+
+INFO:root:Batch 31, Batch Loss 0.381621
+
+INFO:root:Batch 32, Batch Loss 0.246363
+
+INFO:root:Batch 33, Batch Loss 0.226426
+
+INFO:root:Batch 34, Batch Loss 0.284198
+
+INFO:root:Batch 35, Batch Loss 0.354890
+
+INFO:root:Batch 36, Batch Loss 0.225609
+
+INFO:root:Batch 37, Batch Loss 0.594794
+
+INFO:root:Batch 38, Batch Loss 0.267742
+
+INFO:root:Batch 39, Batch Loss 0.333617
+
+INFO:root:Batch 40, Batch Loss 0.339841
+
+INFO:root:Batch 41, Batch Loss 0.268367
+
+INFO:root:Batch 42, Batch Loss 0.172479
+
+INFO:root:
+
+Epoch 11, Time 54.783264, Epoch Loss 12.964381
+
+
+INFO:root:Batch 1, Batch Loss 0.148720
+
+INFO:root:Batch 2, Batch Loss 0.251721
+
+INFO:root:Batch 3, Batch Loss 0.160200
+
+INFO:root:Batch 4, Batch Loss 0.375968
+
+INFO:root:Batch 5, Batch Loss 0.276536
+
+INFO:root:Batch 6, Batch Loss 0.468652
+
+INFO:root:Batch 7, Batch Loss 0.378051
+
+INFO:root:Batch 8, Batch Loss 0.203346
+
+INFO:root:Batch 9, Batch Loss 0.381984
+
+INFO:root:Batch 10, Batch Loss 0.231321
+
+INFO:root:Batch 11, Batch Loss 0.335011
+
+INFO:root:Batch 12, Batch Loss 0.217175
+
+INFO:root:Batch 13, Batch Loss 0.188482
+
+INFO:root:Batch 14, Batch Loss 0.213303
+
+INFO:root:Batch 15, Batch Loss 0.302638
+
+INFO:root:Batch 16, Batch Loss 0.301199
+
+INFO:root:Batch 17, Batch Loss 0.464510
+
+INFO:root:Batch 18, Batch Loss 0.163158
+
+INFO:root:Batch 19, Batch Loss 0.339024
+
+INFO:root:Batch 20, Batch Loss 0.401276
+
+INFO:root:Batch 21, Batch Loss 0.250002
+
+INFO:root:Batch 22, Batch Loss 0.161700
+
+INFO:root:Batch 23, Batch Loss 0.297011
+
+INFO:root:Batch 24, Batch Loss 0.251431
+
+INFO:root:Batch 25, Batch Loss 0.299192
+
+INFO:root:Batch 26, Batch Loss 0.365252
+
+INFO:root:Batch 27, Batch Loss 0.381930
+
+INFO:root:Batch 28, Batch Loss 0.291743
+
+INFO:root:Batch 29, Batch Loss 0.507042
+
+INFO:root:Batch 30, Batch Loss 0.378873
+
+INFO:root:Batch 31, Batch Loss 0.314976
+
+INFO:root:Batch 32, Batch Loss 0.347759
+
+INFO:root:Batch 33, Batch Loss 0.427086
+
+INFO:root:Batch 34, Batch Loss 0.381314
+
+INFO:root:Batch 35, Batch Loss 0.278377
+
+INFO:root:Batch 36, Batch Loss 0.360600
+
+INFO:root:Batch 37, Batch Loss 0.394697
+
+INFO:root:Batch 38, Batch Loss 0.282761
+
+INFO:root:Batch 39, Batch Loss 0.279835
+
+INFO:root:Batch 40, Batch Loss 0.302556
+
+INFO:root:Batch 41, Batch Loss 0.289191
+
+INFO:root:Batch 42, Batch Loss 0.318619
+
+INFO:root:
+
+Epoch 12, Time 54.658095, Epoch Loss 12.964219
+
+
+INFO:root:Batch 1, Batch Loss 0.375459
+
+INFO:root:Batch 2, Batch Loss 0.351431
+
+INFO:root:Batch 3, Batch Loss 0.308162
+
+INFO:root:Batch 4, Batch Loss 0.246267
+
+INFO:root:Batch 5, Batch Loss 0.152620
+
+INFO:root:Batch 6, Batch Loss 0.248856
+
+INFO:root:Batch 7, Batch Loss 0.158966
+
+INFO:root:Batch 8, Batch Loss 0.380454
+
+INFO:root:Batch 9, Batch Loss 0.407336
+
+INFO:root:Batch 10, Batch Loss 0.229426
+
+INFO:root:Batch 11, Batch Loss 0.297740
+
+INFO:root:Batch 12, Batch Loss 0.196443
+
+INFO:root:Batch 13, Batch Loss 0.485241
+
+INFO:root:Batch 14, Batch Loss 0.431430
+
+INFO:root:Batch 15, Batch Loss 0.175562
+
+INFO:root:Batch 16, Batch Loss 0.398630
+
+INFO:root:Batch 17, Batch Loss 0.201683
+
+INFO:root:Batch 18, Batch Loss 0.505356
+
+INFO:root:Batch 19, Batch Loss 0.305771
+
+INFO:root:Batch 20, Batch Loss 0.239046
+
+INFO:root:Batch 21, Batch Loss 0.339040
+
+INFO:root:Batch 22, Batch Loss 0.431494
+
+INFO:root:Batch 23, Batch Loss 0.155382
+
+INFO:root:Batch 24, Batch Loss 0.397323
+
+INFO:root:Batch 25, Batch Loss 0.355418
+
+INFO:root:Batch 26, Batch Loss 0.190378
+
+INFO:root:Batch 27, Batch Loss 0.462702
+
+INFO:root:Batch 28, Batch Loss 0.232164
+
+INFO:root:Batch 29, Batch Loss 0.358234
+
+INFO:root:Batch 30, Batch Loss 0.196257
+
+INFO:root:Batch 31, Batch Loss 0.290665
+
+INFO:root:Batch 32, Batch Loss 0.302552
+
+INFO:root:Batch 33, Batch Loss 0.335331
+
+INFO:root:Batch 34, Batch Loss 0.220353
+
+INFO:root:Batch 35, Batch Loss 0.250847
+
+INFO:root:Batch 36, Batch Loss 0.280079
+
+INFO:root:Batch 37, Batch Loss 0.474633
+
+INFO:root:Batch 38, Batch Loss 0.262524
+
+INFO:root:Batch 39, Batch Loss 0.476343
+
+INFO:root:Batch 40, Batch Loss 0.146362
+
+INFO:root:Batch 41, Batch Loss 0.510855
+
+INFO:root:Batch 42, Batch Loss 0.199233
+
+INFO:root:
+
+Epoch 13, Time 53.975034, Epoch Loss 12.964050
+
+
+INFO:root:Batch 1, Batch Loss 0.270793
+
+INFO:root:Batch 2, Batch Loss 0.292349
+
+INFO:root:Batch 3, Batch Loss 0.434042
+
+INFO:root:Batch 4, Batch Loss 0.331884
+
+INFO:root:Batch 5, Batch Loss 0.252761
+
+INFO:root:Batch 6, Batch Loss 0.381466
+
+INFO:root:Batch 7, Batch Loss 0.311980
+
+INFO:root:Batch 8, Batch Loss 0.259476
+
+INFO:root:Batch 9, Batch Loss 0.191668
+
+INFO:root:Batch 10, Batch Loss 0.276900
+
+INFO:root:Batch 11, Batch Loss 0.189015
+
+INFO:root:Batch 12, Batch Loss 0.260537
+
+INFO:root:Batch 13, Batch Loss 0.188581
+
+INFO:root:Batch 14, Batch Loss 0.289646
+
+INFO:root:Batch 15, Batch Loss 0.303384
+
+INFO:root:Batch 16, Batch Loss 0.340210
+
+INFO:root:Batch 17, Batch Loss 0.271078
+
+INFO:root:Batch 18, Batch Loss 0.342014
+
+INFO:root:Batch 19, Batch Loss 0.310224
+
+INFO:root:Batch 20, Batch Loss 0.286559
+
+INFO:root:Batch 21, Batch Loss 0.467727
+
+INFO:root:Batch 22, Batch Loss 0.259090
+
+INFO:root:Batch 23, Batch Loss 0.266875
+
+INFO:root:Batch 24, Batch Loss 0.597108
+
+INFO:root:Batch 25, Batch Loss 0.299058
+
+INFO:root:Batch 26, Batch Loss 0.382063
+
+INFO:root:Batch 27, Batch Loss 0.271921
+
+INFO:root:Batch 28, Batch Loss 0.240664
+
+INFO:root:Batch 29, Batch Loss 0.347257
+
+INFO:root:Batch 30, Batch Loss 0.300042
+
+INFO:root:Batch 31, Batch Loss 0.515854
+
+INFO:root:Batch 32, Batch Loss 0.363594
+
+INFO:root:Batch 33, Batch Loss 0.282427
+
+INFO:root:Batch 34, Batch Loss 0.336522
+
+INFO:root:Batch 35, Batch Loss 0.193974
+
+INFO:root:Batch 36, Batch Loss 0.254602
+
+INFO:root:Batch 37, Batch Loss 0.279453
+
+INFO:root:Batch 38, Batch Loss 0.394914
+
+INFO:root:Batch 39, Batch Loss 0.389114
+
+INFO:root:Batch 40, Batch Loss 0.346353
+
+INFO:root:Batch 41, Batch Loss 0.204031
+
+INFO:root:Batch 42, Batch Loss 0.186672
+
+INFO:root:
+
+Epoch 14, Time 53.138420, Epoch Loss 12.963880
+
+
+INFO:root:Batch 1, Batch Loss 0.418956
+
+INFO:root:Batch 2, Batch Loss 0.397120
+
+INFO:root:Batch 3, Batch Loss 0.236576
+
+INFO:root:Batch 4, Batch Loss 0.168205
+
+INFO:root:Batch 5, Batch Loss 0.433421
+
+INFO:root:Batch 6, Batch Loss 0.363106
+
+INFO:root:Batch 7, Batch Loss 0.335029
+
+INFO:root:Batch 8, Batch Loss 0.384830
+
+INFO:root:Batch 9, Batch Loss 0.243194
+
+INFO:root:Batch 10, Batch Loss 0.226387
+
+INFO:root:Batch 11, Batch Loss 0.425513
+
+INFO:root:Batch 12, Batch Loss 0.389790
+
+INFO:root:Batch 13, Batch Loss 0.325378
+
+INFO:root:Batch 14, Batch Loss 0.230811
+
+INFO:root:Batch 15, Batch Loss 0.276914
+
+INFO:root:Batch 16, Batch Loss 0.526587
+
+INFO:root:Batch 17, Batch Loss 0.315649
+
+INFO:root:Batch 18, Batch Loss 0.291510
+
+INFO:root:Batch 19, Batch Loss 0.236265
+
+INFO:root:Batch 20, Batch Loss 0.171738
+
+INFO:root:Batch 21, Batch Loss 0.309123
+
+INFO:root:Batch 22, Batch Loss 0.353976
+
+INFO:root:Batch 23, Batch Loss 0.373518
+
+INFO:root:Batch 24, Batch Loss 0.263786
+
+INFO:root:Batch 25, Batch Loss 0.235280
+
+INFO:root:Batch 26, Batch Loss 0.309896
+
+INFO:root:Batch 27, Batch Loss 0.365849
+
+INFO:root:Batch 28, Batch Loss 0.299642
+
+INFO:root:Batch 29, Batch Loss 0.325525
+
+INFO:root:Batch 30, Batch Loss 0.428088
+
+INFO:root:Batch 31, Batch Loss 0.325918
+
+INFO:root:Batch 32, Batch Loss 0.145017
+
+INFO:root:Batch 33, Batch Loss 0.471045
+
+INFO:root:Batch 34, Batch Loss 0.237014
+
+INFO:root:Batch 35, Batch Loss 0.282034
+
+INFO:root:Batch 36, Batch Loss 0.379970
+
+INFO:root:Batch 37, Batch Loss 0.284112
+
+INFO:root:Batch 38, Batch Loss 0.366221
+
+INFO:root:Batch 39, Batch Loss 0.201230
+
+INFO:root:Batch 40, Batch Loss 0.282827
+
+INFO:root:Batch 41, Batch Loss 0.197968
+
+INFO:root:Batch 42, Batch Loss 0.128684
+
+INFO:root:
+
+Epoch 15, Time 53.331970, Epoch Loss 12.963697
+
+
+INFO:root:Batch 1, Batch Loss 0.217235
+
+INFO:root:Batch 2, Batch Loss 0.362164
+
+INFO:root:Batch 3, Batch Loss 0.237688
+
+INFO:root:Batch 4, Batch Loss 0.208778
+
+INFO:root:Batch 5, Batch Loss 0.271385
+
+INFO:root:Batch 6, Batch Loss 0.448050
+
+INFO:root:Batch 7, Batch Loss 0.243430
+
+INFO:root:Batch 8, Batch Loss 0.316102
+
+INFO:root:Batch 9, Batch Loss 0.294492
+
+INFO:root:Batch 10, Batch Loss 0.277916
+
+INFO:root:Batch 11, Batch Loss 0.229772
+
+INFO:root:Batch 12, Batch Loss 0.293779
+
+INFO:root:Batch 13, Batch Loss 0.359466
+
+INFO:root:Batch 14, Batch Loss 0.297298
+
+INFO:root:Batch 15, Batch Loss 0.276856
+
+INFO:root:Batch 16, Batch Loss 0.232806
+
+INFO:root:Batch 17, Batch Loss 0.339508
+
+INFO:root:Batch 18, Batch Loss 0.350240
+
+INFO:root:Batch 19, Batch Loss 0.393308
+
+INFO:root:Batch 20, Batch Loss 0.296148
+
+INFO:root:Batch 21, Batch Loss 0.277747
+
+INFO:root:Batch 22, Batch Loss 0.361226
+
+INFO:root:Batch 23, Batch Loss 0.252836
+
+INFO:root:Batch 24, Batch Loss 0.459443
+
+INFO:root:Batch 25, Batch Loss 0.402609
+
+INFO:root:Batch 26, Batch Loss 0.233326
+
+INFO:root:Batch 27, Batch Loss 0.704607
+
+INFO:root:Batch 28, Batch Loss 0.272167
+
+INFO:root:Batch 29, Batch Loss 0.269128
+
+INFO:root:Batch 30, Batch Loss 0.303984
+
+INFO:root:Batch 31, Batch Loss 0.198564
+
+INFO:root:Batch 32, Batch Loss 0.427919
+
+INFO:root:Batch 33, Batch Loss 0.225520
+
+INFO:root:Batch 34, Batch Loss 0.286161
+
+INFO:root:Batch 35, Batch Loss 0.352405
+
+INFO:root:Batch 36, Batch Loss 0.215776
+
+INFO:root:Batch 37, Batch Loss 0.426550
+
+INFO:root:Batch 38, Batch Loss 0.370372
+
+INFO:root:Batch 39, Batch Loss 0.232985
+
+INFO:root:Batch 40, Batch Loss 0.285699
+
+INFO:root:Batch 41, Batch Loss 0.280376
+
+INFO:root:Batch 42, Batch Loss 0.177691
+
+INFO:root:
+
+Epoch 16, Time 52.778955, Epoch Loss 12.963512
+
+
+INFO:root:Batch 1, Batch Loss 0.536479
+
+INFO:root:Batch 2, Batch Loss 0.299785
+
+INFO:root:Batch 3, Batch Loss 0.295732
+
+INFO:root:Batch 4, Batch Loss 0.318152
+
+INFO:root:Batch 5, Batch Loss 0.345293
+
+INFO:root:Batch 6, Batch Loss 0.310206
+
+INFO:root:Batch 7, Batch Loss 0.350319
+
+INFO:root:Batch 8, Batch Loss 0.361157
+
+INFO:root:Batch 9, Batch Loss 0.281715
+
+INFO:root:Batch 10, Batch Loss 0.239161
+
+INFO:root:Batch 11, Batch Loss 0.350711
+
+INFO:root:Batch 12, Batch Loss 0.293124
+
+INFO:root:Batch 13, Batch Loss 0.241722
+
+INFO:root:Batch 14, Batch Loss 0.228275
+
+INFO:root:Batch 15, Batch Loss 0.168230
+
+INFO:root:Batch 16, Batch Loss 0.228678
+
+INFO:root:Batch 17, Batch Loss 0.178565
+
+INFO:root:Batch 18, Batch Loss 0.185756
+
+INFO:root:Batch 19, Batch Loss 0.236965
+
+INFO:root:Batch 20, Batch Loss 0.326233
+
+INFO:root:Batch 21, Batch Loss 0.208282
+
+INFO:root:Batch 22, Batch Loss 0.285612
+
+INFO:root:Batch 23, Batch Loss 0.281244
+
+INFO:root:Batch 24, Batch Loss 0.510950
+
+INFO:root:Batch 25, Batch Loss 0.354687
+
+INFO:root:Batch 26, Batch Loss 0.294215
+
+INFO:root:Batch 27, Batch Loss 0.351800
+
+INFO:root:Batch 28, Batch Loss 0.237646
+
+INFO:root:Batch 29, Batch Loss 0.401874
+
+INFO:root:Batch 30, Batch Loss 0.533443
+
+INFO:root:Batch 31, Batch Loss 0.251152
+
+INFO:root:Batch 32, Batch Loss 0.566473
+
+INFO:root:Batch 33, Batch Loss 0.280354
+
+INFO:root:Batch 34, Batch Loss 0.380249
+
+INFO:root:Batch 35, Batch Loss 0.325338
+
+INFO:root:Batch 36, Batch Loss 0.283535
+
+INFO:root:Batch 37, Batch Loss 0.322096
+
+INFO:root:Batch 38, Batch Loss 0.366039
+
+INFO:root:Batch 39, Batch Loss 0.373972
+
+INFO:root:Batch 40, Batch Loss 0.216800
+
+INFO:root:Batch 41, Batch Loss 0.243124
+
+INFO:root:Batch 42, Batch Loss 0.118175
+
+INFO:root:
+
+Epoch 17, Time 52.992166, Epoch Loss 12.963320
+
+
+INFO:root:Batch 1, Batch Loss 0.313337
+
+INFO:root:Batch 2, Batch Loss 0.452452
+
+INFO:root:Batch 3, Batch Loss 0.295712
+
+INFO:root:Batch 4, Batch Loss 0.299330
+
+INFO:root:Batch 5, Batch Loss 0.379390
+
+INFO:root:Batch 6, Batch Loss 0.311793
+
+INFO:root:Batch 7, Batch Loss 0.234711
+
+INFO:root:Batch 8, Batch Loss 0.264306
+
+INFO:root:Batch 9, Batch Loss 0.312182
+
+INFO:root:Batch 10, Batch Loss 0.235686
+
+INFO:root:Batch 11, Batch Loss 0.197622
+
+INFO:root:Batch 12, Batch Loss 0.302700
+
+INFO:root:Batch 13, Batch Loss 0.376826
+
+INFO:root:Batch 14, Batch Loss 0.250984
+
+INFO:root:Batch 15, Batch Loss 0.332429
+
+INFO:root:Batch 16, Batch Loss 0.458214
+
+INFO:root:Batch 17, Batch Loss 0.351695
+
+INFO:root:Batch 18, Batch Loss 0.227095
+
+INFO:root:Batch 19, Batch Loss 0.278817
+
+INFO:root:Batch 20, Batch Loss 0.353807
+
+INFO:root:Batch 21, Batch Loss 0.513871
+
+INFO:root:Batch 22, Batch Loss 0.325313
+
+INFO:root:Batch 23, Batch Loss 0.215463
+
+INFO:root:Batch 24, Batch Loss 0.259785
+
+INFO:root:Batch 25, Batch Loss 0.443947
+
+INFO:root:Batch 26, Batch Loss 0.441217
+
+INFO:root:Batch 27, Batch Loss 0.297518
+
+INFO:root:Batch 28, Batch Loss 0.308101
+
+INFO:root:Batch 29, Batch Loss 0.213486
+
+INFO:root:Batch 30, Batch Loss 0.282746
+
+INFO:root:Batch 31, Batch Loss 0.458964
+
+INFO:root:Batch 32, Batch Loss 0.159782
+
+INFO:root:Batch 33, Batch Loss 0.432941
+
+INFO:root:Batch 34, Batch Loss 0.304130
+
+INFO:root:Batch 35, Batch Loss 0.262921
+
+INFO:root:Batch 36, Batch Loss 0.243719
+
+INFO:root:Batch 37, Batch Loss 0.259515
+
+INFO:root:Batch 38, Batch Loss 0.147581
+
+INFO:root:Batch 39, Batch Loss 0.240043
+
+INFO:root:Batch 40, Batch Loss 0.403128
+
+INFO:root:Batch 41, Batch Loss 0.255757
+
+INFO:root:Batch 42, Batch Loss 0.264113
+
+INFO:root:
+
+Epoch 18, Time 53.157077, Epoch Loss 12.963127
+
+
+INFO:root:Batch 1, Batch Loss 0.168618
+
+INFO:root:Batch 2, Batch Loss 0.216387
+
+INFO:root:Batch 3, Batch Loss 0.405088
+
+INFO:root:Batch 4, Batch Loss 0.282978
+
+INFO:root:Batch 5, Batch Loss 0.503824
+
+INFO:root:Batch 6, Batch Loss 0.260416
+
+INFO:root:Batch 7, Batch Loss 0.368811
+
+INFO:root:Batch 8, Batch Loss 0.316735
+
+INFO:root:Batch 9, Batch Loss 0.314273
+
+INFO:root:Batch 10, Batch Loss 0.327399
+
+INFO:root:Batch 11, Batch Loss 0.395606
+
+INFO:root:Batch 12, Batch Loss 0.425968
+
+INFO:root:Batch 13, Batch Loss 0.367430
+
+INFO:root:Batch 14, Batch Loss 0.233898
+
+INFO:root:Batch 15, Batch Loss 0.293908
+
+INFO:root:Batch 16, Batch Loss 0.259234
+
+INFO:root:Batch 17, Batch Loss 0.195770
+
+INFO:root:Batch 18, Batch Loss 0.339424
+
+INFO:root:Batch 19, Batch Loss 0.205726
+
+INFO:root:Batch 20, Batch Loss 0.304376
+
+INFO:root:Batch 21, Batch Loss 0.273236
+
+INFO:root:Batch 22, Batch Loss 0.200105
+
+INFO:root:Batch 23, Batch Loss 0.363706
+
+INFO:root:Batch 24, Batch Loss 0.284580
+
+INFO:root:Batch 25, Batch Loss 0.202874
+
+INFO:root:Batch 26, Batch Loss 0.255361
+
+INFO:root:Batch 27, Batch Loss 0.285128
+
+INFO:root:Batch 28, Batch Loss 0.344189
+
+INFO:root:Batch 29, Batch Loss 0.276042
+
+INFO:root:Batch 30, Batch Loss 0.268883
+
+INFO:root:Batch 31, Batch Loss 0.370343
+
+INFO:root:Batch 32, Batch Loss 0.404562
+
+INFO:root:Batch 33, Batch Loss 0.359004
+
+INFO:root:Batch 34, Batch Loss 0.300871
+
+INFO:root:Batch 35, Batch Loss 0.391311
+
+INFO:root:Batch 36, Batch Loss 0.303908
+
+INFO:root:Batch 37, Batch Loss 0.422176
+
+INFO:root:Batch 38, Batch Loss 0.215467
+
+INFO:root:Batch 39, Batch Loss 0.325953
+
+INFO:root:Batch 40, Batch Loss 0.157492
+
+INFO:root:Batch 41, Batch Loss 0.366669
+
+INFO:root:Batch 42, Batch Loss 0.405195
+
+INFO:root:
+
+Epoch 19, Time 53.155618, Epoch Loss 12.962924
+
+
+INFO:root:Batch 1, Batch Loss 0.280656
+
+INFO:root:Batch 2, Batch Loss 0.543967
+
+INFO:root:Batch 3, Batch Loss 0.332853
+
+INFO:root:Batch 4, Batch Loss 0.377932
+
+INFO:root:Batch 5, Batch Loss 0.521415
+
+INFO:root:Batch 6, Batch Loss 0.168167
+
+INFO:root:Batch 7, Batch Loss 0.345924
+
+INFO:root:Batch 8, Batch Loss 0.246851
+
+INFO:root:Batch 9, Batch Loss 0.494313
+
+INFO:root:Batch 10, Batch Loss 0.281572
+
+INFO:root:Batch 11, Batch Loss 0.316950
+
+INFO:root:Batch 12, Batch Loss 0.336566
+
+INFO:root:Batch 13, Batch Loss 0.330030
+
+INFO:root:Batch 14, Batch Loss 0.247329
+
+INFO:root:Batch 15, Batch Loss 0.341361
+
+INFO:root:Batch 16, Batch Loss 0.386960
+
+INFO:root:Batch 17, Batch Loss 0.348190
+
+INFO:root:Batch 18, Batch Loss 0.255104
+
+INFO:root:Batch 19, Batch Loss 0.322011
+
+INFO:root:Batch 20, Batch Loss 0.242670
+
+INFO:root:Batch 21, Batch Loss 0.238001
+
+INFO:root:Batch 22, Batch Loss 0.339215
+
+INFO:root:Batch 23, Batch Loss 0.242055
+
+INFO:root:Batch 24, Batch Loss 0.191700
+
+INFO:root:Batch 25, Batch Loss 0.377126
+
+INFO:root:Batch 26, Batch Loss 0.244608
+
+INFO:root:Batch 27, Batch Loss 0.182426
+
+INFO:root:Batch 28, Batch Loss 0.551922
+
+INFO:root:Batch 29, Batch Loss 0.251710
+
+INFO:root:Batch 30, Batch Loss 0.321001
+
+INFO:root:Batch 31, Batch Loss 0.314901
+
+INFO:root:Batch 32, Batch Loss 0.284448
+
+INFO:root:Batch 33, Batch Loss 0.274967
+
+INFO:root:Batch 34, Batch Loss 0.230277
+
+INFO:root:Batch 35, Batch Loss 0.292614
+
+INFO:root:Batch 36, Batch Loss 0.273448
+
+INFO:root:Batch 37, Batch Loss 0.284686
+
+INFO:root:Batch 38, Batch Loss 0.343340
+
+INFO:root:Batch 39, Batch Loss 0.145512
+
+INFO:root:Batch 40, Batch Loss 0.279926
+
+INFO:root:Batch 41, Batch Loss 0.353688
+
+INFO:root:Batch 42, Batch Loss 0.224318
+
+INFO:root:
+
+Epoch 20, Time 53.456721, Epoch Loss 12.962714
+
+
+INFO:root:Batch 1, Batch Loss 0.377486
+
+INFO:root:Batch 2, Batch Loss 0.187868
+
+INFO:root:Batch 3, Batch Loss 0.155571
+
+INFO:root:Batch 4, Batch Loss 0.239718
+
+INFO:root:Batch 5, Batch Loss 0.271914
+
+INFO:root:Batch 6, Batch Loss 0.231927
+
+INFO:root:Batch 7, Batch Loss 0.253797
+
+INFO:root:Batch 8, Batch Loss 0.257003
+
+INFO:root:Batch 9, Batch Loss 0.251413
+
+INFO:root:Batch 10, Batch Loss 0.489333
+
+INFO:root:Batch 11, Batch Loss 0.657686
+
+INFO:root:Batch 12, Batch Loss 0.325471
+
+INFO:root:Batch 13, Batch Loss 0.346080
+
+INFO:root:Batch 14, Batch Loss 0.237623
+
+INFO:root:Batch 15, Batch Loss 0.535282
+
+INFO:root:Batch 16, Batch Loss 0.498092
+
+INFO:root:Batch 17, Batch Loss 0.301131
+
+INFO:root:Batch 18, Batch Loss 0.202003
+
+INFO:root:Batch 19, Batch Loss 0.355434
+
+INFO:root:Batch 20, Batch Loss 0.287725
+
+INFO:root:Batch 21, Batch Loss 0.320379
+
+INFO:root:Batch 22, Batch Loss 0.350562
+
+INFO:root:Batch 23, Batch Loss 0.276870
+
+INFO:root:Batch 24, Batch Loss 0.238501
+
+INFO:root:Batch 25, Batch Loss 0.249811
+
+INFO:root:Batch 26, Batch Loss 0.489668
+
+INFO:root:Batch 27, Batch Loss 0.279568
+
+INFO:root:Batch 28, Batch Loss 0.268015
+
+INFO:root:Batch 29, Batch Loss 0.360397
+
+INFO:root:Batch 30, Batch Loss 0.356409
+
+INFO:root:Batch 31, Batch Loss 0.287800
+
+INFO:root:Batch 32, Batch Loss 0.280412
+
+INFO:root:Batch 33, Batch Loss 0.237392
+
+INFO:root:Batch 34, Batch Loss 0.191600
+
+INFO:root:Batch 35, Batch Loss 0.304965
+
+INFO:root:Batch 36, Batch Loss 0.254701
+
+INFO:root:Batch 37, Batch Loss 0.256527
+
+INFO:root:Batch 38, Batch Loss 0.324024
+
+INFO:root:Batch 39, Batch Loss 0.324236
+
+INFO:root:Batch 40, Batch Loss 0.238252
+
+INFO:root:Batch 41, Batch Loss 0.382080
+
+INFO:root:Batch 42, Batch Loss 0.227780
+
+INFO:root:
+
+Epoch 21, Time 53.174926, Epoch Loss 12.962503
+
+
+INFO:root:Batch 1, Batch Loss 0.245548
+
+INFO:root:Batch 2, Batch Loss 0.434726
+
+INFO:root:Batch 3, Batch Loss 0.361160
+
+INFO:root:Batch 4, Batch Loss 0.362485
+
+INFO:root:Batch 5, Batch Loss 0.263685
+
+INFO:root:Batch 6, Batch Loss 0.253828
+
+INFO:root:Batch 7, Batch Loss 0.758242
+
+INFO:root:Batch 8, Batch Loss 0.334536
+
+INFO:root:Batch 9, Batch Loss 0.227217
+
+INFO:root:Batch 10, Batch Loss 0.184203
+
+INFO:root:Batch 11, Batch Loss 0.342793
+
+INFO:root:Batch 12, Batch Loss 0.357240
+
+INFO:root:Batch 13, Batch Loss 0.413344
+
+INFO:root:Batch 14, Batch Loss 0.281828
+
+INFO:root:Batch 15, Batch Loss 0.197274
+
+INFO:root:Batch 16, Batch Loss 0.300979
+
+INFO:root:Batch 17, Batch Loss 0.352276
+
+INFO:root:Batch 18, Batch Loss 0.293216
+
+INFO:root:Batch 19, Batch Loss 0.253653
+
+INFO:root:Batch 20, Batch Loss 0.229029
+
+INFO:root:Batch 21, Batch Loss 0.245161
+
+INFO:root:Batch 22, Batch Loss 0.303415
+
+INFO:root:Batch 23, Batch Loss 0.344748
+
+INFO:root:Batch 24, Batch Loss 0.367901
+
+INFO:root:Batch 25, Batch Loss 0.299246
+
+INFO:root:Batch 26, Batch Loss 0.206395
+
+INFO:root:Batch 27, Batch Loss 0.265401
+
+INFO:root:Batch 28, Batch Loss 0.275913
+
+INFO:root:Batch 29, Batch Loss 0.380942
+
+INFO:root:Batch 30, Batch Loss 0.404239
+
+INFO:root:Batch 31, Batch Loss 0.356822
+
+INFO:root:Batch 32, Batch Loss 0.193097
+
+INFO:root:Batch 33, Batch Loss 0.322059
+
+INFO:root:Batch 34, Batch Loss 0.281773
+
+INFO:root:Batch 35, Batch Loss 0.175249
+
+INFO:root:Batch 36, Batch Loss 0.325316
+
+INFO:root:Batch 37, Batch Loss 0.385229
+
+INFO:root:Batch 38, Batch Loss 0.215481
+
+INFO:root:Batch 39, Batch Loss 0.325748
+
+INFO:root:Batch 40, Batch Loss 0.249289
+
+INFO:root:Batch 41, Batch Loss 0.423685
+
+INFO:root:Batch 42, Batch Loss 0.167906
+
+INFO:root:
+
+Epoch 22, Time 53.217275, Epoch Loss 12.962279
+
+
+INFO:root:Batch 1, Batch Loss 0.517879
+
+INFO:root:Batch 2, Batch Loss 0.235314
+
+INFO:root:Batch 3, Batch Loss 0.228239
+
+INFO:root:Batch 4, Batch Loss 0.344982
+
+INFO:root:Batch 5, Batch Loss 0.227593
+
+INFO:root:Batch 6, Batch Loss 0.225118
+
+INFO:root:Batch 7, Batch Loss 0.524164
+
+INFO:root:Batch 8, Batch Loss 0.383221
+
+INFO:root:Batch 9, Batch Loss 0.325761
+
+INFO:root:Batch 10, Batch Loss 0.260305
+
+INFO:root:Batch 11, Batch Loss 0.506534
+
+INFO:root:Batch 12, Batch Loss 0.357675
+
+INFO:root:Batch 13, Batch Loss 0.246576
+
+INFO:root:Batch 14, Batch Loss 0.321269
+
+INFO:root:Batch 15, Batch Loss 0.493864
+
+INFO:root:Batch 16, Batch Loss 0.165944
+
+INFO:root:Batch 17, Batch Loss 0.256500
+
+INFO:root:Batch 18, Batch Loss 0.334053
+
+INFO:root:Batch 19, Batch Loss 0.227478
+
+INFO:root:Batch 20, Batch Loss 0.312796
+
+INFO:root:Batch 21, Batch Loss 0.353048
+
+INFO:root:Batch 22, Batch Loss 0.285641
+
+INFO:root:Batch 23, Batch Loss 0.284173
+
+INFO:root:Batch 24, Batch Loss 0.344940
+
+INFO:root:Batch 25, Batch Loss 0.253385
+
+INFO:root:Batch 26, Batch Loss 0.306182
+
+INFO:root:Batch 27, Batch Loss 0.161792
+
+INFO:root:Batch 28, Batch Loss 0.423275
+
+INFO:root:Batch 29, Batch Loss 0.216855
+
+INFO:root:Batch 30, Batch Loss 0.238300
+
+INFO:root:Batch 31, Batch Loss 0.235553
+
+INFO:root:Batch 32, Batch Loss 0.236855
+
+INFO:root:Batch 33, Batch Loss 0.161191
+
+INFO:root:Batch 34, Batch Loss 0.305047
+
+INFO:root:Batch 35, Batch Loss 0.269587
+
+INFO:root:Batch 36, Batch Loss 0.603604
+
+INFO:root:Batch 37, Batch Loss 0.312231
+
+INFO:root:Batch 38, Batch Loss 0.403463
+
+INFO:root:Batch 39, Batch Loss 0.432528
+
+INFO:root:Batch 40, Batch Loss 0.220813
+
+INFO:root:Batch 41, Batch Loss 0.315642
+
+INFO:root:Batch 42, Batch Loss 0.102681
+
+INFO:root:
+
+Epoch 23, Time 53.082716, Epoch Loss 12.962053
+
+
+INFO:root:Batch 1, Batch Loss 0.236356
+
+INFO:root:Batch 2, Batch Loss 0.357227
+
+INFO:root:Batch 3, Batch Loss 0.345450
+
+INFO:root:Batch 4, Batch Loss 0.514860
+
+INFO:root:Batch 5, Batch Loss 0.383755
+
+INFO:root:Batch 6, Batch Loss 0.193179
+
+INFO:root:Batch 7, Batch Loss 0.414599
+
+INFO:root:Batch 8, Batch Loss 0.302203
+
+INFO:root:Batch 9, Batch Loss 0.337878
+
+INFO:root:Batch 10, Batch Loss 0.286525
+
+INFO:root:Batch 11, Batch Loss 0.302614
+
+INFO:root:Batch 12, Batch Loss 0.288503
+
+INFO:root:Batch 13, Batch Loss 0.485033
+
+INFO:root:Batch 14, Batch Loss 0.248158
+
+INFO:root:Batch 15, Batch Loss 0.326334
+
+INFO:root:Batch 16, Batch Loss 0.196735
+
+INFO:root:Batch 17, Batch Loss 0.330449
+
+INFO:root:Batch 18, Batch Loss 0.224136
+
+INFO:root:Batch 19, Batch Loss 0.357616
+
+INFO:root:Batch 20, Batch Loss 0.230217
+
+INFO:root:Batch 21, Batch Loss 0.268904
+
+INFO:root:Batch 22, Batch Loss 0.301502
+
+INFO:root:Batch 23, Batch Loss 0.262805
+
+INFO:root:Batch 24, Batch Loss 0.237269
+
+INFO:root:Batch 25, Batch Loss 0.366465
+
+INFO:root:Batch 26, Batch Loss 0.144215
+
+INFO:root:Batch 27, Batch Loss 0.648369
+
+INFO:root:Batch 28, Batch Loss 0.242700
+
+INFO:root:Batch 29, Batch Loss 0.404757
+
+INFO:root:Batch 30, Batch Loss 0.260215
+
+INFO:root:Batch 31, Batch Loss 0.259630
+
+INFO:root:Batch 32, Batch Loss 0.317304
+
+INFO:root:Batch 33, Batch Loss 0.266586
+
+INFO:root:Batch 34, Batch Loss 0.371110
+
+INFO:root:Batch 35, Batch Loss 0.294359
+
+INFO:root:Batch 36, Batch Loss 0.259321
+
+INFO:root:Batch 37, Batch Loss 0.481227
+
+INFO:root:Batch 38, Batch Loss 0.162808
+
+INFO:root:Batch 39, Batch Loss 0.272182
+
+INFO:root:Batch 40, Batch Loss 0.376483
+
+INFO:root:Batch 41, Batch Loss 0.218220
+
+INFO:root:Batch 42, Batch Loss 0.183558
+
+INFO:root:
+
+Epoch 24, Time 53.506932, Epoch Loss 12.961816
+
+
+INFO:root:Batch 1, Batch Loss 0.442060
+
+INFO:root:Batch 2, Batch Loss 0.340910
+
+INFO:root:Batch 3, Batch Loss 0.134707
+
+INFO:root:Batch 4, Batch Loss 0.271839
+
+INFO:root:Batch 5, Batch Loss 0.173881
+
+INFO:root:Batch 6, Batch Loss 0.352023
+
+INFO:root:Batch 7, Batch Loss 0.160113
+
+INFO:root:Batch 8, Batch Loss 0.313974
+
+INFO:root:Batch 9, Batch Loss 0.291635
+
+INFO:root:Batch 10, Batch Loss 0.313838
+
+INFO:root:Batch 11, Batch Loss 0.429427
+
+INFO:root:Batch 12, Batch Loss 0.232760
+
+INFO:root:Batch 13, Batch Loss 0.202040
+
+INFO:root:Batch 14, Batch Loss 0.191244
+
+INFO:root:Batch 15, Batch Loss 0.168989
+
+INFO:root:Batch 16, Batch Loss 0.419638
+
+INFO:root:Batch 17, Batch Loss 0.348810
+
+INFO:root:Batch 18, Batch Loss 0.472110
+
+INFO:root:Batch 19, Batch Loss 0.304024
+
+INFO:root:Batch 20, Batch Loss 0.390112
+
+INFO:root:Batch 21, Batch Loss 0.251503
+
+INFO:root:Batch 22, Batch Loss 0.420980
+
+INFO:root:Batch 23, Batch Loss 0.408857
+
+INFO:root:Batch 24, Batch Loss 0.256490
+
+INFO:root:Batch 25, Batch Loss 0.374490
+
+INFO:root:Batch 26, Batch Loss 0.397935
+
+INFO:root:Batch 27, Batch Loss 0.244410
+
+INFO:root:Batch 28, Batch Loss 0.258512
+
+INFO:root:Batch 29, Batch Loss 0.353202
+
+INFO:root:Batch 30, Batch Loss 0.314055
+
+INFO:root:Batch 31, Batch Loss 0.257696
+
+INFO:root:Batch 32, Batch Loss 0.371955
+
+INFO:root:Batch 33, Batch Loss 0.645538
+
+INFO:root:Batch 34, Batch Loss 0.236423
+
+INFO:root:Batch 35, Batch Loss 0.309394
+
+INFO:root:Batch 36, Batch Loss 0.300345
+
+INFO:root:Batch 37, Batch Loss 0.232558
+
+INFO:root:Batch 38, Batch Loss 0.269755
+
+INFO:root:Batch 39, Batch Loss 0.330383
+
+INFO:root:Batch 40, Batch Loss 0.232766
+
+INFO:root:Batch 41, Batch Loss 0.254050
+
+INFO:root:Batch 42, Batch Loss 0.286141
+
+INFO:root:
+
+Epoch 25, Time 54.789110, Epoch Loss 12.961573
+
+
+INFO:root:Batch 1, Batch Loss 0.415106
+
+INFO:root:Batch 2, Batch Loss 0.433332
+
+INFO:root:Batch 3, Batch Loss 0.343810
+
+INFO:root:Batch 4, Batch Loss 0.364131
+
+INFO:root:Batch 5, Batch Loss 0.353317
+
+INFO:root:Batch 6, Batch Loss 0.258072
+
+INFO:root:Batch 7, Batch Loss 0.303968
+
+INFO:root:Batch 8, Batch Loss 0.212500
+
+INFO:root:Batch 9, Batch Loss 0.468959
+
+INFO:root:Batch 10, Batch Loss 0.177370
+
+INFO:root:Batch 11, Batch Loss 0.291762
+
+INFO:root:Batch 12, Batch Loss 0.328131
+
+INFO:root:Batch 13, Batch Loss 0.285455
+
+INFO:root:Batch 14, Batch Loss 0.269224
+
+INFO:root:Batch 15, Batch Loss 0.201879
+
+INFO:root:Batch 16, Batch Loss 0.284061
+
+INFO:root:Batch 17, Batch Loss 0.330679
+
+INFO:root:Batch 18, Batch Loss 0.280850
+
+INFO:root:Batch 19, Batch Loss 0.137543
+
+INFO:root:Batch 20, Batch Loss 0.231795
+
+INFO:root:Batch 21, Batch Loss 0.201602
+
+INFO:root:Batch 22, Batch Loss 0.386177
+
+INFO:root:Batch 23, Batch Loss 0.375280
+
+INFO:root:Batch 24, Batch Loss 0.337478
+
+INFO:root:Batch 25, Batch Loss 0.390570
+
+INFO:root:Batch 26, Batch Loss 0.490875
+
+INFO:root:Batch 27, Batch Loss 0.234091
+
+INFO:root:Batch 28, Batch Loss 0.357475
+
+INFO:root:Batch 29, Batch Loss 0.269494
+
+INFO:root:Batch 30, Batch Loss 0.152999
+
+INFO:root:Batch 31, Batch Loss 0.217092
+
+INFO:root:Batch 32, Batch Loss 0.361806
+
+INFO:root:Batch 33, Batch Loss 0.420899
+
+INFO:root:Batch 34, Batch Loss 0.227729
+
+INFO:root:Batch 35, Batch Loss 0.297647
+
+INFO:root:Batch 36, Batch Loss 0.375421
+
+INFO:root:Batch 37, Batch Loss 0.146202
+
+INFO:root:Batch 38, Batch Loss 0.558771
+
+INFO:root:Batch 39, Batch Loss 0.231587
+
+INFO:root:Batch 40, Batch Loss 0.362415
+
+INFO:root:Batch 41, Batch Loss 0.450514
+
+INFO:root:Batch 42, Batch Loss 0.143262
+
+INFO:root:
+
+Epoch 26, Time 54.425376, Epoch Loss 12.961327
+
+
+INFO:root:Batch 1, Batch Loss 0.214176
+
+INFO:root:Batch 2, Batch Loss 0.269238
+
+INFO:root:Batch 3, Batch Loss 0.227679
+
+INFO:root:Batch 4, Batch Loss 0.504069
+
+INFO:root:Batch 5, Batch Loss 0.236374
+
+INFO:root:Batch 6, Batch Loss 0.215887
+
+INFO:root:Batch 7, Batch Loss 0.273548
+
+INFO:root:Batch 8, Batch Loss 0.253335
+
+INFO:root:Batch 9, Batch Loss 0.263584
+
+INFO:root:Batch 10, Batch Loss 0.263271
+
+INFO:root:Batch 11, Batch Loss 0.345153
+
+INFO:root:Batch 12, Batch Loss 0.176899
+
+INFO:root:Batch 13, Batch Loss 0.220799
+
+INFO:root:Batch 14, Batch Loss 0.327080
+
+INFO:root:Batch 15, Batch Loss 0.357701
+
+INFO:root:Batch 16, Batch Loss 0.380547
+
+INFO:root:Batch 17, Batch Loss 0.534679
+
+INFO:root:Batch 18, Batch Loss 0.300323
+
+INFO:root:Batch 19, Batch Loss 0.226887
+
+INFO:root:Batch 20, Batch Loss 0.171069
+
+INFO:root:Batch 21, Batch Loss 0.492541
+
+INFO:root:Batch 22, Batch Loss 0.317066
+
+INFO:root:Batch 23, Batch Loss 0.460299
+
+INFO:root:Batch 24, Batch Loss 0.395773
+
+INFO:root:Batch 25, Batch Loss 0.380420
+
+INFO:root:Batch 26, Batch Loss 0.328755
+
+INFO:root:Batch 27, Batch Loss 0.496486
+
+INFO:root:Batch 28, Batch Loss 0.214797
+
+INFO:root:Batch 29, Batch Loss 0.147230
+
+INFO:root:Batch 30, Batch Loss 0.273464
+
+INFO:root:Batch 31, Batch Loss 0.320975
+
+INFO:root:Batch 32, Batch Loss 0.405584
+
+INFO:root:Batch 33, Batch Loss 0.264610
+
+INFO:root:Batch 34, Batch Loss 0.297901
+
+INFO:root:Batch 35, Batch Loss 0.249628
+
+INFO:root:Batch 36, Batch Loss 0.204075
+
+INFO:root:Batch 37, Batch Loss 0.391792
+
+INFO:root:Batch 38, Batch Loss 0.319146
+
+INFO:root:Batch 39, Batch Loss 0.624321
+
+INFO:root:Batch 40, Batch Loss 0.309310
+
+INFO:root:Batch 41, Batch Loss 0.186315
+
+INFO:root:Batch 42, Batch Loss 0.118283
+
+INFO:root:
+
+Epoch 27, Time 54.476812, Epoch Loss 12.961070
+
+
+INFO:root:Batch 1, Batch Loss 0.346370
+
+INFO:root:Batch 2, Batch Loss 0.323166
+
+INFO:root:Batch 3, Batch Loss 0.387319
+
+INFO:root:Batch 4, Batch Loss 0.230709
+
+INFO:root:Batch 5, Batch Loss 0.388013
+
+INFO:root:Batch 6, Batch Loss 0.414284
+
+INFO:root:Batch 7, Batch Loss 0.436879
+
+INFO:root:Batch 8, Batch Loss 0.247762
+
+INFO:root:Batch 9, Batch Loss 0.243785
+
+INFO:root:Batch 10, Batch Loss 0.338072
+
+INFO:root:Batch 11, Batch Loss 0.324120
+
+INFO:root:Batch 12, Batch Loss 0.287282
+
+INFO:root:Batch 13, Batch Loss 0.353459
+
+INFO:root:Batch 14, Batch Loss 0.320740
+
+INFO:root:Batch 15, Batch Loss 0.338982
+
+INFO:root:Batch 16, Batch Loss 0.380817
+
+INFO:root:Batch 17, Batch Loss 0.398662
+
+INFO:root:Batch 18, Batch Loss 0.323276
+
+INFO:root:Batch 19, Batch Loss 0.504781
+
+INFO:root:Batch 20, Batch Loss 0.285640
+
+INFO:root:Batch 21, Batch Loss 0.467768
+
+INFO:root:Batch 22, Batch Loss 0.146078
+
+INFO:root:Batch 23, Batch Loss 0.273653
+
+INFO:root:Batch 24, Batch Loss 0.248009
+
+INFO:root:Batch 25, Batch Loss 0.224003
+
+INFO:root:Batch 26, Batch Loss 0.288121
+
+INFO:root:Batch 27, Batch Loss 0.292794
+
+INFO:root:Batch 28, Batch Loss 0.172146
+
+INFO:root:Batch 29, Batch Loss 0.382114
+
+INFO:root:Batch 30, Batch Loss 0.273667
+
+INFO:root:Batch 31, Batch Loss 0.331990
+
+INFO:root:Batch 32, Batch Loss 0.293150
+
+INFO:root:Batch 33, Batch Loss 0.195685
+
+INFO:root:Batch 34, Batch Loss 0.385846
+
+INFO:root:Batch 35, Batch Loss 0.238419
+
+INFO:root:Batch 36, Batch Loss 0.226078
+
+INFO:root:Batch 37, Batch Loss 0.316600
+
+INFO:root:Batch 38, Batch Loss 0.352097
+
+INFO:root:Batch 39, Batch Loss 0.229958
+
+INFO:root:Batch 40, Batch Loss 0.328402
+
+INFO:root:Batch 41, Batch Loss 0.275482
+
+INFO:root:Batch 42, Batch Loss 0.144623
+
+INFO:root:
+
+Epoch 28, Time 54.976981, Epoch Loss 12.960802
+
+
+INFO:root:Batch 1, Batch Loss 0.228209
+
+INFO:root:Batch 2, Batch Loss 0.366136
+
+INFO:root:Batch 3, Batch Loss 0.243461
+
+INFO:root:Batch 4, Batch Loss 0.243566
+
+INFO:root:Batch 5, Batch Loss 0.250401
+
+INFO:root:Batch 6, Batch Loss 0.288350
+
+INFO:root:Batch 7, Batch Loss 0.358909
+
+INFO:root:Batch 8, Batch Loss 0.492776
+
+INFO:root:Batch 9, Batch Loss 0.236481
+
+INFO:root:Batch 10, Batch Loss 0.466090
+
+INFO:root:Batch 11, Batch Loss 0.255185
+
+INFO:root:Batch 12, Batch Loss 0.386868
+
+INFO:root:Batch 13, Batch Loss 0.166037
+
+INFO:root:Batch 14, Batch Loss 0.237047
+
+INFO:root:Batch 15, Batch Loss 0.472910
+
+INFO:root:Batch 16, Batch Loss 0.355413
+
+INFO:root:Batch 17, Batch Loss 0.228691
+
+INFO:root:Batch 18, Batch Loss 0.394779
+
+INFO:root:Batch 19, Batch Loss 0.322355
+
+INFO:root:Batch 20, Batch Loss 0.383524
+
+INFO:root:Batch 21, Batch Loss 0.399771
+
+INFO:root:Batch 22, Batch Loss 0.230379
+
+INFO:root:Batch 23, Batch Loss 0.295166
+
+INFO:root:Batch 24, Batch Loss 0.297839
+
+INFO:root:Batch 25, Batch Loss 0.337593
+
+INFO:root:Batch 26, Batch Loss 0.180870
+
+INFO:root:Batch 27, Batch Loss 0.316648
+
+INFO:root:Batch 28, Batch Loss 0.394841
+
+INFO:root:Batch 29, Batch Loss 0.159899
+
+INFO:root:Batch 30, Batch Loss 0.328582
+
+INFO:root:Batch 31, Batch Loss 0.256645
+
+INFO:root:Batch 32, Batch Loss 0.311362
+
+INFO:root:Batch 33, Batch Loss 0.219029
+
+INFO:root:Batch 34, Batch Loss 0.324197
+
+INFO:root:Batch 35, Batch Loss 0.273256
+
+INFO:root:Batch 36, Batch Loss 0.315546
+
+INFO:root:Batch 37, Batch Loss 0.438820
+
+INFO:root:Batch 38, Batch Loss 0.264535
+
+INFO:root:Batch 39, Batch Loss 0.482800
+
+INFO:root:Batch 40, Batch Loss 0.268198
+
+INFO:root:Batch 41, Batch Loss 0.190219
+
+INFO:root:Batch 42, Batch Loss 0.297149
+
+INFO:root:
+
+Epoch 29, Time 54.433671, Epoch Loss 12.960531
+
+
+INFO:root:Batch 1, Batch Loss 0.279201
+
+INFO:root:Batch 2, Batch Loss 0.159388
+
+INFO:root:Batch 3, Batch Loss 0.157948
+
+INFO:root:Batch 4, Batch Loss 0.240215
+
+INFO:root:Batch 5, Batch Loss 0.332769
+
+INFO:root:Batch 6, Batch Loss 0.299592
+
+INFO:root:Batch 7, Batch Loss 0.241622
+
+INFO:root:Batch 8, Batch Loss 0.427230
+
+INFO:root:Batch 9, Batch Loss 0.256783
+
+INFO:root:Batch 10, Batch Loss 0.412484
+
+INFO:root:Batch 11, Batch Loss 0.250894
+
+INFO:root:Batch 12, Batch Loss 0.372458
+
+INFO:root:Batch 13, Batch Loss 0.339282
+
+INFO:root:Batch 14, Batch Loss 0.153319
+
+INFO:root:Batch 15, Batch Loss 0.195784
+
+INFO:root:Batch 16, Batch Loss 0.433745
+
+INFO:root:Batch 17, Batch Loss 0.315544
+
+INFO:root:Batch 18, Batch Loss 0.211177
+
+INFO:root:Batch 19, Batch Loss 0.427800
+
+INFO:root:Batch 20, Batch Loss 0.294543
+
+INFO:root:Batch 21, Batch Loss 0.334768
+
+INFO:root:Batch 22, Batch Loss 0.288532
+
+INFO:root:Batch 23, Batch Loss 0.348765
+
+INFO:root:Batch 24, Batch Loss 0.379794
+
+INFO:root:Batch 25, Batch Loss 0.273605
+
+INFO:root:Batch 26, Batch Loss 0.332386
+
+INFO:root:Batch 27, Batch Loss 0.410723
+
+INFO:root:Batch 28, Batch Loss 0.352599
+
+INFO:root:Batch 29, Batch Loss 0.344683
+
+INFO:root:Batch 30, Batch Loss 0.441619
+
+INFO:root:Batch 31, Batch Loss 0.341837
+
+INFO:root:Batch 32, Batch Loss 0.222212
+
+INFO:root:Batch 33, Batch Loss 0.422497
+
+INFO:root:Batch 34, Batch Loss 0.405728
+
+INFO:root:Batch 35, Batch Loss 0.448723
+
+INFO:root:Batch 36, Batch Loss 0.203393
+
+INFO:root:Batch 37, Batch Loss 0.221524
+
+INFO:root:Batch 38, Batch Loss 0.283737
+
+INFO:root:Batch 39, Batch Loss 0.224541
+
+INFO:root:Batch 40, Batch Loss 0.179521
+
+INFO:root:Batch 41, Batch Loss 0.330248
+
+INFO:root:Batch 42, Batch Loss 0.367043
+
+INFO:root:
+
+Epoch 30, Time 56.407749, Epoch Loss 12.960255
+
+
+INFO:root:Batch 1, Batch Loss 0.307423
+
+INFO:root:Batch 2, Batch Loss 0.254976
+
+INFO:root:Batch 3, Batch Loss 0.426059
+
+INFO:root:Batch 4, Batch Loss 0.280656
+
+INFO:root:Batch 5, Batch Loss 0.475237
+
+INFO:root:Batch 6, Batch Loss 0.261551
+
+INFO:root:Batch 7, Batch Loss 0.430992
+
+INFO:root:Batch 8, Batch Loss 0.208179
+
+INFO:root:Batch 9, Batch Loss 0.212168
+
+INFO:root:Batch 10, Batch Loss 0.317152
+
+INFO:root:Batch 11, Batch Loss 0.439564
+
+INFO:root:Batch 12, Batch Loss 0.303040
+
+INFO:root:Batch 13, Batch Loss 0.152537
+
+INFO:root:Batch 14, Batch Loss 0.257974
+
+INFO:root:Batch 15, Batch Loss 0.416151
+
+INFO:root:Batch 16, Batch Loss 0.228741
+
+INFO:root:Batch 17, Batch Loss 0.584957
+
+INFO:root:Batch 18, Batch Loss 0.403618
+
+INFO:root:Batch 19, Batch Loss 0.225879
+
+INFO:root:Batch 20, Batch Loss 0.594929
+
+INFO:root:Batch 21, Batch Loss 0.170629
+
+INFO:root:Batch 22, Batch Loss 0.160779
+
+INFO:root:Batch 23, Batch Loss 0.321780
+
+INFO:root:Batch 24, Batch Loss 0.346587
+
+INFO:root:Batch 25, Batch Loss 0.424581
+
+INFO:root:Batch 26, Batch Loss 0.321249
+
+INFO:root:Batch 27, Batch Loss 0.249183
+
+INFO:root:Batch 28, Batch Loss 0.312085
+
+INFO:root:Batch 29, Batch Loss 0.366940
+
+INFO:root:Batch 30, Batch Loss 0.331964
+
+INFO:root:Batch 31, Batch Loss 0.435908
+
+INFO:root:Batch 32, Batch Loss 0.317520
+
+INFO:root:Batch 33, Batch Loss 0.328891
+
+INFO:root:Batch 34, Batch Loss 0.210921
+
+INFO:root:Batch 35, Batch Loss 0.205191
+
+INFO:root:Batch 36, Batch Loss 0.232439
+
+INFO:root:Batch 37, Batch Loss 0.381089
+
+INFO:root:Batch 38, Batch Loss 0.294207
+
+INFO:root:Batch 39, Batch Loss 0.158466
+
+INFO:root:Batch 40, Batch Loss 0.162875
+
+INFO:root:Batch 41, Batch Loss 0.237494
+
+INFO:root:Batch 42, Batch Loss 0.207410
+
+INFO:root:
+
+Epoch 31, Time 53.853632, Epoch Loss 12.959968
+
+
+INFO:root:Batch 1, Batch Loss 0.328478
+
+INFO:root:Batch 2, Batch Loss 0.223109
+
+INFO:root:Batch 3, Batch Loss 0.200210
+
+INFO:root:Batch 4, Batch Loss 0.292379
+
+INFO:root:Batch 5, Batch Loss 0.321542
+
+INFO:root:Batch 6, Batch Loss 0.259479
+
+INFO:root:Batch 7, Batch Loss 0.324726
+
+INFO:root:Batch 8, Batch Loss 0.283985
+
+INFO:root:Batch 9, Batch Loss 0.199198
+
+INFO:root:Batch 10, Batch Loss 0.225286
+
+INFO:root:Batch 11, Batch Loss 0.482110
+
+INFO:root:Batch 12, Batch Loss 0.215489
+
+INFO:root:Batch 13, Batch Loss 0.522713
+
+INFO:root:Batch 14, Batch Loss 0.352017
+
+INFO:root:Batch 15, Batch Loss 0.273271
+
+INFO:root:Batch 16, Batch Loss 0.238013
+
+INFO:root:Batch 17, Batch Loss 0.297714
+
+INFO:root:Batch 18, Batch Loss 0.292301
+
+INFO:root:Batch 19, Batch Loss 0.482738
+
+INFO:root:Batch 20, Batch Loss 0.300140
+
+INFO:root:Batch 21, Batch Loss 0.380153
+
+INFO:root:Batch 22, Batch Loss 0.178771
+
+INFO:root:Batch 23, Batch Loss 0.416669
+
+INFO:root:Batch 24, Batch Loss 0.291931
+
+INFO:root:Batch 25, Batch Loss 0.248554
+
+INFO:root:Batch 26, Batch Loss 0.472983
+
+INFO:root:Batch 27, Batch Loss 0.198143
+
+INFO:root:Batch 28, Batch Loss 0.401959
+
+INFO:root:Batch 29, Batch Loss 0.604178
+
+INFO:root:Batch 30, Batch Loss 0.181022
+
+INFO:root:Batch 31, Batch Loss 0.228462
+
+INFO:root:Batch 32, Batch Loss 0.460693
+
+INFO:root:Batch 33, Batch Loss 0.190526
+
+INFO:root:Batch 34, Batch Loss 0.522068
+
+INFO:root:Batch 35, Batch Loss 0.240739
+
+INFO:root:Batch 36, Batch Loss 0.261800
+
+INFO:root:Batch 37, Batch Loss 0.433603
+
+INFO:root:Batch 38, Batch Loss 0.190656
+
+INFO:root:Batch 39, Batch Loss 0.225826
+
+INFO:root:Batch 40, Batch Loss 0.346713
+
+INFO:root:Batch 41, Batch Loss 0.200269
+
+INFO:root:Batch 42, Batch Loss 0.169051
+
+INFO:root:
+
+Epoch 32, Time 52.996282, Epoch Loss 12.959669
+
+
+INFO:root:Batch 1, Batch Loss 0.271087
+
+INFO:root:Batch 2, Batch Loss 0.291614
+
+INFO:root:Batch 3, Batch Loss 0.238487
+
+INFO:root:Batch 4, Batch Loss 0.312621
+
+INFO:root:Batch 5, Batch Loss 0.298101
+
+INFO:root:Batch 6, Batch Loss 0.197417
+
+INFO:root:Batch 7, Batch Loss 0.285653
+
+INFO:root:Batch 8, Batch Loss 0.531609
+
+INFO:root:Batch 9, Batch Loss 0.323548
+
+INFO:root:Batch 10, Batch Loss 0.513540
+
+INFO:root:Batch 11, Batch Loss 0.455596
+
+INFO:root:Batch 12, Batch Loss 0.259473
+
+INFO:root:Batch 13, Batch Loss 0.386120
+
+INFO:root:Batch 14, Batch Loss 0.183829
+
+INFO:root:Batch 15, Batch Loss 0.189975
+
+INFO:root:Batch 16, Batch Loss 0.376442
+
+INFO:root:Batch 17, Batch Loss 0.289047
+
+INFO:root:Batch 18, Batch Loss 0.344481
+
+INFO:root:Batch 19, Batch Loss 0.293220
+
+INFO:root:Batch 20, Batch Loss 0.365227
+
+INFO:root:Batch 21, Batch Loss 0.440179
+
+INFO:root:Batch 22, Batch Loss 0.353156
+
+INFO:root:Batch 23, Batch Loss 0.229357
+
+INFO:root:Batch 24, Batch Loss 0.413246
+
+INFO:root:Batch 25, Batch Loss 0.212725
+
+INFO:root:Batch 26, Batch Loss 0.310655
+
+INFO:root:Batch 27, Batch Loss 0.261611
+
+INFO:root:Batch 28, Batch Loss 0.310837
+
+INFO:root:Batch 29, Batch Loss 0.220312
+
+INFO:root:Batch 30, Batch Loss 0.184847
+
+INFO:root:Batch 31, Batch Loss 0.233020
+
+INFO:root:Batch 32, Batch Loss 0.336776
+
+INFO:root:Batch 33, Batch Loss 0.449550
+
+INFO:root:Batch 34, Batch Loss 0.211037
+
+INFO:root:Batch 35, Batch Loss 0.484162
+
+INFO:root:Batch 36, Batch Loss 0.337313
+
+INFO:root:Batch 37, Batch Loss 0.207335
+
+INFO:root:Batch 38, Batch Loss 0.289813
+
+INFO:root:Batch 39, Batch Loss 0.223616
+
+INFO:root:Batch 40, Batch Loss 0.280321
+
+INFO:root:Batch 41, Batch Loss 0.250502
+
+INFO:root:Batch 42, Batch Loss 0.311908
+
+INFO:root:
+
+Epoch 33, Time 54.119741, Epoch Loss 12.959366
+
+
+INFO:root:Batch 1, Batch Loss 0.200352
+
+INFO:root:Batch 2, Batch Loss 0.216872
+
+INFO:root:Batch 3, Batch Loss 0.234013
+
+INFO:root:Batch 4, Batch Loss 0.361681
+
+INFO:root:Batch 5, Batch Loss 0.270064
+
+INFO:root:Batch 6, Batch Loss 0.353511
+
+INFO:root:Batch 7, Batch Loss 0.292178
+
+INFO:root:Batch 8, Batch Loss 0.119489
+
+INFO:root:Batch 9, Batch Loss 0.377763
+
+INFO:root:Batch 10, Batch Loss 0.348456
+
+INFO:root:Batch 11, Batch Loss 0.417277
+
+INFO:root:Batch 12, Batch Loss 0.274736
+
+INFO:root:Batch 13, Batch Loss 0.293078
+
+INFO:root:Batch 14, Batch Loss 0.243016
+
+INFO:root:Batch 15, Batch Loss 0.392288
+
+INFO:root:Batch 16, Batch Loss 0.315758
+
+INFO:root:Batch 17, Batch Loss 0.255966
+
+INFO:root:Batch 18, Batch Loss 0.235728
+
+INFO:root:Batch 19, Batch Loss 0.289036
+
+INFO:root:Batch 20, Batch Loss 0.296393
+
+INFO:root:Batch 21, Batch Loss 0.277474
+
+INFO:root:Batch 22, Batch Loss 0.457728
+
+INFO:root:Batch 23, Batch Loss 0.472338
+
+INFO:root:Batch 24, Batch Loss 0.426269
+
+INFO:root:Batch 25, Batch Loss 0.274781
+
+INFO:root:Batch 26, Batch Loss 0.393476
+
+INFO:root:Batch 27, Batch Loss 0.294837
+
+INFO:root:Batch 28, Batch Loss 0.332596
+
+INFO:root:Batch 29, Batch Loss 0.408540
+
+INFO:root:Batch 30, Batch Loss 0.446850
+
+INFO:root:Batch 31, Batch Loss 0.342496
+
+INFO:root:Batch 32, Batch Loss 0.264432
+
+INFO:root:Batch 33, Batch Loss 0.353897
+
+INFO:root:Batch 34, Batch Loss 0.218008
+
+INFO:root:Batch 35, Batch Loss 0.206510
+
+INFO:root:Batch 36, Batch Loss 0.392343
+
+INFO:root:Batch 37, Batch Loss 0.339478
+
+INFO:root:Batch 38, Batch Loss 0.207424
+
+INFO:root:Batch 39, Batch Loss 0.290964
+
+INFO:root:Batch 40, Batch Loss 0.274982
+
+INFO:root:Batch 41, Batch Loss 0.297486
+
+INFO:root:Batch 42, Batch Loss 0.198493
+
+INFO:root:
+
+Epoch 34, Time 55.284828, Epoch Loss 12.959059
+
+
+INFO:root:Batch 1, Batch Loss 0.385119
+
+INFO:root:Batch 2, Batch Loss 0.234004
+
+INFO:root:Batch 3, Batch Loss 0.191243
+
+INFO:root:Batch 4, Batch Loss 0.230755
+
+INFO:root:Batch 5, Batch Loss 0.356538
+
+INFO:root:Batch 6, Batch Loss 0.227285
+
+INFO:root:Batch 7, Batch Loss 0.293499
+
+INFO:root:Batch 8, Batch Loss 0.210661
+
+INFO:root:Batch 9, Batch Loss 0.429845
+
+INFO:root:Batch 10, Batch Loss 0.354547
+
+INFO:root:Batch 11, Batch Loss 0.304999
+
+INFO:root:Batch 12, Batch Loss 0.227159
+
+INFO:root:Batch 13, Batch Loss 0.311867
+
+INFO:root:Batch 14, Batch Loss 0.303942
+
+INFO:root:Batch 15, Batch Loss 0.242131
+
+INFO:root:Batch 16, Batch Loss 0.258692
+
+INFO:root:Batch 17, Batch Loss 0.354395
+
+INFO:root:Batch 18, Batch Loss 0.312462
+
+INFO:root:Batch 19, Batch Loss 0.371088
+
+INFO:root:Batch 20, Batch Loss 0.649206
+
+INFO:root:Batch 21, Batch Loss 0.374074
+
+INFO:root:Batch 22, Batch Loss 0.311328
+
+INFO:root:Batch 23, Batch Loss 0.297194
+
+INFO:root:Batch 24, Batch Loss 0.211455
+
+INFO:root:Batch 25, Batch Loss 0.367705
+
+INFO:root:Batch 26, Batch Loss 0.287372
+
+INFO:root:Batch 27, Batch Loss 0.469786
+
+INFO:root:Batch 28, Batch Loss 0.244657
+
+INFO:root:Batch 29, Batch Loss 0.215449
+
+INFO:root:Batch 30, Batch Loss 0.564667
+
+INFO:root:Batch 31, Batch Loss 0.281582
+
+INFO:root:Batch 32, Batch Loss 0.158003
+
+INFO:root:Batch 33, Batch Loss 0.228224
+
+INFO:root:Batch 34, Batch Loss 0.348858
+
+INFO:root:Batch 35, Batch Loss 0.538283
+
+INFO:root:Batch 36, Batch Loss 0.262012
+
+INFO:root:Batch 37, Batch Loss 0.305147
+
+INFO:root:Batch 38, Batch Loss 0.328437
+
+INFO:root:Batch 39, Batch Loss 0.227941
+
+INFO:root:Batch 40, Batch Loss 0.290349
+
+INFO:root:Batch 41, Batch Loss 0.231847
+
+INFO:root:Batch 42, Batch Loss 0.164933
+
+INFO:root:
+
+Epoch 35, Time 54.416801, Epoch Loss 12.958737
+
+
+INFO:root:Batch 1, Batch Loss 0.396807
+
+INFO:root:Batch 2, Batch Loss 0.228625
+
+INFO:root:Batch 3, Batch Loss 0.429446
+
+INFO:root:Batch 4, Batch Loss 0.547648
+
