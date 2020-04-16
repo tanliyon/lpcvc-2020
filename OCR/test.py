@@ -6,12 +6,13 @@ from torch.utils.data import Dataset, DataLoader
 import torch.utils.data
 import time
 from torch.utils.tensorboard import SummaryWriter
-import models.crnn_quant as crnn
+import models.crnn_lang_chenjun as crnn
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 from PIL import Image
 import numpy as np
 from itertools import compress
+import os
 
 image = torch.FloatTensor(4, 3, 32, 32)
 SOS_token = 0
@@ -19,6 +20,10 @@ EOS_TOKEN = 1
 BLANK = 2
 to_pil = transforms.ToPILImage()
 
+def print_size_of_model(model):
+    torch.save(model.state_dict(), "temp.p")
+    print('Size (MB):', os.path.getsize("temp.p")/1e6)
+    os.remove('temp.p')
 
 def OCR_att(frames, bboxes):
     max_length = 16
@@ -29,6 +34,7 @@ def OCR_att(frames, bboxes):
     encoder.load_state_dict(torch.load("/home/damini/PycharmProjects/low_power_attention_model/lpcvc-2020/OCR/OUTPUT_SYNTH3_DATA/encoder_2.pth"))
     decoder.load_state_dict(torch.load("/home/damini/PycharmProjects/low_power_attention_model/lpcvc-2020/OCR/OUTPUT_SYNTH3_DATA/decoder_2.pth"))
     to_bw = transforms.Compose([transforms.Resize((32, 280), interpolation=Image.NEAREST), transforms.ToTensor()])
+
     for e, d in zip(encoder.parameters(), decoder.parameters()):
         e.requires_grad = False
         d.requires_grad = False
@@ -39,6 +45,8 @@ def OCR_att(frames, bboxes):
     for p, (frame, frame_bboxes) in enumerate(zip(frames, bboxes)):
         words = []
         frame = to_pil(frame)
+        plt.imshow(frame)
+        plt.show()
         for box in frame_bboxes:
             tl_x, tl_y, tr_x, tr_y, br_x, br_y, bl_x, bl_y = box
             top = min(tl_y, tr_y)
@@ -46,6 +54,8 @@ def OCR_att(frames, bboxes):
             height = max(bl_y, br_y) - min(tl_y, tr_y)
             width = max(tr_x, br_x) - min(tl_x, bl_x)
             img = transforms.functional.crop(frame, top, left, height, width)
+            plt.imshow(img)
+            plt.show()
             words.append(to_bw(transforms.functional.crop(frame, top, left, height, width)))
 
         words = torch.stack(words)
@@ -77,8 +87,9 @@ if __name__ == '__main__':
     t1 = transforms.ToTensor()
     frame = t1(bw(frame))
     # OCR_att(frame, [[[573,97,625,106,625,125,572,116],[542,166,627,179,627,204,542,191], [251,227,359,237,359,259,251,249], [635,182,675,189,674,218,635,211]]])
-    OCR_att(frame, [[[542,166,627,179,627,204,542,191], [251,227,359,237,359,259,251,249], [520,500,500,537,559,559,500,500]]])
-    # OCR_att(frame, [[[542,166,627,179,627,204,542,191]]])
+    # OCR_att(frame, [[[530,166,627,179,627,204,542,191], [251,227,359,237,359,259,251,249], [520,500,500,537,559,559,500,500]]])
+    OCR_att(frame, [[[542,166,627,179,627,204,542,191]]])
+
 
 
 

@@ -86,7 +86,6 @@ def __test__attention_layer():
     optimizer.step()
 
 
-# __test__attention_layer()
 
 
 class AttendCRNN(nn.Module):
@@ -145,16 +144,12 @@ class AttendCRNN(nn.Module):
         b, c, h, w = conv.size()
         assert h == 1, "the height of conv must be 1"
         conv = conv.squeeze(2)
-        # conv = conv.permute(0, 2, 1)  # [b, w, c]
-        # attend = self.attend_layer(conv)
-        # attend = attend.permute(1, 0, 2)  # [w, b, c]
-        # output = self.rnn(attend)
 
-        conv = conv.permute(2, 0, 1)  # [w, b, c]
+        conv = conv.permute(2, 0, 1)
         rnn = self.rnn1(conv)
-        rnn = rnn.permute(1, 0, 2)    # [b, w, c]
+        rnn = rnn.permute(1, 0, 2)
         attend, attend_energies = self.attend_layer(rnn)
-        attend = attend.permute(1, 0, 2)  # [w, b, c]
+        attend = attend.permute(1, 0, 2)
         output = self.rnn2(attend)
         return output, attend_energies
 
