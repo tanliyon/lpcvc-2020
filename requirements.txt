@@ -1,0 +1,6 @@
+cv2==4.2.0
+lanms==1.0.2
+numpy==1.18.1
+PIL==7.0.0
+torch==1.4.0
+torchvision==0.5.0

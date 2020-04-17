@@ -16,10 +16,10 @@ class Train:
         self.epoch_directory_path = epoch_directory_path
         self.validate_image_path = validate_image_path
         self.validate_annotation_path = validate_annotation_path
-        self.model_path = "/model_epoch_650.pth"
+        self.model_path = "/detector.pth"
 
     def train(self, new_dimensions, learning_rate, epochs, batch_size, num_workers, save_interval, validate_interval, shuffle=True, drop_last=False):
-        logging.basicConfig(filename="training_9.log", level=logging.INFO)
+        logging.basicConfig(filename="training_10.log", level=logging.INFO)
         logging.info("\nStarted")
 
         train_dataset = TextLocalizationSet(self.image_directory_path, self.annotation_directory_path, new_dimensions)
