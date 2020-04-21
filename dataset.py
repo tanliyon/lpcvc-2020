@@ -151,6 +151,26 @@ class TextLocalizationSet(Dataset):
 
         return resized_image, resized_coordinates
 
+    def Flip_Data(self, image, quad_coordinates, direction):
+
+        flipped_image = image
+        flipped_quad_coordinates = quad_coordinates
+
+        if direction == "vertical":
+            flipped_image = image.transpose(Image.FLIP_TOP_BOTTOM)
+
+            x1, y1, x2, y2, x3, y3, x4, y4 = quad_coordinates
+            flipped_quad_coordinates = (x4, y4, x3, y3, x2, y2, x1, y1)
+
+        elif direction == "horizontal":
+            flipped_image = image.transpose(Image.FLIP_LEFT_RIGHT)
+
+            x1, y1, x2, y2, x3, y3, x4, y4 = quad_coordinates
+            flipped_quad_coordinates = (x2, y2, x1, y1, x4, y4, x3, y3)
+
+        return flipped_image, flipped_quad_coordinates
+
+
 if __name__ == "__main__":
     imagePath = "./Dataset/Train/TrainImages/"
     annotationPath = "./Dataset/Train/TrainTruth/"
